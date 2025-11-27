@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entity Formation & Structuring | Rivalis Law</title>
+    <meta name="description" content="C-Corp, LLC, Delaware incorporation with proper equity structures and founder agreements. $4,500-$12,000.">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #1a1a2e; --accent: #d4af37; --accent-dark: #b8941f; --accent-light: #f0e6d2;
+            --white: #ffffff; --gray-50: #fafbfc; --gray-200: #e8ecf0; --gray-600: #4a5568;
+            --gray-700: #2d3748; --gray-900: #0f1419;
+        }
+        body { font-family: 'Inter', sans-serif; color: var(--gray-900); line-height: 1.6; }
+        .nav { position: sticky; top: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(212, 175, 55, 0.15); z-index: 999; }
+        .nav-container { max-width: 1400px; margin: 0 auto; padding: 0 3rem; display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.75rem; font-weight: 700; color: var(--primary); text-decoration: none; }
+        .nav-logo::before { content: '⚖ '; color: var(--accent); }
+        .nav-menu { display: flex; gap: 2rem; list-style: none; align-items: center; }
+        .nav-link { color: var(--gray-700); text-decoration: none; font-weight: 500; }
+        .nav-cta { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%); color: var(--white); padding: 0.875rem 1.75rem; border-radius: 8px; text-decoration: none; font-weight: 600; }
+        .hero { background: linear-gradient(165deg, #1a1a2e 0%, #2d3748 100%); color: white; padding: 6rem 3rem 5rem; }
+        .hero-container { max-width: 1200px; margin: 0 auto; text-align: center; }
+        .breadcrumb { display: flex; gap: 0.5rem; margin-bottom: 2rem; font-size: 0.9rem; opacity: 0.8; justify-content: center; }
+        .breadcrumb a { color: var(--accent); text-decoration: none; }
+        .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 700; line-height: 1.2; margin-bottom: 1.5rem; }
+        .hero h1 .highlight { color: var(--accent); }
+        .hero-subtitle { font-size: 1.3rem; line-height: 1.7; margin-bottom: 3rem; opacity: 0.95; max-width: 800px; margin-left: auto; margin-right: auto; }
+        .price-hero { font-size: 3rem; font-weight: 800; color: var(--accent); font-family: 'Cormorant Garamond', serif; margin-bottom: 1rem; }
+        .price-note { font-size: 1.1rem; opacity: 0.9; margin-bottom: 3rem; }
+        .cta-group { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
+        .btn { padding: 1.125rem 2.25rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1.05rem; transition: all 0.3s; display: inline-flex; align-items: center; gap: 0.75rem; }
+        .btn-primary { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%); color: var(--primary); }
+        .btn-secondary { background: transparent; border: 2px solid white; color: white; }
+        .section { padding: 6rem 3rem; }
+        .section-container { max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; max-width: 800px; margin: 0 auto 4rem; }
+        .section-title { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 700; color: var(--primary); margin-bottom: 1.5rem; }
+        .section-subtitle { font-size: 1.15rem; color: var(--gray-600); line-height: 1.8; }
+        .entities-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
+        .entity-card { background: white; border: 3px solid var(--accent); border-radius: 12px; padding: 3rem; }
+        .entity-card h3 { font-size: 2rem; font-weight: 700; color: var(--primary); margin-bottom: 1rem; font-family: 'Cormorant Garamond', serif; }
+        .entity-tagline { color: var(--accent); font-weight: 600; margin-bottom: 1.5rem; }
+        .entity-card p { color: var(--gray-600); line-height: 1.7; margin-bottom: 1.5rem; }
+        .entity-price { background: var(--accent-light); border: 2px solid var(--accent); border-radius: 8px; padding: 1.25rem; margin: 1.5rem 0; }
+        .price-amount { font-size: 1.4rem; font-weight: 800; color: var(--primary); font-family: 'Cormorant Garamond', serif; }
+        .entity-features { list-style: none; margin-top: 1.5rem; }
+        .entity-features li { padding: 0.75rem 0; color: var(--gray-700); display: flex; align-items: start; gap: 1rem; }
+        .entity-features li::before { content: '✓'; color: var(--accent); font-weight: 800; font-size: 1.1rem; }
+        .included { background: var(--gray-50); }
+        .included-list { max-width: 800px; margin: 0 auto; display: grid; gap: 1rem; }
+        .included-item { background: white; padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--accent); display: flex; align-items: center; gap: 1rem; }
+        .included-item i { color: var(--accent); font-size: 1.25rem; }
+        .cta-section { background: linear-gradient(135deg, var(--primary) 0%, var(--gray-900) 100%); color: white; text-align: center; }
+        .cta-section h2 { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 700; margin-bottom: 1.5rem; }
+        .cta-section p { font-size: 1.2rem; opacity: 0.95; margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto; }
+        .footer { background: var(--gray-900); color: rgba(255, 255, 255, 0.7); padding: 3rem; text-align: center; }
+        .footer a { color: var(--accent); text-decoration: none; }
+        @media (max-width: 968px) {
+            .hero h1 { font-size: 2.5rem; }
+            .entities-grid { grid-template-columns: 1fr; }
+            .nav-menu { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Rivalis Law</a>
+            <ul class="nav-menu">
+                <li><a href="index.html#services" class="nav-link">All Services</a></li>
+                <li><a href="index.html#select-services" class="nav-link">Select Services</a></li>
+                <li><a href="#get-started" class="nav-cta">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / <a href="index.html#select-services">Select Services</a> / <span>Entity Formation</span>
+            </div>
+
+            <h1>Your Entity Structure Will<br><span class="highlight">Cost You Millions</span> Later</h1>
+
+            <p class="hero-subtitle">
+                You picked LLC because it was "simple." Now VCs won't invest. Your co-founder equity split has no vesting. You formed in the wrong state. Your tax structure costs $50K annually. Getting it right the first time costs $10K. Fixing it later costs $100K+.
+            </p>
+
+            <div class="price-hero">$4,500 - $12,000</div>
+            <p class="price-note">Complete entity formation with proper structure</p>
+
+            <div class="cta-group">
+                <a href="#get-started" class="btn btn-primary">
+                    <i class="fas fa-building"></i>
+                    Form Your Entity
+                </a>
+                <a href="mailto:formation@rivalislaw.com" class="btn btn-secondary">
+                    <i class="fas fa-envelope"></i>
+                    Email Formation Team
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Entity Formation Services</h2>
+                <p class="section-subtitle">
+                    Proper corporate structure from day one
+                </p>
+            </div>
+
+            <div class="entities-grid">
+                <div class="entity-card">
+                    <h3>C-Corporation</h3>
+                    <p class="entity-tagline">For venture-backed companies and high-growth startups</p>
+                    <p>Delaware C-Corp formation with proper equity structure, stock issuance, founder vesting, and VC-ready documentation. The right choice for companies planning to raise institutional capital.</p>
+                    
+                    <div class="entity-price">
+                        <div class="price-amount">$8,000 - $12,000</div>
+                    </div>
+
+                    <ul class="entity-features">
+                        <li>Delaware incorporation & registered agent</li>
+                        <li>Certificate of incorporation & bylaws</li>
+                        <li>Founder stock purchase agreements</li>
+                        <li>Vesting schedules (4-year with 1-year cliff)</li>
+                        <li>83(b) election filing</li>
+                        <li>Board consent resolutions</li>
+                        <li>Initial stock issuance</li>
+                        <li>Stock ledger & cap table setup</li>
+                        <li>EIN & corporate formalities guidance</li>
+                    </ul>
+                </div>
+
+                <div class="entity-card">
+                    <h3>LLC Formation</h3>
+                    <p class="entity-tagline">For operating businesses, consulting firms, and partnerships</p>
+                    <p>Single or multi-member LLC with customized operating agreement, tax election strategy, and proper management structure. Ideal for service businesses and companies not seeking VC funding.</p>
+                    
+                    <div class="entity-price">
+                        <div class="price-amount">$4,500 - $8,000</div>
+                    </div>
+
+                    <ul class="entity-features">
+                        <li>State filing & formation documents</li>
+                        <li>Comprehensive operating agreement</li>
+                        <li>Member contribution agreements</li>
+                        <li>Management structure (member vs manager-managed)</li>
+                        <li>Profit/loss allocation provisions</li>
+                        <li>Tax classification election (if needed)</li>
+                        <li>EIN application</li>
+                        <li>Transfer restrictions & buyout provisions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section included">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">What's Included</h2>
+                <p class="section-subtitle">
+                    Complete formation package with everything you need
+                </p>
+            </div>
+
+            <div class="included-list">
+                <div class="included-item">
+                    <i class="fas fa-users"></i>
+                    <span><strong>Founder Agreements:</strong> Equity splits, vesting schedules, IP assignment, roles & responsibilities</span>
+                </div>
+                <div class="included-item">
+                    <i class="fas fa-map-signs"></i>
+                    <span><strong>State Selection Strategy:</strong> Delaware vs home state analysis based on your business goals</span>
+                </div>
+                <div class="included-item">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <span><strong>Tax Structure Optimization:</strong> C-Corp vs LLC vs S-Corp analysis with long-term implications</span>
+                </div>
+                <div class="included-item">
+                    <i class="fas fa-copyright"></i>
+                    <span><strong>IP Protection:</strong> Technology assignment agreements ensuring company owns all IP</span>
+                </div>
+                <div class="included-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span><strong>Investor-Ready Structure:</strong> Cap table, stock classes, option pools (for C-Corps)</span>
+                </div>
+                <div class="included-item">
+                    <i class="fas fa-clipboard-check"></i>
+                    <span><strong>Compliance Guidance:</strong> Annual requirements, meeting protocols, record-keeping</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section cta-section" id="get-started">
+        <div class="section-container">
+            <h2>Get Your Entity Structure Right From Day One</h2>
+            <p>
+                Wrong entity structure kills VC deals, creates massive tax bills, and causes founder disputes. Get it right the first time with proper legal counsel.
+            </p>
+
+            <div class="cta-group">
+                <a href="mailto:formation@rivalislaw.com" class="btn btn-primary">
+                    <i class="fas fa-building"></i>
+                    Start Your Formation
+                </a>
+                <a href="tel:+1-202-555-0199" class="btn btn-secondary">
+                    <i class="fas fa-phone"></i>
+                    Call: (202) 555-0199
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 Rivalis Law. Licensed in New York & Michigan.</p>
+        <p><a href="index.html">Return to Main Site</a> | <a href="index.html#select-services">All Select Services</a></p>
+    </footer>
+</body>
+</html>

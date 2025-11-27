@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP Strategy & Protection | Rivalis Law</title>
+    <meta name="description" content="Trademark filings, trade secret protection, and IP portfolio development for growing companies. $5,000-$20,000.">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #1a1a2e;
+            --accent: #d4af37;
+            --accent-dark: #b8941f;
+            --accent-light: #f0e6d2;
+            --white: #ffffff;
+            --gray-50: #fafbfc;
+            --gray-200: #e8ecf0;
+            --gray-600: #4a5568;
+            --gray-700: #2d3748;
+            --gray-900: #0f1419;
+        }
+        body { font-family: 'Inter', sans-serif; color: var(--gray-900); line-height: 1.6; }
+        .nav { position: sticky; top: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(212, 175, 55, 0.15); z-index: 999; }
+        .nav-container { max-width: 1400px; margin: 0 auto; padding: 0 3rem; display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.75rem; font-weight: 700; color: var(--primary); text-decoration: none; }
+        .nav-logo::before { content: '⚖ '; color: var(--accent); }
+        .nav-menu { display: flex; gap: 2rem; list-style: none; align-items: center; }
+        .nav-link { color: var(--gray-700); text-decoration: none; font-weight: 500; }
+        .nav-cta { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%); color: var(--white); padding: 0.875rem 1.75rem; border-radius: 8px; text-decoration: none; font-weight: 600; }
+        .hero { background: linear-gradient(165deg, #1a1a2e 0%, #2d3748 100%); color: white; padding: 6rem 3rem 5rem; }
+        .hero-container { max-width: 1200px; margin: 0 auto; text-align: center; }
+        .breadcrumb { display: flex; gap: 0.5rem; margin-bottom: 2rem; font-size: 0.9rem; opacity: 0.8; justify-content: center; }
+        .breadcrumb a { color: var(--accent); text-decoration: none; }
+        .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 700; line-height: 1.2; margin-bottom: 1.5rem; }
+        .hero h1 .highlight { color: var(--accent); }
+        .hero-subtitle { font-size: 1.3rem; line-height: 1.7; margin-bottom: 3rem; opacity: 0.95; max-width: 800px; margin-left: auto; margin-right: auto; }
+        .price-hero { font-size: 3rem; font-weight: 800; color: var(--accent); font-family: 'Cormorant Garamond', serif; margin-bottom: 1rem; }
+        .price-note { font-size: 1.1rem; opacity: 0.9; margin-bottom: 3rem; }
+        .cta-group { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
+        .btn { padding: 1.125rem 2.25rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1.05rem; transition: all 0.3s; display: inline-flex; align-items: center; gap: 0.75rem; }
+        .btn-primary { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%); color: var(--primary); }
+        .btn-secondary { background: transparent; border: 2px solid white; color: white; }
+        .section { padding: 6rem 3rem; }
+        .section-container { max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; max-width: 800px; margin: 0 auto 4rem; }
+        .section-title { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 700; color: var(--primary); margin-bottom: 1.5rem; }
+        .section-subtitle { font-size: 1.15rem; color: var(--gray-600); line-height: 1.8; }
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .service-card { background: white; border: 2px solid var(--gray-200); border-radius: 12px; padding: 2.5rem; transition: all 0.3s; }
+        .service-card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1); }
+        .service-icon { width: 56px; height: 56px; background: linear-gradient(135deg, var(--accent-light) 0%, rgba(212, 175, 55, 0.3) 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; }
+        .service-icon i { font-size: 1.5rem; color: var(--accent); }
+        .service-card h3 { font-size: 1.5rem; font-weight: 700; color: var(--primary); margin-bottom: 1rem; }
+        .service-card p { color: var(--gray-600); line-height: 1.7; margin-bottom: 1.25rem; }
+        .service-price { font-size: 1.25rem; font-weight: 700; color: var(--accent); }
+        .why { background: var(--gray-50); }
+        .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+        .why-card { background: white; padding: 2.5rem; border-radius: 12px; border-left: 4px solid var(--accent); }
+        .why-card h3 { font-size: 1.5rem; font-weight: 700; color: var(--primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
+        .why-card h3 i { color: var(--accent); }
+        .why-card p { color: var(--gray-600); line-height: 1.7; }
+        .cta-section { background: linear-gradient(135deg, var(--primary) 0%, var(--gray-900) 100%); color: white; text-align: center; }
+        .cta-section h2 { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 700; margin-bottom: 1.5rem; }
+        .cta-section p { font-size: 1.2rem; opacity: 0.95; margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto; }
+        .footer { background: var(--gray-900); color: rgba(255, 255, 255, 0.7); padding: 3rem; text-align: center; }
+        .footer a { color: var(--accent); text-decoration: none; }
+        @media (max-width: 968px) {
+            .hero h1 { font-size: 2.5rem; }
+            .services-grid, .why-grid { grid-template-columns: 1fr; }
+            .nav-menu { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Rivalis Law</a>
+            <ul class="nav-menu">
+                <li><a href="index.html#services" class="nav-link">All Services</a></li>
+                <li><a href="index.html#select-services" class="nav-link">Select Services</a></li>
+                <li><a href="#get-started" class="nav-cta">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / <a href="index.html#select-services">Select Services</a> / <span>IP Strategy</span>
+            </div>
+
+            <h1>Your Brand Name Is Already<br><span class="highlight">Trademarked by Someone Else</span></h1>
+
+            <p class="hero-subtitle">
+                You built a company around that name. Spent $50K on branding. Now someone owns the trademark and wants you to stop—or pay. Your trade secrets are unprotected. Your contractors own your IP. One cease & desist destroys everything.
+            </p>
+
+            <div class="price-hero">$5,000 - $20,000</div>
+            <p class="price-note">Trademark filings, trade secret protection, IP portfolio development</p>
+
+            <div class="cta-group">
+                <a href="#get-started" class="btn btn-primary">
+                    <i class="fas fa-copyright"></i>
+                    Protect Your IP
+                </a>
+                <a href="mailto:ip@rivalislaw.com" class="btn btn-secondary">
+                    <i class="fas fa-envelope"></i>
+                    Email IP Team
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">IP Protection Services</h2>
+                <p class="section-subtitle">
+                    Comprehensive intellectual property strategy for growing businesses
+                </p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-trademark"></i>
+                    </div>
+                    <h3>Trademark Filing</h3>
+                    <p>Comprehensive trademark search, application preparation, USPTO filing, and office action responses.</p>
+                    <div class="service-price">$1,500 - $3,000 per mark</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-user-secret"></i>
+                    </div>
+                    <h3>Trade Secret Protection</h3>
+                    <p>Policies, NDAs, employee agreements, and procedures to protect confidential business information.</p>
+                    <div class="service-price">$5,000 - $12,000</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3>IP Audit</h3>
+                    <p>Comprehensive review of IP ownership, identify gaps, assess protection strategies.</p>
+                    <div class="service-price">$8,000 - $15,000</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Portfolio Development</h3>
+                    <p>Strategic IP portfolio planning, trademark strategy, copyright registrations, domain protection.</p>
+                    <div class="service-price">$10,000 - $20,000</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h3>IP Assignments</h3>
+                    <p>Contractor IP assignment agreements, employee invention policies, work-for-hire documentation.</p>
+                    <div class="service-price">$3,000 - $8,000</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3>Infringement Response</h3>
+                    <p>Cease & desist letters, infringement analysis, settlement negotiation, litigation support.</p>
+                    <div class="service-price">$5,000 - $15,000</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section why">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Why IP Protection Matters</h2>
+                <p class="section-subtitle">
+                    The risks of unprotected intellectual property
+                </p>
+            </div>
+
+            <div class="why-grid">
+                <div class="why-card">
+                    <h3><i class="fas fa-gavel"></i> Brand Conflicts</h3>
+                    <p>Someone trademarks your name first. You get a cease & desist. Rebrand costs $100K+. Lose all brand equity. Could have filed trademark for $2K.</p>
+                </div>
+
+                <div class="why-card">
+                    <h3><i class="fas fa-user-times"></i> Contractor IP Issues</h3>
+                    <p>Your developer owns the code they wrote. No assignment agreement. They demand equity or payment. Your entire product is at risk.</p>
+                </div>
+
+                <div class="why-card">
+                    <h3><i class="fas fa-lock-open"></i> Trade Secret Loss</h3>
+                    <p>No NDAs, no protection policies. Employee leaves and takes customer lists, pricing, processes. You can't prove it was secret.</p>
+                </div>
+
+                <div class="why-card">
+                    <h3><i class="fas fa-building"></i> M&A Disasters</h3>
+                    <p>Acquirer does IP due diligence. Finds unprotected marks, missing assignments, unclear ownership. Deal value drops $5M or dies entirely.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section cta-section" id="get-started">
+        <div class="section-container">
+            <h2>Protect Your IP Before Someone Takes It</h2>
+            <p>
+                One unprotected trademark, one missing assignment, one trade secret lost can cost you everything. Get proper IP protection before it's too late.
+            </p>
+
+            <div class="cta-group">
+                <a href="mailto:ip@rivalislaw.com" class="btn btn-primary">
+                    <i class="fas fa-copyright"></i>
+                    Request IP Audit
+                </a>
+                <a href="tel:+1-202-555-0199" class="btn btn-secondary">
+                    <i class="fas fa-phone"></i>
+                    Call: (202) 555-0199
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 Rivalis Law. Licensed in New York & Michigan.</p>
+        <p><a href="index.html">Return to Main Site</a> | <a href="index.html#select-services">All Select Services</a></p>
+    </footer>
+</body>
+</html>

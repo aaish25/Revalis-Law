@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Governance & Compliance - Client Intake Form | Rivalis Law</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .form-header {
+            border-bottom: 3px solid #d4af37;
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 0.5rem;
+        }
+
+        .logo::before {
+            content: '⚖ ';
+            color: #d4af37;
+        }
+
+        .service-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+            color: white;
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-subtitle {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .confidential-notice {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+            page-break-inside: avoid;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f0e6d2;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .required {
+            color: #c0392b;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: start;
+            gap: 0.5rem;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            margin-top: 0.25rem;
+            width: auto;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .radio-item input[type="radio"] {
+            width: auto;
+        }
+
+        .help-text {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 0.25rem;
+            font-style: italic;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        .info-box {
+            background: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        .signature-section {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #ddd;
+        }
+
+        .footer-note {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #ddd;
+            font-size: 0.85rem;
+            color: #666;
+            text-align: center;
+        }
+
+        .print-button {
+            background: #d4af37;
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 2rem;
+        }
+
+        .print-button:hover {
+            background: #b8941f;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 1rem;
+            }
+            .print-button {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            body {
+                padding: 1rem;
+            }
+            .container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button onclick="window.print()" class="print-button">🖨️ Print This Form</button>
+
+        <div class="form-header">
+            <div class="logo">Rivalis Law</div>
+            <div class="service-badge">🤖 AI Governance & Compliance</div>
+            <h1 class="form-title">AI Governance Client Intake Form</h1>
+            <p class="form-subtitle">Confidential Attorney-Client Information</p>
+        </div>
+
+        <div class="confidential-notice">
+            <strong>⚠️ CONFIDENTIALITY NOTICE:</strong> This intake form is protected by attorney-client privilege considerations. The information you provide will be kept confidential. Submission of this form does not create an attorney-client relationship until a formal engagement letter is executed.
+        </div>
+
+        <form id="intakeForm">
+            <!-- SECTION 1: CLIENT INFORMATION -->
+            <div class="section">
+                <h2 class="section-title">1. Client Information</h2>
+                
+                <div class="form-group">
+                    <label>Client Type <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="client-type" value="business" id="business" required>
+                            <label for="business">Business/Company</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="client-type" value="individual" id="individual">
+                            <label for="individual">Individual</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Company/Entity Name <span class="required">*</span></label>
+                    <input type="text" name="company-name" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Contact Person Name <span class="required">*</span></label>
+                        <input type="text" name="contact-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Title/Role <span class="required">*</span></label>
+                        <input type="text" name="title" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Email Address <span class="required">*</span></label>
+                        <input type="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number <span class="required">*</span></label>
+                        <input type="tel" name="phone" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Company Website</label>
+                    <input type="text" name="website">
+                </div>
+
+                <div class="form-group">
+                    <label>Company Address <span class="required">*</span></label>
+                    <input type="text" name="address" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>City <span class="required">*</span></label>
+                        <input type="text" name="city" required>
+                    </div>
+                    <div class="form-group">
+                        <label>State/Province <span class="required">*</span></label>
+                        <input type="text" name="state" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>ZIP/Postal Code <span class="required">*</span></label>
+                        <input type="text" name="zip" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Country <span class="required">*</span></label>
+                        <input type="text" name="country" value="United States" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 2: AI SYSTEM INFORMATION -->
+            <div class="section">
+                <h2 class="section-title">2. AI System Information</h2>
+                
+                <div class="form-group">
+                    <label>Type of AI System/Product <span class="required">*</span></label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="ai-type" value="generative-ai" id="gen-ai">
+                            <label for="gen-ai">Generative AI (text, image, video, audio generation)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="ai-type" value="predictive" id="predictive">
+                            <label for="predictive">Predictive Analytics/Decision Systems</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="ai-type" value="recommendation" id="recommendation">
+                            <label for="recommendation">Recommendation Systems</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="ai-type" value="computer-vision" id="vision">
+                            <label for="vision">Computer Vision/Image Recognition</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="ai-type" value="nlp" id="nlp">
+                            <label for="nlp">Natural Language Processing/Understanding</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="ai-type" value="autonomous" id="autonomous">
+                            <label for="autonomous">Autonomous Systems/Robotics</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="ai-type" value="other" id="ai-other">
+                            <label for="ai-other">Other (specify below)</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Primary Use Case/Application <span class="required">*</span></label>
+                    <textarea name="ai-use-case" required placeholder="Describe what the AI system does and how it's used..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Current Development Stage <span class="required">*</span></label>
+                    <select name="ai-stage" required>
+                        <option value="">Select stage...</option>
+                        <option value="concept">Concept/Planning Phase</option>
+                        <option value="development">In Development</option>
+                        <option value="testing">Testing/Beta Phase</option>
+                        <option value="deployed">Deployed/Live in Production</option>
+                        <option value="scaling">Scaling/Growing User Base</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Target Markets/Jurisdictions <span class="required">*</span></label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="jurisdiction" value="usa" id="usa">
+                            <label for="usa">United States</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="jurisdiction" value="eu" id="eu">
+                            <label for="eu">European Union (AI Act applies)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="jurisdiction" value="uk" id="uk">
+                            <label for="uk">United Kingdom</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="jurisdiction" value="uae" id="uae">
+                            <label for="uae">United Arab Emirates</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="jurisdiction" value="global" id="global">
+                            <label for="global">Global/Multiple Jurisdictions</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Industry/Sector <span class="required">*</span></label>
+                    <input type="text" name="industry" required placeholder="e.g., Healthcare, Finance, Retail, Manufacturing, etc.">
+                </div>
+            </div>
+
+            <!-- SECTION 3: GOVERNANCE & COMPLIANCE STATUS -->
+            <div class="section">
+                <h2 class="section-title">3. Current Governance & Compliance Status</h2>
+                
+                <div class="form-group">
+                    <label>Do you currently have AI governance documentation?</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="current-docs" value="policy" id="policy">
+                            <label for="policy">AI Ethics/Governance Policy</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="current-docs" value="risk-assessment" id="risk">
+                            <label for="risk">Risk Assessment Documentation</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="current-docs" value="impact" id="impact">
+                            <label for="impact">AI Impact Assessment</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="current-docs" value="testing" id="testing">
+                            <label for="testing">Testing/Validation Documentation</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="current-docs" value="model-cards" id="cards">
+                            <label for="cards">Model Cards/Documentation</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="current-docs" value="incident" id="incident">
+                            <label for="incident">Incident Response Plans</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="current-docs" value="none" id="no-docs">
+                            <label for="no-docs">None - Need to develop from scratch</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Have you conducted bias/fairness testing?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="bias-testing" value="yes" id="bias-yes">
+                            <label for="bias-yes">Yes - Documented testing</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="bias-testing" value="informal" id="bias-informal">
+                            <label for="bias-informal">Informal testing only</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="bias-testing" value="no" id="bias-no">
+                            <label for="bias-no">No - Not yet tested</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Data used for AI training/operation</label>
+                    <textarea name="data-sources" placeholder="Describe data sources, whether data includes personal information, data collection methods, etc."></textarea>
+                </div>
+            </div>
+
+            <!-- SECTION 4: SPECIFIC CONCERNS/NEEDS -->
+            <div class="section">
+                <h2 class="section-title">4. Specific Concerns & Legal Needs</h2>
+                
+                <div class="form-group">
+                    <label>What prompted you to seek AI governance counsel? <span class="required">*</span></label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="concerns" value="investor-dd" id="investor">
+                            <label for="investor">Investor Due Diligence Requirements</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="concerns" value="product-launch" id="launch">
+                            <label for="launch">Upcoming Product Launch</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="concerns" value="regulatory" id="regulatory">
+                            <label for="regulatory">Regulatory Inquiry or Investigation</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="concerns" value="incident" id="ai-incident">
+                            <label for="ai-incident">AI System Incident/Failure</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="concerns" value="bias-concern" id="bias-concern">
+                            <label for="bias-concern">Bias/Fairness Concerns</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="concerns" value="transparency" id="transparency">
+                            <label for="transparency">Transparency/Explainability Issues</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="concerns" value="compliance" id="compliance">
+                            <label for="compliance">Proactive Compliance (no specific issue)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="concerns" value="eu-ai-act" id="eu-act">
+                            <label for="eu-act">EU AI Act Compliance</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="concerns" value="other-concern" id="other-concern">
+                            <label for="other-concern">Other (describe below)</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Describe your primary concern or objective <span class="required">*</span></label>
+                    <textarea name="primary-concern" required placeholder="What is your main goal in engaging AI governance counsel?"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Has there been any AI-related incident or adverse event?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="incident-occurred" value="yes" id="incident-yes">
+                            <label for="incident-yes">Yes (describe below - urgent)</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="incident-occurred" value="no" id="incident-no">
+                            <label for="incident-no">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" id="incident-details" style="display:none;">
+                    <label>Incident Details</label>
+                    <textarea name="incident-description" placeholder="Describe what happened, when, impact, who knows about it..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Are you currently fundraising or in M&A discussions?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="fundraising" value="yes" id="fund-yes">
+                            <label for="fund-yes">Yes - AI governance docs needed for due diligence</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="fundraising" value="no" id="fund-no">
+                            <label for="fund-no">No</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 5: TIMELINE & BUDGET -->
+            <div class="section">
+                <h2 class="section-title">5. Timeline & Budget</h2>
+                
+                <div class="form-group">
+                    <label>Timeline/Urgency <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="urgency" value="emergency" id="emergency" required>
+                            <label for="emergency"><strong>Emergency</strong> - Immediate action needed (within 48 hours)</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="urgency" value="urgent" id="urgent">
+                            <label for="urgent"><strong>Urgent</strong> - Action needed within 1-2 weeks</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="urgency" value="soon" id="soon">
+                            <label for="soon"><strong>Soon</strong> - Action needed within 1 month</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="urgency" value="planning" id="planning">
+                            <label for="planning"><strong>Planning</strong> - No immediate deadline (1-3 months)</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Specific Deadlines</label>
+                    <textarea name="deadlines" placeholder="Product launch date, investor due diligence deadline, regulatory response deadline, etc."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Budget Range</label>
+                    <select name="budget">
+                        <option value="">Select approximate budget...</option>
+                        <option value="25k-50k">$25,000 - $50,000</option>
+                        <option value="50k-100k">$50,000 - $100,000</option>
+                        <option value="100k-150k">$100,000 - $150,000</option>
+                        <option value="150k-plus">$150,000+</option>
+                        <option value="flexible">Flexible based on scope</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- SECTION 6: CONFLICTS CHECK -->
+            <div class="section">
+                <h2 class="section-title">6. Conflicts of Interest Check</h2>
+                
+                <div class="warning-box">
+                    <strong>Important:</strong> We must check for conflicts of interest before accepting your matter. Please provide complete information.
+                </div>
+
+                <div class="form-group">
+                    <label>Key Competitors or Other Parties Involved</label>
+                    <textarea name="competitors" placeholder="List main competitors, partners, vendors, or other relevant parties"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Are you represented by other counsel on any matters?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="other-counsel" value="yes" id="counsel-yes">
+                            <label for="counsel-yes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="other-counsel" value="no" id="counsel-no">
+                            <label for="counsel-no">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" id="counsel-details" style="display:none;">
+                    <label>Other Counsel Details</label>
+                    <textarea name="counsel-info" placeholder="Name of firm and matter(s) they are handling"></textarea>
+                </div>
+            </div>
+
+            <!-- SECTION 7: ADDITIONAL INFORMATION -->
+            <div class="section">
+                <h2 class="section-title">7. Additional Information</h2>
+                
+                <div class="form-group">
+                    <label>How did you find Rivalis Law?</label>
+                    <select name="referral-source">
+                        <option value="">Select...</option>
+                        <option value="web-search">Web Search</option>
+                        <option value="linkedin">LinkedIn</option>
+                        <option value="referral-attorney">Referral from Attorney</option>
+                        <option value="referral-client">Referral from Client</option>
+                        <option value="referral-professional">Referral from Other Professional</option>
+                        <option value="conference">Conference/Event</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Anything else we should know?</label>
+                    <textarea name="additional-info" placeholder="Any other relevant information"></textarea>
+                </div>
+            </div>
+
+            <!-- AUTHORIZATION -->
+            <div class="signature-section">
+                <h2 class="section-title">Client Authorization</h2>
+                
+                <div class="warning-box">
+                    <strong>Important Notice:</strong> By signing below, you acknowledge that:
+                    <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                        <li>The information provided is true and accurate</li>
+                        <li>Submission does not create an attorney-client relationship</li>
+                        <li>An attorney-client relationship is created only upon execution of an engagement letter</li>
+                        <li>Information provided is subject to attorney-client privilege considerations</li>
+                        <li>You authorize Rivalis Law to conduct a conflicts check</li>
+                    </ul>
+                </div>
+
+                <div class="form-group" style="margin-top: 2rem;">
+                    <label>Full Name <span class="required">*</span></label>
+                    <input type="text" name="signature-name" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Title <span class="required">*</span></label>
+                        <input type="text" name="signature-title" required placeholder="e.g., CEO, CTO, General Counsel">
+                    </div>
+                    <div class="form-group">
+                        <label>Date <span class="required">*</span></label>
+                        <input type="date" name="signature-date" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Electronic Signature <span class="required">*</span></label>
+                    <input type="text" name="signature" required placeholder="Type your full name to sign">
+                    <p class="help-text">By typing your name, you are providing your electronic signature</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <button type="submit" style="background: #d4af37; color: white; padding: 1rem 3rem; border: none; border-radius: 6px; font-size: 1.1rem; font-weight: 700; cursor: pointer;">
+                    Submit Intake Form
+                </button>
+            </div>
+
+            <div class="footer-note">
+                <p><strong>Rivalis Law</strong> | AI Governance & Compliance Counsel</p>
+                <p>For questions: <strong>contact@rivalislaw.com</strong> | <strong>(202) 555-0199</strong></p>
+                <p style="margin-top: 1rem;">Response times: Emergency matters within 4 hours | Urgent matters within 24 hours | Standard matters within 48 hours</p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Show/hide incident details
+        document.querySelectorAll('input[name="incident-occurred"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const details = document.getElementById('incident-details');
+                details.style.display = this.value === 'yes' ? 'block' : 'none';
+            });
+        });
+
+        // Show/hide other counsel details
+        document.querySelectorAll('input[name="other-counsel"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const details = document.getElementById('counsel-details');
+                details.style.display = this.value === 'yes' ? 'block' : 'none';
+            });
+        });
+
+        // Set today's date as default
+        const today = new Date().toISOString().split('T')[0];
+        document.querySelector('input[name="signature-date"]').value = today;
+
+        // Form submission
+        document.getElementById('intakeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for submitting your AI Governance intake form!\n\nYou will receive a response:\n• Within 4 hours for emergency matters\n• Within 24 hours for urgent matters\n• Within 48 hours for standard matters\n\nFor immediate assistance, call (202) 555-0199');
+        });
+    </script>
+</body>
+</html>

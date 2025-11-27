@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Immigration Services - Client Intake Form | Rivalis Law</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: #333; background: #f5f5f5; padding: 2rem; }
+        .container { max-width: 900px; margin: 0 auto; background: white; padding: 3rem; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .form-header { border-bottom: 3px solid #d4af37; padding-bottom: 1.5rem; margin-bottom: 2rem; }
+        .logo { font-size: 1.8rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.5rem; }
+        .logo::before { content: '⚖ '; color: #d4af37; }
+        .service-badge { display: inline-block; background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%); color: white; padding: 0.5rem 1.25rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; }
+        .form-title { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.5rem; }
+        .form-subtitle { color: #666; font-size: 0.95rem; }
+        .confidential-notice { background: #fff3cd; border-left: 4px solid #ffc107; padding: 1rem; margin-bottom: 2rem; font-size: 0.9rem; }
+        .section { margin-bottom: 2.5rem; page-break-inside: avoid; }
+        .section-title { font-size: 1.1rem; font-weight: 700; color: #1a1a2e; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #f0e6d2; }
+        .form-group { margin-bottom: 1.5rem; }
+        label { display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333; }
+        .required { color: #c0392b; }
+        input[type="text"], input[type="email"], input[type="tel"], input[type="date"], textarea, select { width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem; font-family: 'Inter', sans-serif; }
+        textarea { min-height: 100px; resize: vertical; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        .checkbox-group { display: flex; flex-direction: column; gap: 0.75rem; }
+        .checkbox-item { display: flex; align-items: start; gap: 0.5rem; }
+        .checkbox-item input[type="checkbox"] { margin-top: 0.25rem; width: auto; }
+        .radio-group { display: flex; flex-direction: column; gap: 0.75rem; }
+        .radio-item { display: flex; align-items: center; gap: 0.5rem; }
+        .radio-item input[type="radio"] { width: auto; }
+        .help-text { font-size: 0.85rem; color: #666; margin-top: 0.25rem; font-style: italic; }
+        .warning-box { background: #fff3cd; border-left: 4px solid #ffc107; padding: 1rem; margin: 1rem 0; font-size: 0.9rem; }
+        .info-box { background: #d1ecf1; border-left: 4px solid #17a2b8; padding: 1rem; margin: 1rem 0; font-size: 0.9rem; }
+        .signature-section { margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #ddd; }
+        .footer-note { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #ddd; font-size: 0.85rem; color: #666; text-align: center; }
+        .print-button { background: #d4af37; color: white; padding: 0.75rem 2rem; border: none; border-radius: 4px; font-size: 1rem; font-weight: 600; cursor: pointer; margin-bottom: 2rem; }
+        .print-button:hover { background: #b8941f; }
+        @media print { body { background: white; padding: 0; } .container { box-shadow: none; padding: 1rem; } .print-button { display: none; } }
+        @media (max-width: 768px) { .form-row { grid-template-columns: 1fr; } body { padding: 1rem; } .container { padding: 1.5rem; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button onclick="window.print()" class="print-button">🖨️ Print This Form</button>
+
+        <div class="form-header">
+            <div class="logo">Rivalis Law</div>
+            <div class="service-badge">✈️ Global Immigration</div>
+            <h1 class="form-title">Immigration Services Intake Form</h1>
+            <p class="form-subtitle">Confidential Attorney-Client Information</p>
+        </div>
+
+        <div class="confidential-notice">
+            <strong>⚠️ CONFIDENTIALITY NOTICE:</strong> This intake form is protected by attorney-client privilege considerations. Immigration information is particularly sensitive. All information will be kept strictly confidential.
+        </div>
+
+        <form id="intakeForm">
+            <!-- SECTION 1: PETITIONER/EMPLOYER INFORMATION -->
+            <div class="section">
+                <h2 class="section-title">1. Petitioner/Employer Information</h2>
+                
+                <div class="form-group">
+                    <label>Company/Employer Name <span class="required">*</span></label>
+                    <input type="text" name="employer-name" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Contact Person Name <span class="required">*</span></label>
+                        <input type="text" name="contact-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Title/Role <span class="required">*</span></label>
+                        <input type="text" name="title" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Email Address <span class="required">*</span></label>
+                        <input type="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number <span class="required">*</span></label>
+                        <input type="tel" name="phone" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Company Address <span class="required">*</span></label>
+                    <input type="text" name="company-address" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>City <span class="required">*</span></label>
+                        <input type="text" name="city" required>
+                    </div>
+                    <div class="form-group">
+                        <label>State <span class="required">*</span></label>
+                        <input type="text" name="state" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>ZIP Code <span class="required">*</span></label>
+                        <input type="text" name="zip" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Federal EIN</label>
+                        <input type="text" name="ein">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 2: BENEFICIARY INFORMATION -->
+            <div class="section">
+                <h2 class="section-title">2. Beneficiary Information (Person Receiving Visa)</h2>
+                
+                <div class="form-group">
+                    <label>Full Legal Name <span class="required">*</span></label>
+                    <input type="text" name="beneficiary-name" required>
+                    <p class="help-text">Exactly as it appears on passport</p>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Date of Birth <span class="required">*</span></label>
+                        <input type="date" name="dob" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Country of Birth <span class="required">*</span></label>
+                        <input type="text" name="country-birth" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Country of Citizenship <span class="required">*</span></label>
+                        <input type="text" name="citizenship" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Passport Number</label>
+                        <input type="text" name="passport">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Beneficiary Email Address <span class="required">*</span></label>
+                    <input type="email" name="beneficiary-email" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Beneficiary Phone Number <span class="required">*</span></label>
+                    <input type="tel" name="beneficiary-phone" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Current Location <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="current-location" value="outside-us" id="outside" required>
+                            <label for="outside">Outside United States</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="current-location" value="in-us" id="in-us">
+                            <label for="in-us">In United States</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" id="current-address-section">
+                    <label>Current Address</label>
+                    <textarea name="current-address"></textarea>
+                </div>
+            </div>
+
+            <!-- SECTION 3: CURRENT IMMIGRATION STATUS -->
+            <div class="section" id="us-status-section" style="display:none;">
+                <h2 class="section-title">3. Current Immigration Status (If in US)</h2>
+                
+                <div class="form-group">
+                    <label>Current Visa Status <span class="required">*</span></label>
+                    <input type="text" name="current-status" placeholder="e.g., F-1, H-1B, L-1, B-1/B-2, etc.">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>I-94 Expiration Date</label>
+                        <input type="date" name="i94-expiration">
+                    </div>
+                    <div class="form-group">
+                        <label>Visa Stamp Expiration (if applicable)</label>
+                        <input type="date" name="visa-expiration">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Have you ever been out of status or violated immigration laws?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="violations" value="yes" id="viol-yes">
+                            <label for="viol-yes">Yes (must discuss in consultation)</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="violations" value="no" id="viol-no">
+                            <label for="viol-no">No</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 4: VISA TYPE & REQUIREMENTS -->
+            <div class="section">
+                <h2 class="section-title">4. Visa Type & Requirements</h2>
+                
+                <div class="form-group">
+                    <label>Visa Type Needed <span class="required">*</span></label>
+                    <select name="visa-type" required>
+                        <option value="">Select visa type...</option>
+                        <option value="h1b">H-1B (Specialty Occupation)</option>
+                        <option value="l1a">L-1A (Intracompany Transfer - Manager/Executive)</option>
+                        <option value="l1b">L-1B (Intracompany Transfer - Specialized Knowledge)</option>
+                        <option value="o1">O-1 (Extraordinary Ability)</option>
+                        <option value="e2">E-2 (Treaty Investor)</option>
+                        <option value="tn">TN (NAFTA/USMCA Professional)</option>
+                        <option value="green-card">Green Card/Permanent Residence</option>
+                        <option value="perm">PERM Labor Certification</option>
+                        <option value="eb1">EB-1 (Priority Workers)</option>
+                        <option value="eb2">EB-2 (Advanced Degree/Exceptional Ability)</option>
+                        <option value="eb3">EB-3 (Skilled Workers)</option>
+                        <option value="other">Other (specify in notes)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Job Title/Position <span class="required">*</span></label>
+                    <input type="text" name="job-title" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Brief Job Description <span class="required">*</span></label>
+                    <textarea name="job-description" required placeholder="Key responsibilities, required skills, and qualifications"></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Offered Salary (Annual)</label>
+                        <input type="text" name="salary" placeholder="e.g., $125,000">
+                    </div>
+                    <div class="form-group">
+                        <label>Work Location (City, State)</label>
+                        <input type="text" name="work-location">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 5: EDUCATION & EXPERIENCE -->
+            <div class="section">
+                <h2 class="section-title">5. Education & Experience</h2>
+                
+                <div class="form-group">
+                    <label>Highest Degree Obtained <span class="required">*</span></label>
+                    <select name="degree" required>
+                        <option value="">Select degree...</option>
+                        <option value="phd">PhD/Doctorate</option>
+                        <option value="masters">Master's Degree</option>
+                        <option value="bachelors">Bachelor's Degree</option>
+                        <option value="associates">Associate's Degree</option>
+                        <option value="diploma">High School Diploma/Equivalent</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Field of Study/Major</label>
+                    <input type="text" name="field-of-study">
+                </div>
+
+                <div class="form-group">
+                    <label>University/Institution Name</label>
+                    <input type="text" name="university">
+                </div>
+
+                <div class="form-group">
+                    <label>Years of Related Work Experience</label>
+                    <input type="text" name="experience-years" placeholder="e.g., 8 years">
+                </div>
+
+                <div class="form-group">
+                    <label>Brief Summary of Relevant Experience</label>
+                    <textarea name="experience-summary" placeholder="Previous relevant positions, companies, key achievements"></textarea>
+                </div>
+            </div>
+
+            <!-- SECTION 6: IMMIGRATION HISTORY -->
+            <div class="section">
+                <h2 class="section-title">6. Immigration History</h2>
+                
+                <div class="form-group">
+                    <label>Has beneficiary been to the US before?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="prior-us" value="yes" id="prior-yes">
+                            <label for="prior-yes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="prior-us" value="no" id="prior-no">
+                            <label for="prior-no">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" id="prior-visa-section" style="display:none;">
+                    <label>Previous US Visa Types</label>
+                    <input type="text" name="previous-visas" placeholder="List any previous US visas (F-1, H-1B, etc.)">
+                </div>
+
+                <div class="form-group">
+                    <label>Any pending or approved petitions with USCIS?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="pending-petitions" value="yes" id="pending-yes">
+                            <label for="pending-yes">Yes (describe below)</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="pending-petitions" value="no" id="pending-no">
+                            <label for="pending-no">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" id="petition-details" style="display:none;">
+                    <label>Petition Details</label>
+                    <textarea name="petition-info" placeholder="Receipt numbers, filing dates, current status"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Have you received any RFEs, denials, or notices from USCIS?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="rfe-history" value="yes" id="rfe-yes">
+                            <label for="rfe-yes">Yes (URGENT - explain below)</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="rfe-history" value="no" id="rfe-no">
+                            <label for="rfe-no">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" id="rfe-details" style="display:none;">
+                    <label>RFE/Denial Details <span class="required">*</span></label>
+                    <textarea name="rfe-info" placeholder="Date received, type of RFE/denial, response deadline if applicable"></textarea>
+                    <div class="warning-box">
+                        <strong>⚠️ URGENT:</strong> If you have an active RFE with a deadline, call our emergency line immediately: (202) 555-0199
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 7: ADMISSIBILITY ISSUES -->
+            <div class="section">
+                <h2 class="section-title">7. Admissibility Screening</h2>
+                
+                <div class="warning-box">
+                    <strong>Important:</strong> These questions are required by USCIS. Honest answers are critical for proper legal advice. All information is confidential.
+                </div>
+
+                <div class="form-group">
+                    <label>Any criminal history (including arrests, even if charges were dropped)?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="criminal-history" value="yes" id="criminal-yes">
+                            <label for="criminal-yes">Yes (must discuss confidentially)</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="criminal-history" value="no" id="criminal-no">
+                            <label for="criminal-no">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Any misrepresentation or fraud in previous immigration applications?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="fraud-history" value="yes" id="fraud-yes">
+                            <label for="fraud-yes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="fraud-history" value="no" id="fraud-no">
+                            <label for="fraud-no">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Any prior overstays in the United States?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="overstay" value="yes" id="overstay-yes">
+                            <label for="overstay-yes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="overstay" value="no" id="overstay-no">
+                            <label for="overstay-no">No</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 8: TIMELINE & URGENCY -->
+            <div class="section">
+                <h2 class="section-title">8. Timeline & Urgency</h2>
+                
+                <div class="form-group">
+                    <label>Timeline/Urgency <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="urgency" value="emergency" id="emergency" required>
+                            <label for="emergency"><strong>Emergency</strong> - RFE response deadline or urgent situation</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="urgency" value="urgent" id="urgent">
+                            <label for="urgent"><strong>Urgent</strong> - Need to file within 1-2 weeks</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="urgency" value="soon" id="soon">
+                            <label for="soon"><strong>Soon</strong> - Need to file within 1-2 months</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="urgency" value="planning" id="planning">
+                            <label for="planning"><strong>Planning</strong> - Planning ahead (3+ months)</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Specific Deadlines or Dates</label>
+                    <textarea name="deadlines" placeholder="RFE response deadline, start date, visa expiration, etc."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Desired Start Date (if applicable)</label>
+                    <input type="date" name="start-date">
+                </div>
+            </div>
+
+            <!-- SECTION 9: ADDITIONAL INFORMATION -->
+            <div class="section">
+                <h2 class="section-title">9. Additional Information</h2>
+                
+                <div class="form-group">
+                    <label>Are other family members requiring visas?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="family-members" value="yes" id="family-yes">
+                            <label for="family-yes">Yes (spouse, children - describe below)</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="family-members" value="no" id="family-no">
+                            <label for="family-no">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" id="family-details" style="display:none;">
+                    <label>Family Member Details</label>
+                    <textarea name="family-info" placeholder="Names, ages, relationship"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>How did you find Rivalis Law?</label>
+                    <select name="referral">
+                        <option value="">Select...</option>
+                        <option value="web-search">Web Search</option>
+                        <option value="linkedin">LinkedIn</option>
+                        <option value="referral">Referral</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Anything else we should know?</label>
+                    <textarea name="additional-info"></textarea>
+                </div>
+            </div>
+
+            <!-- AUTHORIZATION -->
+            <div class="signature-section">
+                <h2 class="section-title">Authorization</h2>
+                
+                <div class="warning-box">
+                    <strong>Important Notice:</strong> By signing below, you acknowledge that the information provided is true and accurate. Submission does not create an attorney-client relationship until an engagement letter is executed.
+                </div>
+
+                <div class="form-group" style="margin-top: 2rem;">
+                    <label>Full Name <span class="required">*</span></label>
+                    <input type="text" name="signature-name" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Title <span class="required">*</span></label>
+                        <input type="text" name="signature-title" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Date <span class="required">*</span></label>
+                        <input type="date" name="signature-date" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Electronic Signature <span class="required">*</span></label>
+                    <input type="text" name="signature" required placeholder="Type your full name to sign">
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <button type="submit" style="background: #d4af37; color: white; padding: 1rem 3rem; border: none; border-radius: 6px; font-size: 1.1rem; font-weight: 700; cursor: pointer;">
+                    Submit Intake Form
+                </button>
+            </div>
+
+            <div class="footer-note">
+                <p><strong>Rivalis Law</strong> | Immigration Services</p>
+                <p>Emergency RFE Hotline: <strong>(202) 555-0199</strong> | Email: <strong>contact@rivalislaw.com</strong></p>
+                <p style="margin-top: 1rem;">Response: Emergency (4 hours) | Urgent (24 hours) | Standard (48 hours)</p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Show/hide sections based on location
+        document.querySelectorAll('input[name="current-location"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('us-status-section').style.display = 
+                    this.value === 'in-us' ? 'block' : 'none';
+            });
+        });
+
+        // Show/hide conditional sections
+        document.querySelectorAll('input[name="prior-us"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('prior-visa-section').style.display = 
+                    this.value === 'yes' ? 'block' : 'none';
+            });
+        });
+
+        document.querySelectorAll('input[name="pending-petitions"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('petition-details').style.display = 
+                    this.value === 'yes' ? 'block' : 'none';
+            });
+        });
+
+        document.querySelectorAll('input[name="rfe-history"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('rfe-details').style.display = 
+                    this.value === 'yes' ? 'block' : 'none';
+            });
+        });
+
+        document.querySelectorAll('input[name="family-members"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('family-details').style.display = 
+                    this.value === 'yes' ? 'block' : 'none';
+            });
+        });
+
+        // Set today's date
+        const today = new Date().toISOString().split('T')[0];
+        document.querySelector('input[name="signature-date"]').value = today;
+
+        // Form submission
+        document.getElementById('intakeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you! Your immigration intake form has been submitted.\n\nResponse time:\n• RFE Emergency: Within 4 hours\n• Urgent matters: Within 24 hours\n• Standard matters: Within 48 hours\n\nFor RFE emergencies, call (202) 555-0199 immediately.');
+        });
+    </script>
+</body>
+</html>

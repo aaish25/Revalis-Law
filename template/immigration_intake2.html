@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Immigration Law Intake Form - Rivalis Law</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #2c5282;
+        }
+        
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #2c5282;
+            margin-bottom: 5px;
+        }
+        
+        .tagline {
+            color: #666;
+            font-size: 14px;
+            font-style: italic;
+        }
+        
+        .service-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            display: inline-block;
+            margin: 20px 0;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        
+        .confidential-notice {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 13px;
+            color: #856404;
+        }
+        
+        .section {
+            margin: 30px 0;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            color: #2c5282;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            font-weight: 600;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #4a5568;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cbd5e0;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+        
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .checkbox-group {
+            margin: 10px 0;
+        }
+        
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            font-weight: normal;
+            margin-bottom: 8px;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin-right: 8px;
+        }
+        
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            font-weight: normal;
+        }
+        
+        .radio-group input[type="radio"] {
+            width: auto;
+            margin-right: 8px;
+        }
+        
+        .signature-section {
+            margin-top: 40px;
+            padding: 20px;
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+        }
+        
+        .signature-line {
+            border-bottom: 2px solid #333;
+            margin: 20px 0 10px 0;
+            min-height: 50px;
+        }
+        
+        .print-button {
+            background: #2c5282;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            display: block;
+            width: 100%;
+        }
+        
+        .print-button:hover {
+            background: #1e3a5f;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            
+            .print-button {
+                display: none;
+            }
+        }
+        
+        .required {
+            color: #e53e3e;
+        }
+        
+        .help-text {
+            font-size: 12px;
+            color: #718096;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">RIVALIS LAW</div>
+            <div class="tagline">Strategic Legal Solutions for Forward-Thinking Businesses</div>
+            <div class="service-badge">🌍 Immigration Law Services</div>
+        </div>
+        
+        <div class="confidential-notice">
+            <strong>⚠️ CONFIDENTIAL ATTORNEY-CLIENT COMMUNICATION</strong><br>
+            This intake form is protected by attorney-client privilege. Information provided will be kept strictly confidential and used solely for legal representation purposes.
+        </div>
+        
+        <div class="section">
+            <div class="section-title">Client Information</div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Full Legal Name <span class="required">*</span></label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>Date of Birth <span class="required">*</span></label>
+                    <input type="date" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Country of Birth <span class="required">*</span></label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>Current Citizenship(s) <span class="required">*</span></label>
+                    <input type="text" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Email Address <span class="required">*</span></label>
+                    <input type="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number <span class="required">*</span></label>
+                    <input type="tel" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Current Physical Address <span class="required">*</span></label>
+                <input type="text" placeholder="Street Address">
+                <div style="margin-top: 10px; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 10px;">
+                    <input type="text" placeholder="City">
+                    <input type="text" placeholder="State/Province">
+                    <input type="text" placeholder="Postal Code">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Are you currently in the United States? <span class="required">*</span></label>
+                <div class="radio-group">
+                    <label><input type="radio" name="inUS" value="yes"> Yes</label>
+                    <label><input type="radio" name="inUS" value="no"> No</label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>If yes, what is your current immigration status?</label>
+                <input type="text" placeholder="e.g., B-1/B-2 visitor, F-1 student, H-1B, L-1, etc.">
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">Company/Employer Information (if applicable)</div>
+            
+            <div class="form-group">
+                <label>Company/Organization Name</label>
+                <input type="text">
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Job Title/Position</label>
+                    <input type="text">
+                </div>
+                <div class="form-group">
+                    <label>Start Date (or Proposed)</label>
+                    <input type="date">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Company Contact Person</label>
+                <input type="text" placeholder="Name and title of HR/sponsoring individual">
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Contact Email</label>
+                    <input type="email">
+                </div>
+                <div class="form-group">
+                    <label>Contact Phone</label>
+                    <input type="tel">
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">Immigration Service Needed</div>
+            
+            <div class="form-group">
+                <label>What type of immigration service do you need? <span class="required">*</span></label>
+                <select required>
+                    <option value="">-- Select Service Type --</option>
+                    <option value="h1b">H-1B Work Visa (Specialty Occupation)</option>
+                    <option value="l1">L-1 Intracompany Transfer</option>
+                    <option value="o1">O-1 Extraordinary Ability</option>
+                    <option value="eb1">EB-1 Green Card (Priority Workers)</option>
+                    <option value="eb2">EB-2 Green Card (Advanced Degree/Exceptional Ability)</option>
+                    <option value="eb3">EB-3 Green Card (Skilled Workers)</option>
+                    <option value="perm">PERM Labor Certification</option>
+                    <option value="tn">TN NAFTA Professional</option>
+                    <option value="e2">E-2 Treaty Investor</option>
+                    <option value="greencard">Green Card (Permanent Residence)</option>
+                    <option value="citizenship">Naturalization/Citizenship</option>
+                    <option value="family">Family-Based Immigration</option>
+                    <option value="removal">Removal/Deportation Defense</option>
+                    <option value="asylum">Asylum/Refugee Status</option>
+                    <option value="compliance">Corporate Immigration Compliance (I-9, E-Verify)</option>
+                    <option value="consultation">General Immigration Consultation</option>
+                    <option value="other">Other (please specify)</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>If "Other," please specify:</label>
+                <input type="text">
+            </div>
+            
+            <div class="form-group">
+                <label>Is this for: <span class="required">*</span></label>
+                <div class="radio-group">
+                    <label><input type="radio" name="clientType" value="individual"> Individual/Personal</label>
+                    <label><input type="radio" name="clientType" value="corporate"> Corporate/Employer Sponsorship</label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">Immigration History & Background</div>
+            
+            <div class="form-group">
+                <label>Have you previously been to the United States?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="previousUS" value="yes"> Yes</label>
+                    <label><input type="radio" name="previousUS" value="no"> No</label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>If yes, please list all previous visa types and approximate dates:</label>
+                <textarea placeholder="e.g., B-2 tourist visa (2020-2021), F-1 student visa (2015-2019), etc."></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>Have you ever been denied a US visa?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="visaDenied" value="yes"> Yes</label>
+                    <label><input type="radio" name="visaDenied" value="no"> No</label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>If yes, please explain:</label>
+                <textarea placeholder="Include type of visa, date, and reason for denial"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>Have you ever overstayed a visa or been in the US without authorization?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="overstay" value="yes"> Yes</label>
+                    <label><input type="radio" name="overstay" value="no"> No</label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>If yes, please provide details:</label>
+                <textarea></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>Have you ever been arrested, convicted of a crime, or had any legal issues in any country?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="criminalHistory" value="yes"> Yes</label>
+                    <label><input type="radio" name="criminalHistory" value="no"> No</label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>If yes, please provide complete details (essential for case evaluation):</label>
+                <textarea placeholder="Date, location, charges, outcome, any documentation available"></textarea>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">Education & Professional Background</div>
+            
+            <div class="form-group">
+                <label>Highest Level of Education Completed <span class="required">*</span></label>
+                <select required>
+                    <option value="">-- Select --</option>
+                    <option value="highschool">High School</option>
+                    <option value="associates">Associate's Degree</option>
+                    <option value="bachelors">Bachelor's Degree</option>
+                    <option value="masters">Master's Degree</option>
+                    <option value="doctorate">Doctorate/PhD</option>
+                    <option value="professional">Professional Degree (JD, MD, etc.)</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Degree/Major and Institution:</label>
+                <textarea placeholder="Include school name, location, degree earned, graduation year"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>Current Occupation/Field of Work <span class="required">*</span></label>
+                <input type="text" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Years of Professional Experience:</label>
+                <input type="text">
+            </div>
+            
+            <div class="form-group">
+                <label>Brief description of your work experience and skills:</label>
+                <textarea placeholder="Relevant to the immigration petition/application"></textarea>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">Family Information (if relevant)</div>
+            
+            <div class="form-group">
+                <label>Marital Status:</label>
+                <select>
+                    <option value="">-- Select --</option>
+                    <option value="single">Single</option>
+                    <option value="married">Married</option>
+                    <option value="divorced">Divorced</option>
+                    <option value="widowed">Widowed</option>
+                    <option value="separated">Separated</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>If married, spouse's full name and citizenship:</label>
+                <input type="text">
+            </div>
+            
+            <div class="form-group">
+                <label>Do you have children who may be included in the application?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="children" value="yes"> Yes</label>
+                    <label><input type="radio" name="children" value="no"> No</label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>If yes, please list names, dates of birth, and citizenships:</label>
+                <textarea></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>Do you have immediate family members (parents, siblings) who are US citizens or permanent residents?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="usfamily" value="yes"> Yes</label>
+                    <label><input type="radio" name="usfamily" value="no"> No</label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>If yes, please provide details:</label>
+                <textarea placeholder="Name, relationship, status (citizen or green card holder)"></textarea>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">Timeline & Urgency</div>
+            
+            <div class="form-group">
+                <label>When do you need to be in the US or complete the immigration process? <span class="required">*</span></label>
+                <input type="date" required>
+                <div class="help-text">This helps us determine if premium processing or expedited services are needed</div>
+            </div>
+            
+            <div class="form-group">
+                <label>Do you have any upcoming travel plans?</label>
+                <textarea placeholder="Include dates and destinations if applicable"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>Do you have any pending immigration applications or petitions?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="pendingApp" value="yes"> Yes</label>
+                    <label><input type="radio" name="pendingApp" value="no"> No</label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>If yes, please provide details:</label>
+                <textarea placeholder="Type of application, filing date, receipt number if available"></textarea>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">Additional Information</div>
+            
+            <div class="form-group">
+                <label>Please describe your specific immigration goals and concerns:</label>
+                <textarea placeholder="What are you hoping to achieve? What concerns do you have about your case?"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>Have you previously worked with an immigration attorney?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="previousAttorney" value="yes"> Yes</label>
+                    <label><input type="radio" name="previousAttorney" value="no"> No</label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>If yes, please provide name and firm:</label>
+                <input type="text">
+            </div>
+            
+            <div class="form-group">
+                <label>How did you hear about Rivalis Law?</label>
+                <select>
+                    <option value="">-- Select --</option>
+                    <option value="referral">Client Referral</option>
+                    <option value="website">Website/Online Search</option>
+                    <option value="linkedin">LinkedIn</option>
+                    <option value="legal_directory">Legal Directory</option>
+                    <option value="event">Event/Conference</option>
+                    <option value="advertisement">Advertisement</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Is there anything else you'd like us to know about your situation?</label>
+                <textarea></textarea>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">Conflicts Check</div>
+            
+            <div class="form-group">
+                <label>Please list any parties who may have adverse interests in this matter:</label>
+                <textarea placeholder="Previous employers, government agencies involved in your case, etc."></textarea>
+            </div>
+        </div>
+        
+        <div class="signature-section">
+            <div class="section-title">Authorization & Acknowledgment</div>
+            
+            <p style="margin-bottom: 15px;">
+                By signing below, I acknowledge that:
+            </p>
+            
+            <ul style="margin-left: 20px; margin-bottom: 20px;">
+                <li>The information provided in this intake form is true, complete, and accurate to the best of my knowledge</li>
+                <li>I understand that incomplete or inaccurate information may adversely affect my immigration case</li>
+                <li>I authorize Rivalis Law to represent me in the immigration matter described above</li>
+                <li>I understand that this intake form does not create an attorney-client relationship until formally engaged</li>
+                <li>I understand that immigration laws and processing times can change and that outcomes cannot be guaranteed</li>
+                <li>I agree to provide all requested documentation in a timely manner</li>
+            </ul>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Client Name (Print) <span class="required">*</span></label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>Date <span class="required">*</span></label>
+                    <input type="date" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Signature <span class="required">*</span></label>
+                <div class="signature-line"></div>
+                <div class="help-text">Please sign above or type your full name as electronic signature</div>
+            </div>
+        </div>
+        
+        <button class="print-button" onclick="window.print()">Print or Save as PDF</button>
+        
+        <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e2e8f0; color: #718096; font-size: 12px;">
+            <p><strong>RIVALIS LAW</strong></p>
+            <p>Strategic Legal Solutions for Forward-Thinking Businesses</p>
+            <p style="margin-top: 10px;">For questions or assistance, please contact our office.</p>
+        </div>
+    </div>
+</body>
+</html>

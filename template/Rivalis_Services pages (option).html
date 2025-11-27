@@ -1,0 +1,2333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rivalis Law Services | AI Governance, Immigration & M&A Counsel</title>
+    <meta name="description" content="Elite legal counsel across 9 specialized practice areas. Big 4 trained, Oxford certified. Serving USA & Global clients.">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --accent: #d4af37;
+            --accent-dark: #b8941f;
+            --accent-light: #f0e6d2;
+            --white: #ffffff;
+            --gray-50: #fafbfc;
+            --gray-100: #f4f6f8;
+            --gray-200: #e8ecf0;
+            --gray-600: #4a5568;
+            --gray-700: #2d3748;
+            --gray-900: #0f1419;
+            --danger: #e74c3c;
+            --success: #27ae60;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--gray-900);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+            z-index: 1000;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--gray-700);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Service Navigation Menu */
+        .service-nav {
+            background: var(--primary);
+            padding: 1rem 0;
+            margin-top: 80px;
+            position: sticky;
+            top: 80px;
+            z-index: 999;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .service-nav-title {
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .service-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.5rem;
+            list-style: none;
+        }
+
+        .service-menu li a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 6px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .service-menu li a:hover,
+        .service-menu li a.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        .service-menu li a i {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        /* Page Container */
+        .page {
+            display: none;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Service Hero */
+        .service-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--gray-900) 100%);
+            padding: 6rem 2rem 4rem;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .service-tagline {
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .service-hero p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--accent);
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Content Section */
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.15rem;
+            color: var(--gray-600);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Pricing Box */
+        .pricing-box {
+            background: linear-gradient(135deg, var(--accent-light) 0%, white 100%);
+            border: 3px solid var(--accent);
+            border-radius: 16px;
+            padding: 2.5rem;
+            text-align: center;
+            margin: 3rem auto;
+            max-width: 600px;
+        }
+
+        .price-main {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .price-note {
+            font-size: 1rem;
+            color: var(--gray-600);
+            margin-bottom: 1rem;
+        }
+
+        .price-included {
+            text-align: left;
+            margin-top: 1.5rem;
+        }
+
+        .price-included h4 {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .price-included ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .price-included li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: start;
+            gap: 0.75rem;
+        }
+
+        .price-included li i {
+            color: var(--success);
+            margin-top: 0.25rem;
+            flex-shrink: 0;
+        }
+
+        /* Feature Grid */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: white;
+            border: 2px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: var(--gray-600);
+            line-height: 1.7;
+        }
+
+        /* Process Timeline */
+        .process-timeline {
+            margin: 3rem 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .timeline-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 70px;
+            width: 2px;
+            height: calc(100% + 10px);
+            background: linear-gradient(to bottom, var(--accent), transparent);
+        }
+
+        .timeline-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .timeline-content {
+            flex: 1;
+        }
+
+        .timeline-content h4 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            color: var(--gray-600);
+            line-height: 1.7;
+        }
+
+        /* FAQ Section */
+        .faq-list {
+            max-width: 800px;
+            margin: 3rem auto;
+        }
+
+        .faq-item {
+            background: white;
+            border: 2px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            border-color: var(--accent);
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .faq-question i {
+            color: var(--accent);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            color: var(--gray-600);
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            margin-top: 1rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--gray-900) 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            color: white;
+            margin-top: 4rem;
+        }
+
+        .cta-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+
+        .cta-btn.primary {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        .cta-btn.secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Emergency Bar */
+        .emergency-bar {
+            background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            z-index: 998;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .emergency-bar.hidden {
+            display: none;
+        }
+
+        .emergency-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .emergency-text {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .emergency-text i {
+            font-size: 1.3rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .emergency-phone {
+            background: white;
+            color: #c0392b;
+            padding: 0.5rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Floating Action Button */
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.4);
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 1000;
+            text-decoration: none;
+        }
+
+        .fab:hover {
+            transform: translateY(-4px) scale(1.1);
+            box-shadow: 0 12px 32px rgba(212, 175, 55, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .service-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .service-menu {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .timeline-item:not(:last-child)::after {
+                display: none;
+            }
+
+            .emergency-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <i class="fas fa-balance-scale"></i>
+                Rivalis Law
+            </a>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="tel:+12025550199" class="nav-cta">
+                <i class="fas fa-phone"></i> (202) 555-0199
+            </a>
+        </div>
+    </nav>
+
+    <!-- Emergency Bar -->
+    <div class="emergency-bar" id="emergencyBar">
+        <div class="emergency-content">
+            <div class="emergency-text">
+                <i class="fas fa-exclamation-triangle"></i>
+                <strong>Urgent Legal Matter?</strong> We offer emergency consultations 24/7
+            </div>
+            <a href="tel:+12025550199" class="emergency-phone">
+                <i class="fas fa-phone-volume"></i>
+                Call Now: (202) 555-0199
+            </a>
+        </div>
+    </div>
+
+    <!-- Service Navigation -->
+    <div class="service-nav">
+        <div class="service-nav-container">
+            <div class="service-nav-title">Our Services</div>
+            <ul class="service-menu">
+                <li><a href="#ai-governance" data-page="ai-governance" class="active">
+                    <i class="fas fa-robot"></i> AI Governance
+                </a></li>
+                <li><a href="#immigration" data-page="immigration">
+                    <i class="fas fa-globe-americas"></i> Immigration
+                </a></li>
+                <li><a href="#ma" data-page="ma">
+                    <i class="fas fa-handshake"></i> M&A
+                </a></li>
+                <li><a href="#fraud" data-page="fraud">
+                    <i class="fas fa-shield-alt"></i> Fraud Investigation
+                </a></li>
+                <li><a href="#contracts" data-page="contracts">
+                    <i class="fas fa-file-contract"></i> Contracts
+                </a></li>
+                <li><a href="#privacy" data-page="privacy">
+                    <i class="fas fa-lock"></i> Data Privacy
+                </a></li>
+                <li><a href="#ip" data-page="ip">
+                    <i class="fas fa-lightbulb"></i> IP Strategy
+                </a></li>
+                <li><a href="#employment" data-page="employment">
+                    <i class="fas fa-users"></i> Employment Law
+                </a></li>
+                <li><a href="#entity" data-page="entity">
+                    <i class="fas fa-building"></i> Entity Formation
+                </a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Page 1: AI Governance & Compliance -->
+    <div class="page active" id="ai-governance">
+        <div class="service-hero">
+            <div class="hero-content">
+                <div class="service-badge">
+                    <i class="fas fa-robot"></i>
+                    Core Service
+                </div>
+                <h1>AI Governance & Compliance</h1>
+                <p class="service-tagline">Your AI System. EU Regulators. Zero Margin for Error.</p>
+                <p>You're deploying AI across your business. Brussels issues the EU AI Act. One misstep in compliance, and you're facing €35M fines or 7% of global revenue—whichever hurts more. Your competitors are already ahead.</p>
+                <a href="https://calendly.com/rivalislaw/ai-governance" class="hero-cta">
+                    <i class="fas fa-calendar-check"></i>
+                    Book Consultation ($500)
+                </a>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div class="pricing-box">
+                <div class="price-main">$25,000 - $75,000</div>
+                <div class="price-note">Full AI Governance Framework Implementation</div>
+                <div class="price-included">
+                    <h4><i class="fas fa-check-circle"></i> What's Included:</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Complete EU AI Act compliance assessment</li>
+                        <li><i class="fas fa-check"></i> Risk classification & mitigation strategy</li>
+                        <li><i class="fas fa-check"></i> Governance framework documentation</li>
+                        <li><i class="fas fa-check"></i> Board-ready compliance reports</li>
+                        <li><i class="fas fa-check"></i> Ongoing advisory (6 months included)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2 class="section-title">Why Big 4 Training Matters</h2>
+            <p class="section-subtitle">Oxford-certified AI governance counsel with Fortune 100 experience in high-stakes compliance</p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-book"></i></div>
+                    <h3>Employee Handbooks</h3>
+                    <p>Comprehensive handbooks covering policies, procedures, benefits, and legal compliance. State-specific provisions for wage/hour, leave, and at-will employment.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-file-signature"></i></div>
+                    <h3>Offer Letters & Agreements</h3>
+                    <p>Employment offers, executive contracts, non-compete agreements, confidentiality clauses. Protect your business while attracting top talent.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-user-slash"></i></div>
+                    <h3>Termination Guidance</h3>
+                    <p>Pre-termination counseling, documentation review, severance negotiations. We minimize wrongful termination exposure and retaliation claims.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-balance-scale"></i></div>
+                    <h3>Discrimination & Harassment</h3>
+                    <p>Investigation protocols, complaint response, corrective action. We handle Title VII, ADA, ADEA, and state civil rights claims before they escalate.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-clock"></i></div>
+                    <h3>Wage & Hour Compliance</h3>
+                    <p>FLSA classification (exempt vs non-exempt), overtime, meal breaks, timekeeping. Avoid DOL audits and collective action lawsuits.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Leave & Accommodation</h3>
+                    <p>FMLA, ADA reasonable accommodation, state leave laws (CA CFRA, NY Paid Sick Leave). Navigate complex overlapping requirements.</p>
+                </div>
+            </div>
+
+            <h2 class="section-title">Our Process</h2>
+            <div class="process-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-number">1</div>
+                    <div class="timeline-content">
+                        <h4>Employment Practices Audit (Week 1-2)</h4>
+                        <p>Review current policies, classification decisions, documentation practices. Identify compliance gaps and litigation risks across your workforce.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">2</div>
+                    <div class="timeline-content">
+                        <h4>Policy Development (Week 2-4)</h4>
+                        <p>Draft or update employee handbook, offer letter templates, termination procedures. Ensure compliance with federal, state, and local employment laws.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">3</div>
+                    <div class="timeline-content">
+                        <h4>Training & Implementation</h4>
+                        <p>Train HR and managers on new policies, discrimination prevention, documentation requirements. Ensure consistent application across organization.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">4</div>
+                    <div class="timeline-content">
+                        <h4>Ongoing Advisory</h4>
+                        <p>Pre-termination consultations, accommodation request review, complaint investigations. Real-time guidance prevents most employment litigation.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">5</div>
+                    <div class="timeline-content">
+                        <h4>Defense & Litigation</h4>
+                        <p>EEOC charge responses, state agency defense, settlement negotiations. When prevention fails, we defend aggressively or resolve economically.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="section-title">Common Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        When should I consult employment counsel?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Before terminating anyone in a protected class, before denying accommodation requests, when harassment is reported, and annually to review handbooks. Early involvement prevents 90% of claims.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Are my employees properly classified?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Many employers misclassify workers as exempt or independent contractors. Misclassification triggers back wages, penalties, and class actions. We audit classifications and fix problems proactively.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What if I receive an EEOC charge?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Don't panic, but act quickly. Response deadlines are strict. We gather evidence, draft position statements, and negotiate resolutions. Many charges are dismissed if responded to properly.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can you handle multi-state workforces?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes. We navigate varying state laws on leave, wage/hour, non-competes, and discrimination. Multi-state handbooks require careful drafting to avoid conflicts between jurisdictions.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>Prevent Employment Lawsuits Before They Start</h2>
+            <p>Compliant policies. Defensible terminations. Protected against claims.</p>
+            <div class="cta-buttons">
+                <a href="https://calendly.com/rivalislaw/employment" class="cta-btn primary">
+                    <i class="fas fa-calendar-check"></i>
+                    Book Paid Consultation
+                </a>
+                <a href="mailto:counsel@rivalislaw.com" class="cta-btn secondary">
+                    <i class="fas fa-envelope"></i>
+                    Email Us
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 9: Entity Formation & Governance -->
+    <div class="page" id="entity">
+        <div class="service-hero">
+            <div class="hero-content">
+                <div class="service-badge">
+                    <i class="fas fa-building"></i>
+                    Select Service
+                </div>
+                <h1>Entity Formation & Governance</h1>
+                <p class="service-tagline">Your Startup. Wrong Structure. Personal Liability Forever.</p>
+                <p>You formed an LLC with LegalZoom. Investors want preferred stock. Your operating agreement doesn't address equity splits or exits. A co-founder leaves and the whole cap table unravels. Foundation matters.</p>
+                <a href="https://calendly.com/rivalislaw/entity-formation" class="hero-cta">
+                    <i class="fas fa-calendar-check"></i>
+                    Book Consultation ($500)
+                </a>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div class="pricing-box">
+                <div class="price-main">$3,500 - $15,000</div>
+                <div class="price-note">Entity Formation with Complete Governance Package</div>
+                <div class="price-included">
+                    <h4><i class="fas fa-check-circle"></i> What's Included:</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Entity structure consultation & recommendation</li>
+                        <li><i class="fas fa-check"></i> State filing (incorporation/LLC formation)</li>
+                        <li><i class="fas fa-check"></i> Operating agreement or bylaws drafting</li>
+                        <li><i class="fas fa-check"></i> Equity structure & founder vesting</li>
+                        <li><i class="fas fa-check"></i> Board resolutions & corporate records setup</li>
+                        <li><i class="fas fa-check"></i> EIN application & compliance calendar</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2 class="section-title">Formation & Governance Services</h2>
+            <p class="section-subtitle">Build your company correctly from day one—with structure that supports growth and fundraising</p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-lightbulb"></i></div>
+                    <h3>Delaware C-Corp Formation</h3>
+                    <p>The gold standard for venture-backed startups. We form Delaware C-Corps with founder-friendly equity structures, vesting schedules, and investor-ready governance.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-building"></i></div>
+                    <h3>LLC Formation & Operating Agreements</h3>
+                    <p>Flexible structure for small businesses and holding companies. Custom operating agreements addressing profit splits, management, exits, and dissolution.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Equity & Founder Vesting</h3>
+                    <p>Cap table design, founder stock issuance, vesting schedules (4-year with 1-year cliff). Protect against co-founder departures that destroy equity value.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-users-cog"></i></div>
+                    <h3>Board & Governance Structure</h3>
+                    <p>Board composition, voting rights, protective provisions, information rights. Build governance that scales from founding team to Series A and beyond.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-exchange-alt"></i></div>
+                    <h3>Conversions & Restructuring</h3>
+                    <p>LLC to C-Corp conversions for fundraising. S-Corp elections. Reorganizations when initial structure doesn't support growth. Fix problems before they're unfixable.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-file-invoice"></i></div>
+                    <h3>Compliance & Maintenance</h3>
+                    <p>Annual reports, franchise tax filings, registered agent service, corporate records maintenance. Stay in good standing and avoid administrative dissolution.</p>
+                </div>
+            </div>
+
+            <h2 class="section-title">Our Process</h2>
+            <div class="process-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-number">1</div>
+                    <div class="timeline-content">
+                        <h4>Strategy Session (Day 1-3)</h4>
+                        <p>Understand business model, growth plans, funding strategy. Recommend optimal entity type and jurisdiction. Discuss founder equity, vesting, and governance needs.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">2</div>
+                    <div class="timeline-content">
+                        <h4>Formation & Filing (Week 1-2)</h4>
+                        <p>Prepare and file formation documents (Certificate of Incorporation or Articles of Organization). Obtain EIN, set up registered agent, open corporate bank account.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">3</div>
+                    <div class="timeline-content">
+                        <h4>Governance Documentation (Week 2-3)</h4>
+                        <p>Draft bylaws or operating agreement, stock purchase agreements, board resolutions, founder vesting agreements. Create complete corporate records from inception.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">4</div>
+                    <div class="timeline-content">
+                        <h4>Equity Allocation (Week 3-4)</h4>
+                        <p>Issue founder stock with proper 83(b) elections, set up option pool (if raising capital), establish vesting schedules. Document everything for future due diligence.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">5</div>
+                    <div class="timeline-content">
+                        <h4>Ongoing Support</h4>
+                        <p>Maintain corporate records, handle equity issuances, draft board resolutions for major decisions. Keep your company compliant and investor-ready as you grow.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="section-title">Common Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Should I form a Delaware C-Corp or LLC?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Planning to raise venture capital? Delaware C-Corp. Small business keeping profits? LLC (more tax flexibility). Going public eventually? Delaware C-Corp. We assess your specific situation and recommend accordingly.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Why Delaware for incorporation?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Predictable corporate law, business-friendly courts, investor expectations, flexible governance options. Most VCs require Delaware C-Corps. Exceptions exist for companies never raising institutional capital.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What is an 83(b) election and do I need one?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        If you receive founder stock subject to vesting, 83(b) election lets you pay taxes on current (low) value instead of future (higher) value. Must file within 30 days of stock grant—miss this deadline and face huge tax bills.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can you fix a poorly formed entity?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Usually, yes. We clean up missing documentation, convert entity types, fix equity problems, and establish proper governance. Some issues (like missed 83(b) elections) can't be fixed retroactively. Earlier is better.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>Build Your Company on Solid Foundation</h2>
+            <p>Proper structure. Clean cap table. Investor-ready governance.</p>
+            <div class="cta-buttons">
+                <a href="https://calendly.com/rivalislaw/entity-formation" class="cta-btn primary">
+                    <i class="fas fa-calendar-check"></i>
+                    Book Paid Consultation
+                </a>
+                <a href="mailto:counsel@rivalislaw.com" class="cta-btn secondary">
+                    <i class="fas fa-envelope"></i>
+                    Email Us
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Action Button -->
+    <a href="tel:+12025550199" class="fab" title="Call Now">
+        <i class="fas fa-phone"></i>
+    </a>
+
+    <script>
+        // Page Navigation
+        const pages = document.querySelectorAll('.page');
+        const navLinks = document.querySelectorAll('.service-menu a');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all pages and links
+                pages.forEach(p => p.classList.remove('active'));
+                navLinks.forEach(l => l.classList.remove('active'));
+                
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Show corresponding page
+                const pageId = this.getAttribute('data-page');
+                document.getElementById(pageId).classList.add('active');
+                
+                // Scroll to top smoothly
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+                // Update URL hash without jumping
+                history.pushState(null, null, `#${pageId}`);
+            });
+        });
+
+        // Handle direct URL hash navigation
+        function navigateToHash() {
+            const hash = window.location.hash.slice(1);
+            if (hash) {
+                const targetLink = document.querySelector(`[data-page="${hash}"]`);
+                if (targetLink) {
+                    targetLink.click();
+                }
+            }
+        }
+
+        // Navigate on page load if hash exists
+        window.addEventListener('load', navigateToHash);
+        window.addEventListener('hashchange', navigateToHash);
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                // Close other items (optional - remove if you want multiple open)
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+
+        // Emergency Bar Close
+        const emergencyBar = document.getElementById('emergencyBar');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            // Hide emergency bar after scrolling down 200px
+            if (currentScroll > 200) {
+                emergencyBar.classList.add('hidden');
+            } else {
+                emergencyBar.classList.remove('hidden');
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                
+                // Skip if it's a page navigation link (handled above)
+                if (this.hasAttribute('data-page')) {
+                    return;
+                }
+                
+                e.preventDefault();
+                const target = document.querySelector(href);
+                
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Analytics tracking (placeholder - add your tracking code)
+        function trackConsultationClick(service) {
+            // Add Google Analytics or other tracking here
+            console.log('Consultation booked for:', service);
+        }
+
+        // Track consultation bookings
+        document.querySelectorAll('a[href*="calendly"]').forEach(link => {
+            link.addEventListener('click', function() {
+                const service = this.closest('.page').id;
+                trackConsultationClick(service);
+            });
+        });
+    </script>
+</body>
+</html>
+                    <div class="feature-icon"><i class="fas fa-gavel"></i></div>
+                    <h3>EU AI Act Compliance</h3>
+                    <p>Navigate the world's strictest AI regulations. We classify your systems, assess risks, and build frameworks that satisfy Brussels while keeping your business moving.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                    <h3>Risk Assessment & Mitigation</h3>
+                    <p>High-risk AI system? We identify liability exposure, implement safeguards, and document everything regulators want to see—before they ask.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-book"></i></div>
+                    <h3>Governance Framework</h3>
+                    <p>Board accountability, technical documentation, human oversight protocols. We build the governance structure that keeps you compliant as your AI scales.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Algorithmic Accountability</h3>
+                    <p>Bias audits, transparency requirements, explainability standards. We ensure your algorithms can withstand regulatory scrutiny and public trust demands.</p>
+                </div>
+            </div>
+
+            <h2 class="section-title">Our Process</h2>
+            <div class="process-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-number">1</div>
+                    <div class="timeline-content">
+                        <h4>Discovery & Assessment (Week 1-2)</h4>
+                        <p>Deep dive into your AI systems, use cases, and risk profile. We map all AI applications across your organization and identify compliance gaps.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">2</div>
+                    <div class="timeline-content">
+                        <h4>Risk Classification (Week 2-3)</h4>
+                        <p>Categorize each AI system under EU AI Act framework (prohibited, high-risk, limited-risk, minimal). Document classification rationale for regulators.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">3</div>
+                    <div class="timeline-content">
+                        <h4>Framework Development (Week 3-6)</h4>
+                        <p>Build comprehensive governance framework: policies, procedures, oversight mechanisms, documentation standards, and accountability structures.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">4</div>
+                    <div class="timeline-content">
+                        <h4>Implementation Support (Week 6-8)</h4>
+                        <p>Guide your team through framework rollout. Train stakeholders, establish monitoring processes, and ensure compliance integration into operations.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">5</div>
+                    <div class="timeline-content">
+                        <h4>Ongoing Advisory (Months 3-8)</h4>
+                        <p>6 months of continued support as regulations evolve. Monthly check-ins, framework updates, and rapid response to emerging compliance issues.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="section-title">Common Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do I need this if my AI isn't deployed in Europe?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        If you process data of EU residents or your AI outputs affect people in the EU, the Act applies—regardless of where your company is based. Extraterritorial reach is similar to GDPR.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What happens if I'm non-compliant?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Fines up to €35M or 7% of annual global turnover (whichever is higher) for prohibited AI systems. €15M or 3% for high-risk violations. Plus operational bans and reputational damage.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How long does compliance take?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Initial framework: 6-8 weeks. Full implementation: 3-6 months depending on complexity. We prioritize high-risk systems first to minimize exposure while building comprehensive compliance.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can you handle US AI regulations too?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes. We navigate federal (NIST AI RMF, Executive Orders) and state-level regulations (NY, CA, CO). Most clients need multi-jurisdictional compliance—we handle all simultaneously.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>Ready to Build Compliant AI?</h2>
+            <p>Oxford-trained counsel. Big 4 rigor. Results you can present to your board.</p>
+            <div class="cta-buttons">
+                <a href="https://calendly.com/rivalislaw/ai-governance" class="cta-btn primary">
+                    <i class="fas fa-calendar-check"></i>
+                    Book Paid Consultation
+                </a>
+                <a href="mailto:counsel@rivalislaw.com" class="cta-btn secondary">
+                    <i class="fas fa-envelope"></i>
+                    Email Us
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 2: Global Corporate Immigration -->
+    <div class="page" id="immigration">
+        <div class="service-hero">
+            <div class="hero-content">
+                <div class="service-badge">
+                    <i class="fas fa-globe-americas"></i>
+                    Core Service
+                </div>
+                <h1>Global Corporate Immigration</h1>
+                <p class="service-tagline">Your Star Engineer. 90 Days Until Visa Expires. No Backup Plan.</p>
+                <p>You've found the perfect technical co-founder. They're on an H-1B that expires in 3 months. Your company depends on them. One wrong form, one missed deadline, and they're gone. Can you afford to gamble with immigration paperwork?</p>
+                <a href="https://calendly.com/rivalislaw/immigration" class="hero-cta">
+                    <i class="fas fa-calendar-check"></i>
+                    Book Consultation ($500)
+                </a>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div class="pricing-box">
+                <div class="price-main">$8,000 - $25,000</div>
+                <div class="price-note">Complete Immigration Matter (varies by visa type)</div>
+                <div class="price-included">
+                    <h4><i class="fas fa-check-circle"></i> What's Included:</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Visa strategy consultation & pathway analysis</li>
+                        <li><i class="fas fa-check"></i> All application preparation & documentation</li>
+                        <li><i class="fas fa-check"></i> USCIS filing & correspondence management</li>
+                        <li><i class="fas fa-check"></i> RFE response preparation (if needed)</li>
+                        <li><i class="fas fa-check"></i> Approval tracking & status updates</li>
+                        <li><i class="fas fa-check"></i> Post-approval compliance guidance</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2 class="section-title">Visa Types We Handle</h2>
+            <p class="section-subtitle">From startup founders to Fortune 500 transfers, we navigate complex immigration pathways</p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-brain"></i></div>
+                    <h3>H-1B Specialty Occupation</h3>
+                    <p>Tech talent, specialized professionals. We maximize approval odds through meticulous petition preparation and wage-level justification. Includes lottery strategy and premium processing.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-building"></i></div>
+                    <h3>L-1 Intracompany Transfer</h3>
+                    <p>Expanding to US? Transferring key executives? We structure L-1A/L-1B petitions that satisfy USCIS scrutiny on specialized knowledge and managerial roles.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-rocket"></i></div>
+                    <h3>O-1 Extraordinary Ability</h3>
+                    <p>Top-tier talent in tech, science, business. We build bulletproof O-1 cases: media coverage, recommendation letters, evidence of sustained acclaim that USCIS can't deny.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-landmark"></i></div>
+                    <h3>E-2 Treaty Investor</h3>
+                    <p>Launching a US startup? E-2 lets you invest and work. We structure deals to meet substantial investment thresholds and demonstrate business viability to consular officers.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-certificate"></i></div>
+                    <h3>TN NAFTA Professional</h3>
+                    <p>Canadian/Mexican professionals: fastest work authorization. We ensure your role qualifies, prepare documentation, and guide you through port-of-entry vs consular processing.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-user-tie"></i></div>
+                    <h3>EB-1/EB-2/EB-3 Green Cards</h3>
+                    <p>Permanent residence pathways. Priority workers, advanced degrees, skilled workers. We handle PERM labor certification, I-140 petitions, and adjustment of status end-to-end.</p>
+                </div>
+            </div>
+
+            <h2 class="section-title">Our Process</h2>
+            <div class="process-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-number">1</div>
+                    <div class="timeline-content">
+                        <h4>Strategy Session (Day 1-3)</h4>
+                        <p>Assess your situation, review timeline constraints, identify best visa pathway. We consider backup options and sequence multiple applications if needed.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">2</div>
+                    <div class="timeline-content">
+                        <h4>Document Preparation (Week 1-3)</h4>
+                        <p>Gather evidence, draft petitions, prepare employer letters and support documentation. We handle all technical requirements and anticipate USCIS objections.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">3</div>
+                    <div class="timeline-content">
+                        <h4>Filing & Tracking (Week 3-4)</h4>
+                        <p>Submit application to USCIS/DOS with proper fees and supporting evidence. Set up case tracking, monitor processing times, and flag any irregularities immediately.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">4</div>
+                    <div class="timeline-content">
+                        <h4>RFE Response (If Needed)</h4>
+                        <p>If USCIS issues Request for Evidence, we respond comprehensively within deadline. Most RFEs result from incomplete applications—we minimize this risk upfront.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">5</div>
+                    <div class="timeline-content">
+                        <h4>Approval & Compliance</h4>
+                        <p>Once approved, we guide on maintaining status, travel considerations, visa stamping, and long-term planning for permanent residence or citizenship.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="section-title">Common Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How long do immigration matters take?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Varies by visa type and USCIS processing center. H-1B: 3-6 months (15 days with premium processing). L-1: 2-4 months. O-1: 3 months. Green cards: 1-3 years. We provide realistic timelines upfront.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What if my case is urgent?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        We prioritize urgent matters and use premium processing when available. For true emergencies (visa expiring, immediate business need), we can mobilize within 24 hours and explore expedite requests.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can you help with denied applications?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes. We review denial notices, assess appeal prospects, and develop strategy—whether that's USCIS motion to reopen, AAO appeal, or refiling with stronger evidence. Success depends on denial grounds.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you handle family members?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Absolutely. Dependent visas (H-4, L-2, O-3, E-2 dependents) are included in our service. We coordinate timing so families can travel together and handle work authorization for eligible dependents.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>Don't Risk Your Team's Future</h2>
+            <p>Big 4 precision. Immigration expertise. Keep your talent in the country.</p>
+            <div class="cta-buttons">
+                <a href="https://calendly.com/rivalislaw/immigration" class="cta-btn primary">
+                    <i class="fas fa-calendar-check"></i>
+                    Book Paid Consultation
+                </a>
+                <a href="mailto:counsel@rivalislaw.com" class="cta-btn secondary">
+                    <i class="fas fa-envelope"></i>
+                    Email Us
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 3: M&A & Corporate Transactions -->
+    <div class="page" id="ma">
+        <div class="service-hero">
+            <div class="hero-content">
+                <div class="service-badge">
+                    <i class="fas fa-handshake"></i>
+                    Core Service
+                </div>
+                <h1>M&A & Corporate Transactions</h1>
+                <p class="service-tagline">Their Offer. Your Hidden Liability. Deal Over.</p>
+                <p>You're acquiring a competitor. Due diligence reveals undisclosed tax liabilities. The indemnity clause in your LOI exposes you to millions. Or worse—you miss it entirely. Can you afford counsel who doesn't know where to look?</p>
+                <a href="https://calendly.com/rivalislaw/ma-transactions" class="hero-cta">
+                    <i class="fas fa-calendar-check"></i>
+                    Book Consultation ($500)
+                </a>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div class="pricing-box">
+                <div class="price-main">$35,000 - $125,000</div>
+                <div class="price-note">Full Transaction Support ($75K-$250K+ for deals over $50M)</div>
+                <div class="price-included">
+                    <h4><i class="fas fa-check-circle"></i> What's Included:</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Comprehensive due diligence (legal, tax, compliance)</li>
+                        <li><i class="fas fa-check"></i> Transaction structure optimization</li>
+                        <li><i class="fas fa-check"></i> Definitive agreement negotiation & drafting</li>
+                        <li><i class="fas fa-check"></i> Risk allocation & indemnification framework</li>
+                        <li><i class="fas fa-check"></i> Regulatory approvals & clearances</li>
+                        <li><i class="fas fa-check"></i> Closing coordination & post-close support</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2 class="section-title">Why Big 4 Experience Matters</h2>
+            <p class="section-subtitle">We've reviewed multimillion-dollar deals at the highest level. We know what breaks transactions.</p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-search-dollar"></i></div>
+                    <h3>Rapid Due Diligence</h3>
+                    <p>80-hour weeks reviewing contracts, liabilities, IP, employment matters, and regulatory compliance. We find deal-killers early—before you're locked into a bad LOI.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-chart-pie"></i></div>
+                    <h3>Tax & Structure Optimization</h3>
+                    <p>Asset vs stock purchase? 338(h)(10) election? Section 1202 QSBS? We structure deals for maximum tax efficiency and liability protection—saving millions in the process.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-balance-scale-right"></i></div>
+                    <h3>Risk Allocation Strategy</h3>
+                    <p>Representations, warranties, indemnification, escrow, earn-outs. We negotiate terms that protect your downside while preserving deal momentum. No surprises post-close.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-file-signature"></i></div>
+                    <h3>Deal Documentation</h3>
+                    <p>Purchase agreements, disclosure schedules, employment agreements, IP assignments. We draft and negotiate every document with precision that withstands disputes.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Regulatory Navigation</h3>
+                    <p>Hart-Scott-Rodino filings, foreign investment reviews (CFIUS), industry-specific approvals. We manage regulatory clearances that could delay or kill your deal.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-check-double"></i></div>
+                    <h3>Closing Coordination</h3>
+                    <p>Final walkthrough, closing conditions, wire transfers, document execution. We orchestrate complex closings across time zones with zero margin for error.</p>
+                </div>
+            </div>
+
+            <h2 class="section-title">Our Process</h2>
+            <div class="process-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-number">1</div>
+                    <div class="timeline-content">
+                        <h4>Deal Strategy (Week 1)</h4>
+                        <p>Understand your objectives, structure preliminary terms, draft LOI with appropriate protections. Set realistic timeline and identify potential obstacles upfront.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">2</div>
+                    <div class="timeline-content">
+                        <h4>Due Diligence (Week 2-6)</h4>
+                        <p>Deep dive into target: contracts, financials, IP, employment, litigation, regulatory compliance. We flag issues, quantify risks, and advise on deal-breakers vs manageable concerns.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">3</div>
+                    <div class="timeline-content">
+                        <h4>Document Negotiation (Week 4-8)</h4>
+                        <p>Draft and negotiate purchase agreement, disclosure schedules, ancillary documents. We protect your interests while maintaining deal momentum and seller goodwill.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">4</div>
+                    <div class="timeline-content">
+                        <h4>Regulatory Approvals (Week 6-12)</h4>
+                        <p>File necessary regulatory approvals (HSR, CFIUS, industry permits). Coordinate with government agencies and respond to information requests promptly.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">5</div>
+                    <div class="timeline-content">
+                        <h4>Closing & Integration (Week 12+)</h4>
+                        <p>Satisfy closing conditions, execute final documents, transfer funds and assets. Provide post-close support for integration, earnout disputes, and indemnification claims.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="section-title">Common Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        When should I bring in M&A counsel?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Before you sign anything—even a non-binding LOI. Early involvement prevents bad terms, identifies deal-killers before you're committed, and ensures proper structure from day one. The worst time is after the LOI is signed.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What deal sizes do you handle?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        $5M to $500M+ transactions. Below $5M, we can provide limited scope services. Above $50M, expect full Big 4-style diligence with corresponding fees. We scale resources to deal complexity.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can you help if the deal is falling apart?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes. We specialize in "deal rescue"—stepping in when negotiations stall, material issues emerge, or other counsel missed critical problems. Time-sensitive situations are our specialty.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you represent buyers or sellers?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Both. We represent buyers in acquisitions and sellers in exits. Each side has different priorities—buyers focus on risk minimization, sellers on maximizing proceeds and limiting post-close liability.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>Don't Sign Until We've Reviewed It</h2>
+            <p>Big 4 diligence. Boutique attention. Deals that close without disasters.</p>
+            <div class="cta-buttons">
+                <a href="https://calendly.com/rivalislaw/ma-transactions" class="cta-btn primary">
+                    <i class="fas fa-calendar-check"></i>
+                    Book Paid Consultation
+                </a>
+                <a href="mailto:counsel@rivalislaw.com" class="cta-btn secondary">
+                    <i class="fas fa-envelope"></i>
+                    Email Us
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 4: Corporate Fraud Investigation -->
+    <div class="page" id="fraud">
+        <div class="service-hero">
+            <div class="hero-content">
+                <div class="service-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    Select Service
+                </div>
+                <h1>Corporate Fraud Investigation</h1>
+                <p class="service-tagline">Your CFO. $2M Missing. Who Knows?</p>
+                <p>Suspicious wire transfers. Falsified invoices. Your board needs answers—yesterday. But if you investigate wrong, evidence becomes inadmissible, whistleblower claims multiply, and regulators get involved. This isn't a job for HR.</p>
+                <a href="https://calendly.com/rivalislaw/fraud-investigation" class="hero-cta">
+                    <i class="fas fa-calendar-check"></i>
+                    Emergency Consultation
+                </a>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div class="pricing-box">
+                <div class="price-main">$25,000 - $100,000+</div>
+                <div class="price-note">Confidential Internal Investigation (varies by scope)</div>
+                <div class="price-included">
+                    <h4><i class="fas fa-check-circle"></i> What's Included:</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Attorney-client privileged investigation</li>
+                        <li><i class="fas fa-check"></i> Forensic document review & analysis</li>
+                        <li><i class="fas fa-check"></i> Witness interviews & evidence preservation</li>
+                        <li><i class="fas fa-check"></i> Board-ready confidential report</li>
+                        <li><i class="fas fa-check"></i> Remediation recommendations</li>
+                        <li><i class="fas fa-check"></i> Regulator/law enforcement coordination (if needed)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2 class="section-title">Investigation Types</h2>
+            <p class="section-subtitle">Highly confidential, attorney-led investigations with admissibility and privilege protection</p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-money-bill-wave"></i></div>
+                    <h3>Financial Fraud</h3>
+                    <p>Embezzlement, falsified financials, procurement fraud, expense abuse. We trace money flows, identify perpetrators, and preserve evidence for recovery or prosecution.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-user-secret"></i></div>
+                    <h3>Executive Misconduct</h3>
+                    <p>C-suite conflicts of interest, self-dealing, breach of fiduciary duty. We conduct confidential investigations that protect board exposure and maintain corporate governance.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-bullhorn"></i></div>
+                    <h3>Whistleblower Claims</h3>
+                    <p>Anonymous tips, hotline reports, SEC/DOJ inquiries. We investigate allegations while managing legal privilege, retaliation risks, and regulatory reporting obligations.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+                    <h3>Accounting Irregularities</h3>
+                    <p>Revenue recognition issues, expense manipulation, audit deficiencies. We work with forensic accountants to uncover financial statement fraud and assess restatement needs.</p>
+                </div>
+            </div>
+
+            <h2 class="section-title">Why Attorney-Led Matters</h2>
+            <div class="process-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-number">1</div>
+                    <div class="timeline-content">
+                        <h4>Privilege Protection</h4>
+                        <p>Attorney-client privilege shields investigation from discovery in future litigation. HR-led investigations lack this protection—everything becomes evidence against you.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">2</div>
+                    <div class="timeline-content">
+                        <h4>Evidence Preservation</h4>
+                        <p>We ensure evidence is collected, preserved, and documented in ways that make it admissible in court or regulatory proceedings. Chain of custody, spoliation prevention.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">3</div>
+                    <div class="timeline-content">
+                        <h4>Confidentiality Control</h4>
+                        <p>Need-to-know basis only. We manage information flow to prevent leaks, protect company reputation, and minimize speculation. Board-level reporting with strict access controls.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">4</div>
+                    <div class="timeline-content">
+                        <h4>Regulatory Navigation</h4>
+                        <p>Know when to self-report, when to cooperate, and when to assert privilege. We coordinate with SEC, DOJ, or other agencies while protecting client interests.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="section-title">Common Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How quickly can you start?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Immediately. For fraud matters, time is critical—evidence can be destroyed, witnesses can coordinate stories, money can disappear. We can begin within 24 hours of your call.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What if we need to involve law enforcement?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        We coordinate with FBI, Secret Service, or local law enforcement if criminal prosecution is warranted. We manage parallel investigations while protecting civil recovery options and privilege.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can this be kept confidential?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes. Attorney-client privilege and work product protections keep investigation findings confidential unless you choose to disclose. We use confidentiality agreements for all participants.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What about insurance coverage?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        D&O policies often cover investigation costs. We coordinate with insurers, document coverage triggers, and ensure our work product supports future claims for loss recovery.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>Time is Critical in Fraud Investigations</h2>
+            <p>Confidential. Privileged. Admissible. Get answers without creating exposure.</p>
+            <div class="cta-buttons">
+                <a href="https://calendly.com/rivalislaw/fraud-investigation" class="cta-btn primary">
+                    <i class="fas fa-phone"></i>
+                    Emergency Consultation
+                </a>
+                <a href="mailto:counsel@rivalislaw.com" class="cta-btn secondary">
+                    <i class="fas fa-envelope"></i>
+                    Confidential Email
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 5: Contract Review & Drafting -->
+    <div class="page" id="contracts">
+        <div class="service-hero">
+            <div class="hero-content">
+                <div class="service-badge">
+                    <i class="fas fa-file-contract"></i>
+                    Select Service
+                </div>
+                <h1>Contract Review & Drafting</h1>
+                <p class="service-tagline">Their Template. Your Unlimited Liability. Sign Here.</p>
+                <p>Your biggest client sends a 40-page MSA. Unlimited indemnification. Waived IP rights. Auto-renewal without notice. Your sales team wants you to sign today. What happens when something goes wrong?</p>
+                <a href="https://calendly.com/rivalislaw/contracts" class="hero-cta">
+                    <i class="fas fa-calendar-check"></i>
+                    Book Consultation ($500)
+                </a>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div class="pricing-box">
+                <div class="price-main">$2,500 - $15,000</div>
+                <div class="price-note">Per Contract (varies by complexity and negotiation needs)</div>
+                <div class="price-included">
+                    <h4><i class="fas fa-check-circle"></i> What's Included:</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Comprehensive contract review with risk analysis</li>
+                        <li><i class="fas fa-check"></i> Redline with protective revisions</li>
+                        <li><i class="fas fa-check"></i> Negotiation strategy & talking points</li>
+                        <li><i class="fas fa-check"></i> Multi-round negotiation support</li>
+                        <li><i class="fas fa-check"></i> Execution-ready final version</li>
+                        <li><i class="fas fa-check"></i> Plain-English summary of key terms</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2 class="section-title">Contract Types</h2>
+            <p class="section-subtitle">From NDAs to complex commercial agreements, we protect your interests in every deal</p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-handshake"></i></div>
+                    <h3>Master Service Agreements</h3>
+                    <p>SOWs, MSAs, professional services contracts. We negotiate liability caps, payment terms, IP ownership, and termination rights that protect your business long-term.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-truck"></i></div>
+                    <h3>Vendor & Supplier Contracts</h3>
+                    <p>Purchase orders, supply agreements, distribution contracts. We address delivery failures, quality standards, force majeure, and remedies when vendors underperform.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>SaaS & Technology Agreements</h3>
+                    <p>Software licenses, SaaS subscriptions, API agreements. We negotiate SLAs, data ownership, security requirements, and exit rights when switching vendors.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-building"></i></div>
+                    <h3>Commercial Leases</h3>
+                    <p>Office, retail, industrial leases. We review rent escalations, maintenance obligations, renewal options, and exit clauses that could trap you in bad locations.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-user-lock"></i></div>
+                    <h3>Employment & Consulting</h3>
+                    <p>Offer letters, executive agreements, independent contractor agreements. We protect confidential information, enforce non-competes, and clarify IP ownership.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-file-signature"></i></div>
+                    <h3>NDAs & Confidentiality</h3>
+                    <p>Mutual and one-way NDAs for partnerships, M&A, investor discussions. We define what's truly confidential and limit your obligations to reasonable terms.</p>
+                </div>
+            </div>
+
+            <h2 class="section-title">What We Review</h2>
+            <div class="process-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-number">1</div>
+                    <div class="timeline-content">
+                        <h4>Liability & Risk Allocation</h4>
+                        <p>Unlimited indemnification? Waived consequential damages? We cap exposure, allocate risks fairly, and ensure insurance can cover the obligations you're assuming.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">2</div>
+                    <div class="timeline-content">
+                        <h4>Payment & Financial Terms</h4>
+                        <p>Payment schedules, late fees, interest, audit rights. We ensure you're paid promptly and can enforce collection without expensive litigation.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">3</div>
+                    <div class="timeline-content">
+                        <h4>IP & Confidentiality</h4>
+                        <p>Who owns the work product? Can they use your confidential information? We protect your IP rights and prevent unauthorized disclosure or use.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">4</div>
+                    <div class="timeline-content">
+                        <h4>Termination & Exit Rights</h4>
+                        <p>Auto-renewal traps? Survival clauses? We negotiate exit flexibility and ensure obligations don't outlive the business relationship unexpectedly.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">5</div>
+                    <div class="timeline-content">
+                        <h4>Dispute Resolution</h4>
+                        <p>Arbitration clauses, venue selection, governing law. We choose forums that favor your position and avoid expensive, inconvenient dispute processes.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="section-title">Common Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How fast can you review contracts?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Simple contracts (NDAs, offer letters): 24-48 hours. Complex agreements (MSAs, distribution deals): 3-5 business days. For true emergencies, we can provide preliminary feedback within hours.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can you draft contracts from scratch?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes. We draft custom agreements tailored to your specific deal. Starting from your template often yields better terms than accepting the other side's paper wholesale.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What if the other side won't negotiate?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        We provide risk analysis so you can make informed decisions. Sometimes you accept certain risks to close important deals. We ensure you understand exactly what you're agreeing to.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you handle contract disputes?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes. When contracts go wrong—breach claims, payment disputes, termination fights—we enforce or defend based on the terms you negotiated. Prevention through good drafting is always cheaper.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>Don't Sign Without Legal Review</h2>
+            <p>Big 4 precision. Contract expertise. Terms you can live with.</p>
+            <div class="cta-buttons">
+                <a href="https://calendly.com/rivalislaw/contracts" class="cta-btn primary">
+                    <i class="fas fa-calendar-check"></i>
+                    Book Paid Consultation
+                </a>
+                <a href="mailto:counsel@rivalislaw.com" class="cta-btn secondary">
+                    <i class="fas fa-envelope"></i>
+                    Email Contract
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 6: Data Privacy & Compliance -->
+    <div class="page" id="privacy">
+        <div class="service-hero">
+            <div class="hero-content">
+                <div class="service-badge">
+                    <i class="fas fa-lock"></i>
+                    Select Service
+                </div>
+                <h1>Data Privacy & Compliance</h1>
+                <p class="service-tagline">Your Database. 50 Million Records. One Breach Away.</p>
+                <p>You're processing customer data across five states. GDPR. CCPA. HIPAA. Virginia's CDPA. Each has different requirements, different penalties, different regulators. Are you compliant with all of them—or just guessing?</p>
+                <a href="https://calendly.com/rivalislaw/privacy" class="hero-cta">
+                    <i class="fas fa-calendar-check"></i>
+                    Book Consultation ($500)
+                </a>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div class="pricing-box">
+                <div class="price-main">$15,000 - $50,000</div>
+                <div class="price-note">Comprehensive Privacy Program Implementation</div>
+                <div class="price-included">
+                    <h4><i class="fas fa-check-circle"></i> What's Included:</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Multi-jurisdiction compliance assessment</li>
+                        <li><i class="fas fa-check"></i> Privacy policy & terms of service drafting</li>
+                        <li><i class="fas fa-check"></i> Data mapping & inventory</li>
+                        <li><i class="fas fa-check"></i> Vendor/processor agreements (DPAs)</li>
+                        <li><i class="fas fa-check"></i> Consent mechanism implementation</li>
+                        <li><i class="fas fa-check"></i> Breach response plan & training</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2 class="section-title">Privacy Frameworks We Navigate</h2>
+            <p class="section-subtitle">From GDPR to state privacy laws, we build compliant data programs across jurisdictions</p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-globe-europe"></i></div>
+                    <h3>GDPR Compliance</h3>
+                    <p>EU General Data Protection Regulation: the strictest data law globally. We implement lawful basis, consent management, data subject rights, and DPIA requirements. Fines up to 4% of revenue.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-flag-usa"></i></div>
+                    <h3>US State Privacy Laws</h3>
+                    <p>CCPA, CPRA, Virginia CDPA, Colorado CPA, Connecticut CTDPA, Utah UCPA. We navigate the patchwork of state laws with different thresholds, exemptions, and consumer rights.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-hospital"></i></div>
+                    <h3>HIPAA (Healthcare)</h3>
+                    <p>Protected health information requires special safeguards. We implement HIPAA-compliant programs: BAAs, security rule requirements, breach notification, and OCR audit readiness.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>FERPA (Education)</h3>
+                    <p>Student data privacy for educational institutions and edtech companies. We ensure FERPA compliance, consent procedures, and directory information handling.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-child"></i></div>
+                    <h3>COPPA (Children's Privacy)</h3>
+                    <p>Under-13 data collection requires parental consent and strict security. We implement COPPA programs for apps, games, and services targeting children.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-phone"></i></div>
+                    <h3>Telecom & Marketing</h3>
+                    <p>TCPA, CAN-SPAM, TSR compliance for marketing communications. We prevent $500-per-violation fines from illegal robocalls, texts, and emails.</p>
+                </div>
+            </div>
+
+            <h2 class="section-title">Our Process</h2>
+            <div class="process-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-number">1</div>
+                    <div class="timeline-content">
+                        <h4>Privacy Assessment (Week 1-2)</h4>
+                        <p>Data inventory, processing activities, jurisdiction analysis. We map what data you collect, where it goes, and which laws apply to your operations.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">2</div>
+                    <div class="timeline-content">
+                        <h4>Gap Analysis (Week 2-3)</h4>
+                        <p>Compare current practices against legal requirements. Identify non-compliance issues, quantify risk exposure, and prioritize remediation actions.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">3</div>
+                    <div class="timeline-content">
+                        <h4>Program Development (Week 3-6)</h4>
+                        <p>Draft policies, implement technical controls, create consent mechanisms, and establish data subject request procedures. Build documentation regulators want to see.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">4</div>
+                    <div class="timeline-content">
+                        <h4>Vendor Management (Week 4-7)</h4>
+                        <p>Review and negotiate vendor agreements. Ensure data processing agreements (DPAs) allocate liability correctly and meet GDPR/state law requirements.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">5</div>
+                    <div class="timeline-content">
+                        <h4>Training & Ongoing Support</h4>
+                        <p>Train your team on privacy obligations, breach response, and data handling. Provide annual updates as laws evolve and your business changes.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="section-title">Common Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do I need privacy counsel if I'm US-based?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes. CCPA, CPRA, and other state laws apply even if you're not in California. If you process data of residents in regulated states, or have EU customers, you must comply regardless of your location.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What triggers state privacy law requirements?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Revenue and data volume thresholds vary by state. CCPA: $25M revenue OR 50K+ consumers OR 50%+ revenue from data sales. Other states have different triggers. We assess your specific situation.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What happens if I have a data breach?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Notification requirements vary by state and law. Timelines range from 30-90 days. We provide breach response plans, coordinate notifications, and handle regulator communications. Having a plan before breach occurs is critical.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can you handle international privacy laws?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes. Beyond GDPR, we navigate UK GDPR, Brazil LGPD, Canada PIPEDA, and other frameworks. Multi-jurisdiction compliance requires harmonized policies that satisfy the strictest requirements.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>Don't Wait for a Data Breach</h2>
+            <p>Build compliant privacy programs. Avoid regulatory fines. Protect customer trust.</p>
+            <div class="cta-buttons">
+                <a href="https://calendly.com/rivalislaw/privacy" class="cta-btn primary">
+                    <i class="fas fa-calendar-check"></i>
+                    Book Paid Consultation
+                </a>
+                <a href="mailto:counsel@rivalislaw.com" class="cta-btn secondary">
+                    <i class="fas fa-envelope"></i>
+                    Email Us
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 7: IP Strategy & Protection -->
+    <div class="page" id="ip">
+        <div class="service-hero">
+            <div class="hero-content">
+                <div class="service-badge">
+                    <i class="fas fa-lightbulb"></i>
+                    Select Service
+                </div>
+                <h1>IP Strategy & Protection</h1>
+                <p class="service-tagline">Your Brand. Their Knockoff. $5M in Lost Revenue.</p>
+                <p>You've built something valuable. A competitor copies your design. Someone registers a confusingly similar trademark. Your trade secrets walk out the door with a departing employee. How do you protect what makes your business unique?</p>
+                <a href="https://calendly.com/rivalislaw/ip-strategy" class="hero-cta">
+                    <i class="fas fa-calendar-check"></i>
+                    Book Consultation ($500)
+                </a>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div class="pricing-box">
+                <div class="price-main">$5,000 - $25,000</div>
+                <div class="price-note">Comprehensive IP Strategy & Protection Program</div>
+                <div class="price-included">
+                    <h4><i class="fas fa-check-circle"></i> What's Included:</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> IP audit & protection strategy</li>
+                        <li><i class="fas fa-check"></i> Trademark clearance & filing (USPTO)</li>
+                        <li><i class="fas fa-check"></i> Copyright registration & enforcement</li>
+                        <li><i class="fas fa-check"></i> Trade secret protection program</li>
+                        <li><i class="fas fa-check"></i> Employee IP assignment agreements</li>
+                        <li><i class="fas fa-check"></i> Cease & desist letter drafting</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2 class="section-title">IP Protection Services</h2>
+            <p class="section-subtitle">From brand protection to trade secret enforcement, we safeguard your competitive advantages</p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-trademark"></i></div>
+                    <h3>Trademark Strategy</h3>
+                    <p>Clearance searches, application filing, office action responses. We protect your brand name, logo, and taglines. Monitor for infringement and enforce against knockoffs.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-copyright"></i></div>
+                    <h3>Copyright Protection</h3>
+                    <p>Register creative works, software code, marketing materials. Enforce against unauthorized copying. Issue DMCA takedowns. Pursue statutory damages in infringement cases.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-user-secret"></i></div>
+                    <h3>Trade Secret Programs</h3>
+                    <p>Identify crown jewel information. Implement protection measures: NDAs, access controls, employee training. Enforce against misappropriation when secrets are stolen.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-flask"></i></div>
+                    <h3>Patent Referrals</h3>
+                    <p>We don't prosecute patents, but we connect you with trusted patent attorneys. Coordinate patent strategy with overall IP program and M&A due diligence needs.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-handshake"></i></div>
+                    <h3>IP Licensing</h3>
+                    <p>Negotiate licenses for your IP or others'. Draft agreements covering scope, territory, exclusivity, royalties, quality control, and termination rights.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-gavel"></i></div>
+                    <h3>Infringement Enforcement</h3>
+                    <p>Cease & desist letters, UDRP domain disputes, marketplace takedowns (Amazon, eBay). Coordinate with litigation counsel when infringers don't back down.</p>
+                </div>
+            </div>
+
+            <h2 class="section-title">Our Process</h2>
+            <div class="process-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-number">1</div>
+                    <div class="timeline-content">
+                        <h4>IP Audit (Week 1-2)</h4>
+                        <p>Inventory your IP assets: brands, creative works, confidential information, proprietary processes. Identify gaps in protection and prioritize registration needs.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">2</div>
+                    <div class="timeline-content">
+                        <h4>Protection Strategy (Week 2-3)</h4>
+                        <p>Determine optimal protection approach for each asset. Trademarks for brands, copyrights for creative works, trade secrets for proprietary information.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">3</div>
+                    <div class="timeline-content">
+                        <h4>Registration & Documentation (Week 3-8)</h4>
+                        <p>File trademark applications, register copyrights, implement trade secret protocols. Draft IP assignment agreements for employees and contractors.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">4</div>
+                    <div class="timeline-content">
+                        <h4>Monitoring & Enforcement</h4>
+                        <p>Set up trademark watch services, monitor for infringement, enforce rights against violators. Maintain registrations through renewals and continued use.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">5</div>
+                    <div class="timeline-content">
+                        <h4>Ongoing Management</h4>
+                        <p>Annual IP portfolio review, expansion as business grows, defensive registrations in new markets or classes. Keep protection current as company evolves.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="section-title">Common Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        When should I file for trademark protection?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Before public launch if possible. You can file "intent to use" applications before using the mark. This secures priority date and prevents others from registering similar marks while you're building.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How much does trademark registration cost?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        USPTO fees: $250-$350 per class. Our legal fees: $1,500-$3,000 per mark (includes clearance search, application, office action response if needed). Multi-class filings cost more.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What if someone is already using my brand name?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Depends on who used it first, in what geographic area, and for what goods/services. Trademark rights are complex—prior use doesn't always mean you're blocked. We assess whether you can coexist or need to rebrand.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can you stop knockoff products on Amazon?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes. With registered trademarks, we file takedown notices through Amazon Brand Registry, eBay VeRO, and other platforms. For persistent infringers, we escalate to litigation.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>Protect What Makes You Unique</h2>
+            <p>Strategic IP protection. Brand enforcement. Competitive advantage secured.</p>
+            <div class="cta-buttons">
+                <a href="https://calendly.com/rivalislaw/ip-strategy" class="cta-btn primary">
+                    <i class="fas fa-calendar-check"></i>
+                    Book Paid Consultation
+                </a>
+                <a href="mailto:counsel@rivalislaw.com" class="cta-btn secondary">
+                    <i class="fas fa-envelope"></i>
+                    Email Us
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 8: Employment Law Counsel -->
+    <div class="page" id="employment">
+        <div class="service-hero">
+            <div class="hero-content">
+                <div class="service-badge">
+                    <i class="fas fa-users"></i>
+                    Select Service
+                </div>
+                <h1>Employment Law Counsel</h1>
+                <p class="service-tagline">Your Termination. Their Discrimination Claim. $500K Settlement.</p>
+                <p>You need to fire an underperformer. They're in a protected class. Your documentation is thin. They claim retaliation. Now you're facing EEOC complaints, state agency investigations, and a lawsuit that could cost six figures. Prevention is cheaper.</p>
+                <a href="https://calendly.com/rivalislaw/employment" class="hero-cta">
+                    <i class="fas fa-calendar-check"></i>
+                    Book Consultation ($500)
+                </a>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div class="pricing-box">
+                <div class="price-main">$5,000 - $20,000</div>
+                <div class="price-note">Employment Program Implementation or Matter Handling</div>
+                <div class="price-included">
+                    <h4><i class="fas fa-check-circle"></i> What's Included:</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Employee handbook drafting/review</li>
+                        <li><i class="fas fa-check"></i> Offer letter & employment agreement templates</li>
+                        <li><i class="fas fa-check"></i> Termination guidance & documentation review</li>
+                        <li><i class="fas fa-check"></i> Discrimination/harassment investigation support</li>
+                        <li><i class="fas fa-check"></i> Wage & hour compliance audit</li>
+                        <li><i class="fas fa-check"></i> EEOC/state agency response & defense</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2 class="section-title">Employment Services</h2>
+            <p class="section-subtitle">From hiring to termination, we help you manage employment relationships without litigation</p>
+
+            <div class="feature-grid">
+                <div class="feature-card">

@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rivalis Law - Qualification Assessment</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --accent: #d4af37;
+            --accent-dark: #b8941f;
+            --accent-light: #f0e6d2;
+            --white: #ffffff;
+            --gray-50: #fafbfc;
+            --gray-100: #f4f6f8;
+            --gray-200: #e8ecf0;
+            --gray-600: #4a5568;
+            --gray-700: #2d3748;
+            --gray-900: #0f1419;
+            --success: #27ae60;
+            --error: #e74c3c;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(165deg, #fafbfc 0%, #ffffff 50%, var(--accent-light) 100%);
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .form-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--gray-900) 100%);
+            color: white;
+            padding: 3rem 2.5rem 2.5rem;
+            text-align: center;
+        }
+
+        .form-header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .form-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .trust-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .trust-item i {
+            color: var(--accent);
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: var(--gray-200);
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent) 0%, var(--accent-dark) 100%);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .form-body {
+            padding: 3rem 2.5rem;
+        }
+
+        .step {
+            display: none;
+        }
+
+        .step.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .step-indicator {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 48px;
+            height: 48px;
+            background: var(--accent-light);
+            color: var(--accent-dark);
+            border-radius: 50%;
+            line-height: 48px;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .step-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .step-subtitle {
+            color: var(--gray-600);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--gray-700);
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+        }
+
+        .form-group label .required {
+            color: var(--error);
+            margin-left: 0.25rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            border: 2px solid var(--gray-200);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group small {
+            display: block;
+            margin-top: 0.5rem;
+            color: var(--gray-600);
+            font-size: 0.875rem;
+        }
+
+        /* Radio Button Cards */
+        .radio-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .radio-card {
+            position: relative;
+        }
+
+        .radio-card input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .radio-card label {
+            display: block;
+            padding: 1.5rem;
+            border: 2px solid var(--gray-200);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            background: white;
+        }
+
+        .radio-card label:hover {
+            border-color: var(--accent);
+            background: var(--accent-light);
+        }
+
+        .radio-card input[type="radio"]:checked + label {
+            border-color: var(--accent);
+            background: var(--accent-light);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
+        }
+
+        .radio-card i {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .radio-card .card-title {
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .radio-card .card-subtitle {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+        }
+
+        /* Urgency Badge */
+        .urgency-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 6px;
+            color: #856404;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .urgency-badge.emergency {
+            background: #f8d7da;
+            border-color: var(--error);
+            color: #721c24;
+        }
+
+        /* Conditional Fields */
+        .conditional-field {
+            display: none;
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: var(--gray-50);
+            border-left: 4px solid var(--accent);
+            border-radius: 8px;
+        }
+
+        .conditional-field.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                max-height: 0;
+            }
+            to {
+                opacity: 1;
+                max-height: 500px;
+            }
+        }
+
+        /* Buttons */
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2.5rem;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 1.125rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: white;
+            box-shadow: 0 4px 16px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--gray-700);
+            border: 2px solid var(--gray-200);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 3rem;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--success);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin: 0 auto 2rem;
+        }
+
+        .success-message h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .success-message p {
+            font-size: 1.1rem;
+            color: var(--gray-600);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .next-steps {
+            background: var(--accent-light);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        .next-steps h3 {
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .next-steps ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .next-steps li {
+            padding: 0.75rem 0;
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+        }
+
+        .next-steps li::before {
+            content: '✓';
+            color: var(--success);
+            font-weight: 800;
+            font-size: 1.25rem;
+        }
+
+        .emergency-contact {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+
+        .emergency-contact strong {
+            color: #856404;
+            font-size: 1.1rem;
+        }
+
+        .emergency-contact a {
+            color: #856404;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem 0.5rem;
+            }
+
+            .form-header {
+                padding: 2rem 1.5rem;
+            }
+
+            .form-header h1 {
+                font-size: 1.875rem;
+            }
+
+            .form-body {
+                padding: 2rem 1.5rem;
+            }
+
+            .trust-indicators {
+                gap: 1rem;
+            }
+
+            .radio-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .button-group {
+                flex-direction: column-reverse;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-header">
+            <h1>Get Your Qualified Assessment</h1>
+            <p>Help us understand your situation so we can provide the most relevant guidance. Takes 2-3 minutes.</p>
+            
+            <div class="trust-indicators">
+                <div class="trust-item">
+                    <i class="fas fa-lock"></i>
+                    <span>Confidential</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-clock"></i>
+                    <span>4-Hour Response</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-shield-check"></i>
+                    <span>No Obligation</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <div class="form-body">
+            <form id="qualificationForm">
+                <!-- Step 1: Challenge Type -->
+                <div class="step active" data-step="1">
+                    <div class="step-indicator">
+                        <div class="step-number">1</div>
+                        <h2 class="step-title">What brings you to Rivalis Law?</h2>
+                        <p class="step-subtitle">Select your primary legal challenge</p>
+                    </div>
+
+                    <div class="radio-cards">
+                        <div class="radio-card">
+                            <input type="radio" name="challenge" id="ai" value="ai" required>
+                            <label for="ai">
+                                <i class="fas fa-brain"></i>
+                                <div class="card-title">AI Governance</div>
+                                <div class="card-subtitle">Compliance, risk, product launch</div>
+                            </label>
+                        </div>
+
+                        <div class="radio-card">
+                            <input type="radio" name="challenge" id="immigration" value="immigration">
+                            <label for="immigration">
+                                <i class="fas fa-passport"></i>
+                                <div class="card-title">Immigration</div>
+                                <div class="card-subtitle">Visas, RFE, global talent</div>
+                            </label>
+                        </div>
+
+                        <div class="radio-card">
+                            <input type="radio" name="challenge" id="ma" value="ma">
+                            <label for="ma">
+                                <i class="fas fa-handshake"></i>
+                                <div class="card-title">M&A Transaction</div>
+                                <div class="card-subtitle">Due diligence, deals</div>
+                            </label>
+                        </div>
+
+                        <div class="radio-card">
+                            <input type="radio" name="challenge" id="other" value="other">
+                            <label for="other">
+                                <i class="fas fa-briefcase"></i>
+                                <div class="card-title">Other Services</div>
+                                <div class="card-subtitle">Investigations, contracts, ESG</div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Urgency -->
+                <div class="step" data-step="2">
+                    <div class="step-indicator">
+                        <div class="step-number">2</div>
+                        <h2 class="step-title">What's your timeline?</h2>
+                        <p class="step-subtitle">This helps us prioritize your inquiry appropriately</p>
+                    </div>
+
+                    <div class="radio-cards">
+                        <div class="radio-card">
+                            <input type="radio" name="urgency" id="emergency" value="emergency" required>
+                            <label for="emergency">
+                                <i class="fas fa-exclamation-triangle" style="color: #e74c3c;"></i>
+                                <div class="card-title">Emergency</div>
+                                <div class="card-subtitle">Need help within 24-72 hours</div>
+                            </label>
+                        </div>
+
+                        <div class="radio-card">
+                            <input type="radio" name="urgency" id="urgent" value="urgent">
+                            <label for="urgent">
+                                <i class="fas fa-clock" style="color: #f39c12;"></i>
+                                <div class="card-title">Urgent</div>
+                                <div class="card-subtitle">Need help within 1-2 weeks</div>
+                            </label>
+                        </div>
+
+                        <div class="radio-card">
+                            <input type="radio" name="urgency" id="normal" value="normal">
+                            <label for="normal">
+                                <i class="fas fa-calendar"></i>
+                                <div class="card-title">Standard</div>
+                                <div class="card-subtitle">Timeline: 2-4 weeks</div>
+                            </label>
+                        </div>
+
+                        <div class="radio-card">
+                            <input type="radio" name="urgency" id="planning" value="planning">
+                            <label for="planning">
+                                <i class="fas fa-calendar-alt"></i>
+                                <div class="card-title">Strategic</div>
+                                <div class="card-subtitle">Planning 1-3 months ahead</div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div id="urgencyAlert" class="conditional-field"></div>
+                </div>
+
+                <!-- Step 3: Company Stage -->
+                <div class="step" data-step="3">
+                    <div class="step-indicator">
+                        <div class="step-number">3</div>
+                        <h2 class="step-title">Tell us about your organization</h2>
+                        <p class="step-subtitle">This helps us tailor our approach to your needs</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="companyStage">Company Stage/Size <span class="required">*</span></label>
+                        <select id="companyStage" name="companyStage" required>
+                            <option value="">Select your stage...</option>
+                            <option value="startup-pre">Pre-Seed / Seed Stage Startup</option>
+                            <option value="startup-a">Series A Startup</option>
+                            <option value="startup-b">Series B+ Startup</option>
+                            <option value="growth">Growth Company ($10M-$100M revenue)</option>
+                            <option value="enterprise">Enterprise ($100M+ revenue)</option>
+                            <option value="fortune">Fortune 500/1000</option>
+                            <option value="individual">Individual/Solo Practice</option>
+                            <option value="small-business">Small Business (< $10M revenue)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="industry">Industry <span class="required">*</span></label>
+                        <select id="industry" name="industry" required>
+                            <option value="">Select your industry...</option>
+                            <option value="technology">Technology / Software</option>
+                            <option value="ai-ml">AI / Machine Learning</option>
+                            <option value="fintech">Financial Technology</option>
+                            <option value="healthcare">Healthcare / Life Sciences</option>
+                            <option value="manufacturing">Manufacturing</option>
+                            <option value="consulting">Professional Services / Consulting</option>
+                            <option value="ecommerce">E-commerce / Retail</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div id="industryOther" class="conditional-field">
+                        <div class="form-group">
+                            <label for="industryOtherText">Please specify your industry</label>
+                            <input type="text" id="industryOtherText" name="industryOtherText" placeholder="Your industry...">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Budget & Details -->
+                <div class="step" data-step="4">
+                    <div class="step-indicator">
+                        <div class="step-number">4</div>
+                        <h2 class="step-title">Investment & Situation Details</h2>
+                        <p class="step-subtitle">Help us provide accurate guidance</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="budget">Estimated Legal Investment Budget <span class="required">*</span></label>
+                        <select id="budget" name="budget" required>
+                            <option value="">Select budget range...</option>
+                            <option value="under10">Under $10,000</option>
+                            <option value="10-25">$10,000 - $25,000</option>
+                            <option value="25-50">$25,000 - $50,000</option>
+                            <option value="50-100">$50,000 - $100,000</option>
+                            <option value="100-250">$100,000 - $250,000</option>
+                            <option value="250plus">$250,000+</option>
+                            <option value="unsure">Not sure / Need guidance</option>
+                        </select>
+                        <small>This helps ensure our services align with your needs</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="situation">Briefly describe your situation <span class="required">*</span></label>
+                        <textarea id="situation" name="situation" required placeholder="What legal challenge are you facing? What outcome are you seeking?"></textarea>
+                        <small>The more detail you provide, the better we can assist you</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="previousCounsel">Have you consulted other legal counsel on this matter?</label>
+                        <select id="previousCounsel" name="previousCounsel">
+                            <option value="">Select...</option>
+                            <option value="no">No, this is my first inquiry</option>
+                            <option value="yes-unsatisfied">Yes, but results were unsatisfactory</option>
+                            <option value="yes-conflicts">Yes, but they had conflicts of interest</option>
+                            <option value="yes-ongoing">Yes, and they're still involved</option>
+                            <option value="yes-completed">Yes, matter was resolved</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Step 5: Contact Information -->
+                <div class="step" data-step="5">
+                    <div class="step-indicator">
+                        <div class="step-number">5</div>
+                        <h2 class="step-title">Contact Information</h2>
+                        <p class="step-subtitle">Almost there - just need your details to schedule your consultation</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fullName">Full Name <span class="required">*</span></label>
+                        <input type="text" id="fullName" name="fullName" required placeholder="John Smith">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required placeholder="you@company.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number <span class="required">*</span></label>
+                        <input type="tel" id="phone" name="phone" required placeholder="+1 (202) 555-0100">
+                        <small>For urgent matters and follow-up calls</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company">Company Name</label>
+                        <input type="text" id="company" name="company" placeholder="Your Company, Inc.">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="referral">How did you hear about Rivalis Law?</label>
+                        <select id="referral" name="referral">
+                            <option value="">Select...</option>
+                            <option value="search">Google / Online Search</option>
+                            <option value="linkedin">LinkedIn</option>
+                            <option value="referral-professional">Professional Referral</option>
+                            <option value="referral-client">Client Referral</option>
+                            <option value="article">Article / Publication</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div style="margin-top: 2rem; padding: 1.5rem; background: var(--gray-50); border-radius: 8px; border: 2px solid var(--gray-200);">
+                        <p style="font-size: 0.9rem; color: var(--gray-600); line-height: 1.7; margin-bottom: 1rem;">
+                            <i class="fas fa-info-circle" style="color: var(--accent); margin-right: 0.5rem;"></i>
+                            <strong>Before Proceeding:</strong> Please note that submitting this form does not create an attorney-client relationship. Information shared here is not protected by attorney-client privilege until we establish a formal engagement.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 6: Consultation Booking & Payment -->
+                <div class="step" data-step="6">
+                    <div class="step-indicator">
+                        <div class="step-number">6</div>
+                        <h2 class="step-title">Reserve Your Consultation</h2>
+                        <p class="step-subtitle">Secure your 60-minute comprehensive legal analysis</p>
+                    </div>
+
+                    <!-- Consultation Value Proposition -->
+                    <div style="background: linear-gradient(135deg, var(--accent-light) 0%, rgba(212, 175, 55, 0.1) 100%); border: 2px solid var(--accent); border-radius: 12px; padding: 2rem; margin-bottom: 2rem;">
+                        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.75rem; font-weight: 700; color: var(--primary); margin-bottom: 1.5rem;">
+                            <i class="fas fa-calendar-check" style="color: var(--accent); margin-right: 0.5rem;"></i>
+                            What You Get: Strategic Legal Consultation
+                        </h3>
+                        
+                        <div style="display: grid; gap: 1rem; margin-bottom: 1.5rem;">
+                            <div style="display: flex; gap: 1rem; align-items: start;">
+                                <i class="fas fa-check-circle" style="color: var(--success); font-size: 1.25rem; margin-top: 0.25rem;"></i>
+                                <div>
+                                    <strong style="color: var(--primary);">60-Minute Deep Dive:</strong>
+                                    <span style="color: var(--gray-700);"> Comprehensive analysis of your specific situation with an experienced attorney</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 1rem; align-items: start;">
+                                <i class="fas fa-check-circle" style="color: var(--success); font-size: 1.25rem; margin-top: 0.25rem;"></i>
+                                <div>
+                                    <strong style="color: var(--primary);">Direct Partner Access:</strong>
+                                    <span style="color: var(--gray-700);"> Work directly with Aaishwarya Aeron (Big 4 trained, Oxford AI certified)</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 1rem; align-items: start;">
+                                <i class="fas fa-check-circle" style="color: var(--success); font-size: 1.25rem; margin-top: 0.25rem;"></i>
+                                <div>
+                                    <strong style="color: var(--primary);">Strategic Roadmap:</strong>
+                                    <span style="color: var(--gray-700);"> Clear action plan, risk assessment, and timeline for resolution</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 1rem; align-items: start;">
+                                <i class="fas fa-check-circle" style="color: var(--success); font-size: 1.25rem; margin-top: 0.25rem;"></i>
+                                <div>
+                                    <strong style="color: var(--primary);">Investment Estimate:</strong>
+                                    <span style="color: var(--gray-700);"> Transparent pricing for your matter if we proceed with engagement</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 1rem; align-items: start;">
+                                <i class="fas fa-check-circle" style="color: var(--success); font-size: 1.25rem; margin-top: 0.25rem;"></i>
+                                <div>
+                                    <strong style="color: var(--primary);">Written Summary:</strong>
+                                    <span style="color: var(--gray-700);"> Follow-up email summarizing key discussion points and recommendations</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="background: white; border-radius: 8px; padding: 1.5rem; border-left: 4px solid var(--accent);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                                <div>
+                                    <div style="font-size: 0.9rem; color: var(--gray-600); margin-bottom: 0.25rem;">Consultation Investment</div>
+                                    <div style="font-size: 2.25rem; font-weight: 800; color: var(--primary); font-family: 'Cormorant Garamond', serif;">$500</div>
+                                    <div style="font-size: 0.9rem; color: var(--gray-600); margin-top: 0.25rem;">Non-refundable | Fully credited toward engagement</div>
+                                </div>
+                                <div style="text-align: right;">
+                                    <div style="background: var(--accent); color: white; padding: 0.5rem 1rem; border-radius: 6px; font-weight: 700; margin-bottom: 0.5rem;">
+                                        <i class="fas fa-badge-percent"></i> 100% Credit
+                                    </div>
+                                    <div style="font-size: 0.85rem; color: var(--gray-600);">Applied to your retainer if hired</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Business Hours Notice -->
+                    <div style="background: #e8f4f8; border: 2px solid #17a2b8; border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem;">
+                        <h4 style="color: #0c5460; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-clock"></i>
+                            Consultation Scheduling
+                        </h4>
+                        <p style="color: #0c5460; margin-bottom: 1rem; line-height: 1.7;">
+                            <strong>Business Hours:</strong> Monday - Friday, 9:00 AM - 6:00 PM ET<br>
+                            After payment, we'll send you a scheduling link to book your 60-minute consultation at a time that works for you.
+                        </p>
+                        <p style="color: #0c5460; line-height: 1.7;">
+                            <strong>Response Time:</strong> You'll receive your scheduling link within 4 business hours (2 hours for emergency matters).
+                        </p>
+                    </div>
+
+                    <!-- Emergency Alternative -->
+                    <div style="background: #fff3cd; border: 2px solid #ffc107; border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem;">
+                        <h4 style="color: #856404; font-weight: 700; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            True Emergency? (Decision needed within 24-48 hours)
+                        </h4>
+                        <p style="color: #856404; margin-bottom: 1rem; line-height: 1.7;">
+                            For genuine legal emergencies requiring immediate attention (RFE due tomorrow, deal closing in 48 hours, regulatory deadline), 
+                            call our emergency line instead:
+                        </p>
+                        <div style="text-align: center;">
+                            <a href="tel:+1-202-555-0199" style="display: inline-flex; align-items: center; gap: 0.75rem; background: var(--primary); color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1.1rem;">
+                                <i class="fas fa-phone-volume"></i>
+                                (202) 555-0199
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Why We Charge -->
+                    <div style="background: var(--gray-50); border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem;">
+                        <h4 style="color: var(--primary); font-weight: 700; margin-bottom: 1rem;">Why We Charge a Consultation Fee</h4>
+                        <p style="color: var(--gray-700); line-height: 1.7; margin-bottom: 1rem;">
+                            Unlike large firms that offer "free consultations" then bill you $1,200/hour, we provide real value upfront. 
+                            Your $500 investment ensures:
+                        </p>
+                        <ul style="list-style: none; margin: 0; padding: 0;">
+                            <li style="padding: 0.5rem 0; color: var(--gray-700); display: flex; gap: 0.75rem;">
+                                <i class="fas fa-shield-check" style="color: var(--accent); margin-top: 0.25rem;"></i>
+                                <span>You receive dedicated time and thorough analysis from an experienced attorney</span>
+                            </li>
+                            <li style="padding: 0.5rem 0; color: var(--gray-700); display: flex; gap: 0.75rem;">
+                                <i class="fas fa-shield-check" style="color: var(--accent); margin-top: 0.25rem;"></i>
+                                <span>We prepare specifically for your situation before the call</span>
+                            </li>
+                            <li style="padding: 0.5rem 0; color: var(--gray-700); display: flex; gap: 0.75rem;">
+                                <i class="fas fa-shield-check" style="color: var(--accent); margin-top: 0.25rem;"></i>
+                                <span>Your consultation is with the decision-maker, not a junior associate</span>
+                            </li>
+                            <li style="padding: 0.5rem 0; color: var(--gray-700); display: flex; gap: 0.75rem;">
+                                <i class="fas fa-shield-check" style="color: var(--accent); margin-top: 0.25rem;"></i>
+                                <span>If you hire us, the $500 is fully credited—making it risk-free</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Payment Section -->
+                    <div style="background: white; border: 3px solid var(--accent); border-radius: 12px; padding: 2rem;">
+                        <h4 style="color: var(--primary); font-weight: 700; margin-bottom: 1.5rem; font-size: 1.25rem;">
+                            <i class="fas fa-lock" style="color: var(--accent);"></i>
+                            Secure Payment - Reserve Your Consultation
+                        </h4>
+
+                        <div class="form-group">
+                            <label style="display: flex; align-items: start; gap: 0.75rem; cursor: pointer; padding: 1rem; border: 2px solid var(--gray-200); border-radius: 8px; background: var(--gray-50);">
+                                <input type="checkbox" id="paymentConsent" name="paymentConsent" required style="width: auto; margin-top: 0.25rem;">
+                                <span style="font-size: 0.95rem; color: var(--gray-700); line-height: 1.6;">
+                                    I understand that the <strong>$500 consultation fee is non-refundable</strong> and will be charged immediately. 
+                                    This fee <strong>will be fully credited toward my retainer</strong> if I engage Rivalis Law for representation. 
+                                    I acknowledge that this payment does not create an attorney-client relationship.
+                                </span>
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label style="display: flex; align-items: start; gap: 0.75rem; cursor: pointer; padding: 1rem; border: 2px solid var(--gray-200); border-radius: 8px; background: var(--gray-50);">
+                                <input type="checkbox" id="privacyConsent" name="privacyConsent" required style="width: auto; margin-top: 0.25rem;">
+                                <span style="font-size: 0.95rem; color: var(--gray-700); line-height: 1.6;">
+                                    I consent to Rivalis Law contacting me to schedule my consultation. I have read and agree to the 
+                                    <a href="#privacy" style="color: var(--accent); text-decoration: underline; font-weight: 600;">Terms of Service and Privacy Policy</a>.
+                                </span>
+                            </label>
+                        </div>
+
+                        <!-- Payment Button (this would integrate with Stripe/PayPal) -->
+                        <div style="background: var(--accent-light); border-radius: 8px; padding: 1.5rem; margin-top: 1.5rem; text-align: center;">
+                            <p style="color: var(--gray-700); margin-bottom: 1rem; font-size: 0.95rem;">
+                                <i class="fas fa-info-circle" style="color: var(--accent);"></i>
+                                After clicking submit, you'll be redirected to our secure payment processor to complete your $500 consultation fee.
+                            </p>
+                            <div style="display: flex; justify-content: center; gap: 1rem; align-items: center; flex-wrap: wrap;">
+                                <i class="fab fa-cc-visa" style="font-size: 2rem; color: var(--gray-600);"></i>
+                                <i class="fab fa-cc-mastercard" style="font-size: 2rem; color: var(--gray-600);"></i>
+                                <i class="fab fa-cc-amex" style="font-size: 2rem; color: var(--gray-600);"></i>
+                                <i class="fab fa-cc-discover" style="font-size: 2rem; color: var(--gray-600);"></i>
+                                <span style="color: var(--gray-600); font-weight: 600;">Secure Payment via Stripe</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Trust Signals -->
+                    <div style="margin-top: 2rem; padding: 1.5rem; background: var(--gray-50); border-radius: 8px; text-align: center;">
+                        <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                            <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--gray-600);">
+                                <i class="fas fa-lock" style="color: var(--accent);"></i>
+                                <span style="font-size: 0.9rem;">Secure 256-bit Encryption</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--gray-600);">
+                                <i class="fas fa-shield-alt" style="color: var(--accent);"></i>
+                                <span style="font-size: 0.9rem;">PCI Compliant</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--gray-600);">
+                                <i class="fas fa-user-shield" style="color: var(--accent);"></i>
+                                <span style="font-size: 0.9rem;">Privacy Protected</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn btn-secondary" id="prevBtn" style="display: none;">
+                        <i class="fas fa-arrow-left"></i>
+                        Previous
+                    </button>
+                    <button type="button" class="btn btn-primary" id="nextBtn">
+                        Next
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </form>
+
+            <div class="success-message" id="successMessage">
+                <div class="success-icon">
+                    <i class="fas fa-check"></i>
+                </div>
+                <h2>Payment Successful - Consultation Reserved!</h2>
+                <p>Thank you for your investment. Your consultation has been reserved and we're preparing for your session.</p>
+                
+                <div class="next-steps">
+                    <h3>What Happens Next:</h3>
+                    <ul>
+                        <li><strong>Check Your Email:</strong> You'll receive a confirmation within 15 minutes with your scheduling link and consultation details</li>
+                        <li><strong>Schedule Your Call:</strong> Use the Calendly link to book your 60-minute consultation at a convenient time during business hours (Mon-Fri, 9am-6pm ET)</li>
+                        <li><strong>Pre-Call Preparation:</strong> We'll review your submission thoroughly and prepare a customized analysis for your situation</li>
+                        <li><strong>Your Consultation:</strong> Direct 60-minute session with Aaishwarya Aeron covering strategy, risks, timeline, and transparent pricing</li>
+                        <li><strong>Written Summary:</strong> Post-consultation email outlining key points, recommendations, and next steps</li>
+                    </ul>
+
+                    <div style="background: var(--accent-light); border: 2px solid var(--accent); border-radius: 8px; padding: 1.5rem; margin-top: 1.5rem;">
+                        <h4 style="color: var(--primary); margin-bottom: 0.75rem;">
+                            <i class="fas fa-badge-dollar" style="color: var(--accent);"></i>
+                            Your $500 Investment
+                        </h4>
+                        <p style="color: var(--gray-700); margin-bottom: 0;">
+                            Remember: If you engage Rivalis Law for representation, your $500 consultation fee will be <strong>fully credited toward your retainer</strong>. 
+                            You're essentially getting expert analysis risk-free if you proceed with us.
+                        </p>
+                    </div>
+
+                    <div class="emergency-contact">
+                        <p style="margin-bottom: 0.5rem;"><strong>Questions Before Your Consultation?</strong></p>
+                        <p>Email: <a href="mailto:consultations@rivalislaw.com">consultations@rivalislaw.com</a></p>
+                        <p style="margin-top: 0.5rem;">True Emergency: <a href="tel:+1-202-555-0199">(202) 555-0199</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 6;
+        const form = document.getElementById('qualificationForm');
+        const steps = document.querySelectorAll('.step');
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const progressFill = document.getElementById('progressFill');
+
+        function updateProgress() {
+            const progress = (currentStep / totalSteps) * 100;
+            progressFill.style.width = progress + '%';
+        }
+
+        function showStep(step) {
+            steps.forEach((s, index) => {
+                s.classList.remove('active');
+                if (index + 1 === step) {
+                    s.classList.add('active');
+                }
+            });
+
+            prevBtn.style.display = step === 1 ? 'none' : 'flex';
+            
+            if (step === totalSteps) {
+                nextBtn.innerHTML = '<i class="fas fa-lock"></i> Proceed to Secure Payment ($500)';
+            } else {
+                nextBtn.innerHTML = 'Next <i class="fas fa-arrow-right"></i>';
+            }
+
+            updateProgress();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function validateStep(step) {
+            const currentStepElement = document.querySelector(`.step[data-step="${step}"]`);
+            const inputs = currentStepElement.querySelectorAll('input[required], select[required], textarea[required]');
+            
+            let isValid = true;
+            inputs.forEach(input => {
+                if (input.type === 'radio') {
+                    const radioGroup = currentStepElement.querySelectorAll(`input[name="${input.name}"]`);
+                    const isChecked = Array.from(radioGroup).some(radio => radio.checked);
+                    if (!isChecked) isValid = false;
+                } else if (input.type === 'checkbox') {
+                    if (!input.checked) isValid = false;
+                } else if (!input.value.trim()) {
+                    isValid = false;
+                }
+            });
+
+            // Special validation for step 6 (payment consents)
+            if (step === 6) {
+                const paymentConsent = document.getElementById('paymentConsent');
+                const privacyConsent = document.getElementById('privacyConsent');
+                if (!paymentConsent.checked || !privacyConsent.checked) {
+                    isValid = false;
+                    if (!paymentConsent.checked || !privacyConsent.checked) {
+                        alert('Please review and accept both consent statements before proceeding to payment.');
+                    }
+                }
+            }
+
+            return isValid;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            if (currentStep === totalSteps) {
+                if (validateStep(currentStep)) {
+                    // Submit form
+                    submitForm();
+                } else {
+                    alert('Please fill in all required fields.');
+                }
+            } else {
+                if (validateStep(currentStep)) {
+                    currentStep++;
+                    showStep(currentStep);
+                } else {
+                    alert('Please complete all required fields before proceeding.');
+                }
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentStep > 1) {
+                currentStep--;
+                showStep(currentStep);
+            }
+        });
+
+        // Conditional logic for urgency alert
+        document.querySelectorAll('input[name="urgency"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                const urgencyAlert = document.getElementById('urgencyAlert');
+                
+                if (e.target.value === 'emergency') {
+                    urgencyAlert.innerHTML = `
+                        <div class="urgency-badge emergency">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <span>Emergency Priority - We'll contact you within 2 hours</span>
+                        </div>
+                        <p style="margin-top: 1rem; color: var(--gray-700);">
+                            <strong>Note:</strong> For immediate assistance, you may also call our emergency line at 
+                            <a href="tel:+1-202-555-0199" style="color: var(--accent); font-weight: 700;">(202) 555-0199</a>
+                        </p>
+                    `;
+                    urgencyAlert.classList.add('show');
+                } else if (e.target.value === 'urgent') {
+                    urgencyAlert.innerHTML = `
+                        <div class="urgency-badge">
+                            <i class="fas fa-clock"></i>
+                            <span>Urgent Matter - We'll respond within 4 business hours</span>
+                        </div>
+                    `;
+                    urgencyAlert.classList.add('show');
+                } else {
+                    urgencyAlert.classList.remove('show');
+                }
+            });
+        });
+
+        // Show "other industry" field conditionally
+        document.getElementById('industry').addEventListener('change', (e) => {
+            const otherField = document.getElementById('industryOther');
+            if (e.target.value === 'other') {
+                otherField.classList.add('show');
+            } else {
+                otherField.classList.remove('show');
+            }
+        });
+
+        function submitForm() {
+            // Collect form data
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
+
+            console.log('Form submitted:', data);
+
+            // In production, this would:
+            // 1. Save the form data to your database
+            // 2. Create a Stripe Checkout session
+            // 3. Redirect to Stripe payment page
+            // 4. After successful payment, show success message and send scheduling link
+            
+            // Example Stripe integration (requires Stripe.js):
+            /*
+            fetch('/api/create-consultation-session', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(session => {
+                // Redirect to Stripe Checkout
+                return stripe.redirectToCheckout({ sessionId: session.id });
+            })
+            .catch(error => {
+                alert('Error processing payment. Please try again or call (202) 555-0199');
+            });
+            */
+
+            // For demo purposes, show success message immediately
+            setTimeout(() => {
+                form.style.display = 'none';
+                document.getElementById('successMessage').classList.add('show');
+            }, 1500);
+
+            // Show loading state
+            nextBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            nextBtn.disabled = true;
+        }
+
+        // Initialize
+        updateProgress();
+    </script>
+</body>
+</html>

@@ -1,0 +1,1006 @@
+/* Fraud Investigation Page Specific Styles */
+
+:root {
+    --danger: #c0392b;
+    --danger-light: #e74c3c;
+}
+
+/* Emergency Bar */
+.fraud-emergency-bar {
+    background: linear-gradient(135deg, #8b0000 0%, #c0392b 100%);
+    color: white;
+    padding: 1rem 3rem;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.fraud-emergency-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.fraud-emergency-text {
+    font-weight: 700;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.fraud-emergency-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.fraud-emergency-btn {
+    background: white;
+    color: #8b0000;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.fraud-emergency-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Navigation with top offset */
+.fraud-nav {
+    position: sticky;
+    top: 54px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    z-index: 999;
+}
+
+.fraud-nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+}
+
+.fraud-nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.fraud-nav-logo::before {
+    content: '⚖ ';
+    color: var(--accent);
+}
+
+.fraud-nav-menu {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+    align-items: center;
+}
+
+.fraud-nav-link {
+    color: var(--gray-700);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+}
+
+.fraud-nav-link:hover {
+    color: var(--accent);
+}
+
+.fraud-nav-cta {
+    background: linear-gradient(135deg, var(--danger) 0%, #8b0000 100%);
+    color: var(--white);
+    padding: 0.875rem 1.75rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.fraud-nav-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(192, 57, 43, 0.35);
+}
+
+/* Hero Section */
+.fraud-hero {
+    background: linear-gradient(165deg, #1a1a2e 0%, #2d1b1b 50%, #1a0a0a 100%);
+    color: white;
+    padding: 8rem 3rem 6rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.fraud-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(212,175,55,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.3;
+}
+
+.fraud-hero-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.fraud-hero-badges {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.fraud-badge {
+    background: rgba(192, 57, 43, 0.2);
+    border: 1px solid rgba(192, 57, 43, 0.5);
+    padding: 0.625rem 1.25rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.fraud-badge i {
+    color: var(--danger-light);
+}
+
+.fraud-hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+}
+
+.fraud-hero-title .highlight {
+    background: linear-gradient(135deg, var(--danger-light) 0%, #ff6b6b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.fraud-hero-subtitle {
+    font-size: 1.35rem;
+    opacity: 0.9;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+    max-width: 900px;
+}
+
+/* Urgency Grid */
+.fraud-urgency-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin: 3rem 0;
+    padding: 3rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    border: 2px solid rgba(192, 57, 43, 0.3);
+}
+
+.fraud-urgency-item {
+    text-align: center;
+}
+
+.fraud-urgency-number {
+    font-size: 3rem;
+    font-weight: 800;
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--danger-light);
+    margin-bottom: 0.5rem;
+}
+
+.fraud-urgency-label {
+    font-size: 0.95rem;
+    opacity: 0.8;
+}
+
+/* Buttons */
+.fraud-cta-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.fraud-btn {
+    padding: 1.25rem 2.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.05rem;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    border: none;
+    cursor: pointer;
+}
+
+.fraud-btn-primary {
+    background: linear-gradient(135deg, var(--danger-light) 0%, var(--danger) 100%);
+    color: var(--white);
+    box-shadow: 0 6px 20px rgba(192, 57, 43, 0.4);
+}
+
+.fraud-btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 32px rgba(192, 57, 43, 0.5);
+}
+
+.fraud-btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.fraud-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Section Styles */
+.fraud-section {
+    padding: 7rem 3rem;
+}
+
+.fraud-section-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.fraud-section-header {
+    text-align: center;
+    max-width: 850px;
+    margin: 0 auto 5rem;
+}
+
+.fraud-section-tag {
+    color: var(--danger-light);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 1.25rem;
+}
+
+.fraud-section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 1.75rem;
+    line-height: 1.2;
+}
+
+.fraud-section-subtitle {
+    font-size: 1.2rem;
+    color: var(--gray-600);
+    line-height: 1.8;
+}
+
+/* Threats Section */
+.fraud-threats-section {
+    background: var(--gray-50);
+}
+
+.fraud-threat-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+}
+
+.fraud-threat-card {
+    background: white;
+    padding: 3rem;
+    border-radius: 16px;
+    border-left: 4px solid var(--danger);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s;
+}
+
+.fraud-threat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+.fraud-threat-icon {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, var(--danger-light) 0%, var(--danger) 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.fraud-threat-icon i {
+    font-size: 1.75rem;
+    color: white;
+}
+
+.fraud-threat-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.fraud-threat-card p {
+    color: var(--gray-600);
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+}
+
+.fraud-threat-stat {
+    background: rgba(192, 57, 43, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    color: var(--danger);
+    font-size: 0.95rem;
+}
+
+/* Privileged Section */
+.fraud-privileged-section {
+    background: var(--primary);
+    color: white;
+}
+
+.fraud-privileged-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    margin-top: 4rem;
+}
+
+.fraud-privileged-card {
+    text-align: center;
+}
+
+.fraud-privileged-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+}
+
+.fraud-privileged-icon i {
+    font-size: 2rem;
+    color: white;
+}
+
+.fraud-privileged-card h3 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.fraud-privileged-card p {
+    opacity: 0.9;
+    line-height: 1.7;
+}
+
+/* Process Timeline */
+.fraud-process-section {
+    background: white;
+}
+
+.fraud-process-timeline {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+    position: relative;
+}
+
+.fraud-process-timeline::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: var(--danger);
+    z-index: 0;
+}
+
+.fraud-process-step {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.fraud-process-number {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--danger-light) 0%, var(--danger) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 2rem;
+    font-weight: 800;
+    color: white;
+    font-family: 'Cormorant Garamond', serif;
+    box-shadow: 0 4px 16px rgba(192, 57, 43, 0.3);
+}
+
+.fraud-process-step h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.75rem;
+}
+
+.fraud-process-step p {
+    color: var(--gray-600);
+    font-size: 0.9rem;
+}
+
+.fraud-process-time {
+    display: inline-block;
+    background: rgba(192, 57, 43, 0.1);
+    color: var(--danger);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-top: 1rem;
+}
+
+/* Deliverables Section */
+.fraud-deliverables-section {
+    background: var(--gray-50);
+}
+
+.fraud-deliverables-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    margin-top: 4rem;
+}
+
+.fraud-deliverable-category {
+    background: white;
+    padding: 3rem;
+    border-radius: 16px;
+    border: 2px solid var(--accent);
+}
+
+.fraud-deliverable-category h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.fraud-deliverable-category h3 i {
+    color: var(--accent);
+}
+
+.fraud-category-subtitle {
+    color: var(--gray-600);
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+}
+
+.fraud-deliverable-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.fraud-deliverable-list li {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--gray-200);
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+}
+
+.fraud-deliverable-list li:last-child {
+    border-bottom: none;
+}
+
+.fraud-deliverable-list li::before {
+    content: '✓';
+    color: var(--accent);
+    font-weight: 800;
+    font-size: 1.25rem;
+}
+
+/* Expertise Section */
+.fraud-expertise-section {
+    background: white;
+}
+
+.fraud-expertise-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 5rem;
+    align-items: center;
+}
+
+.fraud-expertise-content h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+}
+
+.fraud-expertise-content p {
+    color: var(--gray-600);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.fraud-expertise-points {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.fraud-expertise-point {
+    display: flex;
+    gap: 1rem;
+    align-items: start;
+}
+
+.fraud-expertise-point i {
+    color: var(--accent);
+    font-size: 1.5rem;
+    margin-top: 0.25rem;
+}
+
+.fraud-expertise-point-text h4 {
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.fraud-expertise-point-text p {
+    color: var(--gray-600);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.fraud-expertise-cred {
+    background: var(--accent-light);
+    padding: 3rem;
+    border-radius: 16px;
+    border: 2px solid var(--accent);
+}
+
+.fraud-cred-stat {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.fraud-cred-number {
+    font-size: 3.5rem;
+    font-weight: 800;
+    font-family: 'Cormorant Garamond', serif;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+}
+
+.fraud-cred-label {
+    font-weight: 600;
+    color: var(--gray-700);
+}
+
+.fraud-cred-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.fraud-cred-list li {
+    padding: 0.75rem 0;
+    color: var(--gray-700);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.fraud-cred-list li::before {
+    content: '▪';
+    color: var(--accent);
+    font-size: 1.5rem;
+}
+
+/* Pricing Section */
+.fraud-pricing-section {
+    background: var(--gray-50);
+}
+
+.fraud-pricing-container {
+    max-width: 900px;
+    margin: 4rem auto 0;
+    background: white;
+    border-radius: 20px;
+    padding: 4rem;
+    border: 3px solid var(--danger);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+.fraud-pricing-tiers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.fraud-pricing-tier {
+    text-align: center;
+    padding: 2rem;
+    border-radius: 12px;
+    background: var(--gray-50);
+}
+
+.fraud-tier-label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--danger);
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+}
+
+.fraud-tier-price {
+    font-size: 2.5rem;
+    font-weight: 800;
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.fraud-tier-desc {
+    font-size: 0.85rem;
+    color: var(--gray-600);
+}
+
+.fraud-pricing-note {
+    background: rgba(192, 57, 43, 0.1);
+    padding: 2rem;
+    border-radius: 12px;
+    border-left: 4px solid var(--danger);
+    margin-top: 2rem;
+}
+
+.fraud-pricing-note h4 {
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.75rem;
+}
+
+.fraud-pricing-note p {
+    color: var(--gray-700);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+/* Contact Section */
+.fraud-contact-section {
+    background: linear-gradient(135deg, var(--primary) 0%, #2d1b1b 100%);
+    color: white;
+}
+
+.fraud-contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.fraud-contact-content h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.fraud-contact-content p {
+    font-size: 1.15rem;
+    opacity: 0.9;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+}
+
+.fraud-contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.fraud-contact-method {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: all 0.3s;
+    text-decoration: none;
+    color: white;
+}
+
+.fraud-contact-method:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateX(10px);
+}
+
+.fraud-method-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--danger-light) 0%, var(--danger) 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.fraud-method-icon i {
+    font-size: 1.5rem;
+}
+
+.fraud-method-text h4 {
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.fraud-method-text p {
+    opacity: 0.8;
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+/* Contact Form */
+.fraud-contact-form {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 3rem;
+    border-radius: 16px;
+    color: var(--gray-900);
+}
+
+.fraud-contact-form h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+}
+
+.fraud-form-group {
+    margin-bottom: 1.5rem;
+}
+
+.fraud-form-group label {
+    display: block;
+    font-weight: 600;
+    color: var(--gray-700);
+    margin-bottom: 0.5rem;
+}
+
+.fraud-form-group input,
+.fraud-form-group select,
+.fraud-form-group textarea {
+    width: 100%;
+    padding: 0.875rem 1.25rem;
+    border: 2px solid var(--gray-200);
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s;
+}
+
+.fraud-form-group input:focus,
+.fraud-form-group select:focus,
+.fraud-form-group textarea:focus {
+    outline: none;
+    border-color: var(--danger);
+    box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.1);
+}
+
+.fraud-form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.fraud-form-submit-btn {
+    width: 100%;
+    padding: 1.25rem;
+    background: linear-gradient(135deg, var(--danger-light) 0%, var(--danger) 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    transition: all 0.3s;
+}
+
+.fraud-form-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(192, 57, 43, 0.4);
+}
+
+.fraud-form-note {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--gray-600);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+/* Footer */
+.fraud-footer {
+    background: var(--gray-900);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 3rem 0 2rem;
+}
+
+.fraud-footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 3rem;
+    text-align: center;
+}
+
+.fraud-footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 1rem;
+}
+
+.fraud-footer-links {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.fraud-footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.fraud-footer-links a:hover {
+    color: var(--accent);
+}
+
+/* Floating Emergency Button */
+.fraud-fab-emergency {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--danger-light) 0%, var(--danger) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.75rem;
+    box-shadow: 0 8px 28px rgba(192, 57, 43, 0.5);
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 1000;
+    text-decoration: none;
+    animation: fraud-pulse 2s infinite;
+}
+
+.fraud-fab-emergency:hover {
+    transform: scale(1.15);
+}
+
+@keyframes fraud-pulse {
+    0%, 100% {
+        box-shadow: 0 8px 28px rgba(192, 57, 43, 0.5);
+    }
+    50% {
+        box-shadow: 0 8px 40px rgba(192, 57, 43, 0.8);
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 968px) {
+    .fraud-hero-title {
+        font-size: 2.75rem;
+    }
+
+    .fraud-section-title {
+        font-size: 2.25rem;
+    }
+
+    .fraud-threat-grid,
+    .fraud-deliverables-grid,
+    .fraud-expertise-grid,
+    .fraud-contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .fraud-urgency-grid,
+    .fraud-privileged-grid,
+    .fraud-pricing-tiers {
+        grid-template-columns: 1fr;
+    }
+
+    .fraud-process-timeline {
+        grid-template-columns: 1fr;
+    }
+
+    .fraud-process-timeline::before {
+        display: none;
+    }
+
+    .fraud-nav-menu {
+        display: none;
+    }
+
+    .fraud-emergency-content {
+        flex-direction: column;
+    }
+
+    .fraud-pricing-container {
+        padding: 2rem;
+    }
+}
+

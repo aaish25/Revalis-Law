@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Terms & Disclosures | Rivalis Law</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --accent: #d4af37;
+            --accent-dark: #b8941f;
+            --accent-light: #f0e6d2;
+            --white: #ffffff;
+            --gray-50: #fafbfc;
+            --gray-100: #f4f6f8;
+            --gray-200: #e8ecf0;
+            --gray-600: #4a5568;
+            --gray-700: #2d3748;
+            --gray-900: #0f1419;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--gray-900);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            background: var(--gray-50);
+        }
+
+        /* Navigation */
+        .nav {
+            background: white;
+            border-bottom: 1px solid var(--gray-200);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-logo::before {
+            content: '⚖ ';
+            color: var(--accent);
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--gray-900) 100%);
+            color: white;
+            padding: 4rem 3rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Main Content */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 3rem;
+        }
+
+        .sidebar-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .sidebar h3 {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gray-600);
+            margin-bottom: 1.5rem;
+        }
+
+        .sidebar-nav {
+            list-style: none;
+        }
+
+        .sidebar-nav li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-nav a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--gray-700);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+
+        .sidebar-nav a:hover {
+            background: var(--accent-light);
+            color: var(--primary);
+        }
+
+        .sidebar-nav a.active {
+            background: var(--accent);
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Content Sections */
+        .content {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .legal-section {
+            margin-bottom: 4rem;
+            padding-bottom: 3rem;
+            border-bottom: 2px solid var(--gray-200);
+        }
+
+        .legal-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .legal-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-id {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .legal-section h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .legal-section h4 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .legal-section p {
+            color: var(--gray-700);
+            line-height: 1.8;
+            margin-bottom: 1.25rem;
+        }
+
+        .legal-section ul, .legal-section ol {
+            color: var(--gray-700);
+            line-height: 1.8;
+            margin-bottom: 1.25rem;
+            padding-left: 2rem;
+        }
+
+        .legal-section li {
+            margin-bottom: 0.75rem;
+        }
+
+        .highlight-box {
+            background: var(--accent-light);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .highlight-box strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .info-box {
+            background: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .jurisdiction-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.35rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .last-updated {
+            background: var(--gray-100);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--gray-900);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 3rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 968px) {
+            .sidebar-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .sidebar {
+                position: static;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .legal-section h2 {
+                font-size: 1.75rem;
+            }
+
+            .content {
+                padding: 2rem;
+            }
+
+            .nav-container {
+                padding: 0 1.5rem;
+            }
+
+            .main-container {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">Rivalis Law</a>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Legal Terms & Disclosures</h1>
+        <p>Important information regarding the use of this website and engagement of legal services</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <div class="sidebar-layout">
+            <!-- Sidebar Navigation -->
+            <aside class="sidebar">
+                <h3>Quick Navigation</h3>
+                <ul class="sidebar-nav">
+                    <li><a href="#attorney-advertising" class="active">Attorney Advertising</a></li>
+                    <li><a href="#no-relationship">No Attorney-Client Relationship</a></li>
+                    <li><a href="#website-terms">Website Terms of Use</a></li>
+                    <li><a href="#privacy-policy">Privacy Policy</a></li>
+                    <li><a href="#bar-admissions">Bar Admissions & Jurisdiction</a></li>
+                    <li><a href="#engagement">Engagement Terms</a></li>
+                    <li><a href="#fees">Fees & Payment</a></li>
+                    <li><a href="#limitations">Limitations of Liability</a></li>
+                    <li><a href="#confidentiality">Confidentiality & Privilege</a></li>
+                    <li><a href="#professional-conduct">Professional Conduct</a></li>
+                    <li><a href="#contact-info">Contact Information</a></li>
+                </ul>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="content">
+                <div class="last-updated">
+                    <i class="fas fa-calendar"></i>
+                    <span><strong>Last Updated:</strong> November 2024 | <strong>Effective Date:</strong> November 2024</span>
+                </div>
+
+                <!-- Section 1: Attorney Advertising -->
+                <section id="attorney-advertising" class="legal-section">
+                    <h2>Attorney Advertising Disclaimer</h2>
+                    <span class="section-id">Required Disclosure</span>
+
+                    <div class="warning-box">
+                        <strong>ATTORNEY ADVERTISING:</strong> This website constitutes attorney advertising under the applicable rules of professional conduct in the jurisdictions where Rivalis Law is licensed to practice. Prior results do not guarantee a similar outcome.
+                    </div>
+
+                    <p>This website is designed for general information purposes only. The information presented on this site should not be construed to be formal legal advice nor the formation of an attorney-client relationship.</p>
+
+                    <h3>Jurisdictional Compliance</h3>
+                    
+                    <div>
+                        <span class="jurisdiction-badge">New York</span>
+                        <span class="jurisdiction-badge">Michigan</span>
+                    </div>
+
+                    <p>This website complies with the attorney advertising rules of the New York Rules of Professional Conduct (Rule 7.1) and the Michigan Rules of Professional Conduct (Rule 7.2). Any statements regarding the quality of legal services or claims about results obtained are based on the experience and qualifications of the attorney, but cannot guarantee similar outcomes in future matters.</p>
+
+                    <h4>Testimonials & Case Results</h4>
+                    <p>Any testimonials or endorsements contained on this website do not constitute a guarantee, warranty, or prediction regarding the outcome of your legal matter. All case results and client testimonials are provided for informational purposes only. Client results vary based on the facts, circumstances, jurisdiction, and applicable law.</p>
+
+                    <h4>Certifications & Specializations</h4>
+                    <p>References to certifications, awards, or specialized training (including Oxford University AI Governance Programme completion) are provided for informational purposes. No attorney is certified as a specialist by the State Bar of Michigan or the New York State Bar Association unless specifically stated. Educational certifications and professional training credentials are distinct from state bar certifications of legal specialty.</p>
+                </section>
+
+                <!-- Section 2: No Attorney-Client Relationship -->
+                <section id="no-relationship" class="legal-section">
+                    <h2>No Attorney-Client Relationship</h2>
+                    <span class="section-id">Critical Notice</span>
+
+                    <div class="highlight-box">
+                        <strong>IMPORTANT:</strong> Visiting this website, reading its content, submitting a contact form, sending an email, or calling the office does not create an attorney-client relationship.
+                    </div>
+
+                    <h3>When an Attorney-Client Relationship Forms</h3>
+                    <p>An attorney-client relationship is formed only when:</p>
+                    <ol>
+                        <li><strong>Conflicts Check:</strong> A conflicts of interest check has been completed and no conflicts exist;</li>
+                        <li><strong>Written Agreement:</strong> Both parties have executed a written engagement letter or retainer agreement;</li>
+                        <li><strong>Retainer Payment:</strong> Any required retainer or advance fee deposit has been received and cleared; and</li>
+                        <li><strong>Mutual Confirmation:</strong> Both the attorney and prospective client have explicitly agreed to the representation in writing.</li>
+                    </ol>
+
+                    <h3>Communications Prior to Engagement</h3>
+                    <p>Any information you send to us via email, contact form, telephone, or otherwise before an attorney-client relationship is established may not be treated as privileged or confidential. <strong>Do not send confidential information until you have received written confirmation that we are representing you.</strong></p>
+
+                    <h4>Initial Consultations</h4>
+                    <p>Initial consultations are provided for the purpose of:</p>
+                    <ul>
+                        <li>Assessing potential conflicts of interest</li>
+                        <li>Understanding the nature and scope of your legal needs</li>
+                        <li>Determining whether Rivalis Law can provide appropriate representation</li>
+                        <li>Discussing potential engagement terms, fees, and timeline</li>
+                    </ul>
+
+                    <p>Information disclosed during an initial consultation, while treated with appropriate care and discretion, does not create an attorney-client relationship or attorney-client privilege unless and until you are formally engaged as a client through a signed engagement letter.</p>
+
+                    <h3>Capacity Limitations</h3>
+                    <p>Rivalis Law maintains limited client capacity to ensure personalized, high-quality service. Not all prospective clients will be accepted for representation. Factors considered in accepting new clients include:</p>
+                    <ul>
+                        <li>Current workload and capacity constraints</li>
+                        <li>Nature and complexity of the legal matter</li>
+                        <li>Potential conflicts of interest</li>
+                        <li>Geographic and jurisdictional considerations</li>
+                        <li>Alignment of matter with firm expertise and practice areas</li>
+                        <li>Resource requirements and timing considerations</li>
+                    </ul>
+
+                    <div class="info-box">
+                        <strong>Note:</strong> Declining to accept representation does not reflect on the merit of your matter. It may simply indicate capacity constraints, jurisdictional limitations, or practice area focus.
+                    </div>
+                </section>
+
+                <!-- Section 3: Website Terms of Use -->
+                <section id="website-terms" class="legal-section">
+                    <h2>Website Terms of Use</h2>
+                    <span class="section-id">Terms & Conditions</span>
+
+                    <h3>Acceptance of Terms</h3>
+                    <p>By accessing and using this website (rivalislaw.com), you accept and agree to be bound by these Terms of Use and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using or accessing this site.</p>
+
+                    <h3>Intellectual Property Rights</h3>
+                    <p>Unless otherwise stated, Rivalis Law and/or its licensors own the intellectual property rights for all material on this website. All intellectual property rights are reserved. You may access content from this website for your personal, non-commercial use, subject to the restrictions set forth in these terms.</p>
+
+                    <h4>You must not:</h4>
+                    <ul>
+                        <li>Republish, reproduce, duplicate, or copy material from this website for commercial purposes</li>
+                        <li>Sell, rent, sub-license, or otherwise commercialize material from this website</li>
+                        <li>Redistribute content from Rivalis Law's website (unless content is specifically made for redistribution)</li>
+                        <li>Use this website in any way that is unlawful or in violation of applicable regulations</li>
+                    </ul>
+
+                    <h3>Accuracy of Information</h3>
+                    <p>The information provided on this website is for general informational purposes only. While we endeavor to keep the information up to date and correct, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability with respect to the website or the information contained on the website.</p>
+
+                    <div class="warning-box">
+                        <strong>No Legal Advice:</strong> Information on this website is not legal advice and should not be relied upon as such. Legal advice can only be provided within the context of an attorney-client relationship based on specific facts and circumstances of your matter.
+                    </div>
+
+                    <h3>Links to Third-Party Websites</h3>
+                    <p>This website may contain links to third-party websites that are not under the control of Rivalis Law. We have no control over the nature, content, and availability of those sites. The inclusion of any links does not necessarily imply a recommendation or endorse the views expressed within them.</p>
+
+                    <h3>Limitation of Liability</h3>
+                    <p>In no event shall Rivalis Law, nor any of its officers, directors, employees, or affiliates, be held liable for anything arising out of or in any way connected with your use of this website, whether such liability is under contract, tort, or otherwise. This includes any indirect, consequential, or special liability arising out of or in any way related to your use of this website.</p>
+
+                    <h3>Modifications</h3>
+                    <p>Rivalis Law reserves the right to revise these terms of use at any time without notice. By using this website you are agreeing to be bound by the then-current version of these Terms of Use.</p>
+                </section>
+
+                <!-- Section 4: Privacy Policy -->
+                <section id="privacy-policy" class="legal-section">
+                    <h2>Privacy Policy</h2>
+                    <span class="section-id">Data Protection & Privacy</span>
+
+                    <h3>Information We Collect</h3>
+                    
+                    <h4>Information You Provide</h4>
+                    <p>We collect information that you voluntarily provide when you:</p>
+                    <ul>
+                        <li>Submit contact forms or consultation requests</li>
+                        <li>Send emails to any Rivalis Law email address</li>
+                        <li>Call our office telephone numbers</li>
+                        <li>Subscribe to newsletters or updates (if applicable)</li>
+                        <li>Engage our legal services and provide information necessary for representation</li>
+                    </ul>
+
+                    <p>This information may include: name, email address, telephone number, company name, job title, and details about your legal inquiry or matter.</p>
+
+                    <h4>Information Automatically Collected</h4>
+                    <p>When you visit our website, we automatically collect certain information about your device and browsing activity, including:</p>
+                    <ul>
+                        <li>IP address and general location information</li>
+                        <li>Browser type and version</li>
+                        <li>Operating system</li>
+                        <li>Pages visited and time spent on pages</li>
+                        <li>Referring website addresses</li>
+                        <li>Date and time stamps of visits</li>
+                    </ul>
+
+                    <h3>How We Use Your Information</h3>
+                    <p>Information we collect is used for the following purposes:</p>
+                    <ul>
+                        <li><strong>Legal Services:</strong> To provide legal representation and advice pursuant to an engagement agreement</li>
+                        <li><strong>Communication:</strong> To respond to inquiries, schedule consultations, and communicate about legal matters</li>
+                        <li><strong>Conflict Checks:</strong> To perform conflicts of interest analyses required by professional conduct rules</li>
+                        <li><strong>Website Improvement:</strong> To analyze website usage and improve user experience</li>
+                        <li><strong>Security:</strong> To protect against fraud, unauthorized access, and security threats</li>
+                        <li><strong>Legal Compliance:</strong> To comply with applicable laws, regulations, and professional obligations</li>
+                    </ul>
+
+                    <h3>Cookies and Tracking Technologies</h3>
+                    <p>Our website uses cookies and similar tracking technologies to enhance user experience. Cookies are small text files placed on your device. You can control cookies through your browser settings, though disabling cookies may affect website functionality.</p>
+
+                    <h4>Types of Cookies We Use:</h4>
+                    <ul>
+                        <li><strong>Essential Cookies:</strong> Necessary for website operation and security</li>
+                        <li><strong>Analytics Cookies:</strong> Help us understand how visitors interact with our website</li>
+                        <li><strong>Functionality Cookies:</strong> Remember your preferences and settings</li>
+                    </ul>
+
+                    <h3>Information Sharing and Disclosure</h3>
+                    <p>We do not sell, trade, or rent your personal information to third parties. We may share your information in the following limited circumstances:</p>
+
+                    <ul>
+                        <li><strong>Service Providers:</strong> With trusted third-party service providers who assist in operating our website, conducting business, or providing services (e.g., email hosting, cloud storage, payment processors), subject to confidentiality obligations</li>
+                        <li><strong>Legal Obligations:</strong> When required by law, court order, subpoena, or other legal process</li>
+                        <li><strong>Professional Obligations:</strong> As required or permitted by applicable rules of professional conduct</li>
+                        <li><strong>Business Transfers:</strong> In connection with a merger, acquisition, or sale of assets, subject to confidentiality protections</li>
+                        <li><strong>With Consent:</strong> When you have provided explicit consent to share your information</li>
+                    </ul>
+
+                    <h3>Data Security</h3>
+                    <p>We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. These measures include:</p>
+                    <ul>
+                        <li>SSL/TLS encryption for data transmission</li>
+                        <li>Secure servers with restricted access</li>
+                        <li>Regular security assessments and updates</li>
+                        <li>Employee training on data protection</li>
+                        <li>Incident response procedures</li>
+                    </ul>
+
+                    <p>However, no method of transmission over the Internet or electronic storage is 100% secure. While we strive to protect your personal information, we cannot guarantee its absolute security.</p>
+
+                    <h3>Data Retention</h3>
+                    <p>We retain personal information for as long as necessary to fulfill the purposes outlined in this Privacy Policy, unless a longer retention period is required or permitted by law. For client matters, we retain information in accordance with professional responsibility rules and applicable record retention requirements.</p>
+
+                    <h3>Your Privacy Rights</h3>
+                    <p>Depending on your jurisdiction, you may have certain rights regarding your personal information:</p>
+                    <ul>
+                        <li><strong>Access:</strong> Request access to personal information we hold about you</li>
+                        <li><strong>Correction:</strong> Request correction of inaccurate or incomplete information</li>
+                        <li><strong>Deletion:</strong> Request deletion of your personal information (subject to legal and professional obligations)</li>
+                        <li><strong>Portability:</strong> Request transfer of your information to another service provider</li>
+                        <li><strong>Objection:</strong> Object to processing of your personal information in certain circumstances</li>
+                        <li><strong>Withdraw Consent:</strong> Withdraw consent where processing is based on consent</li>
+                    </ul>
+
+                    <p>To exercise these rights, please contact us using the information provided in the Contact Information section below.</p>
+
+                    <h3>International Data Transfers</h3>
+                    <p>Your information may be transferred to and processed in countries other than your country of residence. These countries may have data protection laws that differ from the laws of your country. We take appropriate measures to ensure your information receives adequate protection.</p>
+
+                    <h3>Children's Privacy</h3>
+                    <p>Our website and services are not directed to individuals under the age of 18. We do not knowingly collect personal information from children. If you become aware that a child has provided us with personal information, please contact us so we can delete such information.</p>
+
+                    <h3>California Privacy Rights</h3>
+                    <p>California residents have specific rights under the California Consumer Privacy Act (CCPA), including:</p>
+                    <ul>
+                        <li>Right to know what personal information is collected, used, shared, or sold</li>
+                        <li>Right to delete personal information (subject to exceptions)</li>
+                        <li>Right to opt-out of the sale of personal information (we do not sell personal information)</li>
+                        <li>Right to non-discrimination for exercising CCPA rights</li>
+                    </ul>
+
+                    <h3>European Privacy Rights (GDPR)</h3>
+                    <p>If you are located in the European Economic Area (EEA), you have rights under the General Data Protection Regulation (GDPR), including those enumerated above under "Your Privacy Rights." Our legal basis for processing your information includes:</p>
+                    <ul>
+                        <li>Consent you have provided</li>
+                        <li>Performance of a contract (providing legal services)</li>
+                        <li>Compliance with legal obligations</li>
+                        <li>Legitimate interests in operating our business and providing legal services</li>
+                    </ul>
+
+                    <h3>Changes to Privacy Policy</h3>
+                    <p>We may update this Privacy Policy from time to time to reflect changes in our practices or applicable law. We will notify you of material changes by posting the updated policy on our website with a new "Last Updated" date. We encourage you to review this Privacy Policy periodically.</p>
+                </section>
+
+                <!-- Section 5: Bar Admissions & Jurisdiction -->
+                <section id="bar-admissions" class="legal-section">
+                    <h2>Bar Admissions & Jurisdictional Limitations</h2>
+                    <span class="section-id">Licensure & Practice Authority</span>
+
+                    <h3>Bar Admissions</h3>
+                    <p>Aaishwarya Aeron, the attorney operating Rivalis Law, is admitted to practice law in the following jurisdictions:</p>
+
+                    <div class="highlight-box">
+                        <strong>Licensed Jurisdictions:</strong>
+                        <ul style="margin: 1rem 0 0 0;">
+                            <li><strong>New York State Bar</strong> - Admission Number: [To Be Added]</li>
+                            <li><strong>Michigan State Bar</strong> - Admission Number: [To Be Added]</li>
+                        </ul>
+                    </div>
+
+                    <p>Attorney license status can be verified through the respective state bar associations:</p>
+                    <ul>
+                        <li><strong>New York:</strong> New York State Unified Court System Attorney Registration (<a href="https://iapps.courts.state.ny.us/attorney/AttorneySearch" target="_blank">https://iapps.courts.state.ny.us/attorney/AttorneySearch</a>)</li>
+                        <li><strong>Michigan:</strong> State Bar of Michigan Lawyer Directory (<a href="https://www.michbar.org" target="_blank">https://www.michbar.org</a>)</li>
+                    </ul>
+
+                    <h3>Jurisdictional Limitations</h3>
+                    <p>An attorney's ability to practice law is generally limited to jurisdictions where the attorney is licensed. The following principles apply:</p>
+
+                    <h4>New York Practice</h4>
+                    <p>Attorney Aeron is authorized to practice law in New York State, including providing legal advice on matters governed by New York law and representing clients in New York state and federal courts where admitted.</p>
+
+                    <h4>Michigan Practice</h4>
+                    <p>Attorney Aeron is authorized to practice law in Michigan, including providing legal advice on matters governed by Michigan law and representing clients in Michigan state and federal courts where admitted.</p>
+
+                    <h4>Federal Practice</h4>
+                    <p>Admission to practice before federal agencies and courts is generally separate from state bar admission. Federal practice authority includes:</p>
+                    <ul>
+                        <li><strong>Immigration Matters:</strong> Authorized to practice before U.S. Citizenship and Immigration Services (USCIS) and immigration courts nationwide pursuant to federal immigration law</li>
+                        <li><strong>Federal Courts:</strong> Admitted to practice before specific federal district courts and may seek pro hac vice admission in other federal courts as needed</li>
+                        <li><strong>Federal Agencies:</strong> May represent clients before federal administrative agencies as authorized by agency rules</li>
+                    </ul>
+
+                    <h4>Multi-Jurisdictional Practice</h4>
+                    <p>Certain legal services may be provided to clients in jurisdictions where the attorney is not admitted, consistent with applicable multi-jurisdictional practice rules:</p>
+                    <ul>
+                        <li>Matters arising under federal law (e.g., federal immigration law, federal securities law)</li>
+                        <li>Transactional matters involving multiple jurisdictions</li>
+                        <li>Services provided in association with local counsel admitted in the relevant jurisdiction</li>
+                        <li>Temporary services permitted under ABA Model Rule 5.5 and similar state rules</li>
+                    </ul>
+
+                    <h3>UAE and International Matters</h3>
+                    <p>References to "UAE markets" or United Arab Emirates practice on this website refer to:</p>
+                    <ul>
+                        <li>Advising U.S.-based clients on U.S. legal matters related to UAE business activities</li>
+                        <li>U.S. immigration services for UAE nationals seeking U.S. visas</li>
+                        <li>Cross-border transactional support involving both U.S. and UAE entities, focusing on U.S. law aspects</li>
+                        <li>Coordination with UAE-licensed legal counsel on international matters</li>
+                    </ul>
+
+                    <div class="warning-box">
+                        <strong>Important:</strong> Rivalis Law is not licensed to practice UAE law or represent clients in UAE courts. For matters requiring UAE legal advice or representation, local UAE-licensed counsel must be engaged, and Rivalis Law can assist in coordinating such representation.
+                    </div>
+
+                    <h3>Pro Hac Vice Admissions</h3>
+                    <p>For litigation matters in jurisdictions where Attorney Aeron is not admitted, pro hac vice admission may be sought where permissible under local court rules, typically in association with local counsel.</p>
+
+                    <h3>Professional Affiliations</h3>
+                    <p>Attorney Aeron maintains memberships in the following professional organizations:</p>
+                    <ul>
+                        <li>New York State Bar Association</li>
+                        <li>State Bar of Michigan</li>
+                        <li>American Immigration Lawyers Association (if applicable)</li>
+                        <li>Other relevant professional associations</li>
+                    </ul>
+                </section>
+
+                <!-- Section 6: Engagement Terms -->
+                <section id="engagement" class="legal-section">
+                    <h2>Terms of Engagement</h2>
+                    <span class="section-id">Client Relationship Terms</span>
+
+                    <h3>Engagement Letters</h3>
+                    <p>All attorney-client relationships with Rivalis Law are governed by a written engagement letter or retainer agreement. The engagement letter will specify:</p>
+                    <ul>
+                        <li>Scope of representation and specific matters covered</li>
+                        <li>Matters explicitly excluded from the engagement</li>
+                        <li>Fee structure, billing rates, and payment terms</li>
+                        <li>Estimated costs and expense reimbursement policies</li>
+                        <li>Communication protocols and response times</li>
+                        <li>Responsibilities of both the attorney and the client</li>
+                        <li>Termination provisions</li>
+                        <li>Dispute resolution procedures</li>
+                    </ul>
+
+                    <h3>Scope of Representation</h3>
+                    <p>Unless explicitly agreed otherwise in writing, legal representation is limited to:</p>
+                    <ul>
+                        <li>The specific matter(s) described in the engagement letter</li>
+                        <li>The time period specified in the engagement agreement</li>
+                        <li>The jurisdictions in which the attorney is licensed or authorized to practice</li>
+                    </ul>
+
+                    <div class="info-box">
+                        <strong>Limited Scope Representation:</strong> Many engagements are for limited scope or "unbundled" legal services, meaning the attorney provides specific services rather than full representation in all aspects of a matter. The engagement letter will clearly define the scope.
+                    </div>
+
+                    <h3>Client Responsibilities</h3>
+                    <p>Clients engaging Rivalis Law have the following responsibilities:</p>
+                    <ul>
+                        <li><strong>Truthfulness:</strong> Provide truthful, complete, and accurate information</li>
+                        <li><strong>Cooperation:</strong> Cooperate fully with reasonable requests for information and documentation</li>
+                        <li><strong>Timeliness:</strong> Respond to communications and provide information in a timely manner</li>
+                        <li><strong>Fees:</strong> Pay fees and costs in accordance with the engagement agreement</li>
+                        <li><strong>Decision-Making:</strong> Make informed decisions regarding the matter after receiving legal advice</li>
+                        <li><strong>Disclosure:</strong> Disclose all relevant facts, even if unfavorable</li>
+                        <li><strong>Document Preservation:</strong> Preserve relevant documents and information</li>
+                    </ul>
+
+                    <h3>Communication Standards</h3>
+                    <p>Rivalis Law strives to maintain prompt communication with clients:</p>
+                    <ul>
+                        <li><strong>Emergency Matters:</strong> Response within 4 hours during business hours for matters designated as emergencies in the engagement letter</li>
+                        <li><strong>Urgent Matters:</strong> Response within 24 hours during business days</li>
+                        <li><strong>Routine Matters:</strong> Response within 2-3 business days</li>
+                        <li><strong>Regular Updates:</strong> Proactive status updates on significant developments</li>
+                    </ul>
+
+                    <p>Business hours are generally Monday through Friday, 9:00 AM to 6:00 PM Eastern Time, excluding federal holidays. After-hours and weekend availability may be arranged for emergency matters.</p>
+
+                    <h3>Termination of Representation</h3>
+                    <p>Either the client or attorney may terminate the attorney-client relationship:</p>
+
+                    <h4>Client-Initiated Termination</h4>
+                    <p>Clients have the right to terminate representation at any time, with or without cause. Upon termination:</p>
+                    <ul>
+                        <li>Client must provide written notice of termination</li>
+                        <li>Client remains responsible for fees and costs incurred up to termination date</li>
+                        <li>Attorney will provide reasonable assistance with transition to new counsel</li>
+                        <li>Client files and property will be returned upon payment of outstanding fees (subject to applicable rules and retaining lien rights)</li>
+                    </ul>
+
+                    <h4>Attorney-Initiated Termination</h4>
+                    <p>The attorney may withdraw from representation for reasons permitted under professional conduct rules, including:</p>
+                    <ul>
+                        <li>Client's failure to pay fees or costs as agreed</li>
+                        <li>Client's failure to cooperate or follow advice</li>
+                        <li>Client's use of services to further crime or fraud</li>
+                        <li>Representation that would violate rules of professional conduct</li>
+                        <li>Unreasonable difficulty in working relationship</li>
+                        <li>Client's termination of necessary decision-making capacity</li>
+                    </ul>
+
+                    <p>In litigation matters, withdrawal may require court approval. The attorney will take reasonable steps to protect client interests during any withdrawal process.</p>
+
+                    <h3>Conflicts of Interest</h3>
+                    <p>Before accepting any engagement, Rivalis Law conducts a thorough conflicts of interest check. Representation may be declined if:</p>
+                    <ul>
+                        <li>A direct conflict exists with a current or former client</li>
+                        <li>Representation would be materially limited by attorney's responsibilities to another client or third party</li>
+                        <li>Representation would involve asserting a claim against a current client in a different matter</li>
+                        <li>Personal interests of the attorney conflict with client interests</li>
+                    </ul>
+
+                    <p>In some situations, conflicts may be waived with informed written consent of all affected parties. The engagement letter will address any potential conflicts and required waivers.</p>
+                </section>
+
+                <!-- Section 7: Fees & Payment -->
+                <section id="fees" class="legal-section">
+                    <h2>Fee Structures & Payment Terms</h2>
+                    <span class="section-id">Billing & Compensation</span>
+
+                    <h3>Fee Arrangements</h3>
+                    <p>Rivalis Law offers various fee structures depending on the nature of the legal matter:</p>
+
+                    <h4>1. Fixed Fees (Flat Fees)</h4>
+                    <p>Many services are provided on a fixed-fee basis, where the client pays a predetermined amount for specified services. Fixed fees are quoted in advance and remain constant regardless of time spent (subject to scope limitations).</p>
+                    <ul>
+                        <li><strong>Advantages:</strong> Predictable cost, no hourly billing surprises, aligned incentives</li>
+                        <li><strong>Common Uses:</strong> Immigration petitions, entity formations, contract review, specific transactional matters</li>
+                        <li><strong>Scope Changes:</strong> If scope expands beyond initial agreement, additional fees may apply</li>
+                    </ul>
+
+                    <h4>2. Hourly Fees</h4>
+                    <p>Some matters are billed on an hourly basis, with time recorded in increments (typically 0.1 hour/6-minute increments).</p>
+                    <ul>
+                        <li><strong>Standard Hourly Rate:</strong> Will be specified in the engagement letter (typically ranges from $400-$650 per hour depending on matter complexity)</li>
+                        <li><strong>Billing Increments:</strong> Time is billed in 6-minute (0.1 hour) increments</li>
+                        <li><strong>Minimum Charges:</strong> Brief communications may be subject to minimum billing increments</li>
+                        <li><strong>Itemized Billing:</strong> Detailed time entries provided in monthly invoices</li>
+                    </ul>
+
+                    <h4>3. Hybrid Fee Structures</h4>
+                    <p>Some engagements use a combination of fixed and hourly fees:</p>
+                    <ul>
+                        <li><strong>Fixed Fee + Hourly:</strong> Fixed fee for standard services, hourly for additional work</li>
+                        <li><strong>Capped Fees:</strong> Hourly billing up to a maximum cap amount</li>
+                        <li><strong>Phase-Based Pricing:</strong> Fixed fees for each defined phase of work</li>
+                    </ul>
+
+                    <h4>4. Retainer Arrangements</h4>
+                    <p>For ongoing representation, monthly retainer arrangements may be available:</p>
+                    <ul>
+                        <li><strong>General Availability:</strong> Client receives priority access and specified hours per month</li>
+                        <li><strong>Fractional General Counsel:</strong> Ongoing strategic advice and support</li>
+                        <li><strong>Retainer Credits:</strong> Monthly fee may be credited against hourly work or provide a set number of included hours</li>
+                    </ul>
+
+                    <h3>Retainers and Advance Fee Deposits</h3>
+                    <p>Most engagements require an advance fee deposit (retainer) before work begins:</p>
+                    <ul>
+                        <li><strong>Security Retainer:</strong> Advance payment held in trust and applied to final invoice</li>
+                        <li><strong>Advance Fee Deposit:</strong> Upfront payment against which fees and costs are charged</li>
+                        <li><strong>Refundability:</strong> Unused portions of retainers are refundable; earned fees are not</li>
+                        <li><strong>Replenishment:</strong> Retainer may require replenishment if depleted before matter conclusion</li>
+                    </ul>
+
+                    <h3>Costs and Expenses</h3>
+                    <p>In addition to legal fees, clients are responsible for reimbursement of costs and expenses, which may include:</p>
+                    <ul>
+                        <li>Court filing fees and related court costs</li>
+                        <li>Service of process fees</li>
+                        <li>Government filing fees (USPTO, USCIS, etc.)</li>
+                        <li>Expert witness fees</li>
+                        <li>Deposition and transcript costs</li>
+                        <li>Travel expenses (when client-approved)</li>
+                        <li>Document copying, printing, and production costs</li>
+                        <li>Electronic research databases (Westlaw, LexisNexis)</li>
+                        <li>Courier and overnight delivery services</li>
+                        <li>Long-distance telephone charges</li>
+                    </ul>
+
+                    <h3>Billing and Payment Terms</h3>
+                    <p>Standard billing and payment terms include:</p>
+
+                    <h4>Invoicing</h4>
+                    <ul>
+                        <li><strong>Frequency:</strong> Monthly invoices for hourly matters; milestone billing for fixed-fee matters</li>
+                        <li><strong>Detail:</strong> Itemized descriptions of services rendered</li>
+                        <li><strong>Delivery:</strong> Electronic invoices via email (unless otherwise requested)</li>
+                        <li><strong>Questions:</strong> Clients may request clarification of any invoice entries</li>
+                    </ul>
+
+                    <h4>Payment Due Dates</h4>
+                    <ul>
+                        <li><strong>Due Date:</strong> Payment due within 15 days of invoice date (unless otherwise specified)</li>
+                        <li><strong>Methods:</strong> Payment accepted via check, wire transfer, ACH, or approved credit cards</li>
+                        <li><strong>Credit Card Processing:</strong> Credit card payments may be subject to processing fees</li>
+                        <li><strong>Currency:</strong> All fees quoted and payable in U.S. Dollars</li>
+                    </ul>
+
+                    <h4>Late Payment</h4>
+                    <ul>
+                        <li><strong>Late Fees:</strong> Past due balances may incur late payment charges (1.5% per month or maximum permitted by law)</li>
+                        <li><strong>Collection Costs:</strong> Client responsible for collection costs and attorney fees associated with collecting unpaid amounts</li>
+                        <li><strong>Work Stoppage:</strong> Continued representation may be suspended for unpaid fees</li>
+                    </ul>
+
+                    <h3>Fee Disputes</h3>
+                    <p>If a client disputes any fee or cost charge:</p>
+                    <ul>
+                        <li>Client should notify attorney in writing within 30 days of invoice</li>
+                        <li>Attorney will work with client to resolve the dispute amicably</li>
+                        <li>Clients may have the right to fee arbitration under state bar rules</li>
+                        <li>Work may continue on undisputed portions while dispute is resolved</li>
+                    </ul>
+
+                    <h3>Fee Agreements and Modifications</h3>
+                    <p>All fee arrangements are documented in the engagement letter. Fee terms may be modified only by written agreement signed by both parties. Verbal modifications are not binding.</p>
+                </section>
+
+                <!-- Section 8: Limitations of Liability -->
+                <section id="limitations" class="legal-section">
+                    <h2>Limitations of Liability & Disclaimers</h2>
+                    <span class="section-id">Legal Limitations</span>
+
+                    <h3>No Guarantee of Outcomes</h3>
+                    <p>Legal services are provided with professional skill and care, but no attorney can guarantee specific results or outcomes. Factors affecting case outcomes include:</p>
+                    <ul>
+                        <li>Applicable law and how courts or agencies interpret it</li>
+                        <li>Facts and evidence available</li>
+                        <li>Actions of opposing parties, judges, agencies, and third parties</li>
+                        <li>Changes in law or policy</li>
+                        <li>Circumstances beyond attorney control</li>
+                    </ul>
+
+                    <div class="warning-box">
+                        <strong>Important:</strong> Past results do not guarantee or predict similar future outcomes. Each legal matter is unique and results depend on specific facts and circumstances.
+                    </div>
+
+                    <h3>Scope Limitations</h3>
+                    <p>Representation is limited to matters explicitly covered in the engagement letter. Unless specifically agreed:</p>
+                    <ul>
+                        <li>Representation does not include tax advice (except when specifically engaged for tax matters)</li>
+                        <li>Representation does not include accounting or financial planning services</li>
+                        <li>Representation is limited to specified jurisdictions</li>
+                        <li>Representation does not include appeals unless specifically engaged for appellate work</li>
+                        <li>Representation does not extend to related parties unless explicitly included</li>
+                    </ul>
+
+                    <h3>Reliance on Client Information</h3>
+                    <p>Legal advice is based on facts and information provided by the client. The attorney:</p>
+                    <ul>
+                        <li>Is entitled to rely on information provided by the client</li>
+                        <li>Is not responsible for verifying facts unless specifically engaged to do so</li>
+                        <li>May need to modify advice if material facts change or new information emerges</li>
+                        <li>Cannot be held liable for advice based on incomplete or inaccurate information provided by client</li>
+                    </ul>
+
+                    <h3>Third-Party Reliance</h3>
+                    <p>Legal advice and work product are prepared solely for the benefit of the client and may not be relied upon by third parties unless:</p>
+                    <ul>
+                        <li>Attorney has explicitly consented to third-party reliance in writing</li>
+                        <li>Opinion letters or other documents are specifically addressed to the third party</li>
+                        <li>Appropriate disclaimers and limitations are included</li>
+                    </ul>
+
+                    <h3>Limitation of Damages</h3>
+                    <p>To the fullest extent permitted by applicable law and professional conduct rules:</p>
+                    <ul>
+                        <li>Attorney's liability for professional negligence is limited to direct damages caused by attorney's breach of duty</li>
+                        <li>Attorney is not liable for consequential, indirect, incidental, or punitive damages</li>
+                        <li>Claims must be brought within applicable statute of limitations periods</li>
+                        <li>Client's sole remedy for fee disputes may be fee reduction or refund, not additional damages</li>
+                    </ul>
+
+                    <div class="info-box">
+                        <strong>Note:</strong> These limitations are subject to applicable law and professional conduct rules, which may impose mandatory standards that cannot be limited by agreement.
+                    </div>
+
+                    <h3>Force Majeure</h3>
+                    <p>The attorney is not liable for failure to perform services or meet deadlines due to circumstances beyond reasonable control, including:</p>
+                    <ul>
+                        <li>Acts of God, natural disasters, pandemics</li>
+                        <li>War, terrorism, civil unrest</li>
+                        <li>Government actions, court closures, changes in law</li>
+                        <li>Technology failures beyond attorney's control</li>
+                        <li>Other unforeseen circumstances that prevent performance</li>
+                    </ul>
+
+                    <h3>Professional Liability Insurance</h3>
+                    <p>Rivalis Law maintains professional liability insurance (legal malpractice insurance) as required by applicable law and professional standards. Details of coverage limits are available upon request.</p>
+                </section>
+
+                <!-- Section 9: Confidentiality & Privilege -->
+                <section id="confidentiality" class="legal-section">
+                    <h2>Confidentiality & Attorney-Client Privilege</h2>
+                    <span class="section-id">Protected Communications</span>
+
+                    <h3>Duty of Confidentiality</h3>
+                    <p>Attorneys have a professional and ethical duty to maintain client confidentiality. This duty applies to:</p>
+                    <ul>
+                        <li>All information relating to representation of a client</li>
+                        <li>Information learned during representation or in contemplation of representation</li>
+                        <li>Information from any source, whether or not confidential or privileged</li>
+                        <li>Past, current, and prospective clients (subject to applicable rules)</li>
+                    </ul>
+
+                    <h3>Attorney-Client Privilege</h3>
+                    <p>Attorney-client privilege is a legal doctrine that protects confidential communications between attorney and client:</p>
+
+                    <h4>Privilege Requirements</h4>
+                    <p>Communications are privileged when:</p>
+                    <ul>
+                        <li>Made between attorney and client (or their representatives)</li>
+                        <li>Made in confidence with reasonable expectation of confidentiality</li>
+                        <li>Made for the purpose of seeking or providing legal advice</li>
+                        <li>Not disclosed to third parties (except as necessary for representation)</li>
+                    </ul>
+
+                    <h4>Scope of Privilege</h4>
+                    <p>Privilege generally protects:</p>
+                    <ul>
+                        <li>Legal advice and opinions</li>
+                        <li>Communications about legal strategy</li>
+                        <li>Confidential disclosures of facts to the attorney</li>
+                        <li>Attorney work product prepared in anticipation of litigation</li>
+                    </ul>
+
+                    <h3>Exceptions to Confidentiality</h3>
+                    <p>The duty of confidentiality and attorney-client privilege are subject to certain exceptions:</p>
+
+                    <h4>Mandatory Disclosure</h4>
+                    <p>Attorney may or must disclose confidential information when:</p>
+                    <ul>
+                        <li><strong>Client Consent:</strong> Client consents to disclosure (express or implied)</li>
+                        <li><strong>Preventing Harm:</strong> Necessary to prevent reasonably certain death or substantial bodily harm</li>
+                        <li><strong>Crime-Fraud Exception:</strong> Client uses or used attorney's services to commit crime or fraud</li>
+                        <li><strong>Legal Compliance:</strong> Required by law, court order, or professional conduct rules</li>
+                        <li><strong>Fee Disputes:</strong> Necessary to establish attorney's claim or defense in fee dispute</li>
+                        <li><strong>Malpractice Defense:</strong> Necessary to defend against allegation of wrongful conduct</li>
+                    </ul>
+
+                    <h4>Waiver of Privilege</h4>
+                    <p>Privilege may be waived if:</p>
+                    <ul>
+                        <li>Client voluntarily discloses privileged communication to third party</li>
+                        <li>Client puts legal advice at issue in litigation</li>
+                        <li>Client fails to take reasonable steps to protect confidentiality</li>
+                        <li>Crime-fraud exception applies</li>
+                    </ul>
+
+                    <h3>Security of Communications</h3>
+                    <p>Rivalis Law takes reasonable measures to protect confidentiality:</p>
+                    <ul>
+                        <li><strong>Email Encryption:</strong> Encrypted email available for sensitive communications</li>
+                        <li><strong>Secure File Transfer:</strong> Protected client portals for document sharing</li>
+                        <li><strong>Physical Security:</strong> Secure office facilities with restricted access</li>
+                        <li><strong>Electronic Security:</strong> Firewalls, encryption, access controls, and security software</li>
+                        <li><strong>Confidentiality Agreements:</strong> All staff bound by confidentiality obligations</li>
+                    </ul>
+
+                    <h4>Email Communication</h4>
+                    <p>Standard email is not completely secure. While attorney-client privilege generally applies to email communications:</p>
+                    <ul>
+                        <li>Unencrypted email may be intercepted by third parties</li>
+                        <li>Email sent from work accounts may be monitored by employers</li>
+                        <li>Email to incorrect addresses may result in disclosure</li>
+                        <li>For highly sensitive matters, encrypted email or secure portals are recommended</li>
+                    </ul>
+
+                    <h3>Third-Party Disclosure</h3>
+                    <p>Confidential information may be shared with third parties when necessary for representation:</p>
+                    <ul>
+                        <li><strong>Expert Consultants:</strong> Accountants, investigators, expert witnesses (subject to confidentiality agreements)</li>
+                        <li><strong>Co-Counsel:</strong> Other attorneys working on the matter</li>
+                        <li><strong>Support Staff:</strong> Assistants and staff necessary to provide legal services</li>
+                        <li><strong>Court Filings:</strong> Information included in pleadings, motions, and court submissions</li>
+                        <li><strong>Opposing Counsel:</strong> Information disclosed in discovery, negotiations, or settlement discussions</li>
+                    </ul>
+
+                    <p>Client consent (express or implied) is obtained before sharing confidential information when disclosure is not necessary for representation.</p>
+
+                    <h3>Document Retention and Destruction</h3>
+                    <p>Client files and confidential information are retained in accordance with professional obligations:</p>
+                    <ul>
+                        <li><strong>Retention Period:</strong> Files retained for minimum periods required by law and professional conduct rules (typically 7-10 years)</li>
+                        <li><strong>File Return:</strong> Original documents belonging to client will be returned upon request (copies may be retained)</li>
+                        <li><strong>Secure Destruction:</strong> Confidential information destroyed securely after retention period expires</li>
+                        <li><strong>Electronic Records:</strong> Electronic files retained with appropriate security measures</li>
+                    </ul>
+                </section>
+
+                <!-- Section 10: Professional Conduct -->
+                <section id="professional-conduct" class="legal-section">
+                    <h2>Rules of Professional Conduct</h2>
+                    <span class="section-id">Ethical Standards</span>
+
+                    <h3>Governing Rules</h3>
+                    <p>Attorney Aeron is subject to the rules of professional conduct in jurisdictions where licensed:</p>
+                    <ul>
+                        <li><strong>New York:</strong> New York Rules of Professional Conduct (22 NYCRR Part 1200)</li>
+                        <li><strong>Michigan:</strong> Michigan Rules of Professional Conduct</li>
+                        <li><strong>ABA Model Rules:</strong> Guidance from ABA Model Rules of Professional Conduct</li>
+                    </ul>
+
+                    <p>These rules establish ethical obligations including competence, diligence, communication, confidentiality, conflicts of interest, and client property management.</p>
+
+                    <h3>Competence and Diligence</h3>
+                    <p>The attorney is obligated to:</p>
+                    <ul>
+                        <li>Provide competent representation requiring legal knowledge, skill, thoroughness, and preparation</li>
+                        <li>Act with reasonable diligence and promptness</li>
+                        <li>Maintain knowledge of developments in areas of practice</li>
+                        <li>Decline representation if unable to provide competent service</li>
+                        <li>Associate with competent counsel when necessary</li>
+                    </ul>
+
+                    <h3>Client Communication</h3>
+                    <p>Professional conduct rules require the attorney to:</p>
+                    <ul>
+                        <li>Keep client reasonably informed about status of matter</li>
+                        <li>Promptly comply with reasonable requests for information</li>
+                        <li>Explain matters to extent necessary for client to make informed decisions</li>
+                        <li>Consult with client about means of accomplishing objectives</li>
+                        <li>Provide candid advice about realistic assessment of matter</li>
+                    </ul>
+
+                    <h3>Client Property and Funds</h3>
+                    <p>Client funds and property are handled according to strict professional standards:</p>
+
+                    <h4>Trust Accounts</h4>
+                    <ul>
+                        <li>Client funds held in IOLA/IOLTA attorney trust accounts</li>
+                        <li>Trust funds kept separate from attorney operating accounts</li>
+                        <li>Detailed recordkeeping and reconciliation</li>
+                        <li>Prompt notification to client of receipt of funds or property</li>
+                        <li>Delivery of funds or property to client upon request</li>
+                    </ul>
+
+                    <h4>Fee Arrangements</h4>
+                    <ul>
+                        <li>Fees must be reasonable based on factors including time, complexity, results, and experience</li>
+                        <li>Fee basis and expenses must be communicated in writing</li>
+                        <li>Contingent fee agreements must be in writing (where permitted)</li>
+                        <li>Fee disputes may be subject to arbitration or fee dispute resolution programs</li>
+                    </ul>
+
+                    <h3>Conflicts of Interest</h3>
+                    <p>The attorney may not represent a client if representation involves a concurrent conflict of interest unless:</p>
+                    <ul>
+                        <li>Attorney reasonably believes ability to represent client will not be adversely affected</li>
+                        <li>Client gives informed written consent</li>
+                        <li>Representation is not prohibited by law</li>
+                        <li>Representation does not involve asserting claim by one client against another in same litigation</li>
+                    </ul>
+
+                    <h3>Client Decisions</h3>
+                    <p>In representing a client:</p>
+                    <ul>
+                        <li><strong>Client Authority:</strong> Client has ultimate authority over objectives of representation</li>
+                        <li><strong>Attorney Advice:</strong> Attorney provides advice and counsel but client makes final decisions</li>
+                        <li><strong>Settlement:</strong> Attorney must abide by client's decision whether to accept settlement offer</li>
+                        <li><strong>Testimony:</strong> Criminal defendants have absolute right to decide whether to testify</li>
+                        <li><strong>Means:</strong> Attorney generally determines means of accomplishing client's objectives (within law and ethics rules)</li>
+                    </ul>
+
+                    <h3>Reporting Misconduct</h3>
+                    <p>If you believe an attorney has violated professional conduct rules, you may file a complaint with:</p>
+
+                    <h4>New York</h4>
+                    <p>Attorney Grievance Committee<br>
+                    New York State Unified Court System<br>
+                    <a href="https://www.nycourts.gov/attorneys/grievance/" target="_blank">https://www.nycourts.gov/attorneys/grievance/</a></p>
+
+                    <h4>Michigan</h4>
+                    <p>Attorney Grievance Commission<br>
+                    State Bar of Michigan<br>
+                    <a href="https://www.michbar.org/professional_standards/grievances" target="_blank">https://www.michbar.org/professional_standards/grievances</a></p>
+
+                    <h3>Compliance and Continuing Education</h3>
+                    <p>Attorney Aeron maintains compliance with all mandatory continuing legal education (MCLE) requirements and professional standards in all jurisdictions of admission.</p>
+                </section>
+
+                <!-- Section 11: Contact Information -->
+                <section id="contact-info" class="legal-section">
+                    <h2>Contact Information</h2>
+                    <span class="section-id">How to Reach Us</span>
+
+                    <h3>Rivalis Law</h3>
+                    <p><strong>Principal Attorney:</strong> Aaishwarya Aeron, Esq.</p>
+                    
+                    <h4>Office Address</h4>
+                    <p>
+                    [Physical Office Address]<br>
+                    [City, State ZIP]
+                    </p>
+
+                    <h4>Contact Methods</h4>
+                    <p>
+                    <strong>Main Office:</strong> (202) 555-0199<br>
+                    <strong>Email:</strong> contact@rivalislaw.com<br>
+                    <strong>Website:</strong> <a href="https://www.rivalislaw.com">www.rivalislaw.com</a>
+                    </p>
+
+                    <h4>Specialized Contact</h4>
+                    <ul>
+                        <li><strong>Corporate Investigations:</strong> investigations@rivalislaw.com</li>
+                        <li><strong>M&A Transactions:</strong> deals@rivalislaw.com</li>
+                        <li><strong>General Inquiries:</strong> contact@rivalislaw.com</li>
+                    </ul>
+
+                    <h4>Emergency Matters</h4>
+                    <p>For legal emergencies requiring immediate attention (visa denials, regulatory deadlines, urgent investigations), call the main office line and follow emergency protocols.</p>
+
+                    <h3>Privacy & Data Protection Inquiries</h3>
+                    <p>For questions about privacy, data protection, or to exercise your privacy rights under applicable law, contact:</p>
+                    <p>
+                    <strong>Privacy Officer:</strong> privacy@rivalislaw.com<br>
+                    <strong>Mail:</strong> Rivalis Law - Privacy Officer<br>
+                    [Address]
+                    </p>
+
+                    <h3>Fee Disputes</h3>
+                    <p>Fee disputes or billing questions should be directed to:</p>
+                    <p><strong>Email:</strong> billing@rivalislaw.com</p>
+
+                    <h3>State Bar Resources</h3>
+                    <p>To verify attorney license status or for information about attorney disciplinary process:</p>
+                    <ul>
+                        <li><strong>New York State Bar:</strong> <a href="https://www.nysba.org" target="_blank">www.nysba.org</a></li>
+                        <li><strong>State Bar of Michigan:</strong> <a href="https://www.michbar.org" target="_blank">www.michbar.org</a></li>
+                    </ul>
+
+                    <div class="highlight-box">
+                        <strong>Questions About These Terms?</strong>
+                        <p style="margin-top: 0.5rem;">If you have questions about any of these terms, disclosures, or policies, please contact us at contact@rivalislaw.com or (202) 555-0199.</p>
+                    </div>
+                </section>
+
+                <!-- Document Information -->
+                <div style="margin-top: 4rem; padding-top: 2rem; border-top: 2px solid var(--gray-200);">
+                    <p style="font-size: 0.9rem; color: var(--gray-600); text-align: center;">
+                        This document was last updated November 2024. Rivalis Law reserves the right to update these terms and policies at any time. Material changes will be communicated to active clients. Continued use of our website or services after changes constitutes acceptance of updated terms.
+                    </p>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/#services">Services</a>
+            <a href="/about">About</a>
+            <a href="#attorney-advertising">Legal Terms</a>
+            <a href="#contact-info">Contact</a>
+        </div>
+        <p style="font-size: 0.9rem;">
+            © 2024 Rivalis Law | Aaishwarya Aeron, Esq. | NY & MI Bar<br>
+            Licensed in New York & Michigan | Attorney Advertising
+        </p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 100;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update active state in sidebar
+                    document.querySelectorAll('.sidebar-nav a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Update active link on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.legal-section');
+            const scrollPos = window.pageYOffset + 150;
+            
+            sections.forEach(section => {
+                if (section.offsetTop <= scrollPos && (section.offsetTop + section.offsetHeight) > scrollPos) {
+                    const id = section.getAttribute('id');
+                    document.querySelectorAll('.sidebar-nav a').forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

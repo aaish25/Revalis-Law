@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Governance & Compliance | Rivalis Law</title>
+    <meta name="description" content="Oxford-trained AI governance counsel for tech companies. EU AI Act compliance, risk assessments, and governance frameworks from $25K.">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --accent: #d4af37;
+            --accent-dark: #b8941f;
+            --accent-light: #f0e6d2;
+            --white: #ffffff;
+            --gray-50: #fafbfc;
+            --gray-100: #f4f6f8;
+            --gray-200: #e8ecf0;
+            --gray-600: #4a5568;
+            --gray-700: #2d3748;
+            --gray-900: #0f1419;
+            --danger: #e74c3c;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--gray-900);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation */
+        .nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+            z-index: 999;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-logo::before {
+            content: '⚖ ';
+            color: var(--accent);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--gray-700);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: var(--white);
+            padding: 0.875rem 1.75rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.35);
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(165deg, #1a1a2e 0%, #2d3748 100%);
+            color: white;
+            padding: 8rem 3rem 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .breadcrumb {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .breadcrumb a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(212, 175, 55, 0.2);
+            border: 1px solid var(--accent);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--accent);
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            max-width: 900px;
+        }
+
+        .hero h1 .highlight {
+            color: var(--accent);
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            line-height: 1.7;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            opacity: 0.95;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            max-width: 900px;
+            margin: 3rem 0;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent);
+            font-family: 'Cormorant Garamond', serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1.25rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        /* Sections */
+        .section {
+            padding: 7rem 3rem;
+        }
+
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 5rem;
+        }
+
+        .section-tag {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1.25rem;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray-600);
+            line-height: 1.8;
+        }
+
+        /* Problem Section */
+        .problems {
+            background: var(--danger);
+            color: white;
+        }
+
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+        }
+
+        .problem-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border-left: 4px solid white;
+        }
+
+        .problem-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .problem-card h3 i {
+            color: white;
+        }
+
+        .problem-card p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+
+        /* What's Included */
+        .included {
+            background: var(--gray-50);
+        }
+
+        .pricing-showcase {
+            background: white;
+            border: 3px solid var(--accent);
+            border-radius: 16px;
+            padding: 4rem;
+            max-width: 1000px;
+            margin: 0 auto 5rem;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .price-main {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--primary);
+            font-family: 'Cormorant Garamond', serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-range {
+            font-size: 1.5rem;
+            color: var(--gray-600);
+            margin-bottom: 2rem;
+        }
+
+        .price-note {
+            background: var(--accent-light);
+            padding: 1.25rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            color: var(--gray-700);
+            font-weight: 600;
+        }
+
+        .deliverables-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .deliverable-group h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .deliverable-group h4 i {
+            color: var(--accent);
+        }
+
+        .deliverable-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .deliverable-list li {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--gray-50);
+            border-radius: 8px;
+            font-size: 0.95rem;
+        }
+
+        .deliverable-list li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: 800;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        /* Process */
+        .process {
+            background: white;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            position: relative;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: var(--accent);
+            z-index: 0;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            font-weight: 800;
+            color: white;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .process-step h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .process-step p {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+        }
+
+        .timeline-badge {
+            display: inline-block;
+            background: var(--accent-light);
+            color: var(--accent-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-top: 1rem;
+        }
+
+        /* Case Studies */
+        .cases {
+            background: var(--gray-50);
+        }
+
+        .case-studies {
+            display: grid;
+            gap: 3rem;
+        }
+
+        .case-study {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid var(--gray-200);
+            transition: all 0.3s;
+        }
+
+        .case-study:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            border-color: var(--accent);
+        }
+
+        .case-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--gray-700) 100%);
+            color: white;
+            padding: 2.5rem;
+        }
+
+        .case-type {
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .case-header h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .case-content {
+            padding: 2.5rem;
+        }
+
+        .case-section {
+            margin-bottom: 2rem;
+        }
+
+        .case-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .case-section h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .case-section h4 i {
+            color: var(--accent);
+        }
+
+        .case-section p {
+            color: var(--gray-600);
+            line-height: 1.7;
+        }
+
+        .case-section ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .case-section li {
+            display: flex;
+            align-items: start;
+            gap: 0.75rem;
+            color: var(--gray-700);
+        }
+
+        .case-section li::before {
+            content: '→';
+            color: var(--accent);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .case-outcome {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, transparent 100%);
+            padding: 1.5rem;
+            border-left: 3px solid var(--accent);
+            border-radius: 8px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* FAQ */
+        .faq {
+            background: white;
+        }
+
+        .faq-list {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .faq-item {
+            background: var(--gray-50);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid var(--gray-200);
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            border-color: var(--accent);
+        }
+
+        .faq-question {
+            padding: 2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .faq-question i {
+            color: var(--accent);
+            transition: transform 0.3s;
+        }
+
+        .faq-answer {
+            padding: 0 2rem 2rem;
+            color: var(--gray-600);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        /* CTA Section */
+        .final-cta {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--gray-900) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .final-cta > p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+        }
+
+        .cta-feature {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-weight: 600;
+        }
+
+        .cta-feature i {
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--gray-900);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* Floating CTA */
+        .floating-cta {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .fab {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+        }
+
+        .fab:hover {
+            transform: scale(1.1);
+        }
+
+        .fab.urgent {
+            background: linear-gradient(135deg, var(--danger) 0%, #c0392b 100%);
+            color: white;
+        }
+
+        .fab.schedule {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero h1 {
+                font-size: 2.75rem;
+            }
+
+            .hero-stats,
+            .problems-grid,
+            .deliverables-grid,
+            .process-steps,
+            .cta-features {
+                grid-template-columns: 1fr;
+            }
+
+            .process-steps::before {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 2.25rem;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Rivalis Law</a>
+            <ul class="nav-menu">
+                <li><a href="index.html#services" class="nav-link">All Services</a></li>
+                <li><a href="index.html#why-rivalis" class="nav-link">Why Rivalis</a></li>
+                <li><a href="index.html#how-we-work" class="nav-link">Process</a></li>
+                <li><a href="#get-started" class="nav-cta">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / <span>AI Governance & Compliance</span>
+            </div>
+
+            <div class="hero-badge">
+                <i class="fas fa-certificate"></i>
+                Oxford AI Governance Programme Graduate
+            </div>
+
+            <h1>Your AI Launch Is <span class="highlight">48 Hours Away</span>.<br>Do You Have Governance Docs?</h1>
+
+            <p class="hero-subtitle">
+                One biased decision. One data breach. One EU customer asking for AI Act compliance you can't prove. Your investors, customers, and regulators are asking questions you can't answer. Get Oxford-trained AI governance counsel before it's too late.
+            </p>
+
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">$35M</div>
+                    <div class="stat-label">Average cost of AI compliance failure</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">72hrs</div>
+                    <div class="stat-label">Emergency assessment turnaround</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Investor-ready documentation</div>
+                </div>
+            </div>
+
+            <div class="cta-group">
+                <a href="#get-started" class="btn btn-primary">
+                    <i class="fas fa-bolt"></i>
+                    Emergency AI Assessment
+                </a>
+                <a href="tel:+1-202-555-0199" class="btn btn-secondary">
+                    <i class="fas fa-phone"></i>
+                    Call: (202) 555-0199
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section problems">
+        <div class="section-container">
+            <div class="section-header" style="color: white;">
+                <div class="section-tag" style="color: white;">THE CRISIS SCENARIOS</div>
+                <h2 class="section-title" style="color: white;">These Are The Calls I Get At 11 PM</h2>
+            </div>
+
+            <div class="problems-grid">
+                <div class="problem-card">
+                    <h3><i class="fas fa-newspaper"></i> The PR Nightmare</h3>
+                    <p>Your AI hiring tool rejected qualified candidates. A journalist is writing an exposé about bias in your algorithm. Your Series B is in jeopardy. You have no documentation proving you tested for discrimination.</p>
+                </div>
+
+                <div class="problem-card">
+                    <h3><i class="fas fa-gavel"></i> The Investor Ultimatum</h3>
+                    <p>"Show us your AI governance framework by Monday or we're pulling the term sheet." You don't have one. Your team doesn't know what governance means. The deal dies.</p>
+                </div>
+
+                <div class="problem-card">
+                    <h3><i class="fas fa-globe-europe"></i> The EU Compliance Crisis</h3>
+                    <p>Your biggest customer is in Germany. They need AI Act compliance documentation. You have nothing. They're threatening to cancel a $2M contract and you're scrambling.</p>
+                </div>
+
+                <div class="problem-card">
+                    <h3><i class="fas fa-exclamation-triangle"></i> The Launch Day Panic</h3>
+                    <p>Product launches tomorrow. Legal just realized you're processing sensitive data with AI. No impact assessment. No risk documentation. Launch delayed indefinitely.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section included">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-tag">PRICING & DELIVERABLES</div>
+                <h2 class="section-title">What You Get & What It Costs</h2>
+                <p class="section-subtitle">
+                    Transparent pricing. Comprehensive deliverables. No surprises.
+                </p>
+            </div>
+
+            <div class="pricing-showcase">
+                <div class="pricing-header">
+                    <div class="price-main">$25,000</div>
+                    <div class="price-range">Starting price for core governance package</div>
+                    <div class="price-note">
+                        <strong>Enterprise frameworks:</strong> $50K-$150K+ for comprehensive, multi-system governance architecture
+                    </div>
+                </div>
+
+                <div class="deliverables-grid">
+                    <div class="deliverable-group">
+                        <h4><i class="fas fa-clipboard-check"></i> Core Deliverables</h4>
+                        <ul class="deliverable-list">
+                            <li>Comprehensive AI risk assessment report</li>
+                            <li>Governance framework tailored to your systems</li>
+                            <li>Policy documentation (ethics, bias testing, monitoring)</li>
+                            <li>EU AI Act compliance roadmap</li>
+                            <li>US regulatory compliance analysis</li>
+                            <li>Board-ready presentation deck</li>
+                        </ul>
+                    </div>
+
+                    <div class="deliverable-group">
+                        <h4><i class="fas fa-tools"></i> Implementation Support</h4>
+                        <ul class="deliverable-list">
+                            <li>Step-by-step implementation guide</li>
+                            <li>Staff training materials</li>
+                            <li>Testing & monitoring protocols</li>
+                            <li>Incident response procedures</li>
+                            <li>Vendor contract review guidance</li>
+                            <li>90-day post-delivery support</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section process">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-tag">OUR PROCESS</div>
+                <h2 class="section-title">From Crisis to Compliance in 4 Weeks</h2>
+            </div>
+
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h4>Emergency Assessment</h4>
+                    <p>Deep dive into your AI systems, data flows, and current documentation gaps</p>
+                    <span class="timeline-badge">Week 1</span>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h4>Risk Mapping</h4>
+                    <p>Identify compliance gaps, liability exposures, and regulatory requirements</p>
+                    <span class="timeline-badge">Week 2</span>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h4>Framework Development</h4>
+                    <p>Build governance documentation, policies, and compliance procedures</p>
+                    <span class="timeline-badge">Week 3</span>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h4>Implementation</h4>
+                    <p>Deliver complete package with training and ongoing support</p>
+                    <span class="timeline-badge">Week 4</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section cases">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-tag">CASE STUDIES</div>
+                <h2 class="section-title">Real Scenarios We've Resolved</h2>
+            </div>
+
+            <div class="case-studies">
+                <div class="case-study">
+                    <div class="case-header">
+                        <div class="case-type">Fintech Startup</div>
+                        <h3>Pre-Launch AI Governance for Series A</h3>
+                    </div>
+                    <div class="case-content">
+                        <div class="case-section">
+                            <h4><i class="fas fa-exclamation-circle"></i> The Problem</h4>
+                            <p>Fintech startup building AI-powered credit scoring. Series A investors demanded governance documentation. Company had none. Deal at risk.</p>
+                        </div>
+                        <div class="case-section">
+                            <h4><i class="fas fa-cog"></i> Our Solution</h4>
+                            <ul>
+                                <li>3-week emergency engagement</li>
+                                <li>Built complete governance framework from scratch</li>
+                                <li>Conducted bias testing protocols</li>
+                                <li>Created investor-ready documentation package</li>
+                                <li>Delivered board presentation and Q&A prep</li>
+                            </ul>
+                        </div>
+                        <div class="case-outcome">
+                            <strong>Outcome:</strong> Series A closed on schedule. Lead investor cited governance framework as "best-in-class" and reason for confidence in the deal.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-study">
+                    <div class="case-header">
+                        <div class="case-type">Healthcare AI Company</div>
+                        <h3>EU AI Act Compliance for Product Expansion</h3>
+                    </div>
+                    <div class="case-content">
+                        <div class="case-section">
+                            <h4><i class="fas fa-exclamation-circle"></i> The Problem</h4>
+                            <p>Medical diagnostics AI company expanding to EU. Major hospital system customer demanding AI Act compliance certification. Product launch delayed 4 months.</p>
+                        </div>
+                        <div class="case-section">
+                            <h4><i class="fas fa-cog"></i> Our Solution</h4>
+                            <ul>
+                                <li>Rapid EU AI Act compliance assessment</li>
+                                <li>Gap analysis of current documentation</li>
+                                <li>High-risk AI system classification and requirements</li>
+                                <li>Complete technical documentation package</li>
+                                <li>Conformity assessment preparation</li>
+                            </ul>
+                        </div>
+                        <div class="case-outcome">
+                            <strong>Outcome:</strong> EU launch proceeded with full compliance documentation. Secured €5M contract with German hospital network.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section faq">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-tag">FREQUENTLY ASKED QUESTIONS</div>
+                <h2 class="section-title">Common Questions About AI Governance</h2>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do I really need AI governance documentation?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        If you're using AI to make decisions affecting people (hiring, lending, pricing, healthcare, content moderation), you're exposed. Investors want it. Regulators require it. Customers demand it. The question isn't "do I need it?" but "when will not having it cost me everything?"
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What makes your AI governance counsel different?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        I completed Oxford's AI Governance Programme – actual technical training in how AI systems work, not just legal theory. Most lawyers say they understand AI but can't explain how a neural network makes decisions. I can. That matters when building governance that actually works.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How long does a governance framework take?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Standard engagement: 4-6 weeks for comprehensive framework. Emergency situations: We've delivered investor-ready documentation in 2 weeks. Enterprise-scale multi-system governance: 8-12 weeks. Timeline depends on complexity of your AI systems and urgency.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What if we're already facing an AI compliance issue?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Call the emergency line immediately: (202) 555-0199. We handle crisis response – PR disasters, investor ultimatums, regulatory inquiries, customer compliance demands. We can start working within 24 hours and have experience managing high-stakes AI incidents.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you handle EU AI Act compliance?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes. We provide full EU AI Act compliance assessment, classification of your AI systems, technical documentation, and conformity assessment preparation. Essential for companies expanding to European markets or serving EU customers.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section final-cta" id="get-started">
+        <div class="section-container">
+            <h2>Don't Launch Without Governance</h2>
+            <p>
+                One undocumented AI decision can cost millions in liability, lost deals, and reputation damage. Get Oxford-trained AI governance counsel before it's too late.
+            </p>
+
+            <div class="cta-features">
+                <div class="cta-feature">
+                    <i class="fas fa-bolt"></i>
+                    <span>72-Hour Emergency Response</span>
+                </div>
+                <div class="cta-feature">
+                    <i class="fas fa-certificate"></i>
+                    <span>Oxford AI Certified</span>
+                </div>
+                <div class="cta-feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Investor-Ready Docs</span>
+                </div>
+            </div>
+
+            <div class="cta-group" style="justify-content: center;">
+                <a href="tel:+1-202-555-0199" class="btn btn-primary">
+                    <i class="fas fa-phone"></i>
+                    Emergency: (202) 555-0199
+                </a>
+                <a href="mailto:ai@rivalislaw.com" class="btn btn-secondary">
+                    <i class="fas fa-envelope"></i>
+                    Email AI Team
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 Rivalis Law. Licensed in New York & Michigan.</p>
+        <p><a href="index.html">Return to Main Site</a></p>
+    </footer>
+
+    <div class="floating-cta">
+        <a href="tel:+1-202-555-0199" class="fab urgent">
+            <i class="fas fa-phone-volume"></i>
+        </a>
+        <a href="mailto:ai@rivalislaw.com" class="fab schedule">
+            <i class="fas fa-calendar-alt"></i>
+        </a>
+    </div>
+</body>
+</html>

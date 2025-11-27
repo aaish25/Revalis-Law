@@ -1,0 +1,10 @@
+export { ContractReview } from './ContractReview';
+export { DataPrivacy } from './DataPrivacy';
+export { Immigration } from './Immigration';
+export { EmploymentLaw } from './EmploymentLaw';
+export { EntityFormation } from './EntityFormation';
+export { IPStrategy } from './IPStrategy';
+export { FraudInvestigation } from './FraudInvestigation';
+export { Fundraising } from './Fundraising';
+export { GovernanceCompliance } from './GovernanceCompliance';
+export { MAndA } from './MAndA';

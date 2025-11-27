@@ -1,0 +1,1924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Intake Forms - Rivalis Law</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .form-header {
+            border-bottom: 3px solid #d4af37;
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 0.5rem;
+        }
+
+        .logo::before {
+            content: '⚖ ';
+            color: #d4af37;
+        }
+
+        .form-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-subtitle {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .confidential-notice {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+            page-break-inside: avoid;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f0e6d2;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .required {
+            color: #c0392b;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: start;
+            gap: 0.5rem;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            margin-top: 0.25rem;
+            width: auto;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .radio-item input[type="radio"] {
+            width: auto;
+        }
+
+        .help-text {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 0.25rem;
+            font-style: italic;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        .info-box {
+            background: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        .signature-section {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #ddd;
+        }
+
+        .signature-line {
+            border-bottom: 1px solid #333;
+            margin-bottom: 0.5rem;
+            min-height: 40px;
+        }
+
+        .footer-note {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #ddd;
+            font-size: 0.85rem;
+            color: #666;
+            text-align: center;
+        }
+
+        .print-button {
+            background: #d4af37;
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 2rem;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 1rem;
+            }
+            .print-button {
+                display: none;
+            }
+            .page-break {
+                page-break-before: always;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            body {
+                padding: 1rem;
+            }
+            .container {
+                padding: 1.5rem;
+            }
+        }
+
+        .service-selector {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .service-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .service-button {
+            padding: 1rem;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .service-button:hover {
+            border-color: #d4af37;
+            background: #fff9e6;
+        }
+
+        .service-button.active {
+            background: #d4af37;
+            color: white;
+            border-color: #d4af37;
+        }
+
+        .service-specific-section {
+            display: none;
+        }
+
+        .service-specific-section.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button onclick="window.print()" class="print-button">🖨️ Print This Form</button>
+
+        <div class="form-header">
+            <div class="logo">Rivalis Law</div>
+            <h1 class="form-title">Client Intake Form</h1>
+            <p class="form-subtitle">Confidential Attorney-Client Information</p>
+        </div>
+
+        <div class="confidential-notice">
+            <strong>⚠️ CONFIDENTIALITY NOTICE:</strong> This intake form is protected by attorney-client privilege considerations. The information you provide will be kept confidential. Submission of this form does not create an attorney-client relationship until a formal engagement letter is executed.
+        </div>
+
+        <!-- Service Selection -->
+        <div class="service-selector">
+            <h3 style="margin-bottom: 1rem;">Select Service Type</h3>
+            <div class="service-buttons">
+                <div class="service-button" onclick="selectService('ai-governance')">AI Governance</div>
+                <div class="service-button" onclick="selectService('immigration')">Immigration</div>
+                <div class="service-button" onclick="selectService('ma')">M&A Transactions</div>
+                <div class="service-button" onclick="selectService('fraud')">Fraud Investigation</div>
+                <div class="service-button" onclick="selectService('contracts')">Contract Review</div>
+                <div class="service-button" onclick="selectService('privacy')">Data Privacy</div>
+                <div class="service-button" onclick="selectService('ip')">IP Strategy</div>
+                <div class="service-button" onclick="selectService('employment')">Employment Law</div>
+                <div class="service-button" onclick="selectService('fundraising')">Fundraising</div>
+            </div>
+        </div>
+
+        <form id="intakeForm">
+            <!-- SECTION 1: CLIENT INFORMATION (Universal) -->
+            <div class="section">
+                <h2 class="section-title">1. Client Information</h2>
+                
+                <div class="form-group">
+                    <label>Are you representing? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="client-type" value="individual" required>
+                            <label>Individual/Personal Matter</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="client-type" value="business">
+                            <label>Business/Company</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Legal Name <span class="required">*</span></label>
+                        <input type="text" name="client-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Preferred Name</label>
+                        <input type="text" name="preferred-name">
+                    </div>
+                </div>
+
+                <div class="form-group" id="company-info" style="display:none;">
+                    <label>Company/Entity Name <span class="required">*</span></label>
+                    <input type="text" name="company-name">
+                    <p class="help-text">Legal entity name as registered</p>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Email Address <span class="required">*</span></label>
+                        <input type="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number <span class="required">*</span></label>
+                        <input type="tel" name="phone" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Mailing Address <span class="required">*</span></label>
+                    <input type="text" name="address" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>City <span class="required">*</span></label>
+                        <input type="text" name="city" required>
+                    </div>
+                    <div class="form-group">
+                        <label>State/Province <span class="required">*</span></label>
+                        <input type="text" name="state" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>ZIP/Postal Code <span class="required">*</span></label>
+                        <input type="text" name="zip" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Country <span class="required">*</span></label>
+                        <input type="text" name="country" value="United States" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>How did you hear about Rivalis Law?</label>
+                    <select name="referral-source">
+                        <option value="">Select...</option>
+                        <option value="web-search">Web Search</option>
+                        <option value="linkedin">LinkedIn</option>
+                        <option value="referral-attorney">Referral from Attorney</option>
+                        <option value="referral-client">Referral from Client</option>
+                        <option value="referral-professional">Referral from Other Professional</option>
+                        <option value="bar-association">Bar Association</option>
+                        <option value="conference">Conference/Event</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- SECTION 2: MATTER INFORMATION (Universal) -->
+            <div class="section">
+                <h2 class="section-title">2. Matter Information</h2>
+                
+                <div class="form-group">
+                    <label>Brief Matter Description <span class="required">*</span></label>
+                    <textarea name="matter-description" required placeholder="Provide a brief overview of your legal matter..."></textarea>
+                    <p class="help-text">Brief summary only - detailed information will be discussed during consultation</p>
+                </div>
+
+                <div class="form-group">
+                    <label>Timeline/Urgency <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="urgency" value="emergency" required>
+                            <label><strong>Emergency</strong> - Immediate action needed (within 24-48 hours)</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="urgency" value="urgent">
+                            <label><strong>Urgent</strong> - Action needed within 1-2 weeks</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="urgency" value="soon">
+                            <label><strong>Soon</strong> - Action needed within 1 month</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="urgency" value="planning">
+                            <label><strong>Planning</strong> - No immediate deadline (1-3 months+)</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Specific Deadlines or Time Constraints</label>
+                    <textarea name="deadlines" placeholder="List any court dates, filing deadlines, regulatory deadlines, business deadlines, etc."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Budget Range</label>
+                    <select name="budget">
+                        <option value="">Select approximate budget...</option>
+                        <option value="under-10k">Under $10,000</option>
+                        <option value="10k-25k">$10,000 - $25,000</option>
+                        <option value="25k-50k">$25,000 - $50,000</option>
+                        <option value="50k-100k">$50,000 - $100,000</option>
+                        <option value="100k-plus">$100,000+</option>
+                        <option value="flexible">Flexible based on scope</option>
+                    </select>
+                    <p class="help-text">This helps us propose appropriate service structure</p>
+                </div>
+            </div>
+
+            <!-- SECTION 3: CONFLICTS CHECK (Universal) -->
+            <div class="section">
+                <h2 class="section-title">3. Conflicts of Interest Check</h2>
+                
+                <div class="warning-box">
+                    <strong>Important:</strong> We must check for conflicts of interest before accepting your matter. Please provide complete information about all parties involved.
+                </div>
+
+                <div class="form-group">
+                    <label>Other Parties Involved <span class="required">*</span></label>
+                    <textarea name="other-parties" required placeholder="List all other parties involved in this matter (opposing parties, co-parties, related businesses, etc.)"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Are you involved in any other legal matters?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="other-legal-matters" value="yes">
+                            <label>Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="other-legal-matters" value="no">
+                            <label>No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" id="other-matters-details" style="display:none;">
+                    <label>Please describe other legal matters</label>
+                    <textarea name="other-matters-description"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Are you represented by other counsel on any matters?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="other-counsel" value="yes">
+                            <label>Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="other-counsel" value="no">
+                            <label>No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" id="other-counsel-details" style="display:none;">
+                    <label>Other counsel details</label>
+                    <textarea name="other-counsel-description" placeholder="Name of attorney/firm and matter(s) they are handling"></textarea>
+                </div>
+            </div>
+
+            <!-- SERVICE-SPECIFIC SECTIONS -->
+            
+            <!-- AI GOVERNANCE -->
+            <div class="service-specific-section" id="section-ai-governance">
+                <div class="section page-break">
+                    <h2 class="section-title">4. AI Governance & Compliance - Specific Information</h2>
+                    
+                    <div class="form-group">
+                        <label>Type of AI System/Product <span class="required">*</span></label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ai-type" value="generative-ai">
+                                <label>Generative AI (text, image, video, audio)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ai-type" value="predictive-analytics">
+                                <label>Predictive Analytics/Decision Systems</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ai-type" value="recommendation">
+                                <label>Recommendation Systems</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ai-type" value="computer-vision">
+                                <label>Computer Vision/Image Recognition</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ai-type" value="nlp">
+                                <label>Natural Language Processing</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ai-type" value="autonomous">
+                                <label>Autonomous Systems/Robotics</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ai-type" value="other">
+                                <label>Other (specify below)</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Current Development Stage</label>
+                        <select name="ai-stage">
+                            <option value="">Select stage...</option>
+                            <option value="concept">Concept/Planning</option>
+                            <option value="development">In Development</option>
+                            <option value="testing">Testing/Beta</option>
+                            <option value="deployed">Deployed/Live</option>
+                            <option value="scaling">Scaling</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Primary Use Case/Application</label>
+                        <textarea name="ai-use-case" placeholder="Describe what the AI system does and how it's used"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Target Markets/Jurisdictions</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ai-jurisdiction" value="usa">
+                                <label>United States</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ai-jurisdiction" value="eu">
+                                <label>European Union (AI Act applies)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ai-jurisdiction" value="uk">
+                                <label>United Kingdom</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ai-jurisdiction" value="uae">
+                                <label>United Arab Emirates</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ai-jurisdiction" value="global">
+                                <label>Global/Multiple Jurisdictions</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Do you currently have AI governance documentation?</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ai-docs" value="policy">
+                                <label>AI Ethics/Governance Policy</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ai-docs" value="risk-assessment">
+                                <label>Risk Assessment</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ai-docs" value="impact-assessment">
+                                <label>Impact Assessment</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ai-docs" value="testing-documentation">
+                                <label>Testing/Validation Documentation</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ai-docs" value="none">
+                                <label>None - Need to develop</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Specific Concerns/Issues</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ai-concerns" value="bias">
+                                <label>Bias/Fairness Issues</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ai-concerns" value="transparency">
+                                <label>Transparency/Explainability</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ai-concerns" value="privacy">
+                                <label>Privacy/Data Protection</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ai-concerns" value="investor">
+                                <label>Investor Due Diligence Requirements</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ai-concerns" value="regulatory">
+                                <label>Regulatory Inquiry/Investigation</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ai-concerns" value="incident">
+                                <label>Incident/System Failure</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Are you currently fundraising or in M&A discussions?</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" name="ai-fundraising" value="yes">
+                                <label>Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="ai-fundraising" value="no">
+                                <label>No</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- IMMIGRATION -->
+            <div class="service-specific-section" id="section-immigration">
+                <div class="section page-break">
+                    <h2 class="section-title">4. Immigration - Specific Information</h2>
+                    
+                    <div class="form-group">
+                        <label>Visa Type Needed <span class="required">*</span></label>
+                        <select name="visa-type" required>
+                            <option value="">Select visa type...</option>
+                            <option value="h1b">H-1B (Specialty Occupation)</option>
+                            <option value="l1">L-1 (Intracompany Transfer)</option>
+                            <option value="o1">O-1 (Extraordinary Ability)</option>
+                            <option value="e2">E-2 (Treaty Investor)</option>
+                            <option value="tn">TN (NAFTA/USMCA)</option>
+                            <option value="green-card">Green Card/Permanent Residence</option>
+                            <option value="perm">PERM Labor Certification</option>
+                            <option value="other">Other (specify below)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Beneficiary Name <span class="required">*</span></label>
+                            <input type="text" name="beneficiary-name" required>
+                            <p class="help-text">Person who will receive the visa</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Country of Citizenship <span class="required">*</span></label>
+                            <input type="text" name="citizenship" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Current Location/Status</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" name="current-status" value="outside-us">
+                                <label>Outside United States</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="current-status" value="in-us">
+                                <label>In United States (specify current visa below)</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Current Visa Status (if in US)</label>
+                        <input type="text" name="current-visa" placeholder="e.g., F-1, H-1B, B-1/B-2, etc.">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Expiration Date of Current Status (if applicable)</label>
+                        <input type="date" name="status-expiration">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Has beneficiary been in US before?</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" name="prior-us-presence" value="yes">
+                                <label>Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="prior-us-presence" value="no">
+                                <label>No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Previous Visa Types (if applicable)</label>
+                        <input type="text" name="previous-visas" placeholder="List any previous US visas">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Have you received any RFEs, denials, or notices from USCIS?</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" name="uscis-issues" value="yes">
+                                <label>Yes (explain below)</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="uscis-issues" value="no">
+                                <label>No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="uscis-issues-details" style="display:none;">
+                        <label>RFE/Denial Details</label>
+                        <textarea name="uscis-issues-description" placeholder="Describe the RFE, denial, or notice received"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Sponsoring Employer/Petitioner <span class="required">*</span></label>
+                        <input type="text" name="sponsor-name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Job Title/Position <span class="required">*</span></label>
+                        <input type="text" name="job-title" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Brief Job Description</label>
+                        <textarea name="job-description" placeholder="Key responsibilities and requirements"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Educational Background</label>
+                        <textarea name="education" placeholder="Degrees, institutions, majors, years completed"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Any criminal history or immigration violations?</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" name="criminal-history" value="yes">
+                                <label>Yes (must discuss in consultation)</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="criminal-history" value="no">
+                                <label>No</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- M&A TRANSACTIONS -->
+            <div class="service-specific-section" id="section-ma">
+                <div class="section page-break">
+                    <h2 class="section-title">4. M&A & Corporate Transactions - Specific Information</h2>
+                    
+                    <div class="form-group">
+                        <label>Transaction Type <span class="required">*</span></label>
+                        <select name="ma-type" required>
+                            <option value="">Select transaction type...</option>
+                            <option value="acquisition">Acquisition (we are acquiring)</option>
+                            <option value="sale">Sale (we are selling)</option>
+                            <option value="merger">Merger</option>
+                            <option value="joint-venture">Joint Venture</option>
+                            <option value="asset-purchase">Asset Purchase</option>
+                            <option value="stock-purchase">Stock Purchase</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Transaction Stage</label>
+                        <select name="ma-stage">
+                            <option value="">Select stage...</option>
+                            <option value="exploring">Exploring Options</option>
+                            <option value="loi">LOI/Term Sheet Stage</option>
+                            <option value="due-diligence">Due Diligence</option>
+                            <option value="negotiation">Contract Negotiation</option>
+                            <option value="closing">Near Closing</option>
+                            <option value="post-closing">Post-Closing Issues</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Estimated Transaction Value</label>
+                        <select name="transaction-value">
+                            <option value="">Select range...</option>
+                            <option value="under-1m">Under $1M</option>
+                            <option value="1m-5m">$1M - $5M</option>
+                            <option value="5m-10m">$5M - $10M</option>
+                            <option value="10m-25m">$10M - $25M</option>
+                            <option value="25m-50m">$25M - $50M</option>
+                            <option value="50m-plus">$50M+</option>
+                            <option value="tbd">To Be Determined</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Target Company/Seller Name</label>
+                        <input type="text" name="target-company">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Industry/Sector</label>
+                        <input type="text" name="industry" placeholder="e.g., Software/SaaS, Manufacturing, Healthcare, etc.">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Geographic Scope</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ma-geography" value="us-only">
+                                <label>US Only</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ma-geography" value="cross-border">
+                                <label>Cross-Border (specify countries below)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ma-geography" value="uae">
+                                <label>Involves UAE Entity</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Specific Services Needed</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ma-services" value="due-diligence">
+                                <label>Due Diligence Review</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ma-services" value="tax-analysis">
+                                <label>Tax Structure Analysis</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ma-services" value="contract-drafting">
+                                <label>Purchase Agreement Drafting</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ma-services" value="contract-review">
+                                <label>Purchase Agreement Review</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ma-services" value="negotiation">
+                                <label>Negotiation Support</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ma-services" value="closing">
+                                <label>Closing Coordination</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Have you identified specific deal-breakers or concerns?</label>
+                        <textarea name="deal-concerns" placeholder="Tax liabilities, litigation, intellectual property issues, regulatory compliance, etc."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Are other advisors involved? (Investment bankers, accountants, etc.)</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" name="other-advisors" value="yes">
+                                <label>Yes (list below)</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="other-advisors" value="no">
+                                <label>No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="advisors-details" style="display:none;">
+                        <label>Other Advisors</label>
+                        <textarea name="advisors-list" placeholder="Names and roles of other advisors"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Expected Closing Timeline</label>
+                        <input type="text" name="closing-timeline" placeholder="e.g., 90 days, Q2 2025, etc.">
+                    </div>
+                </div>
+            </div>
+
+            <!-- FRAUD INVESTIGATION -->
+            <div class="service-specific-section" id="section-fraud">
+                <div class="section page-break">
+                    <h2 class="section-title">4. Corporate Fraud Investigation - Specific Information</h2>
+                    
+                    <div class="warning-box">
+                        <strong>🔒 HIGHLY CONFIDENTIAL:</strong> This information is particularly sensitive. Attorney-client privilege applies. Do not discuss with anyone except your attorney.
+                    </div>
+
+                    <div class="form-group">
+                        <label>Nature of Allegation/Concern <span class="required">*</span></label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="investigation-type" value="financial-fraud">
+                                <label>Financial Fraud/Embezzlement</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="investigation-type" value="accounting">
+                                <label>Accounting Irregularities</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="investigation-type" value="executive-misconduct">
+                                <label>Executive Misconduct</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="investigation-type" value="harassment">
+                                <label>Harassment/Discrimination</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="investigation-type" value="whistleblower">
+                                <label>Whistleblower Allegation</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="investigation-type" value="vendor-fraud">
+                                <label>Vendor/Procurement Fraud</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="investigation-type" value="regulatory">
+                                <label>Regulatory Compliance Violation</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="investigation-type" value="other">
+                                <label>Other (describe below)</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>How was the issue discovered?</label>
+                        <textarea name="discovery-method" placeholder="Internal audit, whistleblower report, external audit, employee complaint, etc."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>When did you first become aware?</label>
+                        <input type="date" name="awareness-date">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Individuals Involved or Suspected</label>
+                        <textarea name="individuals-involved" placeholder="Names, titles, departments (will remain confidential)"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Estimated Financial Impact (if applicable)</label>
+                        <select name="financial-impact">
+                            <option value="">Select range...</option>
+                            <option value="under-50k">Under $50,000</option>
+                            <option value="50k-250k">$50,000 - $250,000</option>
+                            <option value="250k-1m">$250,000 - $1M</option>
+                            <option value="1m-plus">$1M+</option>
+                            <option value="unknown">Unknown/To Be Determined</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Has this been reported to anyone externally? <span class="required">*</span></label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="external-reporting" value="regulators">
+                                <label>Regulatory Authorities</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="external-reporting" value="law-enforcement">
+                                <label>Law Enforcement</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="external-reporting" value="media">
+                                <label>Media/Press</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="external-reporting" value="auditors">
+                                <label>External Auditors</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="external-reporting" value="none">
+                                <label>No - Internal Only</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Who internally knows about this?</label>
+                        <textarea name="internal-knowledge" placeholder="Board members, executives, HR, legal department, audit committee, etc."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Any regulatory deadlines or self-reporting requirements?</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" name="regulatory-deadline" value="yes">
+                                <label>Yes (specify below)</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="regulatory-deadline" value="no">
+                                <label>No</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="regulatory-deadline" value="unknown">
+                                <label>Unknown</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Have you taken any action so far?</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="actions-taken" value="interviews">
+                                <label>Conducted Interviews</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="actions-taken" value="document-review">
+                                <label>Reviewed Documents</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="actions-taken" value="suspension">
+                                <label>Suspended Employees</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="actions-taken" value="preservation">
+                                <label>Preserved Evidence</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="actions-taken" value="none">
+                                <label>No Action Yet</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <strong>Note:</strong> For privileged investigation, it's best if attorney directs all investigation activities from this point forward. Detailed discussion in confidential consultation.
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTRACT REVIEW -->
+            <div class="service-specific-section" id="section-contracts">
+                <div class="section page-break">
+                    <h2 class="section-title">4. Contract Review & Drafting - Specific Information</h2>
+                    
+                    <div class="form-group">
+                        <label>Service Needed <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" name="contract-service" value="review">
+                                <label>Review Existing Contract</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="contract-service" value="drafting">
+                                <label>Draft New Contract</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="contract-service" value="negotiation">
+                                <label>Negotiation Support</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Type of Contract <span class="required">*</span></label>
+                        <select name="contract-type" required>
+                            <option value="">Select contract type...</option>
+                            <option value="vendor-agreement">Vendor/Supplier Agreement</option>
+                            <option value="customer-agreement">Customer/Client Agreement</option>
+                            <option value="partnership">Partnership Agreement</option>
+                            <option value="jv">Joint Venture Agreement</option>
+                            <option value="nda">Non-Disclosure Agreement</option>
+                            <option value="employment">Employment Agreement</option>
+                            <option value="consulting">Consulting/Independent Contractor Agreement</option>
+                            <option value="saas">SaaS/Software License Agreement</option>
+                            <option value="ip-license">IP License Agreement</option>
+                            <option value="lease">Lease Agreement</option>
+                            <option value="other">Other (specify below)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Contract Value/Transaction Size</label>
+                        <input type="text" name="contract-value" placeholder="e.g., $500,000 annually, $2M total, etc.">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Other Party to Contract</label>
+                        <input type="text" name="other-party" placeholder="Company/individual name">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Your Role in Transaction</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" name="contract-role" value="buyer">
+                                <label>Buyer/Customer</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="contract-role" value="seller">
+                                <label>Seller/Vendor</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="contract-role" value="partner">
+                                <label>Partner/Collaborator</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="contract-role" value="employer">
+                                <label>Employer</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="contract-role" value="other">
+                                <label>Other</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Has contract already been signed?</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" name="contract-signed" value="no">
+                                <label>No - Need review before signing</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="contract-signed" value="negotiation">
+                                <label>No - In negotiation</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="contract-signed" value="yes">
+                                <label>Yes - Signed (need advice on interpretation/dispute)</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Specific Concerns or Key Terms to Focus On</label>
+                        <textarea name="contract-concerns" placeholder="Liability limitations, indemnification, termination rights, payment terms, IP ownership, etc."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Timeline for Review/Drafting</label>
+                        <input type="text" name="contract-timeline" placeholder="e.g., Need within 3 days, counterparty expecting response by Friday, etc.">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Governing Law/Jurisdiction</label>
+                        <input type="text" name="contract-jurisdiction" placeholder="e.g., New York, Delaware, California, etc.">
+                    </div>
+                </div>
+            </div>
+
+            <!-- DATA PRIVACY -->
+            <div class="service-specific-section" id="section-privacy">
+                <div class="section page-break">
+                    <h2 class="section-title">4. Data Privacy Compliance - Specific Information</h2>
+                    
+                    <div class="form-group">
+                        <label>Type of Data Collected <span class="required">*</span></label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="data-type" value="personal">
+                                <label>Personal Identifiable Information (PII)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="data-type" value="financial">
+                                <label>Financial Information</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="data-type" value="health">
+                                <label>Health Information (HIPAA)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="data-type" value="biometric">
+                                <label>Biometric Data</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="data-type" value="children">
+                                <label>Children's Data (COPPA)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="data-type" value="employee">
+                                <label>Employee Data</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="data-type" value="behavioral">
+                                <label>Behavioral/Usage Data</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Geographic Scope/Users <span class="required">*</span></label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="privacy-geography" value="us-nationwide">
+                                <label>US Nationwide (multiple states)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="privacy-geography" value="california">
+                                <label>California (CCPA/CPRA)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="privacy-geography" value="eu">
+                                <label>European Union (GDPR)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="privacy-geography" value="uk">
+                                <label>United Kingdom (UK GDPR)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="privacy-geography" value="uae">
+                                <label>UAE</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="privacy-geography" value="global">
+                                <label>Global/Multiple Jurisdictions</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Business Model</label>
+                        <select name="business-model">
+                            <option value="">Select model...</option>
+                            <option value="b2c">B2C (Consumer-facing)</option>
+                            <option value="b2b">B2B (Business clients)</option>
+                            <option value="both">Both B2C and B2B</option>
+                            <option value="marketplace">Marketplace/Platform</option>
+                            <option value="saas">SaaS Application</option>
+                            <option value="ecommerce">E-commerce</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Current Privacy Compliance Status</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="privacy-current" value="privacy-policy">
+                                <label>Have Privacy Policy</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="privacy-current" value="terms">
+                                <label>Have Terms of Service</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="privacy-current" value="cookie-policy">
+                                <label>Have Cookie Policy</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="privacy-current" value="data-processing">
+                                <label>Have Data Processing Agreements</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="privacy-current" value="procedures">
+                                <label>Have Data Subject Request Procedures</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="privacy-current" value="none">
+                                <label>None - Starting from scratch</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Specific Privacy Concerns/Needs</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="privacy-needs" value="compliance-audit">
+                                <label>Privacy Compliance Audit</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="privacy-needs" value="policy-drafting">
+                                <label>Policy Drafting/Update</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="privacy-needs" value="data-breach">
+                                <label>Data Breach Response</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="privacy-needs" value="regulatory-inquiry">
+                                <label>Regulatory Inquiry/Investigation</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="privacy-needs" value="vendor-agreements">
+                                <label>Vendor/Third-Party Agreements</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="privacy-needs" value="training">
+                                <label>Employee Training Program</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Have you experienced a data breach or security incident?</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" name="data-breach" value="yes">
+                                <label>Yes (urgent - discuss immediately)</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="data-breach" value="no">
+                                <label>No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Number of Data Subjects/Users</label>
+                        <select name="data-subjects">
+                            <option value="">Select range...</option>
+                            <option value="under-1k">Under 1,000</option>
+                            <option value="1k-10k">1,000 - 10,000</option>
+                            <option value="10k-100k">10,000 - 100,000</option>
+                            <option value="100k-1m">100,000 - 1M</option>
+                            <option value="1m-plus">1M+</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- IP STRATEGY -->
+            <div class="service-specific-section" id="section-ip">
+                <div class="section page-break">
+                    <h2 class="section-title">4. IP Strategy & Protection - Specific Information</h2>
+                    
+                    <div class="form-group">
+                        <label>Type of IP Protection Needed <span class="required">*</span></label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ip-type" value="trademark">
+                                <label>Trademark</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ip-type" value="copyright">
+                                <label>Copyright</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ip-type" value="trade-secret">
+                                <label>Trade Secret Protection</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ip-type" value="patent-referral">
+                                <label>Patent (coordination/referral)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ip-type" value="licensing">
+                                <label>IP Licensing</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ip-type" value="portfolio">
+                                <label>IP Portfolio Strategy</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>What needs protection?</label>
+                        <textarea name="ip-assets" placeholder="Brand name, logo, product name, software code, designs, processes, etc."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Is this IP currently in use?</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" name="ip-in-use" value="yes">
+                                <label>Yes - Currently using</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="ip-in-use" value="planning">
+                                <label>Planning to use soon</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="ip-in-use" value="no">
+                                <label>Not yet in use</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Have you conducted trademark/IP searches?</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" name="ip-search" value="yes">
+                                <label>Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="ip-search" value="no">
+                                <label>No - Need search conducted</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Geographic Scope of Protection</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ip-geography" value="us">
+                                <label>United States</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ip-geography" value="eu">
+                                <label>European Union</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ip-geography" value="uae">
+                                <label>UAE/GCC</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ip-geography" value="international">
+                                <label>International (multiple countries)</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Specific IP Issues/Concerns</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ip-concerns" value="infringement">
+                                <label>Potential Infringement by Others</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ip-concerns" value="clearance">
+                                <label>Clearance for New Product/Brand</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ip-concerns" value="employee">
+                                <label>Employee IP Assignment Issues</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ip-concerns" value="licensing">
+                                <label>IP Licensing Opportunities</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="ip-concerns" value="valuation">
+                                <label>IP Valuation (for fundraising/M&A)</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Timeline for IP Protection</label>
+                        <input type="text" name="ip-timeline" placeholder="e.g., Before product launch in 3 months, ASAP, etc.">
+                    </div>
+                </div>
+            </div>
+
+            <!-- EMPLOYMENT LAW -->
+            <div class="service-specific-section" id="section-employment">
+                <div class="section page-break">
+                    <h2 class="section-title">4. Employment Law - Specific Information</h2>
+                    
+                    <div class="form-group">
+                        <label>Type of Employment Matter <span class="required">*</span></label>
+                        <select name="employment-type" required>
+                            <option value="">Select matter type...</option>
+                            <option value="handbook">Employee Handbook Development</option>
+                            <option value="offer-letters">Offer Letters/Employment Agreements</option>
+                            <option value="independent-contractor">Independent Contractor Agreements</option>
+                            <option value="termination">Termination/Separation</option>
+                            <option value="discrimination">Discrimination/Harassment Claim</option>
+                            <option value="wage-hour">Wage & Hour Compliance</option>
+                            <option value="leave">Leave Policies (FMLA, ADA, etc.)</option>
+                            <option value="non-compete">Non-Compete/Non-Solicitation</option>
+                            <option value="workplace-investigation">Workplace Investigation</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Company Size (Number of Employees)</label>
+                        <select name="company-size">
+                            <option value="">Select size...</option>
+                            <option value="1-10">1-10 employees</option>
+                            <option value="11-50">11-50 employees</option>
+                            <option value="51-200">51-200 employees</option>
+                            <option value="201-500">201-500 employees</option>
+                            <option value="500-plus">500+ employees</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Employee Locations</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="employee-locations" value="single-state">
+                                <label>Single State (specify below)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="employee-locations" value="multi-state">
+                                <label>Multiple US States</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="employee-locations" value="remote">
+                                <label>Fully Remote/Distributed</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="employee-locations" value="international">
+                                <label>International Employees</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Primary State(s) of Operation</label>
+                        <input type="text" name="operation-states" placeholder="e.g., New York, California, Texas, etc.">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Current Employment Documentation</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="employment-docs" value="handbook">
+                                <label>Employee Handbook</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="employment-docs" value="offer-template">
+                                <label>Offer Letter Templates</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="employment-docs" value="contractor-template">
+                                <label>Contractor Agreement Templates</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="employment-docs" value="policies">
+                                <label>HR Policies</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="employment-docs" value="none">
+                                <label>None - Need to develop</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Specific Employment Law Concerns</label>
+                        <textarea name="employment-concerns" placeholder="Describe specific issues, concerns, or questions"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Is there an active claim or complaint?</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" name="active-claim" value="yes">
+                                <label>Yes (describe below)</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="active-claim" value="no">
+                                <label>No - Preventive/Advisory</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="claim-details" style="display:none;">
+                        <label>Claim/Complaint Details</label>
+                        <textarea name="claim-description" placeholder="EEOC charge, lawsuit, internal complaint, etc."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FUNDRAISING -->
+            <div class="service-specific-section" id="section-fundraising">
+                <div class="section page-break">
+                    <h2 class="section-title">4. Fundraising & Securities - Specific Information</h2>
+                    
+                    <div class="form-group">
+                        <label>Type of Financing <span class="required">*</span></label>
+                        <select name="fundraising-type" required>
+                            <option value="">Select financing type...</option>
+                            <option value="safe">SAFE (Simple Agreement for Future Equity)</option>
+                            <option value="convertible-note">Convertible Note</option>
+                            <option value="priced-round">Priced Equity Round (Series Seed/A/B/etc.)</option>
+                            <option value="friends-family">Friends & Family Round</option>
+                            <option value="angel">Angel Investment</option>
+                            <option value="venture">Venture Capital</option>
+                            <option value="crowdfunding">Crowdfunding (Reg CF/A+)</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Fundraising Stage</label>
+                        <select name="fundraising-stage">
+                            <option value="">Select stage...</option>
+                            <option value="planning">Planning/Pre-fundraising</option>
+                            <option value="conversations">In Conversations with Investors</option>
+                            <option value="term-sheet">Received Term Sheet</option>
+                            <option value="due-diligence">Due Diligence Stage</option>
+                            <option value="closing">Ready to Close</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Target Raise Amount</label>
+                        <select name="raise-amount">
+                            <option value="">Select range...</option>
+                            <option value="under-250k">Under $250K</option>
+                            <option value="250k-1m">$250K - $1M</option>
+                            <option value="1m-3m">$1M - $3M</option>
+                            <option value="3m-10m">$3M - $10M</option>
+                            <option value="10m-plus">$10M+</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Company Formation Status</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" name="formation-status" value="delaware-corp">
+                                <label>Delaware C-Corporation (formed)</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="formation-status" value="other-corp">
+                                <label>Other State C-Corporation (formed)</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="formation-status" value="llc">
+                                <label>LLC (may need conversion)</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="formation-status" value="not-formed">
+                                <label>Not Yet Formed</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Current Capitalization</label>
+                        <textarea name="cap-table" placeholder="Number of founders, current ownership %, any existing investors, option pool, etc."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Do you have existing legal documentation?</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="existing-docs" value="incorporation">
+                                <label>Incorporation Documents</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="existing-docs" value="bylaws">
+                                <label>Bylaws</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="existing-docs" value="founder-agreements">
+                                <label>Founder Agreements</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="existing-docs" value="ip-assignment">
+                                <label>IP Assignment Agreements</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="existing-docs" value="option-plan">
+                                <label>Stock Option Plan</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="existing-docs" value="none">
+                                <label>None - Need to develop</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Type of Investors</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="investor-type" value="angels">
+                                <label>Angel Investors</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="investor-type" value="vc">
+                                <label>Venture Capital Firms</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="investor-type" value="strategic">
+                                <label>Strategic/Corporate Investors</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="investor-type" value="friends-family">
+                                <label>Friends & Family</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="investor-type" value="crowdfunding">
+                                <label>Crowdfunding Platform</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Specific Services Needed</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="fundraising-services" value="structure">
+                                <label>Investment Structure Advice</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="fundraising-services" value="documents">
+                                <label>Investment Documentation</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="fundraising-services" value="term-sheet-review">
+                                <label>Term Sheet Review</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="fundraising-services" value="cap-table">
+                                <label>Cap Table Management</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="fundraising-services" value="compliance">
+                                <label>Securities Compliance</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" name="fundraising-services" value="negotiation">
+                                <label>Negotiation Support</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION: ADDITIONAL INFORMATION (Universal) -->
+            <div class="section">
+                <h2 class="section-title">5. Additional Information</h2>
+                
+                <div class="form-group">
+                    <label>How did you find Rivalis Law?</label>
+                    <textarea name="how-found" placeholder="Referral, search engine, LinkedIn, etc."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Is there anything else we should know?</label>
+                    <textarea name="additional-info" placeholder="Any other relevant information, special circumstances, or questions"></textarea>
+                </div>
+            </div>
+
+            <!-- AUTHORIZATION -->
+            <div class="signature-section">
+                <h2 class="section-title">Client Authorization</h2>
+                
+                <div class="warning-box">
+                    <strong>Important Notice:</strong> By signing below, you acknowledge that:
+                    <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                        <li>The information provided is true and accurate to the best of your knowledge</li>
+                        <li>Submission of this form does not create an attorney-client relationship</li>
+                        <li>An attorney-client relationship is created only upon execution of an engagement letter</li>
+                        <li>Information provided is subject to attorney-client privilege considerations</li>
+                        <li>You authorize Rivalis Law to conduct a conflicts check based on information provided</li>
+                    </ul>
+                </div>
+
+                <div class="form-group" style="margin-top: 2rem;">
+                    <label>Full Name <span class="required">*</span></label>
+                    <input type="text" name="signature-name" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Date <span class="required">*</span></label>
+                        <input type="date" name="signature-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Title (if representing company)</label>
+                        <input type="text" name="signature-title" placeholder="e.g., CEO, CFO, General Counsel">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Electronic Signature <span class="required">*</span></label>
+                    <input type="text" name="signature" required placeholder="Type your full name to sign">
+                    <p class="help-text">By typing your name, you are providing your electronic signature</p>
+                </div>
+            </div>
+
+            <div class="footer-note">
+                <p><strong>Rivalis Law</strong> | Attorney-Client Privileged Communication</p>
+                <p>For questions about this form, contact: <strong>contact@rivalislaw.com</strong> | <strong>(202) 555-0199</strong></p>
+                <p style="margin-top: 1rem;">This form will be reviewed confidentially. You will receive a response within 24-48 hours for standard matters, or within 4 hours for emergency matters.</p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Show/hide company info based on client type
+        document.querySelectorAll('input[name="client-type"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const companyInfo = document.getElementById('company-info');
+                if (this.value === 'business') {
+                    companyInfo.style.display = 'block';
+                    companyInfo.querySelector('input').required = true;
+                } else {
+                    companyInfo.style.display = 'none';
+                    companyInfo.querySelector('input').required = false;
+                }
+            });
+        });
+
+        // Show/hide other legal matters details
+        document.querySelectorAll('input[name="other-legal-matters"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const details = document.getElementById('other-matters-details');
+                details.style.display = this.value === 'yes' ? 'block' : 'none';
+            });
+        });
+
+        // Show/hide other counsel details
+        document.querySelectorAll('input[name="other-counsel"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const details = document.getElementById('other-counsel-details');
+                details.style.display = this.value === 'yes' ? 'block' : 'none';
+            });
+        });
+
+        // Service selection
+        function selectService(serviceId) {
+            // Remove active class from all buttons
+            document.querySelectorAll('.service-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Hide all service-specific sections
+            document.querySelectorAll('.service-specific-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Activate selected button
+            event.target.classList.add('active');
+            
+            // Show selected service section
+            const section = document.getElementById('section-' + serviceId);
+            if (section) {
+                section.classList.add('active');
+            }
+        }
+
+        // Immigration-specific conditional fields
+        document.querySelectorAll('input[name="uscis-issues"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const details = document.getElementById('uscis-issues-details');
+                if (details) {
+                    details.style.display = this.value === 'yes' ? 'block' : 'none';
+                }
+            });
+        });
+
+        // M&A-specific conditional fields
+        document.querySelectorAll('input[name="other-advisors"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const details = document.getElementById('advisors-details');
+                if (details) {
+                    details.style.display = this.value === 'yes' ? 'block' : 'none';
+                }
+            });
+        });
+
+        // Employment-specific conditional fields
+        document.querySelectorAll('input[name="active-claim"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const details = document.getElementById('claim-details');
+                if (details) {
+                    details.style.display = this.value === 'yes' ? 'block' : 'none';
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('intakeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Form completed! In production, this would be securely submitted to Rivalis Law.\n\nYou will receive a response within:\n• 4 hours for emergency matters\n• 24 hours for urgent matters\n• 48 hours for standard matters');
+        });
+
+        // Set today's date as default for signature date
+        const today = new Date().toISOString().split('T')[0];
+        document.querySelector('input[name="signature-date"]').value = today;
+    </script>
+</body>
+</html>

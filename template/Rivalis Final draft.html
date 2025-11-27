@@ -1,0 +1,2201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rivalis Law | AI Governance & Corporate Immigration Counsel</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --accent: #d4af37;
+            --accent-dark: #b8941f;
+            --accent-light: #f0e6d2;
+            --white: #ffffff;
+            --gray-50: #fafbfc;
+            --gray-100: #f4f6f8;
+            --gray-200: #e8ecf0;
+            --gray-600: #4a5568;
+            --gray-700: #2d3748;
+            --gray-900: #0f1419;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--gray-900);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Emergency Bar */
+        .emergency-bar {
+            background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
+            color: white;
+            padding: 1rem 3rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.95; }
+        }
+
+        .emergency-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .emergency-text {
+            font-weight: 700;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .emergency-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .emergency-btn {
+            background: white;
+            color: #c0392b;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+
+        .emergency-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Navigation */
+        .nav {
+            position: sticky;
+            top: 54px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+            z-index: 999;
+            transition: all 0.4s;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-logo::before {
+            content: '⚖ ';
+            color: var(--accent);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown > .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            min-width: 240px;
+            padding: 0.5rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s;
+            list-style: none;
+            display: none;
+        }
+
+        .nav-dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            display: block;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1.25rem;
+            color: var(--gray-700);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+        }
+
+        .dropdown-menu a:hover {
+            background: var(--accent-light);
+            border-left-color: var(--accent);
+            color: var(--accent-dark);
+        }
+
+        .nav-link {
+            color: var(--gray-700);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+        }
+
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown > .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            min-width: 240px;
+            padding: 0.5rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s;
+            list-style: none;
+        }
+
+        .nav-dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1.25rem;
+            color: var(--gray-700);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+        }
+
+        .dropdown-menu a:hover {
+            background: var(--accent-light);
+            border-left-color: var(--accent);
+            color: var(--accent-dark);
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: var(--white);
+            padding: 0.875rem 1.75rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.35);
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(165deg, #fafbfc 0%, #ffffff 50%, var(--accent-light) 100%);
+            padding: 6rem 3rem 5rem;
+            position: relative;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .hero-badges {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 0.625rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--gray-700);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .badge.urgent {
+            background: #e74c3c;
+            color: white;
+            border-color: #c0392b;
+        }
+
+        .badge i {
+            color: var(--accent);
+        }
+
+        .badge.urgent i {
+            color: white;
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            color: var(--primary);
+            margin-bottom: 1.75rem;
+        }
+
+        .hero-title .highlight {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--gray-600);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .trust-bar {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding: 2.5rem 0;
+            margin-bottom: 2.5rem;
+            border-top: 2px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 2px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .trust-item {
+            text-align: center;
+        }
+
+        .trust-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .trust-label {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            margin-top: 0.5rem;
+            font-weight: 500;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 1.125rem 2.25rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.625rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: var(--white);
+            box-shadow: 0 4px 16px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 28px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--gray-700);
+            border: 2px solid var(--gray-200);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Credentials Card */
+        .hero-media {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .credentials-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .credential {
+            display: flex;
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        .credential-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .credential-icon i {
+            color: var(--white);
+            font-size: 1.35rem;
+        }
+
+        .credential-text h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.375rem;
+        }
+
+        .credential-text p {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+
+        /* Social Proof */
+        .social-proof {
+            background: var(--primary);
+            color: var(--white);
+            padding: 3.5rem 3rem;
+            text-align: center;
+        }
+
+        .social-proof h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 2.5rem;
+            opacity: 0.6;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .logos {
+            display: flex;
+            justify-content: center;
+            gap: 5rem;
+            flex-wrap: wrap;
+        }
+
+        .logo-item {
+            font-size: 1.75rem;
+            font-weight: 700;
+            opacity: 0.5;
+            font-family: 'Cormorant Garamond', serif;
+            transition: opacity 0.3s;
+        }
+
+        .logo-item:hover {
+            opacity: 1;
+        }
+
+        /* Impact Section */
+        .impact {
+            padding: 7rem 3rem;
+            background: var(--white);
+        }
+
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 5rem;
+        }
+
+        .section-tag {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1.25rem;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.75rem;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray-600);
+            line-height: 1.8;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+
+        .impact-card {
+            background: linear-gradient(135deg, var(--gray-50) 0%, var(--white) 100%);
+            padding: 3rem;
+            border-radius: 16px;
+            border-left: 4px solid var(--accent);
+            transition: all 0.4s;
+        }
+
+        .impact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+        }
+
+        .impact-number {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Cormorant Garamond', serif;
+            margin-bottom: 0.75rem;
+        }
+
+        .impact-label {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .impact-desc {
+            font-size: 0.975rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+        }
+
+        /* Services Section - ONLY 3 */
+        .services {
+            padding: 7rem 3rem;
+            background: var(--gray-50);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 16px;
+            border: 3px solid var(--accent);
+            transition: all 0.4s;
+            position: relative;
+        }
+
+        .service-card::after {
+            content: 'CORE SPECIALTY';
+            position: absolute;
+            top: -14px;
+            right: 2rem;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: white;
+            padding: 0.35rem 1.25rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-icon i {
+            font-size: 1.75rem;
+            color: var(--white);
+        }
+
+        .service-card h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .service-tagline {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-badge {
+            background: var(--accent-light);
+            border: 2px solid var(--accent);
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .price-range {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary);
+            font-family: 'Cormorant Garamond', serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-note {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: var(--gray-600);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .roi-highlight {
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 3px solid var(--accent);
+            padding: 1rem;
+            margin: 1.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .roi-highlight i {
+            color: var(--accent);
+            font-size: 1.25rem;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .service-features li {
+            padding: 0.75rem 0;
+            color: var(--gray-700);
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+
+        .service-cta {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid var(--gray-200);
+        }
+
+        .service-cta-btn {
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .service-cta-btn.primary {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: white;
+        }
+
+        .service-cta-btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .service-cta-btn.secondary {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .service-cta-btn.secondary:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* Select Services Grid */
+        .select-services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .select-service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 2px solid var(--gray-200);
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .select-service-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .select-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--accent-light) 0%, rgba(212, 175, 55, 0.3) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .select-icon i {
+            font-size: 1.75rem;
+            color: var(--accent);
+        }
+
+        .select-service-card h4 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .select-service-card p {
+            font-size: 0.95rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+        }
+
+        .select-pricing {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1.25rem;
+            padding-top: 1rem;
+            border-top: 2px solid var(--gray-200);
+        }
+
+        .select-cta {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s;
+        }
+
+        .select-service-card:hover .select-cta {
+            gap: 0.75rem;
+        }
+
+        /* Testimonials (reused for What to Expect) */
+        .testimonials {
+            padding: 7rem 3rem;
+            background: var(--white);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 5rem;
+        }
+
+        .testimonial {
+            background: var(--gray-50);
+            padding: 3rem;
+            border-radius: 16px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            position: relative;
+        }
+
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: 1.5rem;
+            left: 2rem;
+            font-size: 6rem;
+            color: rgba(212, 175, 55, 0.15);
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .stars {
+            color: var(--accent);
+            font-size: 1.35rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-text {
+            font-size: 1.15rem;
+            color: var(--gray-700);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .author-avatar {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.35rem;
+        }
+
+        .author-info h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .author-info p {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+
+        /* Qualification Section */
+        .qualification-section {
+            padding: 6rem 3rem;
+            background: var(--gray-50);
+        }
+
+        .qualification-tiers {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .tier-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 2px solid var(--gray-200);
+            position: relative;
+        }
+
+        .tier-card.featured {
+            background: linear-gradient(135deg, var(--accent-light) 0%, rgba(212, 175, 55, 0.05) 100%);
+            border-color: var(--accent);
+            transform: scale(1.03);
+        }
+
+        .tier-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: white;
+            padding: 0.35rem 1.25rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .tier-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .tier-icon i {
+            color: white;
+            font-size: 1.75rem;
+        }
+
+        .tier-card h4 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.25rem;
+        }
+
+        .tier-card ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .tier-card ul li {
+            padding: 0.5rem 0;
+            color: var(--gray-700);
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .tier-card ul li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: 800;
+        }
+
+        .tier-investment {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--accent);
+            padding-top: 1rem;
+            border-top: 2px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .qualification-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            border: 2px solid var(--accent);
+            margin-top: 3rem;
+        }
+
+        .qualification-form h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--gray-700);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.875rem 1.25rem;
+            border: 2px solid var(--gray-200);
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        .form-submit-btn {
+            width: 100%;
+            padding: 1.25rem 2rem;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            transition: all 0.3s;
+        }
+
+        .form-submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.4);
+        }
+
+        .form-note {
+            margin-top: 1.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 7rem 3rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--gray-900) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .cta-section > p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .cta-section .urgency {
+            background: rgba(231, 76, 60, 0.2);
+            border: 2px solid #e74c3c;
+            color: white;
+            padding: 0.5rem 1.25rem;
+            border-radius: 6px;
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        .value-props {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            max-width: 1000px;
+            margin: 0 auto 4rem;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .value-prop {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+
+        .value-prop i {
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--gray-900);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 4rem 3rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Floating Action Buttons */
+        .fab-container {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .fab {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .fab:hover {
+            transform: scale(1.1) translateY(-5px);
+        }
+
+        .fab.urgent {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .fab.schedule {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: white;
+        }
+
+        .fab-tooltip {
+            position: absolute;
+            right: 70px;
+            background: var(--gray-900);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            white-space: nowrap;
+            font-size: 0.85rem;
+            font-weight: 600;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .fab:hover .fab-tooltip {
+            opacity: 1;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 968px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-grid,
+            .qualification-tiers {
+                grid-template-columns: 1fr;
+            }
+
+            .impact-grid,
+            .value-props {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-title {
+                font-size: 2.75rem;
+            }
+
+            .section-title {
+                font-size: 2.25rem;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .trust-bar {
+                grid-template-columns: 1fr;
+            }
+
+            .emergency-content {
+                flex-direction: column;
+            }
+
+            .fab-container {
+                bottom: 1rem;
+                right: 1rem;
+            }
+        }
+
+        /* Structured Data - Hidden */
+        script[type="application/ld+json"] {
+            display: none;
+        }
+    </style>
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LegalService",
+      "name": "Rivalis Law",
+      "description": "Elite legal services specializing in AI Governance, Global Immigration, and M&A Transactions. Big 4 trained attorney serving enterprise and growth companies.",
+      "url": "https://rivalislaw.com",
+      "telephone": "+1-202-555-0199",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Washington",
+        "addressRegion": "DC",
+        "addressCountry": "US"
+      },
+      "areaServed": {
+        "@type": "Place",
+        "name": "Global"
+      },
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Oxford AI Programme"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "New York State Bar"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Michigan State Bar"
+        }
+      ],
+      "priceRange": "$$",
+      "knowsAbout": [
+        "AI Governance",
+        "Corporate Immigration Law",
+        "Mergers and Acquisitions",
+        "Business Law"
+      ],
+      "slogan": "One Mistake Could Cost You Everything You've Built"
+    }
+    </script>
+</head>
+<body>
+    <!-- Emergency Bar -->
+    <div class="emergency-bar">
+        <div class="emergency-content">
+            <div class="emergency-text">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span>Legal Emergency? Visa Crisis? Deal Closing Tomorrow?</span>
+            </div>
+            <div class="emergency-actions">
+                <a href="tel:+1-202-555-0199" class="emergency-btn">
+                    <i class="fas fa-phone"></i>
+                    DC: (202) 555-0199
+                </a>
+                <a href="#qualify" class="emergency-btn">
+                    <i class="fas fa-calendar-alt"></i>
+                    Emergency Consult
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">Rivalis Law</a>
+            <ul class="nav-menu">
+                <li><a href="#impact" class="nav-link">Why Rivalis</a></li>
+                <li><a href="#services" class="nav-link">Our 3 Specialties</a></li>
+                <li><a href="#why-choose" class="nav-link">What to Expect</a></li>
+                <li><a href="#select-services" class="nav-link">Select Services</a></li>
+                <li><a href="#qualify" class="nav-cta">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-container">
+            <div>
+                <div class="hero-badges">
+                    <div class="badge">
+                        <i class="fas fa-briefcase"></i>
+                        Big 4 Trained
+                    </div>
+                    <div class="badge">
+                        <i class="fas fa-graduation-cap"></i>
+                        Oxford AI Certified
+                    </div>
+                    <div class="badge">
+                        <i class="fas fa-gavel"></i>
+                        NY & MI Bar
+                    </div>
+                    <div class="badge urgent">
+                        <i class="fas fa-bolt"></i>
+                        Limited Capacity
+                    </div>
+                </div>
+
+                <h1 class="hero-title">
+                    One Mistake Could Cost You<br><span class="highlight">Everything You've Built</span>
+                </h1>
+
+                <p class="hero-subtitle">
+                    Your AI product launch. Your global expansion. Your $50M acquisition. The wrong legal counsel doesn't just slow you down—it puts everything at risk. Get Big 4-trained expertise without the conflicts, delays, and six-figure bills.
+                </p>
+
+                <div class="trust-bar">
+                    <div class="trust-item">
+                        <div class="trust-number">Big 4</div>
+                        <div class="trust-label">Trained & Experienced</div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-number">Oxford</div>
+                        <div class="trust-label">AI Programme Certified</div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-number">2 States</div>
+                        <div class="trust-label">NY & MI Bar Admitted</div>
+                    </div>
+                </div>
+
+                <div class="cta-group">
+                    <a href="#qualify" class="btn btn-primary">
+                        <i class="fas fa-calendar-check"></i>
+                        Get Qualified Assessment
+                    </a>
+                    <a href="#services" class="btn btn-secondary">
+                        View Specialties
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-media">
+                <div class="credentials-list">
+                    <div class="credential">
+                        <div class="credential-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="credential-text">
+                            <h4>Big 4 Trained Excellence</h4>
+                            <p>Corporate Counsel Experience at Elite Firms</p>
+                        </div>
+                    </div>
+
+                    <div class="credential">
+                        <div class="credential-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="credential-text">
+                            <h4>AI Governance Certified</h4>
+                            <p>Oxford University Programme Graduate</p>
+                        </div>
+                    </div>
+
+                    <div class="credential">
+                        <div class="credential-icon">
+                            <i class="fas fa-passport"></i>
+                        </div>
+                        <div class="credential-text">
+                            <h4>Immigration Excellence</h4>
+                            <p>250+ Successful Visa Petitions</p>
+                        </div>
+                    </div>
+
+                    <div class="credential">
+                        <div class="credential-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div class="credential-text">
+                            <h4>M&A Transaction Counsel</h4>
+                            <p>Tax Due Diligence & Deal Structuring</p>
+                        </div>
+                    </div>
+
+                    <div class="credential">
+                        <div class="credential-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <div class="credential-text">
+                            <h4>Industry Recognition</h4>
+                            <p>Featured in LegalTech Publications</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="social-proof">
+        <div class="section-container">
+            <h3>Trusted By Leading Organizations</h3>
+            <div class="logos">
+                <div class="logo-item">Big 4 Trained</div>
+                <div class="logo-item">Fortune 500</div>
+                <div class="logo-item">Oxford Certified</div>
+                <div class="logo-item">Growth Companies</div>
+                <div class="logo-item">Global Clients</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section id="impact" class="impact">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-tag">WHY RIVALIS LAW</div>
+                <h2 class="section-title">What You Get That Big Law Can't Offer</h2>
+                <p class="section-subtitle">
+                    The expertise of elite firms without the conflicts, bureaucracy, or inflated bills. Personal attention from an attorney who's seen what goes wrong at the highest levels.
+                </p>
+            </div>
+
+            <div class="impact-grid">
+                <div class="impact-card">
+                    <div class="impact-number"><i class="fas fa-building"></i></div>
+                    <div class="impact-label">Big 4 Training</div>
+                    <p class="impact-desc">Trained at Ernst & Young handling complex corporate matters, immigration cases, and high-stakes transactions. You get that expertise without the $1,200/hour rate.</p>
+                </div>
+
+                <div class="impact-card">
+                    <div class="impact-number"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="impact-label">Oxford AI Certified</div>
+                    <p class="impact-desc">Completed Oxford's AI Governance Programme. Most lawyers claim they understand AI—I have the certification and training to prove it.</p>
+                </div>
+
+                <div class="impact-card">
+                    <div class="impact-number"><i class="fas fa-user-tie"></i></div>
+                    <div class="impact-label">Direct Partner Access</div>
+                    <p class="impact-desc">At big firms, junior associates handle your work. Here, you get direct access to an experienced attorney on every matter—no delegation to untrained staff.</p>
+                </div>
+
+                <div class="impact-card">
+                    <div class="impact-number"><i class="fas fa-shield-alt"></i></div>
+                    <div class="impact-label">No Conflicts of Interest</div>
+                    <p class="impact-desc">Big firms can't take your case because they represent your competitor. Boutique practices mean we work for YOU, not a roster of conflicting clients.</p>
+                </div>
+
+                <div class="impact-card">
+                    <div class="impact-number"><i class="fas fa-bolt"></i></div>
+                    <div class="impact-label">Responsive & Agile</div>
+                    <p class="impact-desc">Need an answer today? You'll get it. No committees, no approval chains, no waiting 3 weeks for a 15-minute call. Just direct, immediate counsel.</p>
+                </div>
+
+                <div class="impact-card">
+                    <div class="impact-number"><i class="fas fa-hand-holding-usd"></i></div>
+                    <div class="impact-label">Transparent Pricing</div>
+                    <p class="impact-desc">You see our pricing upfront. No surprise bills, no nickel-and-diming for emails, no hidden fees. Know exactly what you're investing before we start.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section - ONLY 3 CORE SERVICES -->
+    <section id="services" class="services">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-tag">THREE CORE SPECIALIZATIONS</div>
+                <h2 class="section-title">We Don't Do Everything. We Master Three Things.</h2>
+                <p class="section-subtitle">
+                    Elite counsel in the three areas where one mistake costs millions: AI compliance, global talent mobility, and high-stakes corporate transactions.
+                </p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Service 1: AI Governance -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI Governance & Compliance</h3>
+                    <p class="service-tagline">Your Product. Their Lawsuit. Tomorrow's Headlines.</p>
+                    
+                    <div class="pricing-badge">
+                        <div class="price-range">Starting at $25,000</div>
+                        <div class="price-note">Enterprise frameworks: $50K-$150K+</div>
+                    </div>
+
+                    <p>Your AI made a biased decision. A journalist is asking questions. Your Series A investor wants governance docs you don't have. EU customers demand AI Act compliance you can't prove. One regulatory letter, one lawsuit, one bad press cycle—and your funding evaporates.</p>
+                    
+                    <div class="roi-highlight">
+                        <i class="fas fa-certificate"></i>
+                        <strong>Why this matters:</strong> Oxford AI Programme trains lawyers in technical AI governance—most attorneys don't have this specialized knowledge
+                    </div>
+                    
+                    <ul class="service-features">
+                        <li>Emergency AI risk assessment before product launch</li>
+                        <li>Investor-ready governance documentation for fundraising</li>
+                        <li>EU AI Act compliance strategy and implementation</li>
+                        <li>Crisis response when AI systems malfunction or face scrutiny</li>
+                    </ul>
+
+                    <div class="service-cta">
+                        <a href="#qualify" class="service-cta-btn primary">
+                            <i class="fas fa-bolt"></i>
+                            Get AI Governance Quote
+                        </a>
+                        <a href="tel:+1-202-555-0199" class="service-cta-btn secondary">
+                            <i class="fas fa-phone"></i>
+                            Emergency: (202) 555-0199
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service 2: Immigration -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-passport"></i>
+                    </div>
+                    <h3>Global Expansion & Immigration</h3>
+                    <p class="service-tagline">Your Launch. Their Visa Denial. Your Disaster.</p>
+                    
+                    <div class="pricing-badge">
+                        <div class="price-range">$8,500-$15,000</div>
+                        <div class="price-note">O-1: $18K-$35K | RFE Emergency: Contact for pricing</div>
+                    </div>
+
+                    <p>Your CTO is stuck overseas. Launch is in 6 weeks. You just got an H-1B RFE with a 15-day deadline. Your star engineer's visa expires in 30 days and you have no backup. Every day of delay costs you revenue, credibility, and momentum.</p>
+                    
+                    <div class="roi-highlight">
+                        <i class="fas fa-award"></i>
+                        <strong>The advantage:</strong> Big 4 immigration experience means I know what USCIS scrutinizes—and how to build bulletproof petitions
+                    </div>
+                    
+                    <ul class="service-features">
+                        <li>Emergency RFE responses and visa crisis management</li>
+                        <li>H-1B, L-1, O-1 strategy for critical hires and launches</li>
+                        <li>Same-day immigration case assessment for urgent situations</li>
+                        <li>Zero-denial track record—we don't file until we know it works</li>
+                    </ul>
+
+                    <div class="service-cta">
+                        <a href="#qualify" class="service-cta-btn primary">
+                            <i class="fas fa-passport"></i>
+                            Urgent Visa Assessment
+                        </a>
+                        <a href="tel:+1-202-555-0199" class="service-cta-btn secondary">
+                            <i class="fas fa-phone"></i>
+                            RFE Crisis: (202) 555-0199
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service 3: M&A -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>M&A & Corporate Transactions</h3>
+                    <p class="service-tagline">Their Offer. Your Hidden Liability. Deal Over.</p>
+                    
+                    <div class="pricing-badge">
+                        <div class="price-range">$35,000-$125,000</div>
+                        <div class="price-note">Full transaction: $75K-$250K+ based on deal size</div>
+                    </div>
+
+                    <p>You're acquiring a company. Due diligence reveals tax issues that kill the deal—or worse, you miss them. The liability clause in your LOI exposes you to millions. Your board wants to close in 45 days but the risk analysis takes 60. One overlooked detail destroys the entire transaction.</p>
+                    
+                    <div class="roi-highlight">
+                        <i class="fas fa-briefcase"></i>
+                        <strong>What you get:</strong> Experience reviewing multimillion-dollar deals at Big 4 level—without the $500K+ legal bill
+                    </div>
+                    
+                    <ul class="service-features">
+                        <li>Rapid M&A due diligence that finds deal-killers early</li>
+                        <li>Tax liability identification that saves millions</li>
+                        <li>Transaction structuring to minimize exposure and maximize value</li>
+                        <li>Deal rescue when other counsel missed critical issues</li>
+                    </ul>
+
+                    <div class="service-cta">
+                        <a href="#qualify" class="service-cta-btn primary">
+                            <i class="fas fa-handshake"></i>
+                            Get Deal Assessment
+                        </a>
+                        <a href="mailto:deals@rivalislaw.com" class="service-cta-btn secondary">
+                            <i class="fas fa-envelope"></i>
+                            Email M&A Team
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Select Services Page -->
+    <section id="select-services" class="services">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-tag">SELECT SERVICES</div>
+                <h2 class="section-title">Expert Counsel in Complementary Areas</h2>
+                <p class="section-subtitle">
+                    Beyond our three core specializations in AI Governance, Immigration, and M&A, Rivalis Law provides expert counsel in select complementary areas for comprehensive legal support.
+                </p>
+            </div>
+
+            <div class="select-services-grid">
+                <!-- Select Service 1: Investigations -->
+                <div class="select-service-card" onclick="window.location.href='#qualify'">
+                    <div class="select-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h4>Corporate Investigations</h4>
+                    <p>Privilege-protected internal investigations, regulatory inquiry response, and employee misconduct matters requiring discretion and confidentiality.</p>
+                    <div class="select-pricing">Contact for confidential pricing</div>
+                    <div class="select-cta">
+                        Confidential Inquiry <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+
+                <!-- Select Service 2: Fractional GC -->
+                <div class="select-service-card" onclick="window.location.href='#qualify'">
+                    <div class="select-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h4>Fractional General Counsel</h4>
+                    <p>On-demand GC services for startups and growth companies. Cap table cleanup, fundraising documentation, employment agreements, and board advisory.</p>
+                    <div class="select-pricing">Starting at $8,500/month</div>
+                    <div class="select-cta">
+                        Schedule Consultation <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+
+                <!-- Select Service 3: ESG -->
+                <div class="select-service-card" onclick="window.location.href='#qualify'">
+                    <div class="select-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h4>ESG Governance</h4>
+                    <p>Investor-grade ESG frameworks, sustainability reporting, board diversity policies, and impact measurement that satisfy stakeholders and meet regulatory expectations.</p>
+                    <div class="select-pricing">$18,000 - $65,000</div>
+                    <div class="select-cta">
+                        ESG Assessment <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+
+                <!-- Select Service 4: Contracts -->
+                <div class="select-service-card" onclick="window.location.href='#qualify'">
+                    <div class="select-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h4>Contract Services</h4>
+                    <p>Same-day contract review and drafting for urgent business deadlines. Plain-English risk translation and obligation tracking for critical agreements.</p>
+                    <div class="select-pricing">Rush review: $2,500 - $8,500</div>
+                    <div class="select-cta">
+                        Urgent Contract Help <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+
+                <!-- Select Service 5: Enterprise -->
+                <div class="select-service-card" onclick="window.location.href='#qualify'">
+                    <div class="select-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h4>Enterprise Legal Consulting</h4>
+                    <p>Project-based expertise for Big 4 and Fortune 500 legal departments. Specialized knowledge without long-term commitment or FTE overhead.</p>
+                    <div class="select-pricing">Custom project pricing</div>
+                    <div class="select-cta">
+                        Enterprise Inquiry <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 4rem; text-align: center; padding: 2.5rem; background: var(--accent-light); border-radius: 12px; border: 2px solid var(--accent);">
+                <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--primary); margin-bottom: 1rem;">Not Sure Which Service Fits Your Needs?</h3>
+                <p style="font-size: 1.05rem; color: var(--gray-700); margin-bottom: 2rem;">
+                    Complete our quick assessment and we'll help you determine the right approach for your situation.
+                </p>
+                <a href="#qualify" class="btn btn-primary" style="display: inline-flex;">
+                    <i class="fas fa-clipboard-list"></i>
+                    Start Assessment
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- What to Expect Section -->
+    <section id="why-choose" class="testimonials">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-tag">THE RIVALIS EXPERIENCE</div>
+                <h2 class="section-title">What Working Together Looks Like</h2>
+                <p class="section-subtitle">
+                    Here's what you can expect when you work with Rivalis Law—from first contact to final deliverable
+                </p>
+            </div>
+
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <div class="stars"><i class="fas fa-comments"></i></div>
+                    <h4 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: var(--primary);">You'll Have Direct Access</h4>
+                    <p class="testimonial-text">
+                        When you reach out, you'll speak directly with me—not an intake coordinator, not a junior associate. Your matters get personal attention from experienced counsel, not delegation to someone learning on your time.
+                    </p>
+                </div>
+
+                <div class="testimonial">
+                    <div class="stars"><i class="fas fa-clock"></i></div>
+                    <h4 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: var(--primary);">You'll Get Responsive Communication</h4>
+                    <p class="testimonial-text">
+                        Urgent matters get same-day responses. Standard questions within 24 hours. You'll never wonder if your email got lost or if anyone's working on your case. Clear timelines, regular updates, proactive communication.
+                    </p>
+                </div>
+
+                <div class="testimonial">
+                    <div class="stars"><i class="fas fa-file-invoice-dollar"></i></div>
+                    <h4 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: var(--primary);">You'll Know What You're Paying</h4>
+                    <p class="testimonial-text">
+                        Before we start, you'll see the investment required. Most matters are fixed-fee or have clear price ranges. No surprise bills for reading emails. No anxiety about the meter running. Just transparent pricing for defined work.
+                    </p>
+                </div>
+
+                <div class="testimonial">
+                    <div class="stars"><i class="fas fa-handshake"></i></div>
+                    <h4 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: var(--primary);">You'll Work With Someone Who Gets It</h4>
+                    <p class="testimonial-text">
+                        Whether it's AI product risks, visa timelines, or M&A tax issues—you'll work with counsel who has Big 4 training and specialized expertise. Technical knowledge meets practical business understanding.
+                    </p>
+                </div>
+            </div>
+
+            <div style="margin-top: 4rem; text-align: center; padding: 3rem; background: var(--accent-light); border-radius: 12px; border: 2px solid var(--accent);">
+                <h3 style="font-size: 1.75rem; font-weight: 700; color: var(--primary); margin-bottom: 1.5rem; font-family: 'Cormorant Garamond', serif;">The Promise</h3>
+                <p style="font-size: 1.15rem; color: var(--gray-700); max-width: 850px; margin: 0 auto 1.5rem; line-height: 1.8;">
+                    Elite-firm expertise without the bureaucracy. Specialized knowledge without the conflicts. Partner-level attention without the partner-level bill. This is what boutique counsel should feel like.
+                </p>
+                <p style="font-size: 1rem; color: var(--gray-600); max-width: 750px; margin: 0 auto; line-height: 1.7;">
+                    If at any point you're not getting responsive, high-quality counsel with transparent pricing—you'll let me know, and we'll fix it immediately. That's the commitment.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Qualification Section -->
+    <section id="qualify" class="qualification-section">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-tag">WORK WITH US</div>
+                <h2 class="section-title">Is Rivalis Law Right for Your Situation?</h2>
+                <p class="section-subtitle">We work with companies facing high-stakes legal challenges where failure isn't an option. Answer a few questions to see if we're the right fit.</p>
+            </div>
+
+            <div class="qualification-tiers">
+                <div class="tier-card">
+                    <div class="tier-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h4>For Growth Companies</h4>
+                    <ul>
+                        <li>Pre-Series A to Series B startups</li>
+                        <li>Scaling teams internationally</li>
+                        <li>Launching AI products</li>
+                        <li>First significant acquisition</li>
+                    </ul>
+                    <div class="tier-investment">Typical investment: $15K-$75K</div>
+                </div>
+
+                <div class="tier-card featured">
+                    <div class="tier-badge">Most Common</div>
+                    <div class="tier-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h4>For Enterprise</h4>
+                    <ul>
+                        <li>Fortune 1000 companies</li>
+                        <li>Complex M&A transactions</li>
+                        <li>Enterprise AI compliance</li>
+                        <li>Large-scale immigration programs</li>
+                    </ul>
+                    <div class="tier-investment">Typical investment: $50K-$250K+</div>
+                </div>
+            </div>
+
+            <div class="qualification-form">
+                <h3>Get Started: Quick Assessment</h3>
+                <form>
+                    <div class="form-group">
+                        <label>What's your primary legal challenge? *</label>
+                        <select required>
+                            <option value="">Select one...</option>
+                            <option value="ai">AI Governance & Compliance Crisis</option>
+                            <option value="immigration">Immigration/Visa Emergency (RFE, denial, urgent hire)</option>
+                            <option value="ma">M&A Due Diligence or Transaction</option>
+                            <option value="other">Other Complex Legal Matter</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Timeline urgency? *</label>
+                        <select required>
+                            <option value="">Select one...</option>
+                            <option value="emergency">Emergency (24-72 hours)</option>
+                            <option value="urgent">Urgent (1-2 weeks)</option>
+                            <option value="normal">Standard (2-4 weeks)</option>
+                            <option value="planning">Strategic Planning (1-3 months)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Company stage/size? *</label>
+                        <select required>
+                            <option value="">Select one...</option>
+                            <option value="startup">Startup (Pre-Series A to Series B)</option>
+                            <option value="growth">Growth Company (Series C+ or $10M-$100M revenue)</option>
+                            <option value="enterprise">Enterprise ($100M+ revenue or Fortune 1000)</option>
+                            <option value="individual">Individual/Small Business</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Estimated legal investment budget? *</label>
+                        <select required>
+                            <option value="">Select one...</option>
+                            <option value="under25">Under $25,000</option>
+                            <option value="25-75">$25,000 - $75,000</option>
+                            <option value="75-150">$75,000 - $150,000</option>
+                            <option value="150plus">$150,000+</option>
+                            <option value="unsure">Not sure / Need guidance</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Your email *</label>
+                        <input type="email" required placeholder="you@company.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Phone (for urgent matters) *</label>
+                        <input type="tel" required placeholder="+1 (202) 555-0100">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Brief description of situation (optional)</label>
+                        <textarea rows="3" placeholder="Help us understand your challenge..."></textarea>
+                    </div>
+
+                    <button type="submit" class="form-submit-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        Submit Assessment
+                    </button>
+
+                    <div class="form-note">
+                        <i class="fas fa-lock"></i>
+                        Confidential. We'll respond within 4 business hours (emergency matters within 2 hours).
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="cta-section">
+        <div class="section-container">
+            <h2>The Cost of Waiting Is Higher Than You Think</h2>
+            <p>
+                Your competitor just closed their Series B with airtight AI governance. Your visa petition was denied—again. Your acquisition is bleeding money in extended due diligence. Every day without elite counsel is a day your business is vulnerable.
+            </p>
+            <div class="urgency">
+                ⚡ Only 3 Client Slots Available This Quarter
+            </div>
+
+            <div class="value-props">
+                <div class="value-prop">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Big 4 Experience</span>
+                </div>
+                <div class="value-prop">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Oxford AI Certified</span>
+                </div>
+                <div class="value-prop">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Measurable Results</span>
+                </div>
+                <div class="value-prop">
+                    <i class="fas fa-check-circle"></i>
+                    <span>100% Compliance</span>
+                </div>
+                <div class="value-prop">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Transparent Pricing</span>
+                </div>
+                <div class="value-prop">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Confidential Counsel</span>
+                </div>
+            </div>
+
+            <div class="cta-group" style="justify-content: center;">
+                <a href="#qualify" class="btn btn-primary" style="font-size: 1.1rem; padding: 1.375rem 2.75rem;">
+                    <i class="fas fa-calendar-check"></i>
+                    Start Assessment
+                </a>
+                <a href="tel:+1-202-555-0199" class="btn btn-secondary" style="font-size: 1.1rem; padding: 1.375rem 2.75rem; background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.3); color: white;">
+                    <i class="fas fa-phone"></i>
+                    Call: (202) 555-0199
+                </a>
+            </div>
+
+            <div style="margin-top: 4rem; padding-top: 2.5rem; border-top: 1px solid rgba(255, 255, 255, 0.2);">
+                <p style="opacity: 0.7; font-size: 1rem;">
+                    <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i>
+                    Washington, DC Office | Licensed in NY & MI | Big 4 Trained | Serving Clients Globally
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div>
+                <div class="footer-brand">Rivalis Law</div>
+                <p style="margin-top: 0.75rem; font-size: 0.95rem;">
+                    Big 4 Trained Attorney | AI Governance | Global Immigration | M&A Transactions
+                </p>
+            </div>
+            <div class="footer-links">
+                <a href="#impact">Why Rivalis</a>
+                <a href="#services">Our 3 Specialties</a>
+                <a href="#select-services">Select Services</a>
+                <a href="#why-choose">What to Expect</a>
+                <a href="https://linkedin.com/in/aaishaeron">LinkedIn</a>
+                <a href="#privacy">Privacy & Terms</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p style="opacity: 1; margin-bottom: 1rem;">© 2025 Rivalis Law | Aaishwarya Aeron, Esq. | NY & MI Bar | Oxford AI Certified | Big 4 Trained</p>
+            <p style="margin-bottom: 0.75rem; opacity: 0.8; font-weight: 600;">Attorney Advertising</p>
+            <p style="margin-bottom: 1.5rem; opacity: 0.7; max-width: 900px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+                This website is for informational purposes only and does not constitute legal advice. Viewing or contacting us does not form an attorney-client relationship.
+            </p>
+            <p style="opacity: 0.6; font-size: 0.85rem; max-width: 900px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+                <strong>No Guarantee:</strong> Past results, experiences, or descriptions of services do not guarantee a similar outcome. 
+                <strong>Jurisdictional Limits:</strong> We accept matters only where we are admitted or permitted by law and may engage local counsel as needed.
+            </p>
+        </div>
+
+        <!-- Legal Disclaimers Modal -->
+        <div id="privacy" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; overflow-y: auto; padding: 2rem;">
+            <div style="max-width: 900px; margin: 2rem auto; background: white; border-radius: 12px; padding: 3rem; position: relative;">
+                <button onclick="document.getElementById('privacy').style.display='none'" style="position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; font-size: 2rem; cursor: pointer; color: var(--gray-600);">×</button>
+                
+                <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; margin-bottom: 2rem; color: var(--primary);">Privacy Policy & Terms of Use</h2>
+                
+                <div style="color: var(--gray-700); line-height: 1.8;">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; margin: 2rem 0 1rem; color: var(--primary);">Website Terms & Conditions</h3>
+                    <p style="margin-bottom: 1rem;">
+                        <strong>Attorney Advertising:</strong> This website constitutes attorney advertising. The information on this website is for general informational purposes only and does not constitute legal advice. Nothing on this site should be taken as creating an attorney-client relationship.
+                    </p>
+                    <p style="margin-bottom: 1rem;">
+                        <strong>No Attorney-Client Relationship:</strong> Viewing this website, submitting information through forms, or contacting Rivalis Law through this site does not create an attorney-client relationship. An attorney-client relationship is formed only through a signed engagement letter after conflicts clearance.
+                    </p>
+                    <p style="margin-bottom: 1rem;">
+                        <strong>No Guarantee of Results:</strong> Past results, client experiences, or descriptions of services do not guarantee or predict a similar outcome in any future matter. Every legal matter is unique and outcomes depend on specific facts and circumstances.
+                    </p>
+                    <p style="margin-bottom: 1rem;">
+                        <strong>Jurisdictional Limitations:</strong> Aaishwarya Aeron is admitted to practice law in New York and Michigan. Rivalis Law accepts matters only in jurisdictions where we are admitted or otherwise permitted to practice law. We may associate with or engage local counsel as needed for matters outside our jurisdictions.
+                    </p>
+
+                    <h3 style="font-size: 1.5rem; font-weight: 700; margin: 2rem 0 1rem; color: var(--primary);">Privacy Policy</h3>
+                    <p style="margin-bottom: 1rem;">
+                        <strong>Information Collection:</strong> We collect information you provide through contact forms, email, or phone communications. This may include your name, email, phone number, company information, and description of legal matters.
+                    </p>
+                    <p style="margin-bottom: 1rem;">
+                        <strong>Use of Information:</strong> Information collected is used solely to respond to inquiries, assess potential conflicts, and determine if we can assist with your legal matter. We do not sell, share, or distribute your information to third parties except as required by law or with your explicit consent.
+                    </p>
+                    <p style="margin-bottom: 1rem;">
+                        <strong>Confidentiality:</strong> While we treat all inquiries as confidential, please note that information provided prior to establishing an attorney-client relationship may not be protected by attorney-client privilege. Do not send confidential information until we have established a formal attorney-client relationship.
+                    </p>
+                    <p style="margin-bottom: 1rem;">
+                        <strong>Cookies & Analytics:</strong> This website may use cookies and analytics tools to improve user experience and understand website traffic. You may disable cookies in your browser settings.
+                    </p>
+                    <p style="margin-bottom: 1rem;">
+                        <strong>Data Security:</strong> We implement reasonable security measures to protect information transmitted through this website. However, no internet transmission is completely secure, and we cannot guarantee absolute security.
+                    </p>
+
+                    <h3 style="font-size: 1.5rem; font-weight: 700; margin: 2rem 0 1rem; color: var(--primary);">Disclaimer of Warranties</h3>
+                    <p style="margin-bottom: 1rem;">
+                        This website and its contents are provided "as is" without warranties of any kind, either express or implied. We make no representations or warranties regarding the accuracy, completeness, or timeliness of information on this site.
+                    </p>
+
+                    <h3 style="font-size: 1.5rem; font-weight: 700; margin: 2rem 0 1rem; color: var(--primary);">Limitation of Liability</h3>
+                    <p style="margin-bottom: 1rem;">
+                        Rivalis Law and Aaishwarya Aeron shall not be liable for any damages arising from use of this website or reliance on information contained herein.
+                    </p>
+
+                    <h3 style="font-size: 1.5rem; font-weight: 700; margin: 2rem 0 1rem; color: var(--primary);">External Links</h3>
+                    <p style="margin-bottom: 1rem;">
+                        This website may contain links to external websites. We are not responsible for the content, privacy policies, or practices of linked sites.
+                    </p>
+
+                    <h3 style="font-size: 1.5rem; font-weight: 700; margin: 2rem 0 1rem; color: var(--primary);">Changes to Terms</h3>
+                    <p style="margin-bottom: 1rem;">
+                        We reserve the right to modify these terms and privacy policy at any time. Continued use of this website constitutes acceptance of any changes.
+                    </p>
+
+                    <h3 style="font-size: 1.5rem; font-weight: 700; margin: 2rem 0 1rem; color: var(--primary);">Contact</h3>
+                    <p style="margin-bottom: 1rem;">
+                        For questions about these terms or our privacy practices, contact us at:<br>
+                        <strong>Email:</strong> aaishaeron@gmail.com<br>
+                        <strong>Phone:</strong> (202) 555-0199
+                    </p>
+
+                    <p style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--gray-200); font-size: 0.9rem; opacity: 0.7;">
+                        Last Updated: January 2025
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Action Buttons -->
+    <div class="fab-container">
+        <a href="tel:+1-202-555-0199" class="fab urgent">
+            <span class="fab-tooltip">Emergency: Call Now</span>
+            <i class="fas fa-phone-volume"></i>
+        </a>
+        <a href="#qualify" class="fab schedule">
+            <span class="fab-tooltip">Schedule Consultation</span>
+            <i class="fas fa-calendar-check"></i>
+        </a>
+    </div>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 134;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Enhanced navbar on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.nav');
+            if (window.pageYOffset > 100) {
+                nav.style.boxShadow = '0 4px 24px rgba(0, 0, 0, 0.08)';
+            } else {
+                nav.style.boxShadow = 'none';
+            }
+        });
+
+        // Form submission (placeholder - connect to your backend)
+        document.querySelector('.qualification-form form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you! We will contact you within 4 business hours. For emergencies, please call (202) 555-0199.');
+            this.reset();
+        });
+
+        // Privacy modal
+        const privacyLinks = document.querySelectorAll('a[href="#privacy"]');
+        privacyLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('privacy').style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Close privacy modal when clicking outside
+        document.getElementById('privacy').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe cards for animation
+        document.querySelectorAll('.impact-card, .service-card, .testimonial').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
+            

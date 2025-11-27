@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contract Review & Drafting | Rivalis Law</title>
+    <meta name="description" content="Expert contract review and drafting services. Vendor agreements, NDAs, employment contracts, partnership deals. $2,500-$8,000.">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --accent: #d4af37;
+            --accent-dark: #b8941f;
+            --accent-light: #f0e6d2;
+            --white: #ffffff;
+            --gray-50: #fafbfc;
+            --gray-100: #f4f6f8;
+            --gray-200: #e8ecf0;
+            --gray-600: #4a5568;
+            --gray-700: #2d3748;
+            --gray-900: #0f1419;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--gray-900);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+            z-index: 999;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-logo::before {
+            content: '⚖ ';
+            color: var(--accent);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--gray-700);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: var(--white);
+            padding: 0.875rem 1.75rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .hero {
+            background: linear-gradient(165deg, #1a1a2e 0%, #2d3748 100%);
+            color: white;
+            padding: 6rem 3rem 5rem;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .breadcrumb {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            justify-content: center;
+        }
+
+        .breadcrumb a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 .highlight {
+            color: var(--accent);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            line-height: 1.7;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .price-hero {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent);
+            font-family: 'Cormorant Garamond', serif;
+            margin-bottom: 1rem;
+        }
+
+        .price-note {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 1.125rem 2.25rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .section {
+            padding: 6rem 3rem;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.15rem;
+            color: var(--gray-600);
+            line-height: 1.8;
+        }
+
+        .contracts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .contract-card {
+            background: white;
+            border: 2px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 2.5rem;
+            transition: all 0.3s;
+        }
+
+        .contract-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .contract-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--accent-light) 0%, rgba(212, 175, 55, 0.3) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contract-icon i {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .contract-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .contract-card p {
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+        }
+
+        .contract-price {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .process {
+            background: var(--gray-50);
+        }
+
+        .process-list {
+            display: grid;
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .process-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent);
+            display: flex;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .process-number {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .process-content h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .process-content p {
+            color: var(--gray-600);
+        }
+
+        .red-flags {
+            background: white;
+        }
+
+        .flags-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .flag-card {
+            background: var(--gray-50);
+            padding: 2rem;
+            border-radius: 12px;
+            border-top: 4px solid #e74c3c;
+        }
+
+        .flag-card h4 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .flag-card h4 i {
+            color: #e74c3c;
+        }
+
+        .flag-card p {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--gray-900) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer {
+            background: var(--gray-900);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        @media (max-width: 968px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .contracts-grid,
+            .flags-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Rivalis Law</a>
+            <ul class="nav-menu">
+                <li><a href="index.html#services" class="nav-link">All Services</a></li>
+                <li><a href="index.html#select-services" class="nav-link">Select Services</a></li>
+                <li><a href="#get-started" class="nav-cta">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / <a href="index.html#select-services">Select Services</a> / <span>Contract Review</span>
+            </div>
+
+            <h1>Don't Sign That Contract<br>Until an <span class="highlight">Attorney Reviews It</span></h1>
+
+            <p class="hero-subtitle">
+                That vendor agreement looks standard. The partnership deal seems fair. The employment contract is "just like everyone else's." Until you sign it and discover the liability clause, the auto-renewal terms, or the non-compete that destroys your business.
+            </p>
+
+            <div class="price-hero">$2,500 - $8,000</div>
+            <p class="price-note">Expert contract review and drafting services</p>
+
+            <div class="cta-group">
+                <a href="#get-started" class="btn btn-primary">
+                    <i class="fas fa-file-contract"></i>
+                    Request Review
+                </a>
+                <a href="mailto:contracts@rivalislaw.com" class="btn btn-secondary">
+                    <i class="fas fa-envelope"></i>
+                    Email Contract Team
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Contract Types We Handle</h2>
+                <p class="section-subtitle">
+                    Comprehensive review and drafting across all business agreements
+                </p>
+            </div>
+
+            <div class="contracts-grid">
+                <div class="contract-card">
+                    <div class="contract-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Vendor & Supplier Agreements</h3>
+                    <p>SaaS contracts, service agreements, procurement deals, and supplier terms that protect your interests and avoid hidden costs.</p>
+                    <div class="contract-price">$2,500 - $5,000</div>
+                </div>
+
+                <div class="contract-card">
+                    <div class="contract-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3>NDAs & Confidentiality</h3>
+                    <p>Mutual and one-way NDAs for partnerships, employment, vendor relationships, and investor discussions.</p>
+                    <div class="contract-price">$1,500 - $2,500</div>
+                </div>
+
+                <div class="contract-card">
+                    <div class="contract-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Employment Contracts</h3>
+                    <p>Executive agreements, offer letters, consulting contracts, and independent contractor agreements with proper IP assignment.</p>
+                    <div class="contract-price">$2,000 - $4,000</div>
+                </div>
+
+                <div class="contract-card">
+                    <div class="contract-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Partnership & JV Agreements</h3>
+                    <p>Strategic partnerships, joint ventures, co-development agreements, and revenue-sharing deals.</p>
+                    <div class="contract-price">$4,000 - $8,000</div>
+                </div>
+
+                <div class="contract-card">
+                    <div class="contract-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <h3>Customer & Sales Contracts</h3>
+                    <p>Master service agreements, terms of service, SLAs, and customer contracts that protect revenue and limit liability.</p>
+                    <div class="contract-price">$3,000 - $6,000</div>
+                </div>
+
+                <div class="contract-card">
+                    <div class="contract-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Real Estate & Leases</h3>
+                    <p>Commercial leases, sublease agreements, and office space contracts with favorable terms and exit strategies.</p>
+                    <div class="contract-price">$2,500 - $5,000</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section process">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Our Review Process</h2>
+                <p class="section-subtitle">Thorough analysis delivered in 3-5 business days</p>
+            </div>
+
+            <div class="process-list">
+                <div class="process-item">
+                    <div class="process-number">1</div>
+                    <div class="process-content">
+                        <h4>Submit Contract</h4>
+                        <p>Send us the agreement and tell us your concerns, deal context, and negotiation priorities</p>
+                    </div>
+                </div>
+
+                <div class="process-item">
+                    <div class="process-number">2</div>
+                    <div class="process-content">
+                        <h4>Comprehensive Review</h4>
+                        <p>Line-by-line analysis identifying risks, unfavorable terms, missing protections, and negotiation points</p>
+                    </div>
+                </div>
+
+                <div class="process-item">
+                    <div class="process-number">3</div>
+                    <div class="process-content">
+                        <h4>Detailed Memo</h4>
+                        <p>Written analysis with specific concerns highlighted, proposed revisions, and negotiation strategy</p>
+                    </div>
+                </div>
+
+                <div class="process-item">
+                    <div class="process-number">4</div>
+                    <div class="process-content">
+                        <h4>Revision & Support</h4>
+                        <p>We can draft redlines, negotiate with opposing counsel, or prepare final execution version</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section red-flags">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Red Flags We Find</h2>
+                <p class="section-subtitle">
+                    These are the contract terms that destroy value or create liability
+                </p>
+            </div>
+
+            <div class="flags-grid">
+                <div class="flag-card">
+                    <h4><i class="fas fa-infinity"></i> Auto-Renewal Traps</h4>
+                    <p>Automatic renewal clauses with short notice periods that lock you into unwanted contracts for years</p>
+                </div>
+
+                <div class="flag-card">
+                    <h4><i class="fas fa-exclamation-triangle"></i> Unlimited Liability</h4>
+                    <p>Uncapped indemnification, broad warranty terms, and liability provisions exposing you to massive damages</p>
+                </div>
+
+                <div class="flag-card">
+                    <h4><i class="fas fa-copyright"></i> IP Ownership Issues</h4>
+                    <p>Unclear IP ownership, overly broad assignment clauses, and work-for-hire terms that cost you rights</p>
+                </div>
+
+                <div class="flag-card">
+                    <h4><i class="fas fa-gavel"></i> One-Sided Termination</h4>
+                    <p>They can terminate easily, you can't. Or termination clauses with penalties that make exit impossible</p>
+                </div>
+
+                <div class="flag-card">
+                    <h4><i class="fas fa-dollar-sign"></i> Hidden Fee Structures</h4>
+                    <p>Price escalation clauses, change order provisions, and fee terms that blow up your budget</p>
+                </div>
+
+                <div class="flag-card">
+                    <h4><i class="fas fa-ban"></i> Restrictive Covenants</h4>
+                    <p>Non-competes, non-solicits, and exclusivity terms that limit your business opportunities</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section cta-section" id="get-started">
+        <div class="section-container">
+            <h2>Get Expert Eyes on Your Contract</h2>
+            <p>
+                Don't sign agreements without legal review. One unfavorable term can cost you thousands or destroy your business flexibility. Get experienced counsel before you're committed.
+            </p>
+
+            <div class="cta-group">
+                <a href="mailto:contracts@rivalislaw.com" class="btn btn-primary">
+                    <i class="fas fa-envelope"></i>
+                    Submit Contract for Review
+                </a>
+                <a href="tel:+1-202-555-0199" class="btn btn-secondary">
+                    <i class="fas fa-phone"></i>
+                    Call: (202) 555-0199
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 Rivalis Law. Licensed in New York & Michigan.</p>
+        <p><a href="index.html">Return to Main Site</a> | <a href="index.html#select-services">All Select Services</a></p>
+    </footer>
+</body>
+</html>

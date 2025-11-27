@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Additional Service Intake Forms | Rivalis Law</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --accent: #d4af37;
+            --accent-dark: #b8941f;
+            --accent-light: #f0e6d2;
+            --white: #ffffff;
+            --gray-50: #fafbfc;
+            --gray-100: #f4f6f8;
+            --gray-200: #e8ecf0;
+            --gray-600: #4a5568;
+            --gray-700: #2d3748;
+            --gray-900: #0f1419;
+            --danger: #e74c3c;
+            --success: #27ae60;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--gray-900);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            background: var(--gray-50);
+            padding: 2rem;
+        }
+
+        .forms-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .form-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            border: 2px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .form-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+        }
+
+        .form-header {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .form-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-content {
+            padding: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--gray-700);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.875rem 1.25rem;
+            border: 2px solid var(--gray-200);
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .checkbox-item input {
+            width: auto;
+            margin-top: 0.25rem;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .urgency-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .urgency-emergency {
+            background: rgba(231, 76, 60, 0.1);
+            color: var(--danger);
+            border: 1px solid var(--danger);
+        }
+
+        .urgency-high {
+            background: rgba(243, 156, 18, 0.1);
+            color: #f39c12;
+            border: 1px solid #f39c12;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.4);
+        }
+
+        .form-note {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .service-features {
+            background: var(--accent-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent);
+        }
+
+        .service-features h4 {
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .service-features ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .service-features li {
+            display: flex;
+            align-items: start;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .forms-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="forms-container">
+        
+        <!-- Entity Formation Form -->
+        <div class="form-card">
+            <div class="form-header">
+                <div class="form-icon">🏢</div>
+                <h2>Entity Formation</h2>
+                <p>Delaware & UAE Specialists</p>
+            </div>
+            <div class="form-content">
+                <div class="urgency-badge urgency-high">
+                    <i class="fas fa-building"></i> $4,500 - $12,000
+                </div>
+                
+                <form>
+                    <div class="form-group">
+                        <label for="entity-company">Company Name *</label>
+                        <input type="text" id="entity-company" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Entity Type *</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="entity-llc" name="entityType" value="llc" required>
+                                <label for="entity-llc">LLC</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="entity-corp" name="entityType" value="corporation">
+                                <label for="entity-corp">Corporation</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="entity-partnership" name="entityType" value="partnership">
+                                <label for="entity-partnership">Partnership</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="entity-other" name="entityType" value="other">
+                                <label for="entity-other">Other</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Jurisdiction *</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="juris-delaware" required>
+                                <label for="juris-delaware">Delaware</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="juris-uae">
+                                <label for="juris-uae">UAE</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="juris-california">
+                                <label for="juris-california">California</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="juris-other">
+                                <label for="juris-other">Other</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="entity-structure">Ownership Structure *</label>
+                        <select id="entity-structure" required>
+                            <option value="">Select structure</option>
+                            <option value="single">Single Member/Owner</option>
+                            <option value="multiple">Multiple Members/Owners</option>
+                            <option value="complex">Complex/Investor Structure</option>
+                            <option value="foreign">Foreign Ownership</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="entity-business">Business Description *</label>
+                        <textarea id="entity-business" required placeholder="Describe your business activities, industry, and operational details..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="entity-timeline">Required Timeline *</label>
+                        <select id="entity-timeline" required>
+                            <option value="">Select urgency</option>
+                            <option value="emergency">Emergency (1-3 days)</option>
+                            <option value="urgent">Urgent (1 week)</option>
+                            <option value="soon">Soon (2-3 weeks)</option>
+                            <option value="planning">Planning (1 month+)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="service-features">
+                        <h4><i class="fas fa-clipboard-check"></i> What's Included</h4>
+                        <ul>
+                            <li>Entity Structure Analysis</li>
+                            <li>Document Preparation & Filing</li>
+                            <li>Operating Agreement/Bylaws</li>
+                            <li>Tax ID Registration</li>
+                            <li>Compliance Calendar</li>
+                        </ul>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-building"></i>
+                        Request Entity Formation
+                    </button>
+                    <p class="form-note">Emergency filings completed within 72 hours</p>
+                </form>
+            </div>
+        </div>
+
+        <!-- Employment Law Form -->
+        <div class="form-card">
+            <div class="form-header">
+                <div class="form-icon">👨‍💼</div>
+                <h2>Employment Law</h2>
+                <p>Compliance & Dispute Resolution</p>
+            </div>
+            <div class="form-content">
+                <div class="urgency-badge urgency-high">
+                    <i class="fas fa-balance-scale"></i> $3,000 - $15,000
+                </div>
+                
+                <form>
+                    <div class="form-group">
+                        <label for="employment-company">Company Name *</label>
+                        <input type="text" id="employment-company" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Employee Count *</label>
+                        <select required>
+                            <option value="">Select range</option>
+                            <option value="1-10">1-10 Employees</option>
+                            <option value="11-50">11-50 Employees</option>
+                            <option value="51-200">51-200 Employees</option>
+                            <option value="201-500">201-500 Employees</option>
+                            <option value="500+">500+ Employees</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Service Needed *</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="emp-contract" required>
+                                <label for="emp-contract">Employment Contract Review</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="emp-policy">
+                                <label for="emp-policy">Policy Development</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="emp-dispute">
+                                <label for="emp-dispute">Employee Dispute</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="emp-termination">
+                                <label for="emp-termination">Termination Issues</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="emp-compliance">
+                                <label for="emp-compliance">Compliance Audit</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="emp-urgency">Urgency Level *</label>
+                        <select id="emp-urgency" required>
+                            <option value="">Select urgency</option>
+                            <option value="emergency">Emergency (Active litigation)</option>
+                            <option value="urgent">Urgent (Threat of litigation)</option>
+                            <option value="soon">Soon (Upcoming changes)</option>
+                            <option value="planning">Planning (Proactive review)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="emp-details">Situation Details *</label>
+                        <textarea id="emp-details" required placeholder="Describe your employment situation, specific concerns, and any current disputes..."></textarea>
+                    </div>
+                    
+                    <div class="service-features">
+                        <h4><i class="fas fa-award"></i> Big 4 Employment Experience</h4>
+                        <ul>
+                            <li>Contract Review & Drafting</li>
+                            <li>Policy Development</li>
+                            <li>Dispute Resolution</li>
+                            <li>Compliance Audits</li>
+                            <li>Termination Guidance</li>
+                        </ul>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-balance-scale"></i>
+                        Get Employment Assessment
+                    </button>
+                    <p class="form-note">Emergency matters addressed within 24 hours</p>
+                </form>
+            </div>
+        </div>
+
+        <!-- Fundraising & Securities Form -->
+        <div class="form-card">
+            <div class="form-header">
+                <div class="form-icon">💸</div>
+                <h2>Fundraising & Securities</h2>
+                <p>SEC Compliance & Investor Docs</p>
+            </div>
+            <div class="form-content">
+                <div class="urgency-badge urgency-high">
+                    <i class="fas fa-chart-line"></i> $15,000 - $50,000
+                </div>
+                
+                <form>
+                    <div class="form-group">
+                        <label for="fundraising-company">Company Name *</label>
+                        <input type="text" id="fundraising-company" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Fundraising Stage *</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="stage-preseed" name="fundraisingStage" value="preseed" required>
+                                <label for="stage-preseed">Pre-Seed</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="stage-seed" name="fundraisingStage" value="seed">
+                                <label for="stage-seed">Seed</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="stage-seriesa" name="fundraisingStage" value="seriesa">
+                                <label for="stage-seriesa">Series A</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="stage-seriesb" name="fundraisingStage" value="seriesb">
+                                <label for="stage-seriesb">Series B+</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="fundraising-amount">Target Amount *</label>
+                        <select id="fundraising-amount" required>
+                            <option value="">Select range</option>
+                            <option value="under500k">Under $500K</option>
+                            <option value="500k-1m">$500K - $1M</option>
+                            <option value="1m-5m">$1M - $5M</option>
+                            <option value="5m-10m">$5M - $10M</option>
+                            <option value="over10m">Over $10M</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Documentation Needed</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="doc-termsheet">
+                                <label for="doc-termsheet">Term Sheet</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="doc-safa">
+                                <label for="doc-safa">SAFE/Convertible Note</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="doc-subscription">
+                                <label for="doc-subscription">Subscription Agreement</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="doc-ppm">
+                                <label for="doc-ppm">Private Placement Memo</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="doc-sec">
+                                <label for="doc-sec">SEC Compliance</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="fundraising-timeline">Fundraising Timeline *</label>
+                        <select id="fundraising-timeline" required>
+                            <option value="">Select timeline</option>
+                            <option value="immediate">Immediate (Active fundraising)</option>
+                            <option value="urgent">Urgent (1-2 months)</option>
+                            <option value="soon">Soon (3-6 months)</option>
+                            <option value="planning">Planning (6+ months)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="fundraising-details">Fundraising Details *</label>
+                        <textarea id="fundraising-details" required placeholder="Describe your company, fundraising goals, investor interest, and any current documentation..."></textarea>
+                    </div>
+                    
+                    <div class="service-features">
+                        <h4><i class="fas fa-briefcase"></i> Big 4 Securities Experience</h4>
+                        <ul>
+                            <li>SEC Compliance Review</li>
+                            <li>Investor Documentation</li>
+                            <li>Term Sheet Negotiation</li>
+                            <li>Due Diligence Support</li>
+                            <li>Closing Coordination</li>
+                        </ul>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-chart-line"></i>
+                        Request Fundraising Assessment
+                    </button>
+                    <p class="form-note">Term sheet review completed within 48 hours</p>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Set minimum date to today for all date inputs
+        document.querySelectorAll('input[type="date"]').forEach(input => {
+            input.min = new Date().toISOString().split('T')[0];
+        });
+
+        // Form submission handlers
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const serviceName = this.closest('.form-card').querySelector('h2').textContent;
+                alert(`Thank you for your ${serviceName} inquiry! We will contact you within 24 hours.\n\nFor urgent matters, please call (202) 555-0199.`);
+                this.reset();
+            });
+        });
+    </script>
+</body>
+</html>

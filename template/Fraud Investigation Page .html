@@ -1,0 +1,1639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporate Fraud Investigation | Rivalis Law</title>
+    <meta name="description" content="Privileged corporate fraud investigations. Whistleblower allegations, financial irregularities, executive misconduct. Big 4 trained attorney. Confidential response within 4 hours.">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --accent: #d4af37;
+            --accent-dark: #b8941f;
+            --accent-light: #f0e6d2;
+            --white: #ffffff;
+            --gray-50: #fafbfc;
+            --gray-100: #f4f6f8;
+            --gray-200: #e8ecf0;
+            --gray-600: #4a5568;
+            --gray-700: #2d3748;
+            --gray-900: #0f1419;
+            --danger: #c0392b;
+            --danger-light: #e74c3c;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--gray-900);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Emergency Bar */
+        .emergency-bar {
+            background: linear-gradient(135deg, #8b0000 0%, #c0392b 100%);
+            color: white;
+            padding: 1rem 3rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .emergency-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .emergency-text {
+            font-weight: 700;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .emergency-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .emergency-btn {
+            background: white;
+            color: #8b0000;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .emergency-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Navigation */
+        .nav {
+            position: sticky;
+            top: 54px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+            z-index: 999;
+            transition: all 0.4s;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-logo::before {
+            content: '⚖ ';
+            color: var(--accent);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--gray-700);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--danger) 0%, #8b0000 100%);
+            color: var(--white);
+            padding: 0.875rem 1.75rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(192, 57, 43, 0.35);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(165deg, #1a1a2e 0%, #2d1b1b 50%, #1a0a0a 100%);
+            color: white;
+            padding: 8rem 3rem 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(212,175,55,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badges {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(192, 57, 43, 0.2);
+            border: 1px solid rgba(192, 57, 43, 0.5);
+            padding: 0.625rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .badge i {
+            color: var(--danger-light);
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+        }
+
+        .hero-title .highlight {
+            background: linear-gradient(135deg, var(--danger-light) 0%, #ff6b6b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.35rem;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            max-width: 900px;
+        }
+
+        .urgency-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            border: 2px solid rgba(192, 57, 43, 0.3);
+        }
+
+        .urgency-item {
+            text-align: center;
+        }
+
+        .urgency-number {
+            font-size: 3rem;
+            font-weight: 800;
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--danger-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .urgency-label {
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1.25rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--danger-light) 0%, var(--danger) 100%);
+            color: var(--white);
+            box-shadow: 0 6px 20px rgba(192, 57, 43, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 32px rgba(192, 57, 43, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Section Container */
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 850px;
+            margin: 0 auto 5rem;
+        }
+
+        .section-tag {
+            color: var(--danger-light);
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1.25rem;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.75rem;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray-600);
+            line-height: 1.8;
+        }
+
+        /* Threat Scenarios */
+        .threats-section {
+            padding: 7rem 0;
+            background: var(--gray-50);
+        }
+
+        .threat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+        }
+
+        .threat-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            border-left: 4px solid var(--danger);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+        }
+
+        .threat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .threat-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--danger-light) 0%, var(--danger) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .threat-icon i {
+            font-size: 1.75rem;
+            color: white;
+        }
+
+        .threat-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .threat-card p {
+            color: var(--gray-600);
+            line-height: 1.8;
+            margin-bottom: 1.25rem;
+        }
+
+        .threat-stat {
+            background: rgba(192, 57, 43, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            color: var(--danger);
+            font-size: 0.95rem;
+        }
+
+        /* Why Privileged Section */
+        .privileged-section {
+            padding: 7rem 0;
+            background: var(--primary);
+            color: white;
+        }
+
+        .privileged-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .privileged-card {
+            text-align: center;
+        }
+
+        .privileged-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .privileged-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .privileged-card h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .privileged-card p {
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        /* Process Timeline */
+        .process-section {
+            padding: 7rem 0;
+            background: white;
+        }
+
+        .process-timeline {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+            position: relative;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: var(--danger);
+            z-index: 0;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .process-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--danger-light) 0%, var(--danger) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            font-weight: 800;
+            color: white;
+            font-family: 'Cormorant Garamond', serif;
+            box-shadow: 0 4px 16px rgba(192, 57, 43, 0.3);
+        }
+
+        .process-step h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .process-step p {
+            color: var(--gray-600);
+            font-size: 0.9rem;
+        }
+
+        .process-time {
+            display: inline-block;
+            background: rgba(192, 57, 43, 0.1);
+            color: var(--danger);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-top: 1rem;
+        }
+
+        /* Deliverables Section */
+        .deliverables-section {
+            padding: 7rem 0;
+            background: var(--gray-50);
+        }
+
+        .deliverables-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .deliverable-category {
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            border: 2px solid var(--accent);
+        }
+
+        .deliverable-category h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .deliverable-category h3 i {
+            color: var(--accent);
+        }
+
+        .category-subtitle {
+            color: var(--gray-600);
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .deliverable-list {
+            list-style: none;
+        }
+
+        .deliverable-list li {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+        }
+
+        .deliverable-list li:last-child {
+            border-bottom: none;
+        }
+
+        .deliverable-list li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: 800;
+            font-size: 1.25rem;
+        }
+
+        /* Expertise Section */
+        .expertise-section {
+            padding: 7rem 0;
+            background: white;
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .expertise-content h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .expertise-content p {
+            color: var(--gray-600);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .expertise-points {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .expertise-point {
+            display: flex;
+            gap: 1rem;
+            align-items: start;
+        }
+
+        .expertise-point i {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-top: 0.25rem;
+        }
+
+        .expertise-point-text h4 {
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .expertise-point-text p {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .expertise-cred {
+            background: var(--accent-light);
+            padding: 3rem;
+            border-radius: 16px;
+            border: 2px solid var(--accent);
+        }
+
+        .cred-stat {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .cred-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .cred-label {
+            font-weight: 600;
+            color: var(--gray-700);
+        }
+
+        .cred-list {
+            list-style: none;
+        }
+
+        .cred-list li {
+            padding: 0.75rem 0;
+            color: var(--gray-700);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .cred-list li::before {
+            content: '▪';
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 7rem 0;
+            background: var(--gray-50);
+        }
+
+        .pricing-container {
+            max-width: 900px;
+            margin: 4rem auto 0;
+            background: white;
+            border-radius: 20px;
+            padding: 4rem;
+            border: 3px solid var(--danger);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-tiers {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-tier {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 12px;
+            background: var(--gray-50);
+        }
+
+        .tier-label {
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--danger);
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .tier-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .tier-desc {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+        }
+
+        .pricing-note {
+            background: rgba(192, 57, 43, 0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--danger);
+            margin-top: 2rem;
+        }
+
+        .pricing-note h4 {
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .pricing-note p {
+            color: var(--gray-700);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Confidential Contact */
+        .contact-section {
+            padding: 7rem 0;
+            background: linear-gradient(135deg, var(--primary) 0%, #2d1b1b 100%);
+            color: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .contact-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-content p {
+            font-size: 1.15rem;
+            opacity: 0.9;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-method {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: white;
+        }
+
+        .contact-method:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(10px);
+        }
+
+        .method-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--danger-light) 0%, var(--danger) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .method-icon i {
+            font-size: 1.5rem;
+        }
+
+        .method-text h4 {
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .method-text p {
+            opacity: 0.8;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 16px;
+            color: var(--gray-900);
+        }
+
+        .contact-form h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--gray-700);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.875rem 1.25rem;
+            border: 2px solid var(--gray-200);
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--danger);
+            box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-submit-btn {
+            width: 100%;
+            padding: 1.25rem;
+            background: linear-gradient(135deg, var(--danger-light) 0%, var(--danger) 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            transition: all 0.3s;
+        }
+
+        .form-submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(192, 57, 43, 0.4);
+        }
+
+        .form-note {
+            margin-top: 1.5rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--gray-900);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 3rem 0 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            text-align: center;
+        }
+
+        .footer-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Floating Emergency Button */
+        .fab-emergency {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--danger-light) 0%, var(--danger) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.75rem;
+            box-shadow: 0 8px 28px rgba(192, 57, 43, 0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 1000;
+            text-decoration: none;
+            animation: pulse 2s infinite;
+        }
+
+        .fab-emergency:hover {
+            transform: scale(1.15);
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 8px 28px rgba(192, 57, 43, 0.5);
+            }
+            50% {
+                box-shadow: 0 8px 40px rgba(192, 57, 43, 0.8);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 968px) {
+            .hero-title {
+                font-size: 2.75rem;
+            }
+
+            .section-title {
+                font-size: 2.25rem;
+            }
+
+            .threat-grid,
+            .deliverables-grid,
+            .expertise-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .urgency-grid,
+            .privileged-grid,
+            .pricing-tiers {
+                grid-template-columns: 1fr;
+            }
+
+            .process-timeline {
+                grid-template-columns: 1fr;
+            }
+
+            .process-timeline::before {
+                display: none;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .emergency-content {
+                flex-direction: column;
+            }
+
+            .pricing-container {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Emergency Bar -->
+    <div class="emergency-bar">
+        <div class="emergency-content">
+            <div class="emergency-text">
+                <i class="fas fa-shield-alt"></i>
+                <span>CONFIDENTIAL INVESTIGATION HOTLINE - ATTORNEY-CLIENT PRIVILEGE PROTECTED</span>
+            </div>
+            <div class="emergency-actions">
+                <a href="tel:+1-202-555-0199" class="emergency-btn">
+                    <i class="fas fa-phone"></i>
+                    Emergency: (202) 555-0199
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">Rivalis Law</a>
+            <ul class="nav-menu">
+                <li><a href="/#services" class="nav-link">Services</a></li>
+                <li><a href="/#why-rivalis" class="nav-link">Why Rivalis</a></li>
+                <li><a href="#expertise" class="nav-link">Our Expertise</a></li>
+                <li><a href="#contact" class="nav-cta">Confidential Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-badges">
+                <div class="badge">
+                    <i class="fas fa-lock"></i>
+                    Attorney-Client Privilege
+                </div>
+                <div class="badge">
+                    <i class="fas fa-user-secret"></i>
+                    Confidential Investigation
+                </div>
+                <div class="badge">
+                    <i class="fas fa-briefcase"></i>
+                    Big 4 Trained
+                </div>
+            </div>
+
+            <h1 class="hero-title">
+                Before It Becomes a <span class="highlight">Criminal Investigation</span><br>or Destroys Your Reputation
+            </h1>
+
+            <p class="hero-subtitle">
+                Whistleblower allegations. Financial irregularities. Executive misconduct. Board member concerns. Every hour you wait gives regulators, prosecutors, and journalists more ammunition. Get privileged, confidential investigation before they do.
+            </p>
+
+            <div class="urgency-grid">
+                <div class="urgency-item">
+                    <div class="urgency-number">4hrs</div>
+                    <div class="urgency-label">Emergency response time</div>
+                </div>
+                <div class="urgency-item">
+                    <div class="urgency-number">100%</div>
+                    <div class="urgency-label">Attorney-client privileged</div>
+                </div>
+                <div class="urgency-item">
+                    <div class="urgency-number">24/7</div>
+                    <div class="urgency-label">Confidential hotline access</div>
+                </div>
+            </div>
+
+            <div class="cta-group">
+                <a href="tel:+1-202-555-0199" class="btn btn-primary">
+                    <i class="fas fa-phone"></i>
+                    Call Emergency Line Now
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    Confidential Inquiry Form
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Threat Scenarios -->
+    <section class="threats-section">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-tag">WHEN EVERY HOUR MATTERS</div>
+                <h2 class="section-title">The Threats That Can't Wait</h2>
+                <p class="section-subtitle">
+                    These aren't "eventually" problems. They're ticking time bombs that destroy companies, careers, and reputations—often within days of discovery.
+                </p>
+            </div>
+
+            <div class="threat-grid">
+                <div class="threat-card">
+                    <div class="threat-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Whistleblower Allegations</h3>
+                    <p>An employee files an SEC complaint or contacts a journalist about accounting irregularities, safety violations, or regulatory non-compliance. Once it's public or with regulators, you've lost control of the narrative—and your chance at privileged investigation.</p>
+                    <div class="threat-stat">
+                        ⚠️ 72% of whistleblower cases lead to government investigation within 90 days
+                    </div>
+                </div>
+
+                <div class="threat-card">
+                    <div class="threat-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3>Financial Fraud Indicators</h3>
+                    <p>Suspicious transactions, missing funds, altered documents, or unexplained discrepancies in financial statements. Your CFO or controller notices something wrong. If you don't investigate immediately under privilege, any delay looks like a cover-up.</p>
+                    <div class="threat-stat">
+                        ⚠️ Organizations lose 5% of annual revenue to fraud—median loss: $117,000
+                    </div>
+                </div>
+
+                <div class="threat-card">
+                    <div class="threat-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Executive Misconduct</h3>
+                    <p>Sexual harassment claims, discrimination, abuse of authority, conflicts of interest, or ethics violations involving C-suite executives or board members. Without privileged investigation, every interview and document becomes evidence against you.</p>
+                    <div class="threat-stat">
+                        ⚠️ Average cost of executive misconduct scandal: $3.1M in legal fees + reputation damage
+                    </div>
+                </div>
+
+                <div class="threat-card">
+                    <div class="threat-icon">
+                        <i class="fas fa-file-invoice"></i>
+                    </div>
+                    <h3>Accounting Irregularities</h3>
+                    <p>Revenue recognition issues, asset valuation problems, expense manipulation, or off-book transactions discovered during audit or due diligence. These destroy M&A deals, tank stock prices, and trigger shareholder lawsuits—fast.</p>
+                    <div class="threat-stat">
+                        ⚠️ 67% of financial restatements result in shareholder litigation
+                    </div>
+                </div>
+
+                <div class="threat-card">
+                    <div class="threat-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Vendor/Partner Fraud</h3>
+                    <p>Kickbacks, bid rigging, shell companies, inflated invoices, or conflicts of interest in procurement. These schemes often involve your own employees and expose you to FCPA violations and criminal liability.</p>
+                    <div class="threat-stat">
+                        ⚠️ Procurement fraud schemes average 18 months before detection
+                    </div>
+                </div>
+
+                <div class="threat-card">
+                    <div class="threat-icon">
+                        <i class="fas fa-gavel"></i>
+                    </div>
+                    <h3>Regulatory Non-Compliance</h3>
+                    <p>Violations of industry regulations, safety standards, environmental rules, or licensing requirements that could result in government sanctions, fines, or criminal charges. Self-reporting requirements often have 24-48 hour deadlines.</p>
+                    <div class="threat-stat">
+                        ⚠️ Late self-reporting can increase penalties by 300-400%
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Privileged Investigation -->
+    <section class="privileged-section">
+        <div class="section-container">
+            <div class="section-header" style="color: white;">
+                <div class="section-tag">ATTORNEY-CLIENT PRIVILEGE</div>
+                <h2 class="section-title" style="color: white;">Why You Need Privileged Investigation</h2>
+                <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">
+                    The difference between attorney-directed investigation and internal HR review could be the difference between controlling the damage and handing prosecutors their case on a silver platter.
+                </p>
+            </div>
+
+            <div class="privileged-grid">
+                <div class="privileged-card">
+                    <div class="privileged-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Work Product Protection</h3>
+                    <p>Everything we discover, every interview, every document analysis is protected by attorney-client privilege and attorney work product doctrine. HR investigations? Not protected—everything becomes evidence.</p>
+                </div>
+
+                <div class="privileged-card">
+                    <div class="privileged-icon">
+                        <i class="fas fa-chess-knight"></i>
+                    </div>
+                    <h3>Strategic Defense Positioning</h3>
+                    <p>We investigate with litigation and prosecution in mind. We identify weaknesses before opposing counsel does. We build your defense while gathering facts—something HR can't do.</p>
+                </div>
+
+                <div class="privileged-card">
+                    <div class="privileged-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Credibility with Regulators</h3>
+                    <p>Attorney-conducted investigations carry weight with prosecutors, regulators, and courts. They demonstrate good faith, sophisticated response, and serious commitment to compliance—often resulting in reduced penalties or declinations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investigation Process -->
+    <section id="process" class="process-section">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-tag">OUR INVESTIGATION PROCESS</div>
+                <h2 class="section-title">From Crisis to Resolution</h2>
+                <p class="section-subtitle">
+                    A systematic, privileged investigation that protects your interests while uncovering the truth
+                </p>
+            </div>
+
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="process-number">1</div>
+                    <h4>Emergency Intake</h4>
+                    <p>Confidential call to assess threat, establish privilege, and begin evidence preservation</p>
+                    <span class="process-time">Within 4 hours</span>
+                </div>
+
+                <div class="process-step">
+                    <div class="process-number">2</div>
+                    <h4>Scope & Strategy</h4>
+                    <p>Define investigation parameters, interview plan, document review protocol, and timeline</p>
+                    <span class="process-time">24-48 hours</span>
+                </div>
+
+                <div class="process-step">
+                    <div class="process-number">3</div>
+                    <h4>Evidence Gathering</h4>
+                    <p>Privileged interviews, document forensics, electronic discovery, financial analysis, witness statements</p>
+                    <span class="process-time">2-6 weeks</span>
+                </div>
+
+                <div class="process-step">
+                    <div class="process-number">4</div>
+                    <h4>Analysis & Report</h4>
+                    <p>Privileged findings, legal exposure assessment, remediation recommendations, regulatory strategy</p>
+                    <span class="process-time">1-2 weeks</span>
+                </div>
+
+                <div class="process-step">
+                    <div class="process-number">5</div>
+                    <h4>Resolution</h4>
+                    <p>Board presentation, regulatory response, remediation oversight, litigation defense if needed</p>
+                    <span class="process-time">Ongoing</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deliverables -->
+    <section class="deliverables-section">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-tag">WHAT YOU RECEIVE</div>
+                <h2 class="section-title">Comprehensive, Privileged Work Product</h2>
+                <p class="section-subtitle">
+                    Every investigation delivers attorney work product protected by privilege—not discoverable by opposing parties or regulators unless you choose to disclose
+                </p>
+            </div>
+
+            <div class="deliverables-grid">
+                <div class="deliverable-category">
+                    <h3><i class="fas fa-file-alt"></i> Investigation Reports</h3>
+                    <p class="category-subtitle">Privileged attorney work product</p>
+                    <ul class="deliverable-list">
+                        <li>Detailed factual findings and timeline reconstruction</li>
+                        <li>Witness interview summaries (privileged)</li>
+                        <li>Document analysis and forensic findings</li>
+                        <li>Legal violations and regulatory exposure assessment</li>
+                        <li>Individual culpability determinations</li>
+                        <li>Internal control weaknesses and failures</li>
+                    </ul>
+                </div>
+
+                <div class="deliverable-category">
+                    <h3><i class="fas fa-clipboard-check"></i> Strategic Recommendations</h3>
+                    <p class="category-subtitle">Action plan and risk mitigation</p>
+                    <ul class="deliverable-list">
+                        <li>Remediation roadmap with prioritized actions</li>
+                        <li>Employee discipline and termination recommendations</li>
+                        <li>Regulatory self-reporting analysis and strategy</li>
+                        <li>Litigation risk assessment and defense strategy</li>
+                        <li>Internal controls and compliance program improvements</li>
+                        <li>Board communication and governance recommendations</li>
+                    </ul>
+                </div>
+
+                <div class="deliverable-category">
+                    <h3><i class="fas fa-users"></i> Stakeholder Communications</h3>
+                    <p class="category-subtitle">Prepared messaging for all audiences</p>
+                    <ul class="deliverable-list">
+                        <li>Board of Directors presentation deck</li>
+                        <li>Executive team briefing materials</li>
+                        <li>Employee communication strategy</li>
+                        <li>Regulatory disclosure templates (if required)</li>
+                        <li>Media response protocols</li>
+                        <li>Investor relations talking points</li>
+                    </ul>
+                </div>
+
+                <div class="deliverable-category">
+                    <h3><i class="fas fa-hands-helping"></i> Ongoing Support</h3>
+                    <p class="category-subtitle">We stay with you through resolution</p>
+                    <ul class="deliverable-list">
+                        <li>Regulatory response and negotiation support</li>
+                        <li>Remediation implementation oversight</li>
+                        <li>Follow-up investigation if issues expand</li>
+                        <li>Litigation defense coordination</li>
+                        <li>Board advisor role during crisis</li>
+                        <li>Compliance program enhancement</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section id="expertise" class="expertise-section">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-tag">INVESTIGATION EXPERTISE</div>
+                <h2 class="section-title">Why Big 4 Training Matters</h2>
+                <p class="section-subtitle">
+                    Corporate investigations aren't just legal work—they require understanding accounting, financial controls, corporate governance, and regulatory frameworks. That's why Big 4 experience is invaluable.
+                </p>
+            </div>
+
+            <div class="expertise-grid">
+                <div class="expertise-content">
+                    <h3>What Big 4 Experience Brings to Investigations</h3>
+                    <p>
+                        Multiple years at top Big 4 firms means I've seen how Fortune 100 companies structure their compliance programs, manage risk, and respond to internal crises. I understand corporate governance, financial controls, and the pressure points that matter to boards and regulators.
+                    </p>
+
+                    <div class="expertise-points">
+                        <div class="expertise-point">
+                            <i class="fas fa-calculator"></i>
+                            <div class="expertise-point-text">
+                                <h4>Financial Forensics Capability</h4>
+                                <p>I can read financial statements, trace transactions, identify accounting irregularities, and understand tax implications—not just legal issues.</p>
+                            </div>
+                        </div>
+
+                        <div class="expertise-point">
+                            <i class="fas fa-building"></i>
+                            <div class="expertise-point-text">
+                                <h4>Corporate Structure Understanding</h4>
+                                <p>Experience with Fortune 100 companies means understanding complex organizational structures, internal controls, and governance frameworks.</p>
+                            </div>
+                        </div>
+
+                        <div class="expertise-point">
+                            <i class="fas fa-handshake"></i>
+                            <div class="expertise-point-text">
+                                <h4>Regulator and Auditor Perspective</h4>
+                                <p>I know what regulators and external auditors look for, what questions they ask, and what findings trigger escalation.</p>
+                            </div>
+                        </div>
+
+                        <div class="expertise-point">
+                            <i class="fas fa-shield-alt"></i>
+                            <div class="expertise-point-text">
+                                <h4>Risk Management Framework</h4>
+                                <p>Big 4 methodology for risk assessment, materiality determination, and control testing applies directly to investigations.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="expertise-cred">
+                    <div class="cred-stat">
+                        <div class="cred-number">Big 4</div>
+                        <div class="cred-label">Trained Professional</div>
+                    </div>
+                    
+                    <ul class="cred-list">
+                        <li>Multiple years at top firms</li>
+                        <li>Fortune 100 company experience</li>
+                        <li>Complex corporate matters</li>
+                        <li>Internal investigations training</li>
+                        <li>Financial controls expertise</li>
+                        <li>Regulatory compliance background</li>
+                        <li>NY & MI Bar Admitted</li>
+                        <li>Oxford AI Governance certified</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-tag">INVESTIGATION PRICING</div>
+                <h2 class="section-title">Transparent Investment in Protection</h2>
+                <p class="section-subtitle">
+                    Fixed-fee or capped arrangements available. No surprise bills. You know the investment upfront.
+                </p>
+            </div>
+
+            <div class="pricing-container">
+                <div class="pricing-tiers">
+                    <div class="pricing-tier">
+                        <div class="tier-label">Limited Scope</div>
+                        <div class="tier-price">$25K-$50K</div>
+                        <div class="tier-desc">Single issue, < 10 witnesses, 2-3 week investigation</div>
+                    </div>
+
+                    <div class="pricing-tier">
+                        <div class="tier-label">Standard Investigation</div>
+                        <div class="tier-price">$50K-$100K</div>
+                        <div class="tier-desc">Multiple issues, 10-25 witnesses, 4-8 week investigation</div>
+                    </div>
+
+                    <div class="pricing-tier">
+                        <div class="tier-label">Complex Investigation</div>
+                        <div class="tier-price">$100K-$150K+</div>
+                        <div class="tier-desc">Extensive scope, 25+ witnesses, forensic analysis, 8+ weeks</div>
+                    </div>
+                </div>
+
+                <div class="pricing-note">
+                    <h4>🔒 What's Included at Every Level:</h4>
+                    <p>
+                        Attorney-client privileged investigation • Complete witness interviews • Document review and analysis • Privileged written report with findings and recommendations • Board presentation • Regulatory strategy consultation • Ongoing advisory during remediation
+                    </p>
+                </div>
+
+                <div class="pricing-note" style="margin-top: 1rem;">
+                    <h4>⚡ Emergency Investigations:</h4>
+                    <p>
+                        When timing is critical (regulatory deadline, media inquiry, imminent litigation), we can mobilize within 4 hours. Emergency investigations may require premium pricing based on urgency and resource allocation. Call for immediate quote.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Confidential Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="section-container">
+            <div class="contact-grid">
+                <div class="contact-content">
+                    <h2>This Conversation Is Confidential</h2>
+                    <p>
+                        Your initial contact is protected by attorney-client privilege considerations. We can discuss your situation confidentially to determine if investigation is warranted and how to proceed.
+                    </p>
+
+                    <div class="contact-methods">
+                        <a href="tel:+1-202-555-0199" class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="method-text">
+                                <h4>Emergency Investigation Hotline</h4>
+                                <p>DC: (202) 555-0199 | Available 24/7 for urgent matters</p>
+                            </div>
+                        </a>
+
+                        <a href="mailto:investigations@rivalislaw.com" class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="method-text">
+                                <h4>Confidential Email</h4>
+                                <p>investigations@rivalislaw.com | Encrypted communication available</p>
+                            </div>
+                        </a>
+
+                        <div class="contact-method" style="cursor: default;">
+                            <div class="method-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="method-text">
+                                <h4>Privilege Protection</h4>
+                                <p>All communications treated as confidential attorney-client matters</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3>Confidential Investigation Inquiry</h3>
+                    
+                    <form id="investigationForm">
+                        <div class="form-group">
+                            <label for="name">Your Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="title">Title/Role</label>
+                            <input type="text" id="title" name="title">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="company">Company Name (optional)</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="urgency">Timeline *</label>
+                            <select id="urgency" name="urgency" required>
+                                <option value="">Select urgency level...</option>
+                                <option value="emergency">Emergency (Within 24 hours)</option>
+                                <option value="urgent">Urgent (Within 1 week)</option>
+                                <option value="planning">Need assessment (1-2 weeks)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="situation">Brief Description of Situation *</label>
+                            <textarea id="situation" name="situation" required placeholder="Please provide a brief overview. Specific details can be discussed on a privileged call."></textarea>
+                        </div>
+
+                        <button type="submit" class="form-submit-btn">
+                            <i class="fas fa-lock"></i>
+                            Submit Confidential Inquiry
+                        </button>
+
+                        <p class="form-note">
+                            <i class="fas fa-shield-alt"></i>
+                            This communication is protected by attorney-client privilege considerations
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">⚖ Rivalis Law</div>
+            <div class="footer-links">
+                <a href="/">Home</a>
+                <a href="/#services">All Services</a>
+                <a href="#expertise">Investigation Expertise</a>
+                <a href="#contact">Confidential Contact</a>
+            </div>
+            <p style="margin-top: 2rem; font-size: 0.9rem;">
+                © 2024 Rivalis Law | Licensed in New York & Michigan<br>
+                All consultations subject to engagement agreement | Attorney advertising
+            </p>
+        </div>
+    </footer>
+
+    <!-- Floating Emergency Button -->
+    <a href="tel:+1-202-555-0199" class="fab-emergency" title="Emergency Investigation Hotline">
+        <i class="fas fa-phone-volume"></i>
+    </a>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('investigationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            alert('Thank you for your confidential inquiry. An attorney will contact you within 4 hours.\n\nFor immediate assistance, please call our emergency hotline: (202) 555-0199');
+            
+            this.reset();
+        });
+
+        // Sticky nav enhancement
+        const nav = document.querySelector('.nav');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 100) {
+                nav.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                nav.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confidential Fraud Investigation Intake | Rivalis Law</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --accent: #d4af37;
+            --accent-dark: #b8941f;
+            --accent-light: #f0e6d2;
+            --white: #ffffff;
+            --gray-50: #fafbfc;
+            --gray-100: #f4f6f8;
+            --gray-200: #e8ecf0;
+            --gray-600: #4a5568;
+            --gray-700: #2d3748;
+            --gray-900: #0f1419;
+            --danger: #e74c3c;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--gray-900);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            background: var(--gray-50);
+        }
+
+        .confidential-header {
+            background: linear-gradient(135deg, var(--primary) 0%, #2d3748 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 4px solid var(--accent);
+        }
+
+        .confidential-header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .confidential-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(212, 175, 55, 0.2);
+            border: 1px solid var(--accent);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .form-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            border: 2px solid var(--accent);
+        }
+
+        .form-header {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: white;
+            padding: 2rem;
+        }
+
+        .form-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .urgency-notice {
+            background: rgba(231, 76, 60, 0.1);
+            border-left: 4px solid var(--danger);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .urgency-notice h4 {
+            color: var(--danger);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .form-section {
+            padding: 2rem;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .form-section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-title i {
+            color: var(--accent);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--gray-700);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.875rem 1.25rem;
+            border: 2px solid var(--gray-200);
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .checkbox-item input {
+            width: auto;
+            margin-top: 0.25rem;
+        }
+
+        .checkbox-item label {
+            font-weight: 500;
+            margin-bottom: 0;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .radio-item input {
+            width: auto;
+        }
+
+        .form-note {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            margin-top: 0.5rem;
+        }
+
+        .privacy-notice {
+            background: var(--accent-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border-left: 4px solid var(--accent);
+        }
+
+        .privacy-notice h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.25rem 2rem;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.4);
+        }
+
+        .emergency-contact {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(231, 76, 60, 0.1);
+            border-radius: 8px;
+            border: 1px solid var(--danger);
+        }
+
+        .emergency-contact h4 {
+            color: var(--danger);
+            margin-bottom: 1rem;
+        }
+
+        .emergency-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--danger);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+
+        .emergency-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .confidential-header h1 {
+                font-size: 2rem;
+            }
+            
+            .form-header h2 {
+                font-size: 1.75rem;
+            }
+            
+            .radio-group {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="confidential-header">
+        <div class="confidential-badge">
+            <i class="fas fa-shield-alt"></i>
+            ATTORNEY-CLIENT PRIVILEGED & CONFIDENTIAL
+        </div>
+        <h1>Corporate Fraud Investigation Intake</h1>
+        <p>Complete this secure form for immediate assessment of your situation</p>
+    </div>
+
+    <div class="container">
+        <div class="form-container">
+            <div class="form-header">
+                <h2>Confidential Case Assessment</h2>
+                <p>All information submitted is protected by attorney-client privilege considerations</p>
+            </div>
+
+            <div class="urgency-notice">
+                <h4><i class="fas fa-exclamation-triangle"></i> URGENT MATTER?</h4>
+                <p>If you require immediate assistance with an active fraud investigation, regulatory inquiry, or whistleblower situation, call our emergency line directly.</p>
+                <a href="tel:+1-202-555-0199" class="emergency-btn">
+                    <i class="fas fa-phone-volume"></i>
+                    EMERGENCY LINE: (202) 555-0199
+                </a>
+            </div>
+
+            <form id="fraudIntakeForm">
+                <!-- Contact Information -->
+                <div class="form-section">
+                    <h3 class="section-title"><i class="fas fa-user-tie"></i> Your Information</h3>
+                    
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="position">Position/Title *</label>
+                        <input type="text" id="position" name="position" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="company">Company/Organization *</label>
+                        <input type="text" id="company" name="company" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="preferredContact">Preferred Contact Method</label>
+                        <select id="preferredContact" name="preferredContact">
+                            <option value="email">Email</option>
+                            <option value="phone">Phone Call</option>
+                            <option value="text">Text Message</option>
+                            <option value="secure">Secure Portal</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Situation Overview -->
+                <div class="form-section">
+                    <h3 class="section-title"><i class="fas fa-exclamation-circle"></i> Situation Overview</h3>
+                    
+                    <div class="form-group">
+                        <label>Type of Suspected Fraud *</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="financialStatement" name="fraudType" value="financialStatement">
+                                <label for="financialStatement">Financial Statement Fraud</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="assetMisappropriation" name="fraudType" value="assetMisappropriation">
+                                <label for="assetMisappropriation">Asset Misappropriation</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="corruption" name="fraudType" value="corruption">
+                                <label for="corruption">Corruption / Bribery</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="vendorFraud" name="fraudType" value="vendorFraud">
+                                <label for="vendorFraud">Vendor / Procurement Fraud</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="payrollFraud" name="fraudType" value="payrollFraud">
+                                <label for="payrollFraud">Payroll Fraud</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="executiveMisconduct" name="fraudType" value="executiveMisconduct">
+                                <label for="executiveMisconduct">Executive Misconduct</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="otherFraud" name="fraudType" value="other">
+                                <label for="otherFraud">Other (please describe below)</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="suspectedAmount">Estimated Financial Impact</label>
+                        <select id="suspectedAmount" name="suspectedAmount">
+                            <option value="">Select range</option>
+                            <option value="under50k">Under $50,000</option>
+                            <option value="50k-250k">$50,000 - $250,000</option>
+                            <option value="250k-1m">$250,000 - $1 Million</option>
+                            <option value="1m-5m">$1 Million - $5 Million</option>
+                            <option value="over5m">Over $5 Million</option>
+                            <option value="unknown">Unknown at this time</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="discoveryDate">When Was This Discovered? *</label>
+                        <input type="date" id="discoveryDate" name="discoveryDate" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="suspectedIndividuals">Suspected Individuals/Departments</label>
+                        <textarea id="suspectedIndividuals" name="suspectedIndividuals" placeholder="Please describe who you suspect may be involved and their positions..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="situationDescription">Description of Situation *</label>
+                        <textarea id="situationDescription" name="situationDescription" required placeholder="Please provide a detailed description of the suspected fraud, how it was discovered, and any evidence you currently have..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Current Status -->
+                <div class="form-section">
+                    <h3 class="section-title"><i class="fas fa-clipboard-list"></i> Current Status</h3>
+                    
+                    <div class="form-group">
+                        <label>Has This Been Reported Internally? *</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="reportedYes" name="reportedInternally" value="yes" required>
+                                <label for="reportedYes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="reportedNo" name="reportedInternally" value="no">
+                                <label for="reportedNo">No</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="reportedPartial" name="reportedInternally" value="partial">
+                                <label for="reportedPartial">Partially</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="internalReportingDetails">If Reported, To Whom and When?</label>
+                        <textarea id="internalReportingDetails" name="internalReportingDetails" placeholder="Please specify who was notified internally and when..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>External Reporting Status</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="lawEnforcement" name="externalReporting" value="lawEnforcement">
+                                <label for="lawEnforcement">Law Enforcement Involved</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="regulatory" name="externalReporting" value="regulatory">
+                                <label for="regulatory">Regulatory Agencies Involved</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="externalCounsel" name="externalReporting" value="externalCounsel">
+                                <label for="externalCounsel">Other Legal Counsel Involved</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="auditors" name="externalReporting" value="auditors">
+                                <label for="auditors">External Auditors Involved</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="noneExternal" name="externalReporting" value="none">
+                                <label for="noneExternal">No External Parties Involved</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="externalDetails">External Involvement Details</label>
+                        <textarea id="externalDetails" name="externalDetails" placeholder="Please provide details about any external parties involved, including agency names, contact information, and current status..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="documentsPreserved">Have Documents/Evidence Been Preserved?</label>
+                        <select id="documentsPreserved" name="documentsPreserved">
+                            <option value="">Select status</option>
+                            <option value="fully">Fully Preserved</option>
+                            <option value="partially">Partially Preserved</option>
+                            <option value="planned">Preservation Planned</option>
+                            <option value="notYet">Not Yet Preserved</option>
+                            <option value="unknown">Unknown</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Urgency & Timeline -->
+                <div class="form-section">
+                    <h3 class="section-title"><i class="fas fa-clock"></i> Urgency & Timeline</h3>
+                    
+                    <div class="form-group">
+                        <label>Current Urgency Level *</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="emergency" name="urgency" value="emergency" required>
+                                <label for="emergency">Emergency - Immediate action required</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="urgent" name="urgency" value="urgent">
+                                <label for="urgent">Urgent - Action needed within days</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="soon" name="urgency" value="soon">
+                                <label for="soon">Soon - Action needed within 1-2 weeks</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="planning" name="urgency" value="planning">
+                                <label for="planning">Planning - Proactive assessment</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="criticalDeadlines">Critical Deadlines or Upcoming Events</label>
+                        <textarea id="criticalDeadlines" name="criticalDeadlines" placeholder="Please list any critical deadlines such as regulatory filings, board meetings, earnings calls, or other time-sensitive events..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="desiredOutcome">Desired Outcome *</label>
+                        <select id="desiredOutcome" name="desiredOutcome" required>
+                            <option value="">Select primary goal</option>
+                            <option value="investigation">Internal Investigation Only</option>
+                            <option value="remediation">Investigation & Remediation</option>
+                            <option value="regulatoryResponse">Regulatory Response Preparation</option>
+                            <option value="legalAction">Prepare for Legal Action</option>
+                            <option value="complianceReview">Compliance Program Review</option>
+                            <option value="otherOutcome">Other (please specify below)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="outcomeDetails">Additional Outcome Details</label>
+                        <textarea id="outcomeDetails" name="outcomeDetails" placeholder="Please provide additional details about your desired outcome or specific concerns..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Confidentiality & Next Steps -->
+                <div class="form-section">
+                    <h3 class="section-title"><i class="fas fa-lock"></i> Confidentiality & Next Steps</h3>
+                    
+                    <div class="privacy-notice">
+                        <h4><i class="fas fa-shield-alt"></i> Attorney-Client Privilege Notice</h4>
+                        <p>Information submitted through this form is protected by attorney-client privilege considerations. We maintain strict confidentiality and will contact you through secure channels. All communications are protected to the fullest extent of the law.</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="additionalInfo">Any Additional Information</label>
+                        <textarea id="additionalInfo" name="additionalInfo" placeholder="Please include any other information that may be relevant to our assessment of your situation..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="consent" name="consent" required>
+                            <label for="consent">I understand that submitting this form does not create an attorney-client relationship, but I consent to Rivalis Law contacting me to discuss my situation. *</label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        Submit Confidential Intake Form
+                    </button>
+                    
+                    <p class="form-note" style="text-align: center; margin-top: 1rem;">
+                        You will receive a confirmation email and we will contact you within 4 business hours for urgent matters, or 24 hours for non-urgent matters.
+                    </p>
+                </div>
+            </form>
+            
+            <div class="emergency-contact">
+                <h4><i class="fas fa-phone-volume"></i> Need Immediate Assistance?</h4>
+                <p>For time-sensitive fraud investigations requiring immediate attention, call our dedicated emergency line.</p>
+                <a href="tel:+1-202-555-0199" class="emergency-btn">
+                    <i class="fas fa-phone"></i>
+                    CALL EMERGENCY LINE: (202) 555-0199
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('fraudIntakeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real implementation, this would send data to a secure server
+            alert('Thank you for submitting your confidential intake form. We will contact you within the specified timeframe.\n\nFor urgent matters, please call (202) 555-0199 immediately.');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Set today's date as default for discovery date
+        document.getElementById('discoveryDate').valueAsDate = new Date();
+    </script>
+</body>
+</html>

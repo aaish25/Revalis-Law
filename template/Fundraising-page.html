@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundraising & Securities | Rivalis Law</title>
+    <meta name="description" content="SAFE agreements, convertible notes, and Series A preparation for venture-backed companies. $15,000-$50,000.">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #1a1a2e; --accent: #d4af37; --accent-dark: #b8941f; --accent-light: #f0e6d2;
+            --white: #ffffff; --gray-50: #fafbfc; --gray-200: #e8ecf0; --gray-600: #4a5568;
+            --gray-700: #2d3748; --gray-900: #0f1419; --danger: #e74c3c;
+        }
+        body { font-family: 'Inter', sans-serif; color: var(--gray-900); line-height: 1.6; }
+        .nav { position: sticky; top: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(212, 175, 55, 0.15); z-index: 999; }
+        .nav-container { max-width: 1400px; margin: 0 auto; padding: 0 3rem; display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.75rem; font-weight: 700; color: var(--primary); text-decoration: none; }
+        .nav-logo::before { content: '⚖ '; color: var(--accent); }
+        .nav-menu { display: flex; gap: 2rem; list-style: none; align-items: center; }
+        .nav-link { color: var(--gray-700); text-decoration: none; font-weight: 500; }
+        .nav-cta { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%); color: var(--white); padding: 0.875rem 1.75rem; border-radius: 8px; text-decoration: none; font-weight: 600; }
+        .hero { background: linear-gradient(165deg, #1a1a2e 0%, #2d3748 100%); color: white; padding: 6rem 3rem 5rem; }
+        .hero-container { max-width: 1200px; margin: 0 auto; text-align: center; }
+        .breadcrumb { display: flex; gap: 0.5rem; margin-bottom: 2rem; font-size: 0.9rem; opacity: 0.8; justify-content: center; }
+        .breadcrumb a { color: var(--accent); text-decoration: none; }
+        .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 700; line-height: 1.2; margin-bottom: 1.5rem; }
+        .hero h1 .highlight { color: var(--danger); }
+        .hero-subtitle { font-size: 1.3rem; line-height: 1.7; margin-bottom: 3rem; opacity: 0.95; max-width: 800px; margin-left: auto; margin-right: auto; }
+        .price-hero { font-size: 3rem; font-weight: 800; color: var(--accent); font-family: 'Cormorant Garamond', serif; margin-bottom: 1rem; }
+        .price-note { font-size: 1.1rem; opacity: 0.9; margin-bottom: 3rem; }
+        .cta-group { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
+        .btn { padding: 1.125rem 2.25rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1.05rem; transition: all 0.3s; display: inline-flex; align-items: center; gap: 0.75rem; }
+        .btn-primary { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%); color: var(--primary); }
+        .btn-secondary { background: transparent; border: 2px solid white; color: white; }
+        .section { padding: 6rem 3rem; }
+        .section-container { max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; max-width: 800px; margin: 0 auto 4rem; }
+        .section-title { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 700; color: var(--primary); margin-bottom: 1.5rem; }
+        .section-subtitle { font-size: 1.15rem; color: var(--gray-600); line-height: 1.8; }
+        .stages { background: var(--gray-50); }
+        .stages-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+        .stage-card { background: white; border: 3px solid var(--accent); border-radius: 12px; padding: 3rem; }
+        .stage-badge { background: var(--accent); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 700; display: inline-block; margin-bottom: 1.5rem; }
+        .stage-card h3 { font-size: 1.75rem; font-weight: 700; color: var(--primary); margin-bottom: 1rem; font-family: 'Cormorant Garamond', serif; }
+        .stage-card p { color: var(--gray-600); line-height: 1.7; margin-bottom: 1.5rem; }
+        .stage-price { background: var(--accent-light); border: 2px solid var(--accent); border-radius: 8px; padding: 1.25rem; margin: 1.5rem 0; }
+        .price-amount { font-size: 1.4rem; font-weight: 800; color: var(--primary); font-family: 'Cormorant Garamond', serif; }
+        .stage-features { list-style: none; margin-top: 1.5rem; }
+        .stage-features li { padding: 0.75rem 0; color: var(--gray-700); display: flex; align-items: start; gap: 1rem; font-size: 0.95rem; }
+        .stage-features li::before { content: '✓'; color: var(--accent); font-weight: 800; font-size: 1.1rem; }
+        .mistakes { background: var(--danger); color: white; }
+        .mistakes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+        .mistake-card { background: rgba(255, 255, 255, 0.1); padding: 2.5rem; border-radius: 12px; border-left: 4px solid white; }
+        .mistake-card h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
+        .mistake-card h3 i { font-size: 1.25rem; }
+        .mistake-card p { font-size: 1.05rem; line-height: 1.7; opacity: 0.95; }
+        .included { background: white; }
+        .included-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+        .included-card { background: var(--gray-50); padding: 2.5rem; border-radius: 12px; border-left: 4px solid var(--accent); }
+        .included-card h3 { font-size: 1.5rem; font-weight: 700; color: var(--primary); margin-bottom: 1.5rem; font-family: 'Cormorant Garamond', serif; }
+        .included-list { list-style: none; }
+        .included-list li { padding: 0.75rem 0; color: var(--gray-700); display: flex; align-items: start; gap: 1rem; }
+        .included-list li::before { content: '→'; color: var(--accent); font-weight: 700; }
+        .cta-section { background: linear-gradient(135deg, var(--primary) 0%, var(--gray-900) 100%); color: white; text-align: center; }
+        .cta-section h2 { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 700; margin-bottom: 1.5rem; }
+        .cta-section p { font-size: 1.2rem; opacity: 0.95; margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto; }
+        .footer { background: var(--gray-900); color: rgba(255, 255, 255, 0.7); padding: 3rem; text-align: center; }
+        .footer a { color: var(--accent); text-decoration: none; }
+        @media (max-width: 968px) {
+            .hero h1 { font-size: 2.5rem; }
+            .stages-grid, .mistakes-grid, .included-grid { grid-template-columns: 1fr; }
+            .nav-menu { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Rivalis Law</a>
+            <ul class="nav-menu">
+                <li><a href="index.html#services" class="nav-link">All Services</a></li>
+                <li><a href="index.html#select-services" class="nav-link">Select Services</a></li>
+                <li><a href="#get-started" class="nav-cta">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / <a href="index.html#select-services">Select Services</a> / <span>Fundraising</span>
+            </div>
+
+            <h1>Your Investor Wants to Close.<br>Your <span class="highlight">Docs Aren't Ready</span>.</h1>
+
+            <p class="hero-subtitle">
+                Term sheet signed. Investor ready to wire funds. Your cap table is a mess. Your SAFE has wrong terms. No option pool. Investor discovers problems in diligence. Deal delays 6 weeks or dies. Your runway just ran out.
+            </p>
+
+            <div class="price-hero">$15,000 - $50,000</div>
+            <p class="price-note">SAFE agreements, convertible notes, Series A preparation</p>
+
+            <div class="cta-group">
+                <a href="#get-started" class="btn btn-primary">
+                    <i class="fas fa-chart-line"></i>
+                    Prepare for Funding
+                </a>
+                <a href="mailto:fundraising@rivalislaw.com" class="btn btn-secondary">
+                    <i class="fas fa-envelope"></i>
+                    Email Fundraising Team
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section stages">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Fundraising Legal Services by Stage</h2>
+                <p class="section-subtitle">
+                    From pre-seed to Series A and beyond
+                </p>
+            </div>
+
+            <div class="stages-grid">
+                <div class="stage-card">
+                    <div class="stage-badge">PRE-SEED / SEED</div>
+                    <h3>SAFE / Convertible Note</h3>
+                    <p>Quick, founder-friendly funding rounds using standard instruments. Get funding fast without complex equity negotiations.</p>
+                    
+                    <div class="stage-price">
+                        <div class="price-amount">$15,000 - $25,000</div>
+                    </div>
+
+                    <ul class="stage-features">
+                        <li>SAFE or convertible note preparation</li>
+                        <li>Cap table management & setup</li>
+                        <li>Investor agreements</li>
+                        <li>Board consent resolutions</li>
+                        <li>Filing with state authorities</li>
+                        <li>Compliance with securities laws</li>
+                        <li>Documentation organization</li>
+                    </ul>
+                </div>
+
+                <div class="stage-card">
+                    <div class="stage-badge">SERIES A PREP</div>
+                    <h3>Series A Readiness</h3>
+                    <p>Get your company ready for institutional VC funding. Clean up issues that kill deals before VCs find them.</p>
+                    
+                    <div class="stage-price">
+                        <div class="price-amount">$25,000 - $40,000</div>
+                    </div>
+
+                    <ul class="stage-features">
+                        <li>Cap table cleanup & optimization</li>
+                        <li>Option pool creation (10-20%)</li>
+                        <li>Corporate governance fixes</li>
+                        <li>IP audit & assignment cleanup</li>
+                        <li>Material contract review</li>
+                        <li>Compliance issue remediation</li>
+                        <li>Data room preparation</li>
+                        <li>Investor diligence support</li>
+                    </ul>
+                </div>
+
+                <div class="stage-card">
+                    <div class="stage-badge">SERIES A+</div>
+                    <h3>Priced Equity Round</h3>
+                    <p>Full Series A or B round with institutional investors. Complex negotiation, term sheets, and closing coordination.</p>
+                    
+                    <div class="stage-price">
+                        <div class="price-amount">$35,000 - $75,000+</div>
+                    </div>
+
+                    <ul class="stage-features">
+                        <li>Term sheet review & negotiation</li>
+                        <li>Stock purchase agreement drafting</li>
+                        <li>Investor rights agreement</li>
+                        <li>Voting agreements</li>
+                        <li>Right of first refusal / Co-sale</li>
+                        <li>Amended charter & bylaws</li>
+                        <li>Board composition & governance</li>
+                        <li>Closing coordination</li>
+                        <li>Post-closing compliance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section mistakes">
+        <div class="section-container">
+            <div class="section-header" style="color: white;">
+                <h2 class="section-title" style="color: white;">Fundraising Mistakes That Kill Deals</h2>
+                <p class="section-subtitle" style="color: white; opacity: 0.95;">Common errors that destroy valuations and crater rounds</p>
+            </div>
+
+            <div class="mistakes-grid">
+                <div class="mistake-card">
+                    <h3><i class="fas fa-table"></i> Messy Cap Table</h3>
+                    <p>Your cap table is on a spreadsheet with errors. Advisor shares with no vesting. Founder equity with unclear terms. VC refuses to proceed until cleaned up. 8-week delay kills momentum.</p>
+                </div>
+
+                <div class="mistake-card">
+                    <h3><i class="fas fa-users-slash"></i> No Option Pool</h3>
+                    <p>VC wants 15% option pool for future hires. You didn't create one. Pool comes from founder shares pre-money. Your ownership gets diluted twice. Deal you thought was $10M is really $8.5M for you.</p>
+                </div>
+
+                <div class="mistake-card">
+                    <h3><i class="fas fa-copyright"></i> IP Not Assigned</h3>
+                    <p>Contractor built your core product. No IP assignment agreement. They technically own it. VC discovers this in diligence. Deal dead until resolved. Contractor wants $200K retroactive payment or equity.</p>
+                </div>
+
+                <div class="mistake-card">
+                    <h3><i class="fas fa-file-contract"></i> Bad SAFE Terms</h3>
+                    <p>Your SAFE has no valuation cap. Or cap is too high. Or discount is wrong. Converts unfavorably in Series A. Investors angry. Your ownership percentage isn't what you expected. Can't fix it retroactively.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section included">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">What's Included in Series A Prep</h2>
+                <p class="section-subtitle">
+                    Comprehensive preparation for institutional funding
+                </p>
+            </div>
+
+            <div class="included-grid">
+                <div class="included-card">
+                    <h3>Corporate Cleanup</h3>
+                    <ul class="included-list">
+                        <li>Cap table audit & corrections</li>
+                        <li>Missing corporate records reconstruction</li>
+                        <li>Board consent updates</li>
+                        <li>Stock certificate organization</li>
+                        <li>Delaware franchise tax compliance</li>
+                        <li>Charter & bylaw amendments</li>
+                    </ul>
+                </div>
+
+                <div class="included-card">
+                    <h3>Equity Structure</h3>
+                    <ul class="included-list">
+                        <li>Option pool creation & sizing</li>
+                        <li>Advisor equity cleanup</li>
+                        <li>Founder vesting verification</li>
+                        <li>Early exercise provisions</li>
+                        <li>83(b) election compliance</li>
+                        <li>409A valuation coordination</li>
+                    </ul>
+                </div>
+
+                <div class="included-card">
+                    <h3>IP & Contracts</h3>
+                    <ul class="included-list">
+                        <li>IP assignment audit</li>
+                        <li>Contractor agreement cleanup</li>
+                        <li>Employee invention assignments</li>
+                        <li>Open source license review</li>
+                        <li>Material contract assessment</li>
+                        <li>Customer/vendor agreement review</li>
+                    </ul>
+                </div>
+
+                <div class="included-card">
+                    <h3>Diligence Prep</h3>
+                    <ul class="included-list">
+                        <li>Data room setup & organization</li>
+                        <li>Diligence request list preparation</li>
+                        <li>Issue identification & remediation</li>
+                        <li>Disclosure schedule preparation</li>
+                        <li>Q&A support during diligence</li>
+                        <li>Investor communication coordination</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section cta-section" id="get-started">
+        <div class="section-container">
+            <h2>Don't Let Legal Issues Kill Your Round</h2>
+            <p>
+                VCs walk away from messy companies. One cap table error, one missing IP assignment, one compliance issue can crater your fundraise. Get investor-ready before you need to be.
+            </p>
+
+            <div class="cta-group">
+                <a href="mailto:fundraising@rivalislaw.com" class="btn btn-primary">
+                    <i class="fas fa-chart-line"></i>
+                    Start Series A Prep
+                </a>
+                <a href="tel:+1-202-555-0199" class="btn btn-secondary">
+                    <i class="fas fa-phone"></i>
+                    Call: (202) 555-0199
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 Rivalis Law. Licensed in New York & Michigan.</p>
+        <p><a href="index.html">Return to Main Site</a> | <a href="index.html#select-services">All Select Services</a></p>
+    </footer>
+</body>
+</html>
