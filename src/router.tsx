@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { AuthProvider } from './contexts/AuthContext';
+import { ServicesProvider } from './contexts/ServicesContext';
 import { ProtectedRoute } from './components/ProtectedRoute';
 
 // Lazy load pages for code splitting
@@ -49,7 +50,8 @@ export const AppRouter = () => {
   return (
     <Router>
       <AuthProvider>
-        <Routes>
+        <ServicesProvider>
+          <Routes>
           {/* Main Pages */}
           <Route path="/" element={<Home />} />
 
@@ -237,7 +239,8 @@ export const AppRouter = () => {
 
         {/* Catch all - redirect to home */}
         <Route path="*" element={<Home />} />
-      </Routes>
+          </Routes>
+        </ServicesProvider>
       </AuthProvider>
     </Router>
   );

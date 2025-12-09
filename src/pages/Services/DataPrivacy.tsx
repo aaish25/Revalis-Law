@@ -1,10 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navigation } from '../../components/Layout/Navigation';
+import { useServices } from '../../contexts/ServicesContext';
 import '../../styles/service-page.css';
 import '../../styles/home.css';
 
 export const DataPrivacy: React.FC = () => {
+  const { getServicePrice } = useServices();
+  
   return (
     <>
       {/* Navigation */}
@@ -23,7 +26,7 @@ export const DataPrivacy: React.FC = () => {
             EU regulators want your GDPR compliance docs. California customers filed CCPA complaints. Your privacy policy is copy-pasted from a template. You're collecting data without proper consent. The fines start at €20 million or 4% of revenue.
           </p>
 
-          <div className="service-hero-price">Starting at $12,000</div>
+          <div className="service-hero-price">{getServicePrice('data-privacy')}</div>
           <p className="service-hero-price-note">Comprehensive privacy compliance programs</p>
 
           <div className="service-cta-group">

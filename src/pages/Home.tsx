@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Navigation } from '../components/Layout/Navigation';
+import { useServices } from '../contexts/ServicesContext';
 import '../styles/home.css';
 
 export const Home: React.FC = () => {
+  const { getServicePrice } = useServices();
   const [timeWasted, setTimeWasted] = useState(30);
   const [finesRisk, setFinesRisk] = useState(250000);
 
@@ -206,7 +208,7 @@ export const Home: React.FC = () => {
               </div>
               <div className="calc-result">
                 <strong>Estimated cost of delay: ${calculateCost().toLocaleString()}</strong>
-                <small>vs. our solution starting at $25,000</small>
+                <small>vs. our solution {getServicePrice('data-privacy')}</small>
               </div>
             </div>
           </div>
@@ -408,7 +410,7 @@ export const Home: React.FC = () => {
               <p className="service-tagline">Your Product. Their Lawsuit. Tomorrow's Headlines.</p>
 
               <div className="pricing-badge">
-                <div className="price-range">Starting at $25,000</div>
+                <div className="price-range">{getServicePrice('governance')}</div>
                 <div className="price-note">Enterprise frameworks: Starting at $50K</div>
               </div>
 
@@ -459,7 +461,7 @@ export const Home: React.FC = () => {
               <p className="service-tagline">Your Launch. Their Visa Denial. Your Disaster.</p>
 
               <div className="pricing-badge">
-                <div className="price-range">Starting at $8,500</div>
+                <div className="price-range">{getServicePrice('immigration')}</div>
                 <div className="price-note">O-1: Starting at $18K | RFE Emergency: Contact for pricing</div>
               </div>
 
@@ -510,7 +512,7 @@ export const Home: React.FC = () => {
               <p className="service-tagline">Their Offer. Your Hidden Liability. Deal Over.</p>
 
               <div className="pricing-badge">
-                <div className="price-range">Starting at $35,000</div>
+                <div className="price-range">{getServicePrice('ma')}</div>
                 <div className="price-note">Full transaction: Starting at $75K based on deal size</div>
               </div>
 
@@ -573,7 +575,7 @@ export const Home: React.FC = () => {
               </div>
               <h4>Contract Review & Drafting</h4>
               <p>Get expert eyes on your vendor agreements, NDAs, employment contracts, and partnership deals before you sign.</p>
-              <div className="select-pricing">Starting at $2,500</div>
+              <div className="select-pricing">{getServicePrice('contracts')}</div>
               <div className="select-cta">
                 Request Quote <i className="fas fa-arrow-right"></i>
               </div>
@@ -585,7 +587,7 @@ export const Home: React.FC = () => {
               </div>
               <h4>Data Privacy Compliance</h4>
               <p>GDPR, CCPA, and privacy policy development for companies handling customer data.</p>
-              <div className="select-pricing">Starting at $12,000</div>
+              <div className="select-pricing">{getServicePrice('data-privacy')}</div>
               <div className="select-cta">
                 Learn More <i className="fas fa-arrow-right"></i>
               </div>
@@ -597,7 +599,7 @@ export const Home: React.FC = () => {
               </div>
               <h4>IP Strategy & Protection</h4>
               <p>Trademark filings, trade secret protection, and IP portfolio development for growing companies.</p>
-              <div className="select-pricing">Starting at $5,000</div>
+              <div className="select-pricing">{getServicePrice('ip-strategy')}</div>
               <div className="select-cta">
                 Discuss IP Needs <i className="fas fa-arrow-right"></i>
               </div>
@@ -609,7 +611,7 @@ export const Home: React.FC = () => {
               </div>
               <h4>Corporate Fraud Investigation</h4>
               <p>Whistleblower allegations, financial irregularities, or executive misconduct threatening your company's survival. Get privileged investigation before regulators or journalists do.</p>
-              <div className="select-pricing">Starting at $25,000</div>
+              <div className="select-pricing">{getServicePrice('fraud-investigation')}</div>
               <div className="select-cta">
                 Confidential Emergency Line <i className="fas fa-arrow-right"></i>
               </div>
@@ -621,7 +623,7 @@ export const Home: React.FC = () => {
               </div>
               <h4>Employment Law Counsel</h4>
               <p>Offer letters, employee handbooks, termination guidance, and HR compliance for scaling teams.</p>
-              <div className="select-pricing">Starting at $3,000</div>
+              <div className="select-pricing">{getServicePrice('employment')}</div>
               <div className="select-cta">
                 Get HR Support <i className="fas fa-arrow-right"></i>
               </div>
@@ -633,7 +635,7 @@ export const Home: React.FC = () => {
               </div>
               <h4>Fundraising & Securities</h4>
               <p>SAFE agreements, convertible notes, and Series A preparation for venture-backed companies.</p>
-              <div className="select-pricing">Starting at $15,000</div>
+              <div className="select-pricing">{getServicePrice('fundraising')}</div>
               <div className="select-cta">
                 Prepare for Funding <i className="fas fa-arrow-right"></i>
               </div>

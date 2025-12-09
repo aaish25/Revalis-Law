@@ -1,10 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navigation } from '../../components/Layout/Navigation';
+import { useServices } from '../../contexts/ServicesContext';
 import '../../styles/service-page.css';
 import '../../styles/home.css';
 
 export const Immigration: React.FC = () => {
+  const { getServicePrice } = useServices();
+  
   return (
     <>
       {/* Navigation */}
@@ -119,7 +122,7 @@ export const Immigration: React.FC = () => {
               <p>The backbone of tech hiring. We handle initial petitions, extensions, transfers, and RFE responses. Know what USCIS scrutinizes because we've handled hundreds.</p>
               
               <div className="service-price-box">
-                <div className="service-price-amount">Starting at $8,500</div>
+                <div className="service-price-amount">{getServicePrice('immigration')}</div>
                 <div className="service-price-details">Includes petition prep, filing, and standard support</div>
               </div>
 
