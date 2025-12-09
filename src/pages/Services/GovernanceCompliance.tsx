@@ -208,9 +208,9 @@ export const GovernanceCompliance: React.FC = () => {
           </p>
 
           <div className="service-cta-group" style={{ justifyContent: 'center' }}>
-            <a href="mailto:ai@rivalislaw.com" className="service-btn service-btn-primary">
+            <a href="/forms/ai-governance" className="service-btn service-btn-primary">
               <i className="fas fa-robot"></i>
-              Request AI Governance Assessment
+              Start AI Governance Assessment
             </a>
             <a href="tel:+1-202-555-0199" className="service-btn service-btn-secondary">
               <i className="fas fa-phone"></i>

@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Home } from './pages/Home';
+import { AuthProvider } from './contexts/AuthContext';
+import { ProtectedRoute } from './components/ProtectedRoute';
 
 // Lazy load pages for code splitting
 const ContractReview = React.lazy(() => import('./pages/Services/ContractReview').then(m => ({ default: m.ContractReview })));
@@ -25,6 +27,14 @@ const Terms = React.lazy(() => import('./pages/Legal/Terms').then(m => ({ defaul
 const Privacy = React.lazy(() => import('./pages/Legal/Privacy').then(m => ({ default: m.Privacy })));
 const Disclaimers = React.lazy(() => import('./pages/Legal/Disclaimers').then(m => ({ default: m.Disclaimers })));
 
+// Auth pages
+const LoginPage = React.lazy(() => import('./pages/Auth/LoginPage').then(m => ({ default: m.LoginPage })));
+const SignupPage = React.lazy(() => import('./pages/Auth/SignupPage').then(m => ({ default: m.SignupPage })));
+
+// Dashboard pages
+const UserDashboard = React.lazy(() => import('./pages/Dashboard/UserDashboard').then(m => ({ default: m.UserDashboard })));
+const AdminDashboard = React.lazy(() => import('./pages/Dashboard/AdminDashboard').then(m => ({ default: m.AdminDashboard })));
+
 // Loading component
 const PageLoader = () => (
   <div className="min-h-screen flex items-center justify-center bg-gray-50">
@@ -38,9 +48,10 @@ const PageLoader = () => (
 export const AppRouter = () => {
   return (
     <Router>
-      <Routes>
-        {/* Main Pages */}
-        <Route path="/" element={<Home />} />
+      <AuthProvider>
+        <Routes>
+          {/* Main Pages */}
+          <Route path="/" element={<Home />} />
 
         {/* Service Pages */}
         <Route
@@ -184,9 +195,50 @@ export const AppRouter = () => {
           }
         />
 
+        {/* Auth Pages */}
+        <Route
+          path="/login"
+          element={
+            <React.Suspense fallback={<PageLoader />}>
+              <LoginPage />
+            </React.Suspense>
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            <React.Suspense fallback={<PageLoader />}>
+              <SignupPage />
+            </React.Suspense>
+          }
+        />
+
+        {/* Dashboard Pages */}
+        <Route
+          path="/dashboard"
+          element={
+            <React.Suspense fallback={<PageLoader />}>
+              <ProtectedRoute>
+                <UserDashboard />
+              </ProtectedRoute>
+            </React.Suspense>
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            <React.Suspense fallback={<PageLoader />}>
+              <ProtectedRoute requireAdmin>
+                <AdminDashboard />
+              </ProtectedRoute>
+            </React.Suspense>
+          }
+        />
+
         {/* Catch all - redirect to home */}
         <Route path="*" element={<Home />} />
       </Routes>
+      </AuthProvider>
     </Router>
   );
 };

@@ -436,9 +436,9 @@ export const MAndA: React.FC = () => {
           </div>
 
           <div className="service-cta-group" style={{ justifyContent: 'center' }}>
-            <a href="mailto:deals@rivalislaw.com" className="service-btn service-btn-primary" style={{ background: 'var(--primary)', color: 'var(--accent)' }}>
-              <i className="fas fa-envelope"></i>
-              Email Deal Team
+            <a href="/intake" className="service-btn service-btn-primary" style={{ background: 'var(--primary)', color: 'var(--accent)' }}>
+              <i className="fas fa-clipboard-list"></i>
+              Fill Out Intake Form
             </a>
             <a href="tel:+1-202-555-0199" className="service-btn service-btn-secondary" style={{ borderColor: 'var(--primary)', color: 'var(--primary)' }}>
               <i className="fas fa-phone"></i>

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { MainLayout, Hero, CTASection } from '../../components';
-import { FormField } from '../../components/Forms/FormField';
-import { Button } from '../../components/Common/Button';
+import { Link } from 'react-router-dom';
+import { Navigation } from '../../components/Layout/Navigation';
+import '../../styles/form-page.css';
+import '../../styles/home.css';
 
 export const ImmigrationIntake: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -50,171 +51,327 @@ export const ImmigrationIntake: React.FC = () => {
   };
 
   return (
-    <MainLayout>
-      <Hero
-        title={
-          <>
-            Immigration Intake
-            <br />
-            <span className="text-accent">Start Your Immigration Case</span>
-          </>
-        }
-        subtitle="Complete this confidential form to begin your immigration consultation. All information is protected by attorney-client privilege."
-        breadcrumb={[
-          { label: 'Home', href: '/' },
-          { label: 'Services', href: '/#services' },
-          { label: 'Immigration', href: '/services/immigration' },
-          { label: 'Intake Form' },
-        ]}
-      />
+    <>
+      <Navigation />
 
-      <section className="section bg-gray-50">
-        <div className="section-container">
-          <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-lg p-8 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-primary mb-6">Personal Information</h3>
+      {/* Hero */}
+      <section className="form-hero">
+        <div className="form-hero-container">
+          <div className="form-breadcrumb">
+            <Link to="/">Home</Link> / <Link to="/services/immigration">Immigration</Link> / <span>Intake Form</span>
+          </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <FormField
-                label="Full Legal Name"
-                name="fullName"
-                placeholder="As shown on passport"
-                required
-                value={formData.fullName}
-                onChange={handleChange}
-              />
+          <div className="form-hero-badge" style={{ background: 'rgba(231, 76, 60, 0.2)', borderColor: '#e74c3c', color: '#ff6b6b' }}>
+            <i className="fas fa-passport"></i>
+            Immigration Case Assessment
+          </div>
 
-              <FormField
-                label="Country of Citizenship"
-                name="citizenship"
-                placeholder="e.g., India, China, Brazil"
-                required
-                value={formData.citizenship}
-                onChange={handleChange}
-              />
+          <h1>Start Your <span className="highlight">Immigration Case</span></h1>
+
+          <p className="form-hero-subtitle">
+            Complete this confidential intake form to begin your immigration consultation. 
+            Our team specializes in H-1B, L-1, O-1, and green card cases.
+          </p>
+
+          <div className="form-hero-features">
+            <div className="form-hero-feature">
+              <i className="fas fa-bolt"></i>
+              <span>24-Hour RFE Response</span>
             </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <FormField
-                label="Email Address"
-                name="email"
-                type="email"
-                placeholder="your@email.com"
-                required
-                value={formData.email}
-                onChange={handleChange}
-              />
-
-              <FormField
-                label="Phone Number"
-                name="phone"
-                type="tel"
-                placeholder="+1 (555) 123-4567"
-                required
-                value={formData.phone}
-                onChange={handleChange}
-              />
+            <div className="form-hero-feature">
+              <i className="fas fa-shield-alt"></i>
+              <span>100% Confidential</span>
             </div>
-
-            <h3 className="text-2xl font-bold text-primary mb-6 mt-8">Immigration Details</h3>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <FormField
-                label="Current Immigration Status"
-                name="currentStatus"
-                placeholder="e.g., H-1B, F-1, B-1/B-2, None"
-                required
-                value={formData.currentStatus}
-                onChange={handleChange}
-              />
-
-              <FormField
-                label="Visa Type Seeking"
-                name="visaType"
-                placeholder="e.g., H-1B, L-1, EB-1, Green Card"
-                required
-                value={formData.visaType}
-                onChange={handleChange}
-              />
+            <div className="form-hero-feature">
+              <i className="fas fa-building"></i>
+              <span>Big 4 Experience</span>
             </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <FormField
-                label="Employer/Sponsor Name"
-                name="employerName"
-                placeholder="Company name (if applicable)"
-                value={formData.employerName}
-                onChange={handleChange}
-              />
-
-              <FormField
-                label="Job Title/Position"
-                name="jobTitle"
-                placeholder="Your current or prospective title"
-                value={formData.jobTitle}
-                onChange={handleChange}
-              />
-            </div>
-
-            <FormField
-              label="Urgency Level"
-              name="urgency"
-              placeholder="e.g., Urgent (within 30 days), Standard, Planning ahead"
-              value={formData.urgency}
-              onChange={handleChange}
-            />
-
-            <FormField
-              label="Previous Immigration Applications"
-              name="previousApplications"
-              type="textarea"
-              placeholder="List any previous visa applications, denials, or immigration history..."
-              value={formData.previousApplications}
-              onChange={handleChange}
-            />
-
-            <FormField
-              label="Additional Information"
-              name="additionalInfo"
-              type="textarea"
-              placeholder="Any other details relevant to your immigration case..."
-              value={formData.additionalInfo}
-              onChange={handleChange}
-            />
-
-            <div className="mt-6 bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
-              <p className="text-sm text-gray-700">
-                <strong>Confidential Notice:</strong> All information provided is strictly confidential and protected by attorney-client privilege. We will not share your information with USCIS or any third party without your consent.
-              </p>
-            </div>
-
-            <div className="mt-8">
-              <Button type="submit" variant="primary" size="lg" loading={loading}>
-                Submit Immigration Intake
-              </Button>
-            </div>
-          </form>
+          </div>
         </div>
       </section>
 
-      <CTASection
-        title="Urgent Immigration Matter?"
-        subtitle="If you have an urgent immigration deadline or emergency, call our immigration hotline immediately."
-        buttons={[
-          {
-            text: 'Immigration Hotline',
-            icon: '📞',
-            href: 'tel:+1-202-555-0199',
-            variant: 'primary',
-          },
-          {
-            text: 'Email Immigration Team',
-            icon: '✉️',
-            href: 'mailto:immigration@rivalislaw.com',
-            variant: 'secondary',
-          },
-        ]}
-      />
-    </MainLayout>
+      {/* Form Section */}
+      <section className="form-section">
+        <div className="form-section-container">
+          <div className="form-card">
+            <div className="form-card-header">
+              <h2>Immigration Intake Form</h2>
+              <p>All information is protected by attorney-client privilege</p>
+            </div>
+
+            <div className="form-card-body">
+              <form onSubmit={handleSubmit}>
+                {/* Personal Information */}
+                <h3 className="form-section-title">
+                  <i className="fas fa-user"></i>
+                  Personal Information
+                </h3>
+
+                <div className="form-grid">
+                  <div className="form-group">
+                    <label className="form-label">
+                      Full Legal Name <span className="required">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="fullName"
+                      className="form-input"
+                      placeholder="As shown on passport"
+                      value={formData.fullName}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label className="form-label">
+                      Country of Citizenship <span className="required">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="citizenship"
+                      className="form-input"
+                      placeholder="e.g., India, China, Brazil"
+                      value={formData.citizenship}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="form-grid">
+                  <div className="form-group">
+                    <label className="form-label">
+                      Email Address <span className="required">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      className="form-input"
+                      placeholder="your@email.com"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label className="form-label">
+                      Phone Number <span className="required">*</span>
+                    </label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      className="form-input"
+                      placeholder="+1 (555) 123-4567"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="form-divider"></div>
+
+                {/* Immigration Details */}
+                <h3 className="form-section-title">
+                  <i className="fas fa-passport"></i>
+                  Immigration Details
+                </h3>
+
+                <div className="form-grid">
+                  <div className="form-group">
+                    <label className="form-label">
+                      Current Immigration Status <span className="required">*</span>
+                    </label>
+                    <select
+                      name="currentStatus"
+                      className="form-select"
+                      value={formData.currentStatus}
+                      onChange={handleChange}
+                      required
+                    >
+                      <option value="">Select current status...</option>
+                      <option value="h1b">H-1B</option>
+                      <option value="l1">L-1A/L-1B</option>
+                      <option value="f1">F-1 (Student)</option>
+                      <option value="f1-opt">F-1 OPT</option>
+                      <option value="b1b2">B-1/B-2 (Visitor)</option>
+                      <option value="o1">O-1</option>
+                      <option value="green-card">Green Card Holder</option>
+                      <option value="none">No Current US Status</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+
+                  <div className="form-group">
+                    <label className="form-label">
+                      Visa Type Seeking <span className="required">*</span>
+                    </label>
+                    <select
+                      name="visaType"
+                      className="form-select"
+                      value={formData.visaType}
+                      onChange={handleChange}
+                      required
+                    >
+                      <option value="">Select visa type...</option>
+                      <option value="h1b">H-1B (Specialty Occupation)</option>
+                      <option value="h1b-transfer">H-1B Transfer</option>
+                      <option value="l1a">L-1A (Manager/Executive)</option>
+                      <option value="l1b">L-1B (Specialized Knowledge)</option>
+                      <option value="o1a">O-1A (Extraordinary Ability)</option>
+                      <option value="o1b">O-1B (Arts/Entertainment)</option>
+                      <option value="eb1">EB-1 Green Card</option>
+                      <option value="eb2">EB-2 Green Card</option>
+                      <option value="eb3">EB-3 Green Card</option>
+                      <option value="perm">PERM Labor Certification</option>
+                      <option value="rfe-response">RFE Response Needed</option>
+                      <option value="other">Other/Not Sure</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="form-grid">
+                  <div className="form-group">
+                    <label className="form-label">
+                      Employer/Sponsor Name
+                    </label>
+                    <input
+                      type="text"
+                      name="employerName"
+                      className="form-input"
+                      placeholder="Company name (if applicable)"
+                      value={formData.employerName}
+                      onChange={handleChange}
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label className="form-label">
+                      Job Title/Position
+                    </label>
+                    <input
+                      type="text"
+                      name="jobTitle"
+                      className="form-input"
+                      placeholder="Your current or prospective title"
+                      value={formData.jobTitle}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label className="form-label">
+                    Urgency Level <span className="required">*</span>
+                  </label>
+                  <select
+                    name="urgency"
+                    className="form-select"
+                    value={formData.urgency}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="">Select urgency...</option>
+                    <option value="rfe-emergency">🚨 RFE Emergency (Under 15 days)</option>
+                    <option value="visa-expiring">Visa Expiring Soon (Under 30 days)</option>
+                    <option value="urgent">Urgent (Within 1-2 months)</option>
+                    <option value="standard">Standard (2-4 months)</option>
+                    <option value="planning">Planning Ahead (4+ months)</option>
+                  </select>
+                </div>
+
+                <div className="form-divider"></div>
+
+                {/* Additional Information */}
+                <h3 className="form-section-title">
+                  <i className="fas fa-file-alt"></i>
+                  Additional Information
+                </h3>
+
+                <div className="form-group">
+                  <label className="form-label">
+                    Previous Immigration Applications
+                  </label>
+                  <textarea
+                    name="previousApplications"
+                    className="form-textarea"
+                    placeholder="List any previous visa applications, denials, RFEs, or relevant immigration history..."
+                    value={formData.previousApplications}
+                    onChange={handleChange}
+                  ></textarea>
+                </div>
+
+                <div className="form-group">
+                  <label className="form-label">
+                    Additional Details
+                  </label>
+                  <textarea
+                    name="additionalInfo"
+                    className="form-textarea"
+                    placeholder="Any other details relevant to your immigration case..."
+                    value={formData.additionalInfo}
+                    onChange={handleChange}
+                  ></textarea>
+                </div>
+
+                <div className="form-info-box">
+                  <h4><i className="fas fa-shield-alt"></i> Confidential Notice</h4>
+                  <p>All information provided is strictly confidential and protected by attorney-client privilege. We will not share your information with USCIS or any third party without your explicit consent.</p>
+                </div>
+
+                <button type="submit" className="form-submit-btn" disabled={loading}>
+                  <i className="fas fa-paper-plane"></i>
+                  {loading ? 'Submitting...' : 'Submit Immigration Intake'}
+                </button>
+
+                <div className="form-note">
+                  <i className="fas fa-clock"></i>
+                  <span>Our immigration team will review your case and respond within 24 hours</span>
+                </div>
+              </form>
+
+              {/* Contact Box */}
+              <div className="form-contact-box">
+                <h4>🚨 RFE Emergency?</h4>
+                <p>If you have an RFE deadline or urgent immigration crisis, call immediately:</p>
+                <a href="tel:+1-202-555-0199" className="form-contact-item">
+                  <i className="fas fa-phone-volume"></i>
+                  <span>Emergency: (202) 555-0199</span>
+                </a>
+                <a href="mailto:immigration@rivalislaw.com" className="form-contact-item">
+                  <i className="fas fa-envelope"></i>
+                  <span>immigration@rivalislaw.com</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="form-cta-section">
+        <h2>Learn More About Our Immigration Services</h2>
+        <p>Explore our H-1B, L-1, O-1, and green card expertise.</p>
+        <div className="form-cta-buttons">
+          <Link to="/services/immigration" className="form-cta-btn primary">
+            <i className="fas fa-passport"></i>
+            Immigration Services
+          </Link>
+          <a href="tel:+1-202-555-0199" className="form-cta-btn secondary">
+            <i className="fas fa-phone"></i>
+            Call: (202) 555-0199
+          </a>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="form-footer">
+        <p>&copy; 2024 Rivalis Law. Licensed in New York & Michigan.</p>
+        <p><Link to="/">Return to Main Site</Link></p>
+      </footer>
+    </>
   );
 };
 

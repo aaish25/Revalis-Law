@@ -505,6 +505,18 @@ export const FraudInvestigation: React.FC = () => {
             <div className="fraud-contact-form">
               <h3>Confidential Investigation Inquiry</h3>
               
+              <div style={{ marginBottom: '2rem', textAlign: 'center' }}>
+                <p style={{ marginBottom: '1rem', color: 'var(--gray-600)' }}>Prefer a structured intake form?</p>
+                <a href="/intake" className="fraud-form-submit-btn" style={{ display: 'inline-block', textDecoration: 'none' }}>
+                  <i className="fas fa-clipboard-list"></i>
+                  Fill Out Full Intake Form
+                </a>
+              </div>
+              
+              <div style={{ textAlign: 'center', marginBottom: '2rem', color: 'var(--gray-600)', fontSize: '0.9rem' }}>
+                Or submit details below for quick review:
+              </div>
+
               <form onSubmit={handleSubmit}>
                 <div className="fraud-form-group">
                   <label htmlFor="name">Your Name *</label>

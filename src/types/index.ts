@@ -1,3 +1,6 @@
+// Database types
+export * from './database';
+
 // Design system types
 export interface ColorVariant {
   primary: string;

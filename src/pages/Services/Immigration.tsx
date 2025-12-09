@@ -446,9 +446,9 @@ export const Immigration: React.FC = () => {
               <i className="fas fa-phone-volume"></i>
               EMERGENCY: (202) 555-0199
             </a>
-            <a href="mailto:immigration@rivalislaw.com" className="service-btn service-btn-secondary">
-              <i className="fas fa-envelope"></i>
-              Email Immigration Team
+            <a href="/forms/immigration" className="service-btn service-btn-secondary">
+              <i className="fas fa-clipboard-list"></i>
+              Fill Out Intake Form
             </a>
           </div>
         </div>

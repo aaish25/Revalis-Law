@@ -443,9 +443,9 @@ export const Home: React.FC = () => {
                   <i className="fas fa-bolt"></i>
                   Learn More
                 </a>
-                <a href="#qualify" className="service-cta-btn secondary">
+                <a href="/forms/ai-governance" className="service-cta-btn secondary">
                   <i className="fas fa-calendar-check"></i>
-                  Get Quote
+                  Get Started
                 </a>
               </div>
             </div>
@@ -494,9 +494,9 @@ export const Home: React.FC = () => {
                   <i className="fas fa-passport"></i>
                   Learn More
                 </a>
-                <a href="#qualify" className="service-cta-btn secondary">
+                <a href="/forms/immigration" className="service-cta-btn secondary">
                   <i className="fas fa-calendar-check"></i>
-                  Get Quote
+                  Get Started
                 </a>
               </div>
             </div>
@@ -545,9 +545,9 @@ export const Home: React.FC = () => {
                   <i className="fas fa-handshake"></i>
                   Learn More
                 </a>
-                <a href="#qualify" className="service-cta-btn secondary">
+                <a href="/intake" className="service-cta-btn secondary">
                   <i className="fas fa-calendar-check"></i>
-                  Get Quote
+                  Get Started
                 </a>
               </div>
             </div>

@@ -219,9 +219,9 @@ export const Fundraising: React.FC = () => {
           </p>
 
           <div className="service-cta-group" style={{ justifyContent: 'center' }}>
-            <a href="mailto:fundraising@rivalislaw.com" className="service-btn service-btn-primary">
-              <i className="fas fa-chart-line"></i>
-              Start Series A Prep
+            <a href="/intake" className="service-btn service-btn-primary">
+              <i className="fas fa-clipboard-list"></i>
+              Fill Out Intake Form
             </a>
             <a href="tel:+1-202-555-0199" className="service-btn service-btn-secondary">
               <i className="fas fa-phone"></i>
