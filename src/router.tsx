@@ -217,21 +217,21 @@ export const AppRouter = () => {
         <Route
           path="/dashboard"
           element={
-            <React.Suspense fallback={<PageLoader />}>
-              <ProtectedRoute>
+            <ProtectedRoute>
+              <React.Suspense fallback={<PageLoader />}>
                 <UserDashboard />
-              </ProtectedRoute>
-            </React.Suspense>
+              </React.Suspense>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/admin"
           element={
-            <React.Suspense fallback={<PageLoader />}>
-              <ProtectedRoute requireAdmin>
+            <ProtectedRoute requireAdmin>
+              <React.Suspense fallback={<PageLoader />}>
                 <AdminDashboard />
-              </ProtectedRoute>
-            </React.Suspense>
+              </React.Suspense>
+            </ProtectedRoute>
           }
         />
 

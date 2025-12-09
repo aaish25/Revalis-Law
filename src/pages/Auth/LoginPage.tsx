@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { MainLayout } from '../../components/Layout';
@@ -8,32 +8,61 @@ export function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   
-  const { signIn } = useAuth();
+  const { signIn, user, loading: authLoading, isAdmin } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   
-  const from = (location.state as { from?: { pathname: string } })?.from?.pathname || '/dashboard';
+  // Get the intended destination
+  const from = (location.state as { from?: { pathname: string } })?.from?.pathname;
+
+  // Redirect if logged in and auth is not loading
+  useEffect(() => {
+    if (!authLoading && user) {
+      // Determine where to redirect
+      let destination = '/dashboard';
+      if (from) {
+        destination = from;
+      } else if (isAdmin) {
+        destination = '/admin';
+      }
+      navigate(destination, { replace: true });
+    }
+  }, [user, authLoading, isAdmin, navigate, from]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
-    setLoading(true);
+    setSubmitting(true);
 
     try {
-      const { error } = await signIn(email, password);
-      if (error) {
-        setError(error.message);
-      } else {
-        navigate(from, { replace: true });
+      const { error: signInError } = await signIn(email, password);
+      if (signInError) {
+        setError(signInError.message);
+        setSubmitting(false);
       }
+      // Navigation happens via useEffect when user state updates
     } catch {
       setError('An unexpected error occurred');
-    } finally {
-      setLoading(false);
+      setSubmitting(false);
     }
   };
+
+  // Show loading while auth is initializing
+  if (authLoading) {
+    return (
+      <MainLayout>
+        <div className="auth-page">
+          <div className="auth-container">
+            <div style={{ textAlign: 'center', padding: '2rem' }}>
+              <p>Loading...</p>
+            </div>
+          </div>
+        </div>
+      </MainLayout>
+    );
+  }
 
   return (
     <MainLayout>
@@ -84,8 +113,8 @@ export function LoginPage() {
               </Link>
             </div>
 
-            <button type="submit" className="auth-button" disabled={loading}>
-              {loading ? 'Signing in...' : 'Sign In'}
+            <button type="submit" className="auth-button" disabled={submitting}>
+              {submitting ? 'Signing in...' : 'Sign In'}
             </button>
           </form>
 

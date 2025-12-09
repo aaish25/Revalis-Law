@@ -1,10 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth';
 
 export const Navigation: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const { user, signOut, isAdmin } = useAuth();
+  
+  const isHomePage = location.pathname === '/';
+
+  // Get the correct dashboard path based on user role
+  const dashboardPath = isAdmin ? '/admin' : '/dashboard';
+  const dashboardLabel = isAdmin ? 'Admin Dashboard' : 'Dashboard';
+
+  // Handle sign out
+  const handleSignOut = async () => {
+    console.log('handleSignOut called');
+    try {
+      await signOut();
+      console.log('signOut completed, navigating to /');
+      navigate('/', { replace: true });
+    } catch (error) {
+      console.error('Error during sign out:', error);
+      // Navigate anyway
+      navigate('/', { replace: true });
+    }
+  };
 
   // Handle scrolling to hash on page load or hash change
   useEffect(() => {
@@ -57,7 +79,7 @@ export const Navigation: React.FC = () => {
   ];
 
   return (
-    <nav className="nav">
+    <nav className={`nav ${isHomePage ? '' : 'nav-no-emergency'}`}>
       <div className="nav-container">
         <Link to="/" className="nav-logo">Rivalis Law</Link>
         
@@ -109,6 +131,36 @@ export const Navigation: React.FC = () => {
               Get Started
             </a>
           </li>
+          {user ? (
+            <li className="nav-dropdown nav-user-dropdown">
+              <button className="nav-user-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                  <path fillRule="evenodd" d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" clipRule="evenodd" />
+                </svg>
+              </button>
+              <div className="nav-dropdown-menu nav-user-menu">
+                <Link to={dashboardPath} className="nav-dropdown-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                    <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
+                    <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
+                  </svg>
+                  {dashboardLabel}
+                </Link>
+                <button onClick={handleSignOut} className="nav-dropdown-item nav-signout-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                    <path fillRule="evenodd" d="M7.5 3.75A1.5 1.5 0 006 5.25v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9A.75.75 0 0115 9V5.25a1.5 1.5 0 00-1.5-1.5h-6zm10.72 4.72a.75.75 0 011.06 0l3 3a.75.75 0 010 1.06l-3 3a.75.75 0 11-1.06-1.06l1.72-1.72H9a.75.75 0 010-1.5h10.94l-1.72-1.72a.75.75 0 010-1.06z" clipRule="evenodd" />
+                  </svg>
+                  Sign Out
+                </button>
+              </div>
+            </li>
+          ) : (
+            <li>
+              <Link to="/login" className="nav-login-btn">
+                Login
+              </Link>
+            </li>
+          )}
         </ul>
 
         {/* Mobile Menu Button */}
@@ -169,6 +221,7 @@ export const Navigation: React.FC = () => {
           >
             How We Work
           </a>
+          
           <a 
             href="/#qualify" 
             className="nav-mobile-cta" 
@@ -176,6 +229,32 @@ export const Navigation: React.FC = () => {
           >
             Get Started
           </a>
+          
+          {user ? (
+            <>
+              <Link 
+                to={dashboardPath} 
+                className="nav-mobile-link"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {dashboardLabel}
+              </Link>
+              <button 
+                onClick={() => { handleSignOut(); setMobileMenuOpen(false); }} 
+                className="nav-mobile-signout"
+              >
+                Sign Out
+              </button>
+            </>
+          ) : (
+            <Link 
+              to="/login" 
+              className="nav-mobile-login"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Login
+            </Link>
+          )}
         </div>
       )}
     </nav>

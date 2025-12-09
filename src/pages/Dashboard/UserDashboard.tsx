@@ -12,7 +12,7 @@ type PurchaseWithRelations = Purchase & {
 };
 
 export function UserDashboard() {
-  const { user, profile, signOut } = useAuth();
+  const { user, profile } = useAuth();
   const [purchases, setPurchases] = useState<PurchaseWithRelations[]>([]);
   const [submissions, setSubmissions] = useState<FormSubmission[]>([]);
   const [loading, setLoading] = useState(true);
@@ -89,9 +89,6 @@ export function UserDashboard() {
               <h1>Welcome back, {profile?.full_name || 'User'}</h1>
               <p>{user?.email}</p>
             </div>
-            <button onClick={signOut} className="logout-button">
-              Sign Out
-            </button>
           </div>
         </div>
 

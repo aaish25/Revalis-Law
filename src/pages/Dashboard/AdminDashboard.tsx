@@ -13,7 +13,7 @@ import type { Service, Profile, FormSubmission } from '../../types/database';
 import './dashboard.css';
 
 export function AdminDashboard() {
-  const { isAdmin, signOut, loading: authLoading } = useAuth();
+  const { isAdmin, loading: authLoading } = useAuth();
   const navigate = useNavigate();
   
   const [services, setServices] = useState<Service[]>([]);
@@ -136,9 +136,6 @@ export function AdminDashboard() {
               <h1>Admin Dashboard</h1>
               <p>Manage services, users, and submissions</p>
             </div>
-            <button onClick={signOut} className="logout-button">
-              Sign Out
-            </button>
           </div>
         </div>
 
