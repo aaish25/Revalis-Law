@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Navigation } from '../../components/Layout/Navigation';
 import '../../styles/fraud-investigation.css';
+import '../../styles/home.css';
 
 export const FraudInvestigation: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -42,17 +44,7 @@ export const FraudInvestigation: React.FC = () => {
       </div>
 
       {/* Navigation */}
-      <nav className="fraud-nav">
-        <div className="fraud-nav-container">
-          <Link to="/" className="fraud-nav-logo">Rivalis Law</Link>
-          <ul className="fraud-nav-menu">
-            <li><Link to="/#services" className="fraud-nav-link">Services</Link></li>
-            <li><Link to="/#why-rivalis" className="fraud-nav-link">Why Rivalis</Link></li>
-            <li><a href="#expertise" className="fraud-nav-link">Our Expertise</a></li>
-            <li><a href="#contact" className="fraud-nav-cta">Confidential Contact</a></li>
-          </ul>
-        </div>
-      </nav>
+      <Navigation />
 
       {/* Hero Section */}
       <section className="fraud-hero">
@@ -433,19 +425,19 @@ export const FraudInvestigation: React.FC = () => {
             <div className="fraud-pricing-tiers">
               <div className="fraud-pricing-tier">
                 <div className="fraud-tier-label">Limited Scope</div>
-                <div className="fraud-tier-price">$25K-$50K</div>
+                <div className="fraud-tier-price">Starting at $25K</div>
                 <div className="fraud-tier-desc">Single issue, &lt; 10 witnesses, 2-3 week investigation</div>
               </div>
 
               <div className="fraud-pricing-tier">
                 <div className="fraud-tier-label">Standard Investigation</div>
-                <div className="fraud-tier-price">$50K-$100K</div>
+                <div className="fraud-tier-price">Starting at $50K</div>
                 <div className="fraud-tier-desc">Multiple issues, 10-25 witnesses, 4-8 week investigation</div>
               </div>
 
               <div className="fraud-pricing-tier">
                 <div className="fraud-tier-label">Complex Investigation</div>
-                <div className="fraud-tier-price">$100K-$150K+</div>
+                <div className="fraud-tier-price">Starting at $100K</div>
                 <div className="fraud-tier-desc">Extensive scope, 25+ witnesses, forensic analysis, 8+ weeks</div>
               </div>
             </div>

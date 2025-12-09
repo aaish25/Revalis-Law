@@ -1,22 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Navigation } from '../../components/Layout/Navigation';
 import '../../styles/service-page.css';
+import '../../styles/home.css';
 
 export const MAndA: React.FC = () => {
   return (
     <>
       {/* Navigation */}
-      <nav className="service-nav">
-        <div className="service-nav-container">
-          <Link to="/" className="service-nav-logo">Rivalis Law</Link>
-          <ul className="service-nav-menu">
-            <li><Link to="/#services" className="service-nav-link">All Services</Link></li>
-            <li><Link to="/#why-rivalis" className="service-nav-link">Why Rivalis</Link></li>
-            <li><Link to="/#how-we-work" className="service-nav-link">Process</Link></li>
-            <li><a href="#get-started" className="service-nav-cta">Get Started</a></li>
-          </ul>
-        </div>
-      </nav>
+      <Navigation />
 
       {/* Hero */}
       <section className="service-hero">
@@ -116,7 +108,7 @@ export const MAndA: React.FC = () => {
               <p>Comprehensive investigation before you acquire. Tax liabilities, legal exposures, compliance gaps, IP issues—we find them all before closing.</p>
               
               <div className="service-price-box">
-                <div className="service-price-amount">$35,000 - $125,000</div>
+                <div className="service-price-amount">Starting at $35,000</div>
                 <div className="service-price-details">Based on deal size and complexity</div>
               </div>
 
@@ -138,7 +130,7 @@ export const MAndA: React.FC = () => {
               <p>Tax-efficient deal structures that protect you from liabilities and maximize value. Stock vs asset purchase, earnouts, escrows, reps & warranties.</p>
               
               <div className="service-price-box">
-                <div className="service-price-amount">$25,000 - $75,000</div>
+                <div className="service-price-amount">Starting at $25,000</div>
                 <div className="service-price-details">Structure optimization & negotiation</div>
               </div>
 
@@ -160,7 +152,7 @@ export const MAndA: React.FC = () => {
               <p>End-to-end M&A counsel from LOI through closing. Due diligence, negotiation, documentation, closing coordination—comprehensive deal management.</p>
               
               <div className="service-price-box">
-                <div className="service-price-amount">$75,000 - $250,000+</div>
+                <div className="service-price-amount">Starting at $75,000</div>
                 <div className="service-price-details">Complete transaction management</div>
               </div>
 

@@ -1,21 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Navigation } from '../../components/Layout/Navigation';
 import '../../styles/service-page.css';
+import '../../styles/home.css';
 
 export const IPStrategy: React.FC = () => {
   return (
     <>
       {/* Navigation */}
-      <nav className="service-nav">
-        <div className="service-nav-container">
-          <Link to="/" className="service-nav-logo">Rivalis Law</Link>
-          <ul className="service-nav-menu">
-            <li><Link to="/#services" className="service-nav-link">All Services</Link></li>
-            <li><Link to="/#select-services" className="service-nav-link">Select Services</Link></li>
-            <li><a href="#get-started" className="service-nav-cta">Get Started</a></li>
-          </ul>
-        </div>
-      </nav>
+      <Navigation />
 
       {/* Hero */}
       <section className="service-hero centered">
@@ -30,7 +23,7 @@ export const IPStrategy: React.FC = () => {
             You built a company around that name. Spent $50K on branding. Now someone owns the trademark and wants you to stop—or pay. Your trade secrets are unprotected. Your contractors own your IP. One cease & desist destroys everything.
           </p>
 
-          <div className="service-hero-price">$5,000 - $20,000</div>
+          <div className="service-hero-price">Starting at $5,000</div>
           <p className="service-hero-price-note">Trademark filings, trade secret protection, IP portfolio development</p>
 
           <div className="service-cta-group">
@@ -63,7 +56,7 @@ export const IPStrategy: React.FC = () => {
               </div>
               <h3>Trademark Filing</h3>
               <p>Comprehensive trademark search, application preparation, USPTO filing, and office action responses.</p>
-              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>$1,500 - $3,000 per mark</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>Starting at $1,500 per mark</div>
             </div>
 
             <div className="service-card">
@@ -72,7 +65,7 @@ export const IPStrategy: React.FC = () => {
               </div>
               <h3>Trade Secret Protection</h3>
               <p>Policies, NDAs, employee agreements, and procedures to protect confidential business information.</p>
-              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>$5,000 - $12,000</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>Starting at $5,000</div>
             </div>
 
             <div className="service-card">
@@ -81,7 +74,7 @@ export const IPStrategy: React.FC = () => {
               </div>
               <h3>IP Audit</h3>
               <p>Comprehensive review of IP ownership, identify gaps, assess protection strategies.</p>
-              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>$8,000 - $15,000</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>Starting at $8,000</div>
             </div>
 
             <div className="service-card">
@@ -90,7 +83,7 @@ export const IPStrategy: React.FC = () => {
               </div>
               <h3>Portfolio Development</h3>
               <p>Strategic IP portfolio planning, trademark strategy, copyright registrations, domain protection.</p>
-              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>$10,000 - $20,000</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>Starting at $10,000</div>
             </div>
 
             <div className="service-card">
@@ -99,7 +92,7 @@ export const IPStrategy: React.FC = () => {
               </div>
               <h3>IP Assignments</h3>
               <p>Contractor IP assignment agreements, employee invention policies, work-for-hire documentation.</p>
-              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>$3,000 - $8,000</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>Starting at $3,000</div>
             </div>
 
             <div className="service-card">
@@ -108,7 +101,7 @@ export const IPStrategy: React.FC = () => {
               </div>
               <h3>Infringement Response</h3>
               <p>Cease & desist letters, infringement analysis, settlement negotiation, litigation support.</p>
-              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>$5,000 - $15,000</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>Starting at $5,000</div>
             </div>
           </div>
         </div>

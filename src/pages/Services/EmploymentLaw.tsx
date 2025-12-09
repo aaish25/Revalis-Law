@@ -1,21 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Navigation } from '../../components/Layout/Navigation';
 import '../../styles/service-page.css';
+import '../../styles/home.css';
 
 export const EmploymentLaw: React.FC = () => {
   return (
     <>
       {/* Navigation */}
-      <nav className="service-nav">
-        <div className="service-nav-container">
-          <Link to="/" className="service-nav-logo">Rivalis Law</Link>
-          <ul className="service-nav-menu">
-            <li><Link to="/#services" className="service-nav-link">All Services</Link></li>
-            <li><Link to="/#select-services" className="service-nav-link">Select Services</Link></li>
-            <li><a href="#get-started" className="service-nav-cta">Get Started</a></li>
-          </ul>
-        </div>
-      </nav>
+      <Navigation />
 
       {/* Hero */}
       <section className="service-hero centered">
@@ -30,7 +23,7 @@ export const EmploymentLaw: React.FC = () => {
             You fired someone without documentation. Your offer letter promised things you can't deliver. You have no employee handbook. Your workers might be misclassified. One employment lawsuit destroys your runway and reputation.
           </p>
 
-          <div className="service-hero-price">$3,000 - $15,000</div>
+          <div className="service-hero-price">Starting at $3,000</div>
           <p className="service-hero-price-note">Employment policies, handbooks, and HR compliance</p>
 
           <div className="service-cta-group">
@@ -95,7 +88,7 @@ export const EmploymentLaw: React.FC = () => {
               </div>
               <h3>Offer Letters</h3>
               <p>Legally compliant offer letters with proper at-will language, compensation terms, and IP assignment provisions.</p>
-              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>$1,000 - $2,000 each</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>Starting at $1,000 each</div>
             </div>
 
             <div className="service-card">
@@ -104,7 +97,7 @@ export const EmploymentLaw: React.FC = () => {
               </div>
               <h3>Employee Handbook</h3>
               <p>Comprehensive handbook with policies, procedures, compliance provisions, and legal protections for your company.</p>
-              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>$5,000 - $10,000</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>Starting at $5,000</div>
             </div>
 
             <div className="service-card">
@@ -113,7 +106,7 @@ export const EmploymentLaw: React.FC = () => {
               </div>
               <h3>Termination Guidance</h3>
               <p>Legal counsel on firing employees, severance negotiations, release agreements, and liability minimization.</p>
-              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>$2,000 - $5,000</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>Starting at $2,000</div>
             </div>
 
             <div className="service-card">
@@ -122,7 +115,7 @@ export const EmploymentLaw: React.FC = () => {
               </div>
               <h3>Worker Classification</h3>
               <p>Employee vs contractor analysis, classification audits, and proper documentation to avoid misclassification penalties.</p>
-              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>$3,000 - $8,000</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>Starting at $3,000</div>
             </div>
 
             <div className="service-card">
@@ -131,7 +124,7 @@ export const EmploymentLaw: React.FC = () => {
               </div>
               <h3>HR Compliance Audit</h3>
               <p>Comprehensive review of employment practices, identify compliance gaps, remediation recommendations.</p>
-              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>$5,000 - $12,000</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>Starting at $5,000</div>
             </div>
 
             <div className="service-card">
@@ -140,7 +133,7 @@ export const EmploymentLaw: React.FC = () => {
               </div>
               <h3>Ongoing HR Counsel</h3>
               <p>Retainer-based employment law support for hiring, policies, terminations, and compliance questions.</p>
-              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>$2,500 - $7,500/month</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>Starting at $2,500/month</div>
             </div>
           </div>
         </div>

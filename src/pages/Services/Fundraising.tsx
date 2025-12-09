@@ -1,21 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Navigation } from '../../components/Layout/Navigation';
 import '../../styles/service-page.css';
+import '../../styles/home.css';
 
 export const Fundraising: React.FC = () => {
   return (
     <>
       {/* Navigation */}
-      <nav className="service-nav">
-        <div className="service-nav-container">
-          <Link to="/" className="service-nav-logo">Rivalis Law</Link>
-          <ul className="service-nav-menu">
-            <li><Link to="/#services" className="service-nav-link">All Services</Link></li>
-            <li><Link to="/#select-services" className="service-nav-link">Select Services</Link></li>
-            <li><a href="#get-started" className="service-nav-cta">Get Started</a></li>
-          </ul>
-        </div>
-      </nav>
+      <Navigation />
 
       {/* Hero */}
       <section className="service-hero centered">
@@ -30,7 +23,7 @@ export const Fundraising: React.FC = () => {
             Term sheet signed. Investor ready to wire funds. Your cap table is a mess. Your SAFE has wrong terms. No option pool. Investor discovers problems in diligence. Deal delays 6 weeks or dies. Your runway just ran out.
           </p>
 
-          <div className="service-hero-price">$15,000 - $50,000</div>
+          <div className="service-hero-price">Starting at $15,000</div>
           <p className="service-hero-price-note">SAFE agreements, convertible notes, Series A preparation</p>
 
           <div className="service-cta-group">
@@ -63,7 +56,7 @@ export const Fundraising: React.FC = () => {
               <p>Quick, founder-friendly funding rounds using standard instruments. Get funding fast without complex equity negotiations.</p>
               
               <div className="service-price-box">
-                <div className="service-price-amount">$15,000 - $25,000</div>
+                <div className="service-price-amount">Starting at $15,000</div>
               </div>
 
               <ul className="service-features">
@@ -83,7 +76,7 @@ export const Fundraising: React.FC = () => {
               <p>Get your company ready for institutional VC funding. Clean up issues that kill deals before VCs find them.</p>
               
               <div className="service-price-box">
-                <div className="service-price-amount">$25,000 - $40,000</div>
+                <div className="service-price-amount">Starting at $25,000</div>
               </div>
 
               <ul className="service-features">
@@ -104,7 +97,7 @@ export const Fundraising: React.FC = () => {
               <p>Full Series A or B round with institutional investors. Complex negotiation, term sheets, and closing coordination.</p>
               
               <div className="service-price-box">
-                <div className="service-price-amount">$35,000 - $75,000+</div>
+                <div className="service-price-amount">Starting at $35,000</div>
               </div>
 
               <ul className="service-features">

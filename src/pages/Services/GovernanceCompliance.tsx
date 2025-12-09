@@ -1,21 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Navigation } from '../../components/Layout/Navigation';
 import '../../styles/service-page.css';
+import '../../styles/home.css';
 
 export const GovernanceCompliance: React.FC = () => {
   return (
     <>
       {/* Navigation */}
-      <nav className="service-nav">
-        <div className="service-nav-container">
-          <Link to="/" className="service-nav-logo">Rivalis Law</Link>
-          <ul className="service-nav-menu">
-            <li><Link to="/#services" className="service-nav-link">All Services</Link></li>
-            <li><Link to="/#select-services" className="service-nav-link">Select Services</Link></li>
-            <li><a href="#get-started" className="service-nav-cta">Get Started</a></li>
-          </ul>
-        </div>
-      </nav>
+      <Navigation />
 
       {/* Hero */}
       <section className="service-hero centered">
@@ -30,7 +23,7 @@ export const GovernanceCompliance: React.FC = () => {
             EU AI Act enforcement begins in 2025. Your investors want AI governance documentation. Your AI makes decisions affecting real people with no audit trail. One bias incident, one discriminatory output, one unexplainable decision—and you're exposed.
           </p>
 
-          <div className="service-hero-price">$25,000 - $150,000</div>
+          <div className="service-hero-price">Starting at $25,000</div>
           <p className="service-hero-price-note">AI governance frameworks, EU AI Act compliance, risk assessments</p>
 
           <div className="service-cta-group">
@@ -63,7 +56,7 @@ export const GovernanceCompliance: React.FC = () => {
               </div>
               <h3>AI Risk Assessment</h3>
               <p>Comprehensive evaluation of AI systems for bias, fairness, transparency, and regulatory compliance risks.</p>
-              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>$25,000 - $50,000</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>Starting at $25,000</div>
             </div>
 
             <div className="service-card">
@@ -72,7 +65,7 @@ export const GovernanceCompliance: React.FC = () => {
               </div>
               <h3>EU AI Act Compliance</h3>
               <p>Full compliance program for EU AI Act requirements including risk classification, documentation, and conformity assessment.</p>
-              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>$50,000 - $100,000</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>Starting at $50,000</div>
             </div>
 
             <div className="service-card">
@@ -81,7 +74,7 @@ export const GovernanceCompliance: React.FC = () => {
               </div>
               <h3>Governance Framework</h3>
               <p>Complete AI governance policies, procedures, and documentation for investor due diligence and regulatory compliance.</p>
-              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>$35,000 - $75,000</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>Starting at $35,000</div>
             </div>
 
             <div className="service-card">
@@ -90,7 +83,7 @@ export const GovernanceCompliance: React.FC = () => {
               </div>
               <h3>AI Ethics Committee</h3>
               <p>Establish and train internal AI ethics review board with policies, procedures, and decision frameworks.</p>
-              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>$20,000 - $40,000</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>Starting at $20,000</div>
             </div>
 
             <div className="service-card">
@@ -99,7 +92,7 @@ export const GovernanceCompliance: React.FC = () => {
               </div>
               <h3>Incident Response</h3>
               <p>AI-specific incident response planning, crisis management, and regulatory notification procedures.</p>
-              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>$15,000 - $35,000</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>Starting at $15,000</div>
             </div>
 
             <div className="service-card">
@@ -108,7 +101,7 @@ export const GovernanceCompliance: React.FC = () => {
               </div>
               <h3>Investor Documentation</h3>
               <p>AI governance documentation specifically designed for VC due diligence and investor presentations.</p>
-              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>$25,000 - $45,000</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>Starting at $25,000</div>
             </div>
           </div>
         </div>

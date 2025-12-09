@@ -1,21 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Navigation } from '../../components/Layout/Navigation';
 import '../../styles/service-page.css';
+import '../../styles/home.css';
 
 export const EntityFormation: React.FC = () => {
   return (
     <>
       {/* Navigation */}
-      <nav className="service-nav">
-        <div className="service-nav-container">
-          <Link to="/" className="service-nav-logo">Rivalis Law</Link>
-          <ul className="service-nav-menu">
-            <li><Link to="/#services" className="service-nav-link">All Services</Link></li>
-            <li><Link to="/#select-services" className="service-nav-link">Select Services</Link></li>
-            <li><a href="#get-started" className="service-nav-cta">Get Started</a></li>
-          </ul>
-        </div>
-      </nav>
+      <Navigation />
 
       {/* Hero */}
       <section className="service-hero centered">
@@ -30,7 +23,7 @@ export const EntityFormation: React.FC = () => {
             You picked LLC because it was "simple." Now VCs won't invest. Your co-founder equity split has no vesting. You formed in the wrong state. Your tax structure costs $50K annually. Getting it right the first time costs $10K. Fixing it later costs $100K+.
           </p>
 
-          <div className="service-hero-price">$4,500 - $12,000</div>
+          <div className="service-hero-price">Starting at $4,500</div>
           <p className="service-hero-price-note">Complete entity formation with proper structure</p>
 
           <div className="service-cta-group">
@@ -63,7 +56,7 @@ export const EntityFormation: React.FC = () => {
               <p style={{ color: 'var(--gray-600)', lineHeight: 1.7, marginBottom: '1.5rem' }}>Delaware C-Corp formation with proper equity structure, stock issuance, founder vesting, and VC-ready documentation. The right choice for companies planning to raise institutional capital.</p>
               
               <div className="service-price-box">
-                <div className="service-price-amount">$8,000 - $12,000</div>
+                <div className="service-price-amount">Starting at $8,000</div>
               </div>
 
               <ul className="service-features">
@@ -85,7 +78,7 @@ export const EntityFormation: React.FC = () => {
               <p style={{ color: 'var(--gray-600)', lineHeight: 1.7, marginBottom: '1.5rem' }}>Single or multi-member LLC with customized operating agreement, tax election strategy, and proper management structure. Ideal for service businesses and companies not seeking VC funding.</p>
               
               <div className="service-price-box">
-                <div className="service-price-amount">$4,500 - $8,000</div>
+                <div className="service-price-amount">Starting at $4,500</div>
               </div>
 
               <ul className="service-features">

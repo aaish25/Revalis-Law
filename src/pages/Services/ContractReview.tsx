@@ -1,21 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Navigation } from '../../components/Layout/Navigation';
 import '../../styles/service-page.css';
+import '../../styles/home.css';
 
 export const ContractReview: React.FC = () => {
   return (
     <>
       {/* Navigation */}
-      <nav className="service-nav">
-        <div className="service-nav-container">
-          <Link to="/" className="service-nav-logo">Rivalis Law</Link>
-          <ul className="service-nav-menu">
-            <li><Link to="/#services" className="service-nav-link">All Services</Link></li>
-            <li><Link to="/#select-services" className="service-nav-link">Select Services</Link></li>
-            <li><a href="#get-started" className="service-nav-cta">Get Started</a></li>
-          </ul>
-        </div>
-      </nav>
+      <Navigation />
 
       {/* Hero */}
       <section className="service-hero centered">
@@ -30,7 +23,7 @@ export const ContractReview: React.FC = () => {
             That vendor agreement looks standard. The partnership deal seems fair. The employment contract is 'just like everyone else's.' Until you sign it and discover the liability clause, the auto-renewal terms, or the non-compete that destroys your business.
           </p>
 
-          <div className="service-hero-price">$2,500 - $8,000</div>
+          <div className="service-hero-price">Starting at $2,500</div>
           <p className="service-hero-price-note">Expert contract review and drafting services</p>
 
           <div className="service-cta-group">
@@ -63,7 +56,7 @@ export const ContractReview: React.FC = () => {
               </div>
               <h3>Vendor & Supplier Agreements</h3>
               <p>SaaS contracts, service agreements, procurement deals, and supplier terms that protect your interests and avoid hidden costs.</p>
-              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>$2,500 - $5,000</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>Starting at $2,500</div>
             </div>
 
             <div className="service-card">
@@ -72,7 +65,7 @@ export const ContractReview: React.FC = () => {
               </div>
               <h3>NDAs & Confidentiality</h3>
               <p>Mutual and one-way NDAs for partnerships, employment, vendor relationships, and investor discussions.</p>
-              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>$1,500 - $2,500</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>Starting at $1,500</div>
             </div>
 
             <div className="service-card">
@@ -81,7 +74,7 @@ export const ContractReview: React.FC = () => {
               </div>
               <h3>Employment Contracts</h3>
               <p>Executive agreements, offer letters, consulting contracts, and independent contractor agreements with proper IP assignment.</p>
-              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>$2,000 - $4,000</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>Starting at $2,000</div>
             </div>
 
             <div className="service-card">
@@ -90,7 +83,7 @@ export const ContractReview: React.FC = () => {
               </div>
               <h3>Partnership & JV Agreements</h3>
               <p>Strategic partnerships, joint ventures, co-development agreements, and revenue-sharing deals.</p>
-              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>$4,000 - $8,000</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>Starting at $4,000</div>
             </div>
 
             <div className="service-card">
@@ -99,7 +92,7 @@ export const ContractReview: React.FC = () => {
               </div>
               <h3>Customer & Sales Contracts</h3>
               <p>Master service agreements, terms of service, SLAs, and customer contracts that protect revenue and limit liability.</p>
-              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>$3,000 - $6,000</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>Starting at $3,000</div>
             </div>
 
             <div className="service-card">
@@ -108,7 +101,7 @@ export const ContractReview: React.FC = () => {
               </div>
               <h3>Real Estate & Leases</h3>
               <p>Commercial leases, sublease agreements, and office space contracts with favorable terms and exit strategies.</p>
-              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>$2,500 - $5,000</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>Starting at $2,500</div>
             </div>
           </div>
         </div>

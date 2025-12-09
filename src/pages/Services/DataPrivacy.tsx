@@ -1,21 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Navigation } from '../../components/Layout/Navigation';
 import '../../styles/service-page.css';
+import '../../styles/home.css';
 
 export const DataPrivacy: React.FC = () => {
   return (
     <>
       {/* Navigation */}
-      <nav className="service-nav">
-        <div className="service-nav-container">
-          <Link to="/" className="service-nav-logo">Rivalis Law</Link>
-          <ul className="service-nav-menu">
-            <li><Link to="/#services" className="service-nav-link">All Services</Link></li>
-            <li><Link to="/#select-services" className="service-nav-link">Select Services</Link></li>
-            <li><a href="#get-started" className="service-nav-cta">Get Started</a></li>
-          </ul>
-        </div>
-      </nav>
+      <Navigation />
 
       {/* Hero */}
       <section className="service-hero centered">
@@ -30,7 +23,7 @@ export const DataPrivacy: React.FC = () => {
             EU regulators want your GDPR compliance docs. California customers filed CCPA complaints. Your privacy policy is copy-pasted from a template. You're collecting data without proper consent. The fines start at €20 million or 4% of revenue.
           </p>
 
-          <div className="service-hero-price">$12,000 - $35,000</div>
+          <div className="service-hero-price">Starting at $12,000</div>
           <p className="service-hero-price-note">Comprehensive privacy compliance programs</p>
 
           <div className="service-cta-group">
@@ -88,7 +81,7 @@ export const DataPrivacy: React.FC = () => {
               </div>
               <h3>Privacy Audit</h3>
               <p>Comprehensive review of data practices, identify compliance gaps, assess risk exposure.</p>
-              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>$8,000 - $15,000</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>Starting at $8,000</div>
             </div>
 
             <div className="service-card">
@@ -97,7 +90,7 @@ export const DataPrivacy: React.FC = () => {
               </div>
               <h3>Policy Development</h3>
               <p>Privacy policies, terms of service, cookie policies, and data processing agreements.</p>
-              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>$5,000 - $12,000</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>Starting at $5,000</div>
             </div>
 
             <div className="service-card">
@@ -106,7 +99,7 @@ export const DataPrivacy: React.FC = () => {
               </div>
               <h3>GDPR Compliance</h3>
               <p>Full GDPR compliance program for companies serving European customers.</p>
-              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>$15,000 - $35,000</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>Starting at $15,000</div>
             </div>
 
             <div className="service-card">
@@ -115,7 +108,7 @@ export const DataPrivacy: React.FC = () => {
               </div>
               <h3>CCPA Compliance</h3>
               <p>California Consumer Privacy Act compliance for businesses with CA customers.</p>
-              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>$12,000 - $25,000</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>Starting at $12,000</div>
             </div>
 
             <div className="service-card">
@@ -133,7 +126,7 @@ export const DataPrivacy: React.FC = () => {
               </div>
               <h3>Ongoing Compliance</h3>
               <p>Retainer-based privacy counsel for continuous compliance monitoring.</p>
-              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>$3,000 - $8,000/month</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--accent)' }}>Starting at $3,000/month</div>
             </div>
           </div>
         </div>

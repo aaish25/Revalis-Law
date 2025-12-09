@@ -1,22 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Navigation } from '../../components/Layout/Navigation';
 import '../../styles/service-page.css';
+import '../../styles/home.css';
 
 export const Immigration: React.FC = () => {
   return (
     <>
       {/* Navigation */}
-      <nav className="service-nav">
-        <div className="service-nav-container">
-          <Link to="/" className="service-nav-logo">Rivalis Law</Link>
-          <ul className="service-nav-menu">
-            <li><Link to="/#services" className="service-nav-link">All Services</Link></li>
-            <li><Link to="/#why-rivalis" className="service-nav-link">Why Rivalis</Link></li>
-            <li><Link to="/#how-we-work" className="service-nav-link">Process</Link></li>
-            <li><a href="#get-started" className="service-nav-cta">Get Started</a></li>
-          </ul>
-        </div>
-      </nav>
+      <Navigation />
 
       {/* Hero */}
       <section className="service-hero">
@@ -127,7 +119,7 @@ export const Immigration: React.FC = () => {
               <p>The backbone of tech hiring. We handle initial petitions, extensions, transfers, and RFE responses. Know what USCIS scrutinizes because we've handled hundreds.</p>
               
               <div className="service-price-box">
-                <div className="service-price-amount">$8,500 - $15,000</div>
+                <div className="service-price-amount">Starting at $8,500</div>
                 <div className="service-price-details">Includes petition prep, filing, and standard support</div>
               </div>
 
@@ -150,7 +142,7 @@ export const Immigration: React.FC = () => {
               <p>Moving executives or managers between international offices? L-1A for managers, L-1B for specialized knowledge. Critical for global expansion and UAE-US transfers.</p>
               
               <div className="service-price-box">
-                <div className="service-price-amount">$12,000 - $18,000</div>
+                <div className="service-price-amount">Starting at $12,000</div>
                 <div className="service-price-details">L-1A or L-1B, including blanket L filings</div>
               </div>
 
@@ -172,7 +164,7 @@ export const Immigration: React.FC = () => {
               <p>For world-class talent. Researchers, executives, technical experts. Highest bar but most flexible. Perfect for startup founders and exceptional technical leads.</p>
               
               <div className="service-price-box">
-                <div className="service-price-amount">$18,000 - $35,000</div>
+                <div className="service-price-amount">Starting at $18,000</div>
                 <div className="service-price-details">Complex evidence portfolio & advisory letters</div>
               </div>
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Navigation } from '../components/Layout/Navigation';
 import '../styles/home.css';
 
 export const Home: React.FC = () => {
@@ -63,18 +64,7 @@ export const Home: React.FC = () => {
       </div>
 
       {/* Navigation */}
-      <nav className="nav">
-        <div className="nav-container">
-          <a href="#" className="nav-logo">Rivalis Law</a>
-          <ul className="nav-menu">
-            <li><a href="#why-rivalis" className="nav-link">Why Rivalis</a></li>
-            <li><a href="#services" className="nav-link">Our 3 Specialties</a></li>
-            <li><a href="#select-services" className="nav-link">Select Services</a></li>
-            <li><a href="#how-we-work" className="nav-link">How We Work</a></li>
-            <li><a href="#qualify" className="nav-cta">Get Started</a></li>
-          </ul>
-        </div>
-      </nav>
+      <Navigation />
 
       {/* Hero */}
       <section className="hero">
@@ -227,7 +217,7 @@ export const Home: React.FC = () => {
       <section className="global-section">
         <div className="global-container">
           <div className="global-content">
-            <h2>Serving US & UAE Markets</h2>
+            <h2>Serving US & Global Markets</h2>
             <p style={{ fontSize: '1.1rem', opacity: 0.9, lineHeight: 1.8 }}>
               Whether you're expanding from Dubai to Washington or scaling from Silicon Valley to Abu Dhabi, get counsel who understands cross-border business, US immigration requirements, and AI regulations across jurisdictions.
             </p>
@@ -237,15 +227,15 @@ export const Home: React.FC = () => {
                 <i className="fas fa-plane"></i>
                 <div className="global-feature-text">
                   <h4>Cross-Border Transactions</h4>
-                  <p>US-UAE M&A and business structuring</p>
+                  <p>US-Global M&A and business structuring</p>
                 </div>
               </div>
 
               <div className="global-feature">
                 <i className="fas fa-passport"></i>
                 <div className="global-feature-text">
-                  <h4>US Immigration from UAE</h4>
-                  <p>H-1B, L-1, O-1 for Gulf nationals</p>
+                  <h4>US Immigration from around the world</h4>
+                  <p>H-1B, L-1, O-1 for Global nationals</p>
                 </div>
               </div>
 
@@ -253,7 +243,7 @@ export const Home: React.FC = () => {
                 <i className="fas fa-balance-scale"></i>
                 <div className="global-feature-text">
                   <h4>Multi-Jurisdiction AI Compliance</h4>
-                  <p>US & UAE regulatory frameworks</p>
+                  <p>US & Global regulatory frameworks</p>
                 </div>
               </div>
 
@@ -272,19 +262,19 @@ export const Home: React.FC = () => {
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <li style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
                 <i className="fas fa-check-circle" style={{ color: 'var(--accent)', fontSize: '1.25rem', marginTop: '0.25rem' }}></i>
-                <span>Dubai entrepreneur expanding operations to United States</span>
+                <span>Global entrepreneur expanding operations to United States</span>
               </li>
               <li style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
                 <i className="fas fa-check-circle" style={{ color: 'var(--accent)', fontSize: '1.25rem', marginTop: '0.25rem' }}></i>
-                <span>US tech company acquiring GCC-based business</span>
+                <span>US tech company acquiring Global-based business</span>
               </li>
               <li style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
                 <i className="fas fa-check-circle" style={{ color: 'var(--accent)', fontSize: '1.25rem', marginTop: '0.25rem' }}></i>
-                <span>UAE national seeking US work authorization</span>
+                <span>Global national seeking US work authorization</span>
               </li>
               <li style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
                 <i className="fas fa-check-circle" style={{ color: 'var(--accent)', fontSize: '1.25rem', marginTop: '0.25rem' }}></i>
-                <span>AI companies navigating US & UAE compliance requirements</span>
+                <span>AI companies navigating US & Global compliance requirements</span>
               </li>
             </ul>
           </div>
@@ -419,7 +409,7 @@ export const Home: React.FC = () => {
 
               <div className="pricing-badge">
                 <div className="price-range">Starting at $25,000</div>
-                <div className="price-note">Enterprise frameworks: $50K-$150K+</div>
+                <div className="price-note">Enterprise frameworks: Starting at $50K</div>
               </div>
 
               <p>Your AI made a biased decision. A journalist is asking questions. Your Series A investor wants governance docs you don't have. EU customers demand AI Act compliance you can't prove.</p>
@@ -449,13 +439,13 @@ export const Home: React.FC = () => {
               </div>
 
               <div className="service-cta">
-                <a href="#qualify" className="service-cta-btn primary">
+                <a href="/services/governance" className="service-cta-btn primary">
                   <i className="fas fa-bolt"></i>
-                  Get AI Governance Quote
+                  Learn More
                 </a>
-                <a href="tel:+1-202-555-0199" className="service-cta-btn secondary">
-                  <i className="fas fa-phone"></i>
-                  Emergency: (202) 555-0199
+                <a href="#qualify" className="service-cta-btn secondary">
+                  <i className="fas fa-calendar-check"></i>
+                  Get Quote
                 </a>
               </div>
             </div>
@@ -469,8 +459,8 @@ export const Home: React.FC = () => {
               <p className="service-tagline">Your Launch. Their Visa Denial. Your Disaster.</p>
 
               <div className="pricing-badge">
-                <div className="price-range">$8,500-$15,000</div>
-                <div className="price-note">O-1: $18K-$35K | RFE Emergency: Contact for pricing</div>
+                <div className="price-range">Starting at $8,500</div>
+                <div className="price-note">O-1: Starting at $18K | RFE Emergency: Contact for pricing</div>
               </div>
 
               <p>Your CTO is stuck overseas. Launch is in 6 weeks. You just got an H-1B RFE with a 15-day deadline. Your star engineer's visa expires in 30 days and you have no backup.</p>
@@ -500,13 +490,13 @@ export const Home: React.FC = () => {
               </div>
 
               <div className="service-cta">
-                <a href="#qualify" className="service-cta-btn primary">
+                <a href="/services/immigration" className="service-cta-btn primary">
                   <i className="fas fa-passport"></i>
-                  Urgent Visa Assessment
+                  Learn More
                 </a>
-                <a href="tel:+1-202-555-0199" className="service-cta-btn secondary">
-                  <i className="fas fa-phone"></i>
-                  RFE Crisis: (202) 555-0199
+                <a href="#qualify" className="service-cta-btn secondary">
+                  <i className="fas fa-calendar-check"></i>
+                  Get Quote
                 </a>
               </div>
             </div>
@@ -520,8 +510,8 @@ export const Home: React.FC = () => {
               <p className="service-tagline">Their Offer. Your Hidden Liability. Deal Over.</p>
 
               <div className="pricing-badge">
-                <div className="price-range">$35,000-$125,000</div>
-                <div className="price-note">Full transaction: $75K-$250K+ based on deal size</div>
+                <div className="price-range">Starting at $35,000</div>
+                <div className="price-note">Full transaction: Starting at $75K based on deal size</div>
               </div>
 
               <p>You're acquiring a company. Due diligence reveals tax issues that kill the deal—or worse, you miss them. The liability clause in your LOI exposes you to millions.</p>
@@ -551,13 +541,13 @@ export const Home: React.FC = () => {
               </div>
 
               <div className="service-cta">
-                <a href="#qualify" className="service-cta-btn primary">
+                <a href="/services/ma" className="service-cta-btn primary">
                   <i className="fas fa-handshake"></i>
-                  Get Deal Assessment
+                  Learn More
                 </a>
-                <a href="mailto:deals@rivalislaw.com" className="service-cta-btn secondary">
-                  <i className="fas fa-envelope"></i>
-                  Email Deal Team
+                <a href="#qualify" className="service-cta-btn secondary">
+                  <i className="fas fa-calendar-check"></i>
+                  Get Quote
                 </a>
               </div>
             </div>
@@ -583,7 +573,7 @@ export const Home: React.FC = () => {
               </div>
               <h4>Contract Review & Drafting</h4>
               <p>Get expert eyes on your vendor agreements, NDAs, employment contracts, and partnership deals before you sign.</p>
-              <div className="select-pricing">$2,500 - $8,000</div>
+              <div className="select-pricing">Starting at $2,500</div>
               <div className="select-cta">
                 Request Quote <i className="fas fa-arrow-right"></i>
               </div>
@@ -595,7 +585,7 @@ export const Home: React.FC = () => {
               </div>
               <h4>Data Privacy Compliance</h4>
               <p>GDPR, CCPA, and privacy policy development for companies handling customer data.</p>
-              <div className="select-pricing">$12,000 - $35,000</div>
+              <div className="select-pricing">Starting at $12,000</div>
               <div className="select-cta">
                 Learn More <i className="fas fa-arrow-right"></i>
               </div>
@@ -607,7 +597,7 @@ export const Home: React.FC = () => {
               </div>
               <h4>IP Strategy & Protection</h4>
               <p>Trademark filings, trade secret protection, and IP portfolio development for growing companies.</p>
-              <div className="select-pricing">$5,000 - $20,000</div>
+              <div className="select-pricing">Starting at $5,000</div>
               <div className="select-cta">
                 Discuss IP Needs <i className="fas fa-arrow-right"></i>
               </div>
@@ -619,7 +609,7 @@ export const Home: React.FC = () => {
               </div>
               <h4>Corporate Fraud Investigation</h4>
               <p>Whistleblower allegations, financial irregularities, or executive misconduct threatening your company's survival. Get privileged investigation before regulators or journalists do.</p>
-              <div className="select-pricing">$25,000 - $150,000+</div>
+              <div className="select-pricing">Starting at $25,000</div>
               <div className="select-cta">
                 Confidential Emergency Line <i className="fas fa-arrow-right"></i>
               </div>
@@ -631,7 +621,7 @@ export const Home: React.FC = () => {
               </div>
               <h4>Employment Law Counsel</h4>
               <p>Offer letters, employee handbooks, termination guidance, and HR compliance for scaling teams.</p>
-              <div className="select-pricing">$3,000 - $15,000</div>
+              <div className="select-pricing">Starting at $3,000</div>
               <div className="select-cta">
                 Get HR Support <i className="fas fa-arrow-right"></i>
               </div>
@@ -643,7 +633,7 @@ export const Home: React.FC = () => {
               </div>
               <h4>Fundraising & Securities</h4>
               <p>SAFE agreements, convertible notes, and Series A preparation for venture-backed companies.</p>
-              <div className="select-pricing">$15,000 - $50,000</div>
+              <div className="select-pricing">Starting at $15,000</div>
               <div className="select-cta">
                 Prepare for Funding <i className="fas fa-arrow-right"></i>
               </div>

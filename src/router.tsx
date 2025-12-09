@@ -12,6 +12,7 @@ const IPStrategy = React.lazy(() => import('./pages/Services/IPStrategy').then(m
 const FraudInvestigation = React.lazy(() => import('./pages/Services/FraudInvestigation').then(m => ({ default: m.FraudInvestigation })));
 const Fundraising = React.lazy(() => import('./pages/Services/Fundraising').then(m => ({ default: m.Fundraising })));
 const GovernanceCompliance = React.lazy(() => import('./pages/Services/GovernanceCompliance').then(m => ({ default: m.GovernanceCompliance })));
+const MAndA = React.lazy(() => import('./pages/Services/MAndA').then(m => ({ default: m.MAndA })));
 
 // Form pages
 const ClientIntakePage = React.lazy(() => import('./pages/Forms/ClientIntakePage').then(m => ({ default: m.ClientIntakePage })));
@@ -111,6 +112,14 @@ export const AppRouter = () => {
           element={
             <React.Suspense fallback={<PageLoader />}>
               <GovernanceCompliance />
+            </React.Suspense>
+          }
+        />
+        <Route
+          path="/services/ma"
+          element={
+            <React.Suspense fallback={<PageLoader />}>
+              <MAndA />
             </React.Suspense>
           }
         />
