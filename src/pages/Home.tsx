@@ -1,12 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { Navigation } from '../components/Layout/Navigation';
 import { useServices } from '../contexts/ServicesContext';
+import { submitForm } from '../lib/supabase';
 import '../styles/home.css';
 
 export const Home: React.FC = () => {
   const { getServicePrice } = useServices();
   const [timeWasted, setTimeWasted] = useState(30);
   const [finesRisk, setFinesRisk] = useState(250000);
+  
+  // Consultation form state
+  const [consultationForm, setConsultationForm] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    company: '',
+    service: '',
+    urgency: '',
+    details: ''
+  });
+  const [submitting, setSubmitting] = useState(false);
 
   const calculateCost = () => {
     const executiveCost = timeWasted * 2500;
@@ -14,9 +27,32 @@ export const Home: React.FC = () => {
     return executiveCost + finesRisk + opportunityCost;
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleConsultationFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setConsultationForm(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert('Thank you for your consultation request! We will contact you within 24 hours.\n\nFor urgent matters, please call (202) 555-0199.');
+    setSubmitting(true);
+    try {
+      await submitForm('consultation-request', consultationForm.email, consultationForm);
+      alert('Thank you for your consultation request! We will contact you within 24 hours.\n\nFor urgent matters, please call (202) 555-0199.');
+      setConsultationForm({
+        name: '',
+        email: '',
+        phone: '',
+        company: '',
+        service: '',
+        urgency: '',
+        details: ''
+      });
+    } catch (error) {
+      console.error('Error submitting consultation request:', error);
+      alert('There was an error submitting your request. Please try again or call (202) 555-0199.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   useEffect(() => {
@@ -660,27 +696,60 @@ export const Home: React.FC = () => {
 
             <div className="form-group">
               <label htmlFor="name">Full Name *</label>
-              <input type="text" id="name" name="name" required />
+              <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                value={consultationForm.name}
+                onChange={handleConsultationFormChange}
+                required 
+              />
             </div>
 
             <div className="form-group">
               <label htmlFor="email">Email Address *</label>
-              <input type="email" id="email" name="email" required />
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                value={consultationForm.email}
+                onChange={handleConsultationFormChange}
+                required 
+              />
             </div>
 
             <div className="form-group">
               <label htmlFor="phone">Phone Number *</label>
-              <input type="tel" id="phone" name="phone" required />
+              <input 
+                type="tel" 
+                id="phone" 
+                name="phone" 
+                value={consultationForm.phone}
+                onChange={handleConsultationFormChange}
+                required 
+              />
             </div>
 
             <div className="form-group">
               <label htmlFor="company">Company Name</label>
-              <input type="text" id="company" name="company" />
+              <input 
+                type="text" 
+                id="company" 
+                name="company" 
+                value={consultationForm.company}
+                onChange={handleConsultationFormChange}
+              />
             </div>
 
             <div className="form-group">
               <label htmlFor="service">Primary Service Interest *</label>
-              <select id="service" name="service" required>
+              <select 
+                id="service" 
+                name="service" 
+                value={consultationForm.service}
+                onChange={handleConsultationFormChange}
+                required
+              >
                 <option value="">Select a service...</option>
                 <option value="ai-governance">AI Governance & Compliance</option>
                 <option value="immigration">Global Immigration</option>
@@ -697,7 +766,13 @@ export const Home: React.FC = () => {
 
             <div className="form-group">
               <label htmlFor="urgency">Timeline *</label>
-              <select id="urgency" name="urgency" required>
+              <select 
+                id="urgency" 
+                name="urgency" 
+                value={consultationForm.urgency}
+                onChange={handleConsultationFormChange}
+                required
+              >
                 <option value="">Select timeline...</option>
                 <option value="emergency">Emergency (Within 48 hours)</option>
                 <option value="urgent">Urgent (Within 1-2 weeks)</option>
@@ -711,14 +786,16 @@ export const Home: React.FC = () => {
               <textarea
                 id="details"
                 name="details"
+                value={consultationForm.details}
+                onChange={handleConsultationFormChange}
                 required
                 placeholder="Please provide key details about your legal needs, timeline, and any immediate concerns..."
               ></textarea>
             </div>
 
-            <button type="submit" className="form-submit-btn">
-              <i className="fas fa-paper-plane"></i>
-              Submit Consultation Request
+            <button type="submit" className="form-submit-btn" disabled={submitting}>
+              <i className={submitting ? "fas fa-spinner fa-spin" : "fas fa-paper-plane"}></i>
+              {submitting ? 'Submitting...' : 'Submit Consultation Request'}
             </button>
 
             <p className="form-note">

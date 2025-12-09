@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Navigation } from '../../components/Layout/Navigation';
+import { submitForm } from '../../lib/supabase';
 import '../../styles/form-page.css';
 import '../../styles/home.css';
 
@@ -31,7 +32,7 @@ export const QualificationForm: React.FC = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      console.log('Qualification form submitted:', formData);
+      await submitForm('qualification', formData.email, formData);
       alert('Thank you! Your qualification form has been submitted. A member of our team will review and contact you within 24 hours.');
       setFormData({
         companyName: '',
@@ -47,6 +48,9 @@ export const QualificationForm: React.FC = () => {
         referralSource: '',
         additionalInfo: '',
       });
+    } catch (error) {
+      console.error('Error submitting qualification form:', error);
+      alert('There was an error submitting your form. Please try again or call (202) 555-0199.');
     } finally {
       setLoading(false);
     }

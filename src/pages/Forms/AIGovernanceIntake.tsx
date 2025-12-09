@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Navigation } from '../../components/Layout/Navigation';
+import { submitForm } from '../../lib/supabase';
 import '../../styles/form-page.css';
 import '../../styles/home.css';
 
@@ -31,7 +32,7 @@ export const AIGovernanceIntake: React.FC = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      console.log('AI Governance intake submitted:', formData);
+      await submitForm('ai-governance-intake', formData.email, formData);
       alert('Thank you! Your AI governance intake has been submitted. Our AI legal team will review and contact you within 48 hours.');
       setFormData({
         companyName: '',
@@ -47,6 +48,9 @@ export const AIGovernanceIntake: React.FC = () => {
         budget: '',
         additionalInfo: '',
       });
+    } catch (error) {
+      console.error('Error submitting AI governance intake:', error);
+      alert('There was an error submitting your form. Please try again or call (202) 555-0199.');
     } finally {
       setLoading(false);
     }

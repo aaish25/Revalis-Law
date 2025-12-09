@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Navigation } from '../../components/Layout/Navigation';
+import { submitForm } from '../../lib/supabase';
 import '../../styles/form-page.css';
 import '../../styles/home.css';
 
@@ -25,7 +26,7 @@ export const ClientIntakePage: React.FC = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      console.log('Form submitted:', formData);
+      await submitForm('client-intake', formData.email, formData);
       alert('Thank you! Your form has been submitted. We will contact you within 24 hours.');
       setFormData({
         fullName: '',
@@ -36,6 +37,9 @@ export const ClientIntakePage: React.FC = () => {
         urgency: '',
         description: '',
       });
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('There was an error submitting your form. Please try again or call (202) 555-0199.');
     } finally {
       setLoading(false);
     }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Navigation } from '../../components/Layout/Navigation';
+import { submitForm } from '../../lib/supabase';
 import '../../styles/form-page.css';
 import '../../styles/home.css';
 
@@ -30,7 +31,7 @@ export const ImmigrationIntake: React.FC = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      console.log('Immigration intake submitted:', formData);
+      await submitForm('immigration-intake', formData.email, formData);
       alert('Thank you! Your immigration intake form has been submitted. Our immigration team will review and contact you within 24 hours.');
       setFormData({
         fullName: '',
@@ -45,6 +46,9 @@ export const ImmigrationIntake: React.FC = () => {
         previousApplications: '',
         additionalInfo: '',
       });
+    } catch (error) {
+      console.error('Error submitting immigration intake:', error);
+      alert('There was an error submitting your form. Please try again or call (202) 555-0199.');
     } finally {
       setLoading(false);
     }
