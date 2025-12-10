@@ -405,7 +405,7 @@ export const MAIntake: React.FC = () => {
       
     } catch (error) {
       console.error('Error submitting M&A intake:', error);
-      alert('There was an error submitting your form. Please try again or call (313) 771-2283.');
+      alert('There was an error submitting your form. Please try again or call +1 (313) 771-2283.');
     } finally {
       setLoading(false);
     }

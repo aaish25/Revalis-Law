@@ -194,7 +194,7 @@ export const DataPrivacy: React.FC = () => {
             </Link>
             <a href="tel:+1-313-771-2283" className="service-btn service-btn-secondary">
               <i className="fas fa-phone-alt"></i>
-              Emergency: (313) 771-2283
+              Emergency: +1 (313) 771-2283
             </a>
           </div>
         </div>

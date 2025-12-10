@@ -17,7 +17,7 @@ export const FraudInvestigation: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert('Thank you for your confidential inquiry. An attorney will contact you within 4 hours.\n\nFor immediate assistance, please call our emergency hotline: (313) 771-2283');
+    alert('Thank you for your confidential inquiry. An attorney will contact you within 4 hours.\n\nFor immediate assistance, please call our emergency hotline: +1 (313) 771-2283');
     setFormData({ name: '', title: '', company: '', email: '', phone: '', urgency: '', situation: '' });
   };
 
@@ -37,7 +37,7 @@ export const FraudInvestigation: React.FC = () => {
           <div className="fraud-emergency-actions">
             <a href="tel:+1-313-771-2283" className="fraud-emergency-btn">
               <i className="fas fa-phone-alt"></i>
-              Emergency: (313) 771-2283
+              Emergency: +1 (313) 771-2283
             </a>
           </div>
         </div>
@@ -476,7 +476,7 @@ export const FraudInvestigation: React.FC = () => {
                   </div>
                   <div className="fraud-method-text">
                     <h4>Emergency Investigation Hotline</h4>
-                    <p>(313) 771-2283 | Available 24/7 for urgent matters</p>
+                    <p>+1 (313) 771-2283 | Available 24/7 for urgent matters</p>
                   </div>
                 </a>
 

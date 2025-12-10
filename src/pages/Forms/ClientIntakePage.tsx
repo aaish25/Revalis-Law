@@ -39,7 +39,7 @@ export const ClientIntakePage: React.FC = () => {
       });
     } catch (error) {
       console.error('Error submitting form:', error);
-      alert('There was an error submitting your form. Please try again or call (313) 771-2283.');
+      alert('There was an error submitting your form. Please try again or call +1 (313) 771-2283.');
     } finally {
       setLoading(false);
     }
@@ -252,7 +252,7 @@ export const ClientIntakePage: React.FC = () => {
                 <p>For urgent matters, contact us directly:</p>
                 <a href="tel:+1-313-771-2283" className="form-contact-item">
                   <i className="fas fa-phone"></i>
-                  <span>(313) 771-2283</span>
+                  <span>+1 (313) 771-2283</span>
                 </a>
                 <a href="mailto:contact@rivalislaw.com" className="form-contact-item">
                   <i className="fas fa-envelope"></i>
@@ -275,7 +275,7 @@ export const ClientIntakePage: React.FC = () => {
           </Link>
           <a href="tel:+1-313-771-2283" className="form-cta-btn secondary">
             <i className="fas fa-phone"></i>
-            Call: (313) 771-2283
+            Call: +1 (313) 771-2283
           </a>
         </div>
       </section>

@@ -37,7 +37,7 @@ export const Home: React.FC = () => {
     setSubmitting(true);
     try {
       await submitForm('consultation-request', consultationForm.email, consultationForm);
-      alert('Thank you for your consultation request! We will contact you within 24 hours.\n\nFor urgent matters, please call (313) 771-2283.');
+      alert('Thank you for your consultation request! We will contact you within 24 hours.\n\nFor urgent matters, please call +1 (313) 771-2283.');
       setConsultationForm({
         name: '',
         email: '',
@@ -49,7 +49,7 @@ export const Home: React.FC = () => {
       });
     } catch (error) {
       console.error('Error submitting consultation request:', error);
-      alert('There was an error submitting your request. Please try again or call (313) 771-2283.');
+      alert('There was an error submitting your request. Please try again or call +1 (313) 771-2283.');
     } finally {
       setSubmitting(false);
     }
@@ -836,7 +836,7 @@ export const Home: React.FC = () => {
             </a>
             <a href="tel:+1-313-771-2283" className="btn btn-secondary" style={{ borderColor: 'white', color: 'white' }}>
               <i className="fas fa-phone"></i>
-              Call (313) 771-2283
+              Call +1 (313) 771-2283
             </a>
           </div>
         </div>

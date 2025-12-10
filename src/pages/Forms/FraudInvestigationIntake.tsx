@@ -144,7 +144,7 @@ export const FraudInvestigationIntake: React.FC = () => {
             <p>If you require immediate assistance with an active fraud investigation, regulatory inquiry, or whistleblower situation, call our emergency line directly.</p>
             <a href="tel:+1-313-771-2283" className="emergency-btn">
               <i className="fas fa-phone-alt"></i>
-              EMERGENCY LINE: (313) 771-2283
+              EMERGENCY LINE: +1 (313) 771-2283
             </a>
           </div>
 
@@ -507,7 +507,7 @@ export const FraudInvestigationIntake: React.FC = () => {
             <p>For urgent fraud investigation matters requiring immediate attention</p>
             <a href="tel:+1-313-771-2283" className="emergency-btn">
               <i className="fas fa-phone"></i>
-              Call Emergency Line: (313) 771-2283
+              Call Emergency Line: +1 (313) 771-2283
             </a>
           </div>
         </div>

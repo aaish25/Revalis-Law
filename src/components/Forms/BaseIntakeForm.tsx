@@ -812,7 +812,7 @@ export const BaseIntakeForm: React.FC<BaseIntakeFormProps> = ({
           </Link>
           <a href="tel:+1-313-771-2283" className="form-cta-btn secondary">
             <i className="fas fa-phone"></i>
-            Call: (313) 771-2283
+            Call: +1 (313) 771-2283
           </a>
         </div>
       </section>
