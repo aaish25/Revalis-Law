@@ -309,6 +309,9 @@ body {
     padding: 1.5rem;
     flex-direction: column;
     gap: 0.5rem;
+    max-height: 80vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .nav-mobile-link {
@@ -465,6 +468,9 @@ body {
     padding: 1.5rem;
     border-radius: 8px;
     margin-bottom: 2.5rem;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
 }
 
 .launch-notice h4 {
@@ -486,6 +492,9 @@ body {
     margin: 2rem 0;
     border: 2px solid var(--accent);
     text-align: center;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
 }
 
 .capacity-meter {
@@ -1629,6 +1638,9 @@ body {
     .launch-notice {
         padding: 1rem;
         margin: 1.5rem 0;
+        max-width: 100%;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .launch-notice h4 {
@@ -1637,11 +1649,15 @@ body {
 
     .launch-notice p {
         font-size: 0.9rem;
+        word-break: break-word;
     }
 
     .capacity-alert {
         padding: 1rem;
         margin: 1.5rem 0;
+        max-width: 100%;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .capacity-alert h3 {
@@ -1778,6 +1794,9 @@ body {
     .capacity-alert {
         padding: 0.75rem;
         margin: 1rem 0;
+        max-width: 100%;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .section-title {
