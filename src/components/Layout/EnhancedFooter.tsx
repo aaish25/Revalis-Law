@@ -24,24 +24,22 @@ const EnhancedFooter: React.FC = () => {
             </p>
           </div>
           <div className="footer-links">
-            <a href="/#impact">Why Rivalis</a>
-            <a href="/#services">Our 3 Specialties</a>
-            <a href="/#select-services">Select Services</a>
-            <a href="/#why-choose">What to Expect</a>
             <a href="https://linkedin.com/in/aaishaeron" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <a href="#privacy" onClick={handleModalOpen}>Privacy & Terms</a>
           </div>
         </div>
         <div className="footer-bottom">
-          <p style={{opacity: 1, marginBottom: '1rem'}}>© 2025 Rivalis Law | Aaishwarya Aeron, Esq. | NY & MI Bar | Oxford AI Certified | Big 4 Trained</p>
-          <p style={{marginBottom: '0.75rem', opacity: 0.8, fontWeight: 600}}>Attorney Advertising</p>
-          <p style={{marginBottom: '1.5rem', opacity: 0.7, maxWidth: '900px', marginLeft: 'auto', marginRight: 'auto', lineHeight: 1.6}}>
-            This website is for informational purposes only and does not constitute legal advice. Viewing or contacting us does not form an attorney-client relationship.
-          </p>
-          <p style={{opacity: 0.6, fontSize: '0.85rem', maxWidth: '900px', marginLeft: 'auto', marginRight: 'auto', lineHeight: 1.6}}>
-            <strong>No Guarantee:</strong> Past results, experiences, or descriptions of services do not guarantee a similar outcome. 
-            <strong> Jurisdictional Limits:</strong> We accept matters only where we are admitted or permitted by law and may engage local counsel as needed.
-          </p>
+          <div className="footer-container" style={{textAlign: 'left', flexDirection: 'column', gap: '0.5rem', alignItems: 'flex-start'}}>
+            <p style={{opacity: 1, marginBottom: '1rem', textAlign: 'left'}}>© 2025 Rivalis Law | Aaishwarya Aeron, Esq. | NY & MI Bar | Oxford AI Certified | Big 4 Trained</p>
+            <p style={{ opacity: 0.8, fontWeight: 600}}>Attorney Advertising</p>
+            <p style={{marginBottom: '1.5rem', opacity: 0.7, maxWidth: '900px', lineHeight: 1.6}}>
+              This website is for informational purposes only and does not constitute legal advice. Viewing or contacting us does not form an attorney-client relationship.
+            </p>
+            <p style={{opacity: 0.6, fontSize: '0.85rem', maxWidth: '900px', lineHeight: 1.6}}>
+              <strong>No Guarantee:</strong> Past results, experiences, or descriptions of services do not guarantee a similar outcome. 
+              <strong> Jurisdictional Limits:</strong> We accept matters only where we are admitted or permitted by law and may engage local counsel as needed.
+            </p>
+          </div>
         </div>
 
         {/* Legal Disclaimers Modal */}
