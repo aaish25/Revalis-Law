@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Navigation } from '../../components/Layout/Navigation';
-import { submitForm } from '../../utils/api';
+import { submitForm } from '../../lib/supabase';
 import '../../styles/form-page.css';
 import '../../styles/home.css';
 
@@ -99,7 +99,7 @@ export const ImmigrationIntake: React.FC = () => {
         signatureDate: formData.signatureDate || new Date().toISOString().split('T')[0]
       };
       
-      await submitForm('immigration-intake', submissionData);
+      await submitForm('immigration-intake', formData.email, submissionData);
       alert('Thank you! Your comprehensive immigration intake form has been submitted. Our immigration team will review and contact you within 24 hours.');
       
       // Reset form - using the exact same structure as initial state

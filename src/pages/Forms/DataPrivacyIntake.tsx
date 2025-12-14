@@ -1,6 +1,6 @@
 import React from 'react';
 import { BaseIntakeForm } from '../../components/Forms/BaseIntakeForm';
-import { submitForm } from '../../utils/api';
+import { submitForm } from '../../lib/supabase';
 
 interface DataPrivacyFormData {
   dataType: string[];
@@ -226,7 +226,8 @@ const DataPrivacyIntake: React.FC = () => {
   const handleSubmit = async (combinedData: Record<string, unknown>) => {
     setLoading(true);
     try {
-      await submitForm('data-privacy', combinedData);
+      const email = (combinedData.email as string) || '';
+      await submitForm('data-privacy', email, combinedData);
       console.log('Data privacy form submitted successfully');
     } catch (error) {
       console.error('Error submitting data privacy form:', error);

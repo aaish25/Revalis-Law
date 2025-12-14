@@ -1,6 +1,6 @@
 import React from 'react';
 import { BaseIntakeForm } from '../../components/Forms/BaseIntakeForm';
-import { submitForm } from '../../utils/api';
+import { submitForm } from '../../lib/supabase';
 
 interface FundraisingFormData {
   fundraisingType: string;
@@ -239,7 +239,8 @@ const FundraisingIntake: React.FC = () => {
   const handleSubmit = async (combinedData: Record<string, unknown>) => {
     setLoading(true);
     try {
-      await submitForm('fundraising', combinedData);
+      const email = (combinedData.email as string) || '';
+      await submitForm('fundraising', email, combinedData);
       console.log('Fundraising form submitted successfully');
     } catch (error) {
       console.error('Error submitting fundraising form:', error);

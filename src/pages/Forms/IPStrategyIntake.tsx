@@ -1,6 +1,6 @@
 import React from 'react';
 import { BaseIntakeForm } from '../../components/Forms/BaseIntakeForm';
-import { submitForm } from '../../utils/api';
+import { submitForm } from '../../lib/supabase';
 
 interface IPStrategyFormData {
   ipType: string[];
@@ -222,7 +222,8 @@ const IPStrategyIntake: React.FC = () => {
   const handleSubmit = async (combinedData: Record<string, unknown>) => {
     setLoading(true);
     try {
-      await submitForm('ip-strategy', combinedData);
+      const email = (combinedData.email as string) || '';
+      await submitForm('ip-strategy', email, combinedData);
       console.log('IP strategy form submitted successfully');
     } catch (error) {
       console.error('Error submitting IP strategy form:', error);

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Navigation } from '../../components/Layout/Navigation';
-import { submitForm } from '../../utils/api';
+import { submitForm } from '../../lib/supabase';
 import '../../styles/form-page.css';
 import '../../styles/fraud-investigation.css';
 
@@ -78,7 +78,7 @@ export const FraudInvestigationIntake: React.FC = () => {
         signatureDate: formData.electronicSignature ? new Date().toISOString().split('T')[0] : formData.signatureDate
       };
       
-      await submitForm('fraud_investigation', submissionData);
+      await submitForm('fraud_investigation', formData.email, submissionData);
       alert('Thank you! Your confidential fraud investigation intake has been submitted securely. A senior attorney will contact you within 2 hours for urgent matters, or within 24 hours for standard inquiries.');
       
       // Reset form

@@ -1,6 +1,6 @@
 import React from 'react';
 import { BaseIntakeForm } from '../../components/Forms/BaseIntakeForm';
-import { submitForm } from '../../utils/api';
+import { submitForm } from '../../lib/supabase';
 
 interface EmploymentLawFormData {
   employmentType: string;
@@ -212,7 +212,8 @@ const EmploymentLawIntake: React.FC = () => {
   const handleSubmit = async (combinedData: Record<string, unknown>) => {
     setLoading(true);
     try {
-      await submitForm('employment-law', combinedData);
+      const email = (combinedData.email as string) || '';
+      await submitForm('employment-law', email, combinedData);
       console.log('Employment law form submitted successfully');
     } catch (error) {
       console.error('Error submitting employment law form:', error);

@@ -1,6 +1,6 @@
 import React from 'react';
 import { BaseIntakeForm } from '../../components/Forms/BaseIntakeForm';
-import { submitForm } from '../../utils/api';
+import { submitForm } from '../../lib/supabase';
 
 interface EntityFormationFormData {
   companyName: string;
@@ -286,7 +286,8 @@ const EntityFormationIntake: React.FC = () => {
   const handleSubmit = async (combinedData: Record<string, unknown>) => {
     setLoading(true);
     try {
-      await submitForm('entity-formation', combinedData);
+      const email = (combinedData.email as string) || '';
+      await submitForm('entity-formation', email, combinedData);
       console.log('Entity formation form submitted successfully');
     } catch (error) {
       console.error('Error submitting entity formation form:', error);

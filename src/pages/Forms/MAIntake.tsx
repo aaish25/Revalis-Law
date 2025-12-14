@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BaseIntakeForm, type BaseFormData } from '../../components/Forms/BaseIntakeForm';
-import { submitForm } from '../../utils/api';
+import { submitForm } from '../../lib/supabase';
 
 // M&A-specific form data interface
 interface MAFormData extends BaseFormData {
@@ -385,7 +385,8 @@ export const MAIntake: React.FC = () => {
     setLoading(true);
     
     try {
-      await submitForm('ma-intake', combinedFormData);
+      const email = (combinedFormData.email as string) || '';
+      await submitForm('ma-intake', email, combinedFormData);
       alert('Thank you! Your M&A transaction intake has been submitted. Our corporate team will review and contact you within 24 hours.');
       
       // Reset M&A-specific form data

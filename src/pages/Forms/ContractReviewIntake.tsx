@@ -1,6 +1,6 @@
 import React from 'react';
 import { BaseIntakeForm } from '../../components/Forms/BaseIntakeForm';
-import { submitForm } from '../../utils/api';
+import { submitForm } from '../../lib/supabase';
 
 interface ContractReviewFormData {
   contractService: string;
@@ -288,7 +288,8 @@ const ContractReviewIntake: React.FC = () => {
   const handleSubmit = async (combinedData: Record<string, unknown>) => {
     setLoading(true);
     try {
-      await submitForm('contract-review', combinedData);
+      const email = (combinedData.email as string) || '';
+      await submitForm('contract-review', email, combinedData);
       // Handle success (maybe redirect or show success message)
       console.log('Contract review form submitted successfully');
     } catch (error) {
