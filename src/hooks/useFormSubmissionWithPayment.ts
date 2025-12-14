@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from './use-toast';
 import { setAccountCreationPending } from '../utils/consultationFlow';
-import { recordConsultationPayment, updateFormSubmissionsAfterPayment } from '../lib/supabase';
+import { recordConsultationPayment, updateFormSubmissionsAfterPayment, getConsultationFee } from '../lib/supabase';
 
 interface UseFormSubmissionWithPaymentReturn {
   showPaymentModal: boolean;
@@ -45,11 +45,14 @@ export function useFormSubmissionWithPayment(): UseFormSubmissionWithPaymentRetu
 
   const handlePaymentSuccess = async (stripePaymentId: string) => {
     try {
+      // Get current consultation fee from database
+      const consultationFee = await getConsultationFee();
+      
       // Record payment in database
       const payment = await recordConsultationPayment(
         currentEmail,
         stripePaymentId,
-        299, // Consultation fee
+        consultationFee,
         null // user_id - null for anonymous
       ) as { id: string };
 

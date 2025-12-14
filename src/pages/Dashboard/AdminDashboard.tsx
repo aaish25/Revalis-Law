@@ -253,6 +253,55 @@ export function AdminDashboard() {
                 <p>Update service pricing and details</p>
               </div>
               
+              {/* Consultation Fee Highlight */}
+              {services.find(s => s.type === 'consultation') && (
+                <div style={{
+                  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                  color: 'white',
+                  padding: '1.5rem',
+                  borderRadius: '12px',
+                  marginBottom: '2rem',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                }}>
+                  <div>
+                    <h3 style={{ margin: '0 0 0.5rem 0', fontSize: '1.25rem' }}>
+                      Consultation Fee
+                    </h3>
+                    <p style={{ margin: 0, opacity: 0.9 }}>
+                      One-time fee required to access all intake forms
+                    </p>
+                  </div>
+                  <div style={{ textAlign: 'right' }}>
+                    <div style={{ fontSize: '2rem', fontWeight: 'bold' }}>
+                      ${services.find(s => s.type === 'consultation')?.price || 299}
+                    </div>
+                    <button 
+                      style={{
+                        background: 'white',
+                        color: '#667eea',
+                        border: 'none',
+                        padding: '0.5rem 1rem',
+                        borderRadius: '8px',
+                        cursor: 'pointer',
+                        fontWeight: 600,
+                        marginTop: '0.5rem',
+                      }}
+                      onClick={() => {
+                        const consultationService = services.find(s => s.type === 'consultation');
+                        if (consultationService) {
+                          setEditingService(consultationService);
+                          setNewPrice(consultationService.price?.toString() || '');
+                        }
+                      }}
+                    >
+                      Update Fee
+                    </button>
+                  </div>
+                </div>
+              )}
+              
               <div className="services-table">
                 <table>
                   <thead>
@@ -266,7 +315,7 @@ export function AdminDashboard() {
                     </tr>
                   </thead>
                   <tbody>
-                    {services.map((service) => (
+                    {services.filter(s => s.type !== 'consultation').map((service) => (
                       <tr key={service.id}>
                         <td>
                           <div className="service-name">

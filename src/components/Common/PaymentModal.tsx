@@ -1,22 +1,27 @@
 import React, { useState } from 'react';
 import { redirectToCheckout } from '../../lib/stripe';
+import { useConsultationFee } from '../../hooks/useConsultationFee';
 
 interface PaymentModalProps {
   isOpen: boolean;
   onClose: () => void;
   onSuccess: (paymentId: string) => void;
   email: string;
-  amount: number;
+  amount?: number; // Make optional, will use context if not provided
 }
 
 export const PaymentModal: React.FC<PaymentModalProps> = ({
   isOpen,
   onClose,
   email,
-  amount,
+  amount: propAmount,
 }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const { consultationFee } = useConsultationFee();
+  
+  // Use prop amount if provided, otherwise use context
+  const amount = propAmount ?? consultationFee;
 
   if (!isOpen) return null;
 

@@ -48,6 +48,29 @@ export const updateServicePrice = async (id: string, price: number) => {
   return data;
 };
 
+// Get consultation fee from services table
+export const getConsultationFee = async (): Promise<number> => {
+  const { data, error } = await supabase
+    .from('services')
+    .select('price')
+    .eq('type', 'consultation')
+    .maybeSingle();
+  
+  if (error) {
+    console.warn('Error fetching consultation fee, using default 299:', error);
+    return 299; // Fallback
+  }
+  
+  const result = data as { price: number | null } | null;
+  
+  if (!result || result.price === null) {
+    console.warn('Consultation fee not found, using default 299');
+    return 299; // Fallback
+  }
+  
+  return result.price;
+};
+
 // Form Submissions
 export const submitForm = async (
   formType: string,

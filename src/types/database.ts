@@ -53,6 +53,7 @@ export interface Database {
           short_description: string | null;
           price: number | null;
           price_type: 'fixed' | 'hourly' | 'custom' | 'starting_at';
+          type: string | null; // 'consultation' or 'service'
           features: Json;
           category: string | null;
           is_active: boolean;
@@ -68,6 +69,7 @@ export interface Database {
           short_description?: string | null;
           price?: number | null;
           price_type?: 'fixed' | 'hourly' | 'custom' | 'starting_at';
+          type?: string | null;
           features?: Json;
           category?: string | null;
           is_active?: boolean;
@@ -83,6 +85,7 @@ export interface Database {
           short_description?: string | null;
           price?: number | null;
           price_type?: 'fixed' | 'hourly' | 'custom' | 'starting_at';
+          type?: string | null;
           features?: Json;
           category?: string | null;
           is_active?: boolean;

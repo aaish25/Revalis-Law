@@ -450,7 +450,7 @@ export const MAIntake: React.FC = () => {
         onClose={closePaymentModal}
         onSuccess={handlePaymentSuccess}
         email={currentEmail}
-        amount={299}
+        
       />
 
       <AccountCreationNudge

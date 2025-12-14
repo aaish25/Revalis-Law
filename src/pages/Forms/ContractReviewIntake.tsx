@@ -336,7 +336,7 @@ const ContractReviewIntake: React.FC = () => {
         onClose={closePaymentModal}
         onSuccess={handlePaymentSuccess}
         email={currentEmail}
-        amount={299}
+        
       />
 
       <AccountCreationNudge
