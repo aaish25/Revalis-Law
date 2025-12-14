@@ -98,7 +98,7 @@ export interface Database {
           email: string;
           form_type: string;
           form_data: Json;
-          status: 'pending' | 'reviewed' | 'in_progress' | 'completed' | 'archived';
+          status: 'pending' | 'pending_payment' | 'reviewed' | 'in_progress' | 'completed' | 'archived';
           assigned_to: string | null;
           admin_notes: string | null;
           created_at: string;
@@ -110,7 +110,7 @@ export interface Database {
           email: string;
           form_type: string;
           form_data: Json;
-          status?: 'pending' | 'reviewed' | 'in_progress' | 'completed' | 'archived';
+          status?: 'pending' | 'pending_payment' | 'reviewed' | 'in_progress' | 'completed' | 'archived';
           assigned_to?: string | null;
           admin_notes?: string | null;
           created_at?: string;
@@ -122,7 +122,7 @@ export interface Database {
           email?: string;
           form_type?: string;
           form_data?: Json;
-          status?: 'pending' | 'reviewed' | 'in_progress' | 'completed' | 'archived';
+          status?: 'pending' | 'pending_payment' | 'reviewed' | 'in_progress' | 'completed' | 'archived';
           assigned_to?: string | null;
           admin_notes?: string | null;
           created_at?: string;
@@ -168,6 +168,7 @@ export interface Database {
         Row: {
           id: string;
           user_id: string | null;
+          email: string;
           purchase_id: string | null;
           stripe_payment_id: string | null;
           stripe_customer_id: string | null;
@@ -182,6 +183,7 @@ export interface Database {
         Insert: {
           id?: string;
           user_id?: string | null;
+          email: string;
           purchase_id?: string | null;
           stripe_payment_id?: string | null;
           stripe_customer_id?: string | null;
@@ -196,6 +198,7 @@ export interface Database {
         Update: {
           id?: string;
           user_id?: string | null;
+          email?: string;
           purchase_id?: string | null;
           stripe_payment_id?: string | null;
           stripe_customer_id?: string | null;

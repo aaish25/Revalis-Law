@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Navigation } from '../../components/Layout/Navigation';
+import { FormAccessGuard } from '../../components/Common/FormAccessGuard';
+import { PaymentModal } from '../../components/Common/PaymentModal';
+import { AccountCreationNudge } from '../../components/Common/AccountCreationNudge';
+import { useFormSubmissionWithPayment } from '../../hooks/useFormSubmissionWithPayment';
 import { submitForm } from '../../lib/supabase';
 import '../../styles/form-page.css';
 import '../../styles/home.css';
@@ -61,7 +65,18 @@ export const AIGovernanceIntake: React.FC = () => {
     signature: '',
   });
 
-  const [loading, setLoading] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const {
+    showPaymentModal,
+    showNudgeModal,
+    currentEmail,
+    paymentId,
+    handleFormSubmit,
+    handlePaymentSuccess,
+    handleSkipAccount,
+    closePaymentModal,
+  } = useFormSubmissionWithPayment();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
@@ -87,10 +102,16 @@ export const AIGovernanceIntake: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
+    setIsSubmitting(true);
+    
     try {
-      await submitForm('ai-governance-intake', formData.email, formData);
-      alert('Thank you! Your AI governance intake has been submitted. Our AI legal team will review and contact you within 48 hours.');
+      // Submit form to Supabase first
+      const result = await submitForm('ai-governance-intake', formData.email, formData);
+      
+      // Handle payment flow through the hook
+      handleFormSubmit(formData.email, result.needsPayment || false);
+      
+      // Clear form on successful submission
       setFormData({
         // Client Information
         clientType: '',
@@ -149,12 +170,12 @@ export const AIGovernanceIntake: React.FC = () => {
       console.error('Error submitting AI governance intake:', error);
       alert('There was an error submitting your form. Please try again or call +1 (313) 771-2283.');
     } finally {
-      setLoading(false);
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <>
+    <FormAccessGuard>
       <Navigation />
 
       {/* Hero */}
@@ -1008,9 +1029,9 @@ export const AIGovernanceIntake: React.FC = () => {
                   <p>AI regulations are evolving rapidly. The EU AI Act, state-level AI laws, and industry regulations may impact your AI systems. Early compliance assessment can prevent costly remediation and potential fines of up to €35 million or 7% of global revenue.</p>
                 </div>
 
-                <button type="submit" className="form-submit-btn" disabled={loading}>
+                <button type="submit" className="form-submit-btn" disabled={isSubmitting}>
                   <i className="fas fa-paper-plane"></i>
-                  {loading ? 'Submitting...' : 'Submit AI Governance Intake Form'}
+                  {isSubmitting ? 'Submitting...' : 'Submit AI Governance Intake Form'}
                 </button>
 
                 <div className="form-note">
@@ -1058,7 +1079,24 @@ export const AIGovernanceIntake: React.FC = () => {
         <p>&copy; 2024 Rivalis Law. Licensed in New York & Michigan.</p>
         <p><Link to="/">Return to Main Site</Link></p>
       </footer>
-    </>
+
+      {/* Payment Modal */}
+      <PaymentModal
+        isOpen={showPaymentModal}
+        onClose={closePaymentModal}
+        onSuccess={handlePaymentSuccess}
+        email={currentEmail}
+        amount={299}
+      />
+
+      {/* Account Creation Nudge Modal */}
+      <AccountCreationNudge
+        isOpen={showNudgeModal}
+        email={currentEmail}
+        paymentId={paymentId}
+        onSkip={handleSkipAccount}
+      />
+    </FormAccessGuard>
   );
 };
 

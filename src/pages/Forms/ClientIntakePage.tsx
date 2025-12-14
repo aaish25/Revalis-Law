@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Navigation } from '../../components/Layout/Navigation';
+import { FormAccessGuard } from '../../components/Common/FormAccessGuard';
+import { PaymentModal } from '../../components/Common/PaymentModal';
+import { AccountCreationNudge } from '../../components/Common/AccountCreationNudge';
+import { useFormSubmissionWithPayment } from '../../hooks/useFormSubmissionWithPayment';
 import { submitForm } from '../../lib/supabase';
 import '../../styles/form-page.css';
 import '../../styles/home.css';
@@ -17,6 +21,18 @@ export const ClientIntakePage: React.FC = () => {
   });
   const [loading, setLoading] = useState(false);
 
+  // Use the payment flow hook
+  const {
+    showPaymentModal,
+    showNudgeModal,
+    currentEmail,
+    paymentId,
+    handleFormSubmit,
+    handlePaymentSuccess,
+    handleSkipAccount,
+    closePaymentModal,
+  } = useFormSubmissionWithPayment();
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -25,9 +41,15 @@ export const ClientIntakePage: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    
     try {
-      await submitForm('client-intake', formData.email, formData);
-      alert('Thank you! Your form has been submitted. We will contact you within 24 hours.');
+      // Submit form and check if payment is needed
+      const result = await submitForm('client-intake', formData.email, formData);
+      
+      // Handle payment flow through the hook
+      handleFormSubmit(formData.email, result.needsPayment || false);
+      
+      // Clear form on successful submission
       setFormData({
         fullName: '',
         email: '',
@@ -46,8 +68,25 @@ export const ClientIntakePage: React.FC = () => {
   };
 
   return (
-    <>
+    <FormAccessGuard>
       <Navigation />
+
+      {/* Payment Modal */}
+      <PaymentModal
+        isOpen={showPaymentModal}
+        onClose={closePaymentModal}
+        onSuccess={handlePaymentSuccess}
+        email={currentEmail}
+        amount={299}
+      />
+
+      {/* Account Creation Nudge */}
+      <AccountCreationNudge
+        isOpen={showNudgeModal}
+        email={currentEmail}
+        paymentId={paymentId}
+        onSkip={handleSkipAccount}
+      />
 
       {/* Hero */}
       <section className="form-hero">
@@ -285,7 +324,7 @@ export const ClientIntakePage: React.FC = () => {
         <p>&copy; 2024 Rivalis Law. Licensed in New York & Michigan.</p>
         <p><Link to="/">Return to Main Site</Link></p>
       </footer>
-    </>
+    </FormAccessGuard>
   );
 };
 

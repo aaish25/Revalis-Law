@@ -125,6 +125,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       const { error } = await supabase
         .from('profiles')
+        // @ts-expect-error - Supabase type inference issue
         .update(updates)
         .eq('id', user.id);
 
