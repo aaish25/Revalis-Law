@@ -1,13 +1,7 @@
 import { useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
-import { supabase } from '../../lib/supabase';
-import { loadStripe } from '@stripe/stripe-js';
 
-const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY || '');
-
-interface EmergencyConsultationFormProps {
-  onSuccess?: () => void;
-}
+const STRIPE_CHECKOUT_URL = '/.netlify/functions/create-checkout-session';
 
 type UrgencyLevel = 'critical' | 'urgent' | 'high';
 type ContactMode = 'call' | 'email' | 'video';
@@ -19,7 +13,7 @@ interface FormData {
   phone: string;
 }
 
-export function EmergencyConsultationForm({ onSuccess }: EmergencyConsultationFormProps) {
+export function EmergencyConsultationForm() {
   const { user, profile } = useAuth();
   const [formData, setFormData] = useState<FormData>({
     urgency: 'urgent',
@@ -55,7 +49,7 @@ export function EmergencyConsultationForm({ onSuccess }: EmergencyConsultationFo
 
     try {
       // Create Stripe checkout session for $499 payment
-      const response = await fetch('/.netlify/functions/create-checkout-session', {
+      const response = await fetch(STRIPE_CHECKOUT_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -66,6 +60,7 @@ export function EmergencyConsultationForm({ onSuccess }: EmergencyConsultationFo
           amount: 49900, // $499 in cents
           userId: user.id,
           userEmail: user.email,
+          email: user.email,
         }),
       });
 
@@ -73,12 +68,10 @@ export function EmergencyConsultationForm({ onSuccess }: EmergencyConsultationFo
         throw new Error('Failed to create payment session');
       }
 
-      const { sessionId } = await response.json();
+      const { url } = await response.json();
       
-      // Redirect to Stripe checkout
-      const stripe = await stripePromise;
-      if (!stripe) {
-        throw new Error('Stripe failed to load');
+      if (!url) {
+        throw new Error('No checkout URL received');
       }
 
       // Store form data in localStorage to retrieve after payment
@@ -89,13 +82,8 @@ export function EmergencyConsultationForm({ onSuccess }: EmergencyConsultationFo
         userName: profile?.full_name || user.email,
       }));
 
-      const { error: stripeError } = await stripe.redirectToCheckout({
-        sessionId,
-      });
-
-      if (stripeError) {
-        throw stripeError;
-      }
+      // Redirect to Stripe checkout
+      window.location.href = url;
     } catch (err) {
       console.error('Error submitting emergency consultation:', err);
       setError(err instanceof Error ? err.message : 'Failed to process payment. Please try again.');
