@@ -14,7 +14,58 @@ export const PaymentSuccess: React.FC = () => {
     const processPayment = async () => {
       const sessionId = searchParams.get('session_id');
       
-      // Get email from localStorage
+      // Check if this is an emergency consultation payment
+      const emergencyData = localStorage.getItem('emergencyConsultationData');
+      
+      if (emergencyData) {
+        // Process emergency consultation
+        try {
+          const data = JSON.parse(emergencyData);
+          
+          if (sessionId) {
+            // Send emergency email and store in database
+            const emailResponse = await fetch('/.netlify/functions/send-emergency-email', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                userEmail: data.userEmail,
+                userName: data.userName,
+                userPhone: data.phone,
+                urgency: data.urgency,
+                issue: data.issue,
+                contactMode: data.contactMode,
+                paymentId: sessionId,
+                hasAccount: true,
+                userId: data.userId,
+              }),
+            });
+
+            if (!emailResponse.ok) {
+              throw new Error('Failed to send emergency notification');
+            }
+
+            // Clear localStorage
+            localStorage.removeItem('emergencyConsultationData');
+            
+            // Redirect to dashboard
+            setTimeout(() => {
+              navigate('/dashboard?tab=emergency&success=true');
+            }, 2000);
+          }
+        } catch (err) {
+          console.error('Error processing emergency consultation:', err);
+          setError('Error submitting emergency request. Please contact support.');
+          setLoading(false);
+          return;
+        }
+        
+        setLoading(false);
+        return;
+      }
+      
+      // Get email from localStorage for regular consultations
       const email = getConsultationEmail();
       
       if (!email) {

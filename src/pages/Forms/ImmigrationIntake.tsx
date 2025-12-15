@@ -202,7 +202,7 @@ export const ImmigrationIntake: React.FC = () => {
 
           <p className="form-hero-subtitle">
             Complete this comprehensive intake form to begin your immigration consultation. 
-            Our team specializes in H-1B, L-1, O-1, green cards, and all immigration matters.
+            Our team specializes in H-1B, L-1, O-1, EB-1, EB-2 NIW, EB-5, and all immigration matters.
           </p>
 
           <div className="form-hero-features">

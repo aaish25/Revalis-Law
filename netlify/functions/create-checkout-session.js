@@ -15,7 +15,7 @@ export const handler = async (event) => {
   }
 
   try {
-    const { email, amount, successUrl, cancelUrl } = JSON.parse(event.body);
+    const { email, amount, successUrl, cancelUrl, serviceId, serviceName } = JSON.parse(event.body);
 
     // Validate inputs
     if (!email || !amount) {
@@ -23,6 +23,15 @@ export const handler = async (event) => {
         statusCode: 400,
         body: JSON.stringify({ error: 'Missing required fields' }),
       };
+    }
+
+    // Determine product details based on serviceId
+    let productName = serviceName || 'Legal Consultation';
+    let productDescription = 'Initial consultation and case review with access to all intake forms';
+    
+    if (serviceId === 'emergency-consultation') {
+      productName = 'Emergency Legal Consultation';
+      productDescription = 'Urgent legal consultation with response within 2 hours';
     }
 
     // Create Stripe Checkout session
@@ -33,21 +42,22 @@ export const handler = async (event) => {
           price_data: {
             currency: 'usd',
             product_data: {
-              name: 'Legal Consultation',
-              description: 'Initial consultation and case review with access to all intake forms',
+              name: productName,
+              description: productDescription,
             },
-            unit_amount: amount * 100, // Stripe uses cents
+            unit_amount: amount, // Amount already in cents
           },
           quantity: 1,
         },
       ],
       mode: 'payment',
-      success_url: `${successUrl}?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: cancelUrl,
+      success_url: `${successUrl || `${event.headers.origin}/payment-success`}?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: cancelUrl || `${event.headers.origin}/dashboard?tab=emergency`,
       customer_email: email,
       metadata: {
         email,
-        payment_type: 'consultation',
+        payment_type: serviceId === 'emergency-consultation' ? 'emergency' : 'consultation',
+        service_id: serviceId || 'consultation',
       },
     });
 

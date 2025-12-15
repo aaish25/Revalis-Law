@@ -227,7 +227,7 @@ export const Home: React.FC = () => {
                 </div>
                 <div className="credential-text">
                   <h4>Immigration Expertise</h4>
-                  <p>H-1B, L-1, O-1 Specialist</p>
+                  <p>H-1B, L-1, O-1, EB-1, EB-2 NIW, EB-5 Specialist</p>
                 </div>
               </div>
 
@@ -311,7 +311,7 @@ export const Home: React.FC = () => {
                 <i className="fas fa-passport"></i>
                 <div className="global-feature-text">
                   <h4>US Immigration from around the world</h4>
-                  <p>H-1B, L-1, O-1 for Global nationals</p>
+                  <p>H-1B, L-1, O-1, EB-1, EB-2 NIW, EB-5 for Global nationals</p>
                 </div>
               </div>
 
@@ -484,8 +484,8 @@ export const Home: React.FC = () => {
               <p className="service-tagline">Your Product. Their Lawsuit. Tomorrow's Headlines.</p>
 
               <div className="pricing-badge">
-                <div className="price-range">{getServicePrice('governance')}</div>
-                <div className="price-note">Enterprise frameworks: Starting at $50K</div>
+                <div className="price-range">Contact for Pricing</div>
+                <div className="price-note">Enterprise frameworks custom quoted</div>
               </div>
 
               <p>Your AI made a biased decision. A journalist is asking questions. Your Series A investor wants governance docs you don't have. EU customers demand AI Act compliance you can't prove.</p>
@@ -548,7 +548,7 @@ export const Home: React.FC = () => {
 
               <ul className="service-features">
                 <li>Emergency RFE responses & visa crisis management</li>
-                <li>H-1B, L-1, O-1 strategy for critical hires</li>
+                <li>H-1B, L-1, O-1, EB-1, EB-2 NIW, EB-5 strategy for critical hires</li>
                 <li>Same-day immigration case assessment</li>
                 <li>Green card & PERM certification strategy</li>
               </ul>

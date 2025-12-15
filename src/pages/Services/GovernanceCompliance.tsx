@@ -24,8 +24,8 @@ export const GovernanceCompliance: React.FC = () => {
             EU AI Act enforcement begins in 2025. Your investors want AI governance documentation. Your AI makes decisions affecting real people with no audit trail. One bias incident, one discriminatory output, one unexplainable decision—and you're exposed.
           </p>
 
-          <div className="service-hero-price">Starting at $25,000</div>
-          <p className="service-hero-price-note">AI governance frameworks, EU AI Act compliance, risk assessments</p>
+          <div className="service-hero-price">Contact for Pricing</div>
+          <p className="service-hero-price-note">AI governance frameworks, EU AI Act compliance, risk assessments - Custom quoted based on scope</p>
 
           <div className="service-cta-group">
             <a href="#get-started" className="service-btn service-btn-primary">

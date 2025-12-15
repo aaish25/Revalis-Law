@@ -1,6 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth';
 
 const EnhancedFooter: React.FC = () => {
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const navigate = useNavigate();
+  const { user } = useAuth();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const handleModalOpen = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     const modal = document.getElementById('privacy');
@@ -10,6 +25,18 @@ const EnhancedFooter: React.FC = () => {
   const handleModalClose = () => {
     const modal = document.getElementById('privacy');
     if (modal) modal.style.display = 'none';
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleEmergencyClick = () => {
+    if (user) {
+      navigate('/dashboard?tab=emergency');
+    } else {
+      navigate('/login?redirect=/dashboard&tab=emergency');
+    }
   };
 
   return (
@@ -125,14 +152,20 @@ const EnhancedFooter: React.FC = () => {
 
       {/* Floating Action Buttons */}
       <div className="fab-container">
-        <a href="tel:+1-313-771-2283" className="fab urgent">
+        <button onClick={handleEmergencyClick} className="fab urgent">
           <span className="fab-tooltip">Emergency: Call Now</span>
           <i className="fas fa-phone-volume"></i>
-        </a>
-        <a href="/#qualify" className="fab schedule">
+        </button>
+        <button onClick={handleEmergencyClick} className="fab schedule">
           <span className="fab-tooltip">Schedule Consultation</span>
           <i className="fas fa-calendar-check"></i>
-        </a>
+        </button>
+        {showScrollTop && (
+          <button onClick={scrollToTop} className="fab scroll-top">
+            <span className="fab-tooltip">Back to Top</span>
+            <i className="fas fa-arrow-up"></i>
+          </button>
+        )}
       </div>
     </>
   );

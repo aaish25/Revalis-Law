@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { MainLayout } from '../../components/Layout';
 import { getUserPurchases, supabase } from '../../lib/supabase';
 import { getServiceSlugFromFormType } from '../../utils/serviceMapping';
+import { EmergencyConsultationForm } from '../../components/Forms/EmergencyConsultationForm';
+import { EmergencyHistory } from '../../components/Dashboard/EmergencyHistory';
 import type { Purchase, FormSubmission, Service } from '../../types/database';
 import './dashboard.css';
 
@@ -14,11 +16,34 @@ type PurchaseWithRelations = Purchase & {
 
 export function UserDashboard() {
   const { user, profile } = useAuth();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [purchases, setPurchases] = useState<PurchaseWithRelations[]>([]);
   const [submissions, setSubmissions] = useState<FormSubmission[]>([]);
   const [services, setServices] = useState<Service[]>([]);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState<'overview' | 'services' | 'submissions' | 'scheduling'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'services' | 'submissions' | 'scheduling' | 'emergency'>('overview');
+  const [showEmergencySuccess, setShowEmergencySuccess] = useState(false);
+
+  // Check for tab query param on mount
+  useEffect(() => {
+    const tabParam = searchParams.get('tab');
+    const successParam = searchParams.get('success');
+    
+    if (tabParam === 'emergency') {
+      setActiveTab('emergency');
+      
+      if (successParam === 'true') {
+        setShowEmergencySuccess(true);
+        // Clear the success param from URL
+        setSearchParams({ tab: 'emergency' });
+        
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+          setShowEmergencySuccess(false);
+        }, 5000);
+      }
+    }
+  }, [searchParams, setSearchParams]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -124,6 +149,12 @@ export function UserDashboard() {
             onClick={() => setActiveTab('scheduling')}
           >
             Scheduling
+          </button>
+          <button 
+            className={`tab ${activeTab === 'emergency' ? 'active' : ''}`}
+            onClick={() => setActiveTab('emergency')}
+          >
+            Emergency Consultation
           </button>
         </div>
 
@@ -410,6 +441,61 @@ export function UserDashboard() {
                   </div>
                 )}
               </div>
+            </div>
+          )}
+
+          {activeTab === 'emergency' && (
+            <div className="emergency-section">
+              {showEmergencySuccess && (
+                <div style={{
+                  backgroundColor: '#d1fae5',
+                  border: '1px solid #10b981',
+                  borderRadius: '12px',
+                  padding: '1.5rem',
+                  marginBottom: '2rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '1rem',
+                }}>
+                  <div style={{
+                    width: '48px',
+                    height: '48px',
+                    backgroundColor: '#10b981',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" style={{ width: '28px', height: '28px' }}>
+                      <path fillRule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div style={{ flex: 1 }}>
+                    <h3 style={{
+                      margin: 0,
+                      fontSize: '1.1rem',
+                      fontWeight: '700',
+                      color: '#065f46',
+                      marginBottom: '0.25rem',
+                    }}>
+                      Emergency Request Submitted Successfully
+                    </h3>
+                    <p style={{
+                      margin: 0,
+                      fontSize: '0.95rem',
+                      color: '#047857',
+                    }}>
+                      Our team will contact you within 2 hours. For immediate assistance, call <strong>+1 (555) 123-4567</strong>
+                    </p>
+                  </div>
+                </div>
+              )}
+              
+              <div style={{ marginBottom: '2rem' }}>
+                <EmergencyConsultationForm />
+              </div>
+              
+              {user && <EmergencyHistory userId={user.id} />}
             </div>
           )}
         </div>
