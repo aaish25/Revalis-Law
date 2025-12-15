@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Navigation } from '../components/Layout/Navigation';
 import { EnhancedFooter } from '../components/Layout';
+import { PaymentModal } from '../components/Common/PaymentModal';
+import { AccountCreationNudge } from '../components/Common/AccountCreationNudge';
+import { useFormSubmissionWithPayment } from '../hooks/useFormSubmissionWithPayment';
+import { submitForm } from '../lib/supabase';
 import { useServices } from '../contexts/ServicesContext';
 import '../styles/home.css';
 
@@ -9,7 +13,29 @@ export const Home: React.FC = () => {
   const [timeWasted, setTimeWasted] = useState(30);
   const [finesRisk, setFinesRisk] = useState(250000);
   
+  // Intake form state
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    phone: '',
+    company: '',
+    serviceType: '',
+    urgency: '',
+    description: '',
+  });
+  const [loading, setLoading] = useState(false);
 
+  // Use the payment flow hook
+  const {
+    showPaymentModal,
+    showNudgeModal,
+    currentEmail,
+    paymentId,
+    handleFormSubmit: handlePaymentFlow,
+    handlePaymentSuccess,
+    handleSkipAccount,
+    closePaymentModal,
+  } = useFormSubmissionWithPayment();
 
   const calculateCost = () => {
     const executiveCost = timeWasted * 2500;
@@ -17,9 +43,38 @@ export const Home: React.FC = () => {
     return executiveCost + finesRisk + opportunityCost;
   };
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert('Thank you for your assessment! We will respond within 4 business hours (emergency matters within 2 hours).\n\nFor urgent matters, please call +1 (313) 771-2283.');
+    setLoading(true);
+    
+    try {
+      // Submit form and check if payment is needed
+      const result = await submitForm('client-intake', formData.email, formData);
+      
+      // Handle payment flow through the hook
+      handlePaymentFlow(formData.email, result.needsPayment || false);
+      
+      // Clear form on successful submission
+      setFormData({
+        fullName: '',
+        email: '',
+        phone: '',
+        company: '',
+        serviceType: '',
+        urgency: '',
+        description: '',
+      });
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('There was an error submitting your form. Please try again or call +1 (313) 771-2283.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -48,6 +103,22 @@ export const Home: React.FC = () => {
 
   return (
     <>
+      {/* Payment Modal */}
+      <PaymentModal
+        isOpen={showPaymentModal}
+        onClose={closePaymentModal}
+        onSuccess={handlePaymentSuccess}
+        email={currentEmail}
+      />
+
+      {/* Account Creation Nudge */}
+      <AccountCreationNudge
+        isOpen={showNudgeModal}
+        email={currentEmail}
+        paymentId={paymentId}
+        onSkip={handleSkipAccount}
+      />
+
       {/* Emergency Bar */}
       <div className="emergency-bar">
         <div className="emergency-content">
@@ -745,77 +816,118 @@ export const Home: React.FC = () => {
           </div>
 
           <div className="qualification-form">
-            <h3>Get Started: Quick Assessment</h3>
+            <h3>Client Intake - Get Started</h3>
+            <p style={{ marginBottom: '1.5rem', color: '#666', fontSize: '0.95rem' }}>
+              <i className="fas fa-shield-alt"></i> Attorney-Client Privilege Protected | <i className="fas fa-dollar-sign"></i> $299 Consultation Fee
+            </p>
             <form onSubmit={handleFormSubmit}>
 
               <div className="form-group">
-                <label>What's your primary legal challenge? *</label>
-                <select required>
-                  <option value="">Select one...</option>
-                  <option value="ai">AI Governance & Compliance Crisis</option>
-                  <option value="immigration">Immigration/Visa Emergency (RFE, denial, urgent hire)</option>
-                  <option value="ma">M&A Due Diligence or Transaction</option>
-                  <option value="other">Other Complex Legal Matter</option>
+                <label>Full Name *</label>
+                <input 
+                  type="text" 
+                  name="fullName"
+                  value={formData.fullName}
+                  onChange={handleChange}
+                  required 
+                  placeholder="Your full name" 
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Email Address *</label>
+                <input 
+                  type="email" 
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required 
+                  placeholder="you@company.com" 
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Phone Number *</label>
+                <input 
+                  type="tel" 
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required 
+                  placeholder="+1 (313) 771-2283" 
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Company Name (optional)</label>
+                <input 
+                  type="text" 
+                  name="company"
+                  value={formData.company}
+                  onChange={handleChange}
+                  placeholder="Your company" 
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Service Type *</label>
+                <select 
+                  name="serviceType"
+                  value={formData.serviceType}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="">Select a service...</option>
+                  <option value="ai-governance">AI Governance & Compliance</option>
+                  <option value="immigration">Immigration Services</option>
+                  <option value="ma">M&A & Transactions</option>
+                  <option value="contracts">Contract Review</option>
+                  <option value="data-privacy">Data Privacy</option>
+                  <option value="ip-strategy">IP Strategy</option>
+                  <option value="employment">Employment Law</option>
+                  <option value="entity-formation">Entity Formation</option>
+                  <option value="fundraising">Fundraising & Securities</option>
+                  <option value="fraud">Fraud Investigation</option>
+                  <option value="other">Other</option>
                 </select>
               </div>
 
               <div className="form-group">
-                <label>Timeline urgency? *</label>
-                <select required>
-                  <option value="">Select one...</option>
-                  <option value="emergency">Emergency (24-72 hours)</option>
+                <label>Timeline / Urgency *</label>
+                <select 
+                  name="urgency"
+                  value={formData.urgency}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="">Select timeline...</option>
+                  <option value="emergency">Emergency (24-48 hours)</option>
                   <option value="urgent">Urgent (1-2 weeks)</option>
                   <option value="normal">Standard (2-4 weeks)</option>
-                  <option value="planning">Strategic Planning (1-3 months)</option>
+                  <option value="planning">Planning (1-3 months)</option>
                 </select>
               </div>
 
               <div className="form-group">
-                <label>Company stage/size? *</label>
-                <select required>
-                  <option value="">Select one...</option>
-                  <option value="startup">Startup (Pre-Series A to Series B)</option>
-                  <option value="growth">Growth Company (Series C+ or $10M-$100M revenue)</option>
-                  <option value="enterprise">Enterprise ($100M+ revenue or Fortune 1000)</option>
-                  <option value="individual">Individual/Small Business</option>
-                </select>
+                <label>Brief Description *</label>
+                <textarea 
+                  name="description"
+                  value={formData.description}
+                  onChange={handleChange}
+                  rows={3} 
+                  required
+                  placeholder="Please describe your legal needs and situation..." 
+                />
               </div>
 
-              <div className="form-group">
-                <label>Estimated legal investment budget? *</label>
-                <select required>
-                  <option value="">Select one...</option>
-                  <option value="under25">Under $25,000</option>
-                  <option value="25-75">$25,000 - $75,000</option>
-                  <option value="75-150">$75,000 - $150,000</option>
-                  <option value="150plus">$150,000+</option>
-                  <option value="unsure">Not sure / Need guidance</option>
-                </select>
-              </div>
-
-              <div className="form-group">
-                <label>Your email *</label>
-                <input type="email" required placeholder="you@company.com" />
-              </div>
-
-              <div className="form-group">
-                <label>Phone (for urgent matters) *</label>
-                <input type="tel" required placeholder="+1 (313) 771-2283" />
-              </div>
-
-              <div className="form-group">
-                <label>Brief description of situation (optional)</label>
-                <textarea rows={3} placeholder="Help us understand your challenge..." />
-              </div>
-
-              <button type="submit" className="form-submit-btn">
+              <button type="submit" className="form-submit-btn" disabled={loading}>
                 <i className="fas fa-paper-plane"></i>
-                Submit Assessment
+                {loading ? 'Submitting...' : 'Submit & Pay $299'}
               </button>
 
               <div className="form-note">
                 <i className="fas fa-lock"></i>
-                Confidential. We'll respond within 4 business hours (emergency matters within 2 hours).
+                Confidential & Protected. After submission, you'll complete payment and schedule your consultation.
               </div>
             </form>
           </div>
