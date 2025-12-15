@@ -229,7 +229,7 @@ export function UserDashboard() {
                   </svg>
                   <h3>No submissions yet</h3>
                   <p>Fill out an intake form to get started with our services.</p>
-                  <Link to="/forms/qualification" className="cta-button">Start Intake Form</Link>
+                  <a href="/#qualify" className="cta-button">Start Intake Form</a>
                 </div>
               ) : (
                 <div className="submissions-list">
@@ -308,7 +308,7 @@ export function UserDashboard() {
                     </svg>
                     <h3 style={{ color: '#64748b', fontSize: '1.25rem', marginBottom: '0.5rem' }}>No Forms Submitted Yet</h3>
                     <p style={{ color: '#94a3b8', marginBottom: '1.5rem' }}>Submit an intake form to schedule a consultation with our team.</p>
-                    <Link to="/forms/qualification" className="cta-button">Start Intake Form</Link>
+                    <a href="/#qualify" className="cta-button">Start Intake Form</a>
                   </div>
                 ) : (
                   <div style={{

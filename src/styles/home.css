@@ -35,11 +35,10 @@ body {
 .emergency-bar {
     background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
     color: white;
-    padding: 1rem 3rem;
+    padding: 0.75rem 3rem;
     text-align: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    position: relative;
+    z-index: 998;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
@@ -86,11 +85,11 @@ body {
 /* Navigation */
 .nav {
     position: sticky;
-    top: 58px;
-    background: rgba(255, 255, 255, 0.95);
+    top: 0;
+    background: rgb(255, 255, 255);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-    z-index: 999;
+    z-index: 1001;
     transition: all 0.4s;
 }
 

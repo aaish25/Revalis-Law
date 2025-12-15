@@ -18,8 +18,6 @@ const GovernanceCompliance = React.lazy(() => import('./pages/Services/Governanc
 const MAndA = React.lazy(() => import('./pages/Services/MAndA').then(m => ({ default: m.MAndA })));
 
 // Form pages
-const ClientIntakePage = React.lazy(() => import('./pages/Forms/ClientIntakePage').then(m => ({ default: m.ClientIntakePage })));
-const QualificationForm = React.lazy(() => import('./pages/Forms/QualificationForm').then(m => ({ default: m.QualificationForm })));
 const ImmigrationIntake = React.lazy(() => import('./pages/Forms/ImmigrationIntake').then(m => ({ default: m.ImmigrationIntake })));
 const AIGovernanceIntake = React.lazy(() => import('./pages/Forms/AIGovernanceIntake').then(m => ({ default: m.AIGovernanceIntake })));
 const FraudInvestigationIntake = React.lazy(() => import('./pages/Forms/FraudInvestigationIntake').then(m => ({ default: m.FraudInvestigationIntake })));
@@ -150,22 +148,6 @@ export const AppRouter = () => {
         />
 
         {/* Form Pages */}
-        <Route
-          path="/intake"
-          element={
-            <React.Suspense fallback={<PageLoader />}>
-              <ClientIntakePage />
-            </React.Suspense>
-          }
-        />
-        <Route
-          path="/qualification"
-          element={
-            <React.Suspense fallback={<PageLoader />}>
-              <QualificationForm />
-            </React.Suspense>
-          }
-        />
         <Route
           path="/forms/immigration"
           element={

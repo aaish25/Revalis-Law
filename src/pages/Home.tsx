@@ -621,7 +621,7 @@ export const Home: React.FC = () => {
                   <i className="fas fa-handshake"></i>
                   Learn More
                 </a>
-                <a href="/intake" className="service-cta-btn secondary">
+                <a href="/#qualify" className="service-cta-btn secondary">
                   <i className="fas fa-calendar-check"></i>
                   Get Started
                 </a>
