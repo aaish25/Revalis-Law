@@ -418,6 +418,39 @@ input[type="radio"] {
     text-align: center;
 }
 
+/* Form Submit Button */
+.form-submit-button {
+    width: 100%;
+    padding: 1.25rem 2rem;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 2rem;
+}
+
+.form-submit-button:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(212, 175, 55, 0.4);
+}
+
+.form-submit-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.form-submit-button i {
+    font-size: 1rem;
+}
+
 /* Final CTA Section */
 .form-cta-section {
     background: linear-gradient(135deg, var(--primary) 0%, var(--gray-700) 100%);

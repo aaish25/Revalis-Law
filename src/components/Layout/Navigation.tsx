@@ -65,7 +65,15 @@ export const Navigation: React.FC = () => {
 
   const coreServices = [
     { label: 'AI Governance & Compliance', href: '/services/governance' },
-    { label: 'Global Expansion & Immigration', href: '/services/immigration' },
+    { 
+      label: 'Global Expansion & Immigration', 
+      href: '/services/immigration',
+      submenu: [
+        { label: 'Work Visas', href: '/services/immigration/work-visas' },
+        { label: 'EB-1 & EB-2 Green Cards', href: '/services/immigration/eb1-extraordinary-ability' },
+        { label: 'EB-5 Investor Visa', href: '/services/immigration/eb5' },
+      ]
+    },
     { label: 'M&A & Corporate Transactions', href: '/services/ma' },
   ];
 
@@ -99,9 +107,21 @@ export const Navigation: React.FC = () => {
             </a>
             <div className="nav-dropdown-menu">
               {coreServices.map((service) => (
-                <Link key={service.href} to={service.href} className="nav-dropdown-item">
-                  {service.label}
-                </Link>
+                <div key={service.href}>
+                  <Link to={service.href} className="nav-dropdown-item">
+                    {service.label}
+                    {service.submenu && <i className="fas fa-chevron-right" style={{ marginLeft: 'auto', fontSize: '0.75rem' }}></i>}
+                  </Link>
+                  {service.submenu && (
+                    <div className="nav-submenu">
+                      {service.submenu.map((subitem) => (
+                        <Link key={subitem.href} to={subitem.href} className="nav-submenu-item">
+                          {subitem.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
             </div>
           </li>
@@ -189,14 +209,26 @@ export const Navigation: React.FC = () => {
           <div className="nav-mobile-section">
             <div className="nav-mobile-section-title">Our 3 Specialties</div>
             {coreServices.map((service) => (
-              <Link 
-                key={service.href} 
-                to={service.href} 
-                className="nav-mobile-link nested"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {service.label}
-              </Link>
+              <div key={service.href}>
+                <Link 
+                  to={service.href} 
+                  className="nav-mobile-link nested"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {service.label}
+                </Link>
+                {service.submenu && service.submenu.map((subitem) => (
+                  <Link 
+                    key={subitem.href} 
+                    to={subitem.href} 
+                    className="nav-mobile-link nested"
+                    style={{ paddingLeft: '2rem', fontSize: '0.9rem' }}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {subitem.label}
+                  </Link>
+                ))}
+              </div>
             ))}
           </div>
 

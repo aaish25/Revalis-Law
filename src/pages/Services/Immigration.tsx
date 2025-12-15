@@ -2,12 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navigation } from '../../components/Layout/Navigation';
 import { EnhancedFooter } from '../../components/Layout';
-import { useServices } from '../../contexts/ServicesContext';
 import '../../styles/service-page.css';
 import '../../styles/home.css';
 
 export const Immigration: React.FC = () => {
-  const { getServicePrice } = useServices();
   
   return (
     <>
@@ -106,49 +104,26 @@ export const Immigration: React.FC = () => {
               </div>
             </Link>
 
-            {/* EB-1 Card */}
-            <Link to="/services/immigration/eb1" style={{ textDecoration: 'none', color: 'inherit' }}>
+            {/* EB-1 & EB-2 Green Cards */}
+            <Link to="/services/immigration/eb1-extraordinary-ability" style={{ textDecoration: 'none', color: 'inherit' }}>
               <div className="service-card" style={{ background: 'linear-gradient(135deg, #fffbf0 0%, #ffffff 100%)', border: '2px solid #ffeaa7', transition: 'all 0.3s ease', cursor: 'pointer' }}>
                 <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>🏆</div>
-                <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#d4af37', marginBottom: '0.5rem' }}>EB-1 Extraordinary Ability</h3>
-                <p style={{ fontSize: '0.95rem', color: '#b8860b', fontWeight: 600, marginBottom: '1rem' }}>Green Card • No Sponsor Required</p>
+                <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#d4af37', marginBottom: '0.5rem' }}>EB-1 & EB-2 Green Cards</h3>
+                <p style={{ fontSize: '0.95rem', color: '#b8860b', fontWeight: 600, marginBottom: '1rem' }}>No Sponsor Required • Self-Petition</p>
                 <p style={{ color: 'var(--gray-700)', fontSize: '0.95rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
-                  Self-petition green card for individuals with extraordinary ability in sciences, arts, education, business, or athletics.
+                  Self-petition green cards for extraordinary ability (EB-1) or advanced degree holders with national interest work (EB-2 NIW). Choose your pathway.
                 </p>
                 <div style={{ background: '#d4af37', color: 'white', padding: '0.75rem', borderRadius: '8px', marginBottom: '1rem' }}>
-                  <div style={{ fontSize: '1.8rem', fontWeight: 700 }}>$799</div>
-                  <div style={{ fontSize: '0.85rem', opacity: 0.9 }}>Eligibility assessment</div>
+                  <div style={{ fontSize: '1.8rem', fontWeight: 700 }}>$699-$799</div>
+                  <div style={{ fontSize: '0.85rem', opacity: 0.9 }}>Based on pathway</div>
                 </div>
                 <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '0.9rem', color: 'var(--gray-700)' }}>
-                  <li style={{ marginBottom: '0.5rem' }}>✓ 10 criteria evaluation</li>
+                  <li style={{ marginBottom: '0.5rem' }}>✓ EB-1 10 criteria evaluation</li>
+                  <li style={{ marginBottom: '0.5rem' }}>✓ EB-2 Dhanasar analysis</li>
                   <li style={{ marginBottom: '0.5rem' }}>✓ Evidence portfolio review</li>
                   <li>✓ Strategic positioning plan</li>
                 </ul>
                 <div style={{ marginTop: '1.5rem', color: '#d4af37', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  Learn More <span>→</span>
-                </div>
-              </div>
-            </Link>
-
-            {/* EB-2 NIW Card */}
-            <Link to="/services/immigration/eb2-niw" style={{ textDecoration: 'none', color: 'inherit' }}>
-              <div className="service-card" style={{ background: 'linear-gradient(135deg, #f5f3ff 0%, #ffffff 100%)', border: '2px solid #e5deff', transition: 'all 0.3s ease', cursor: 'pointer' }}>
-                <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>🎓</div>
-                <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#667eea', marginBottom: '0.5rem' }}>EB-2 NIW</h3>
-                <p style={{ fontSize: '0.95rem', color: '#5a67d8', fontWeight: 600, marginBottom: '1rem' }}>National Interest Waiver</p>
-                <p style={{ color: 'var(--gray-700)', fontSize: '0.95rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
-                  Green card for advanced degree holders whose work benefits the United States. No labor certification or employer sponsor required.
-                </p>
-                <div style={{ background: '#667eea', color: 'white', padding: '0.75rem', borderRadius: '8px', marginBottom: '1rem' }}>
-                  <div style={{ fontSize: '1.8rem', fontWeight: 700 }}>$699</div>
-                  <div style={{ fontSize: '0.85rem', opacity: 0.9 }}>NIW qualification review</div>
-                </div>
-                <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '0.9rem', color: 'var(--gray-700)' }}>
-                  <li style={{ marginBottom: '0.5rem' }}>✓ Dhanasar framework analysis</li>
-                  <li style={{ marginBottom: '0.5rem' }}>✓ National benefit argument</li>
-                  <li>✓ Evidence strength assessment</li>
-                </ul>
-                <div style={{ marginTop: '1.5rem', color: '#667eea', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                   Learn More <span>→</span>
                 </div>
               </div>
@@ -208,88 +183,6 @@ export const Immigration: React.FC = () => {
             <div className="service-problem-card">
               <h3><i className="fas fa-ban"></i> The Denial Letter Disaster</h3>
               <p>O-1 petition denied. Your company's entire AI team depends on this hire. You're out $25K in recruitment costs. Investors are asking why you can't hire the talent you promised.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Visa Types Section */}
-      <section className="service-section service-services">
-        <div className="service-section-container">
-          <div className="service-section-header">
-            <div className="service-section-tag">OUR SPECIALIZATIONS</div>
-            <h2 className="service-section-title">Three Visa Categories We Master</h2>
-            <p className="service-section-subtitle">
-              H-1B, L-1, O-1 expertise for tech companies and global talent mobility
-            </p>
-          </div>
-
-          <div className="service-services-grid">
-            <div className="service-card featured">
-              <div className="service-card-icon">
-                <i className="fas fa-laptop-code"></i>
-              </div>
-              <h3>H-1B Visas</h3>
-              <p className="service-card-tagline">For specialty occupation workers</p>
-              <p>The backbone of tech hiring. We handle initial petitions, extensions, transfers, and RFE responses. Know what USCIS scrutinizes because we've handled hundreds.</p>
-              
-              <div className="service-price-box">
-                <div className="service-price-amount">{getServicePrice('immigration')}</div>
-                <div className="service-price-details">Includes petition prep, filing, and standard support</div>
-              </div>
-
-              <ul className="service-features">
-                <li>Complete petition package with LCA</li>
-                <li>Evidence compilation & support letters</li>
-                <li>USCIS filing and case monitoring</li>
-                <li>RFE response included (if standard)</li>
-                <li>Premium processing coordination</li>
-                <li>Long-term green card strategy counseling</li>
-              </ul>
-            </div>
-
-            <div className="service-card featured">
-              <div className="service-card-icon">
-                <i className="fas fa-building"></i>
-              </div>
-              <h3>L-1 Visas</h3>
-              <p className="service-card-tagline">Intracompany transferees</p>
-              <p>Moving executives or managers between international offices? L-1A for managers, L-1B for specialized knowledge. Critical for global expansion and UAE-US transfers.</p>
-              
-              <div className="service-price-box">
-                <div className="service-price-amount">Starting at $12,000</div>
-                <div className="service-price-details">L-1A or L-1B, including blanket L filings</div>
-              </div>
-
-              <ul className="service-features">
-                <li>Qualifying relationship documentation</li>
-                <li>Position & role analysis</li>
-                <li>Specialized knowledge evidence (L-1B)</li>
-                <li>Blanket L petition support</li>
-                <li>Consular processing guidance</li>
-              </ul>
-            </div>
-
-            <div className="service-card featured">
-              <div className="service-card-icon">
-                <i className="fas fa-star"></i>
-              </div>
-              <h3>O-1 Visas</h3>
-              <p className="service-card-tagline">Extraordinary ability</p>
-              <p>For world-class talent. Researchers, executives, technical experts. Highest bar but most flexible. Perfect for startup founders and exceptional technical leads.</p>
-              
-              <div className="service-price-box">
-                <div className="service-price-amount">Starting at $18,000</div>
-                <div className="service-price-details">Complex evidence portfolio & advisory letters</div>
-              </div>
-
-              <ul className="service-features">
-                <li>Extraordinary ability case strategy</li>
-                <li>Evidence portfolio development</li>
-                <li>Expert advisory letter coordination</li>
-                <li>Publications & awards documentation</li>
-                <li>Premium petition presentation</li>
-              </ul>
             </div>
           </div>
         </div>

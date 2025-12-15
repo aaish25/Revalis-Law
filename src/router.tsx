@@ -109,7 +109,7 @@ export const AppRouter = () => {
           }
         />
         <Route
-          path="/services/immigration/eb1"
+          path="/services/immigration/eb1-extraordinary-ability"
           element={
             <React.Suspense fallback={<PageLoader />}>
               <EB1ExtraordinaryAbility />

@@ -3,114 +3,286 @@ import { Link } from 'react-router-dom';
 import { Navigation } from '../../../components/Layout/Navigation';
 import { EnhancedFooter } from '../../../components/Layout';
 import '../../../styles/service-page.css';
+import '../../../styles/home.css';
 
 export const EB2NIW: React.FC = () => {
   return (
     <>
       <Navigation />
-      <section className="service-hero" style={{ background: 'linear-gradient(165deg, #1a1a2e 0%, #2d3748 100%)' }}>
+
+      {/* Hero Section */}
+      <section className="service-hero" style={{ background: 'linear-gradient(165deg, #1a1a2e 0%, #2d3748 100())' }}>
         <div className="service-hero-container">
-          <div className="service-breadcrumb">
-            <Link to="/">Home</Link> / <Link to="/services/immigration">Immigration</Link> / <span>EB-2 NIW</span>
+          <div className="breadcrumb">
+            <Link to="/">Home</Link>
+            <span>/</span>
+            <Link to="/services/immigration">Immigration</Link>
+            <span>/</span>
+            <span>EB-2 NIW</span>
           </div>
-          <div className="service-hero-badge" style={{ background: 'rgba(102, 126, 234, 0.2)', borderColor: '#667eea' }}>
-            <i className="fas fa-brain"></i> SELF-PETITION GREEN CARD
-          </div>
-          <h1>Permanent Residence for <span className="highlight" style={{ color: '#667eea' }}>Innovators</span>.<br />No Employer. No Labor Cert.</h1>
-          <p className="service-hero-subtitle">EB-2 NIW allows you to self-petition for a green card if your work benefits the United States. Perfect for researchers, entrepreneurs, scientists, and professionals whose endeavors serve the national interest.</p>
-          <div className="service-hero-stats">
-            <div className="service-stat"><div className="service-stat-number">No</div><div className="service-stat-label">Employer sponsorship needed</div></div>
-            <div className="service-stat"><div className="service-stat-number">8-24mo</div><div className="service-stat-label">Timeline to green card</div></div>
-            <div className="service-stat"><div className="service-stat-number">Self</div><div className="service-stat-label">Petition - your own path</div></div>
-          </div>
-          <div className="service-cta-group">
-            <Link to="/forms/eb2-niw-intake" className="service-btn service-btn-primary" style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}><i className="fas fa-clipboard-check"></i> Start NIW Assessment</Link>
-            <a href="tel:+1-313-771-2283" className="service-btn service-btn-secondary"><i className="fas fa-phone-alt"></i> Call Us</a>
-          </div>
-        </div>
-      </section>
 
-      <section className="service-section">
-        <div className="service-section-container">
-          <div className="service-section-header">
-            <div className="service-section-tag" style={{ background: 'rgba(102, 126, 234, 0.1)', color: '#667eea' }}>DHANASAR FRAMEWORK</div>
-            <h2 className="service-section-title">The 3-Part Test for National Interest Waiver</h2>
+          <div className="hero-badge" style={{ background: 'rgba(102, 126, 234, 0.2)', borderColor: '#667eea' }}>
+            <i className="fas fa-lightbulb"></i>
+            <span>ENTREPRENEUR GREEN CARD PATHWAY</span>
           </div>
-          <div style={{ display: 'grid', gap: '2rem', marginTop: '3rem' }}>
-            {[
-              { num: '1', title: 'Substantial Merit & National Importance', desc: 'Your proposed endeavor has both substantial merit and national importance. Can be in business, entrepreneurship, science, technology, culture, health, or education.' },
-              { num: '2', title: 'Well-Positioned to Advance the Endeavor', desc: 'You are well positioned to advance your proposed endeavor based on education, skills, knowledge, track record, plan for future activities, and interest from potential customers/users/investors.' },
-              { num: '3', title: 'Beneficial to Waive Labor Certification', desc: 'On balance, it would be beneficial to the United States to waive the job offer and labor certification requirements. Your contributions are more valuable than requiring employer sponsorship.' }
-            ].map((item) => (
-              <div key={item.num} style={{ background: 'linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%)', padding: '2rem', borderRadius: '12px', border: '2px solid #667eea' }}>
-                <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
-                  <div style={{ fontSize: '3rem', fontWeight: 900, color: '#667eea', lineHeight: 1 }}>{item.num}</div>
-                  <div>
-                    <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#1a1a2e', marginBottom: '1rem' }}>{item.title}</h3>
-                    <p style={{ color: '#4a5568', lineHeight: 1.7 }}>{item.desc}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      <section className="service-section" style={{ background: '#f7fafc' }}>
-        <div className="service-section-container">
-          <div className="service-section-header">
-            <div className="service-section-tag" style={{ background: 'rgba(102, 126, 234, 0.1)', color: '#667eea' }}>WHO QUALIFIES</div>
-            <h2 className="service-section-title">EB-2 NIW Success Stories</h2>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-            {[
-              { icon: 'fa-microscope', title: 'AI/ML Researchers', items: ['Machine learning innovations', 'AI safety research', 'Natural language processing', 'Computer vision advances'] },
-              { icon: 'fa-rocket', title: 'Tech Entrepreneurs', items: ['SaaS founders', 'Cleantech startups', 'Healthcare technology', 'Educational platforms'] },
-              { icon: 'fa-heartbeat', title: 'Healthcare Innovators', items: ['Medical device inventors', 'Biotech researchers', 'Public health specialists', 'Telemedicine pioneers'] },
-              { icon: 'fa-bolt', title: 'Clean Energy', items: ['Renewable energy engineers', 'Sustainability consultants', 'Environmental scientists', 'Climate tech founders'] },
-              { icon: 'fa-shield-alt', title: 'Cybersecurity', items: ['Security researchers', 'Cryptography experts', 'Critical infrastructure protection', 'Privacy innovators'] },
-              { icon: 'fa-graduation-cap', title: 'Education Tech', items: ['EdTech founders', 'Online learning platforms', 'STEM education advocates', 'Curriculum innovators'] }
-            ].map((cat) => (
-              <div key={cat.title} style={{ background: 'white', padding: '2rem', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-                <h3 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#1a1a2e', marginBottom: '1rem' }}>
-                  <i className={`fas ${cat.icon}`} style={{ color: '#667eea', marginRight: '0.5rem' }}></i> {cat.title}
-                </h3>
-                <ul style={{ color: '#4a5568', lineHeight: 2 }}>
-                  {cat.items.map((item) => <li key={item}>• {item}</li>)}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+          <h1 style={{ color: 'white' }}>
+            Your Startup Could Reshape an Industry.<br/>
+            <span style={{ color: '#667eea' }}>Stop Waiting for Employer Sponsorship.</span>
+          </h1>
 
-      <section className="service-section">
-        <div className="service-section-container">
-          <div style={{ background: 'white', border: '3px solid #667eea', borderRadius: '16px', padding: '3rem', maxWidth: '900px', margin: '0 auto', boxShadow: '0 20px 60px rgba(102, 126, 234, 0.15)' }}>
-            <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-              <h2 style={{ fontSize: '2.5rem', fontWeight: 800, color: '#1a1a2e', marginBottom: '1rem' }}>EB-2 NIW Eligibility Assessment</h2>
-              <p style={{ fontSize: '1.15rem', color: '#4a5568', lineHeight: 1.7 }}>Comprehensive evaluation of your case against the Dhanasar framework</p>
+          <p className="hero-subtitle" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+            AI for cancer detection. Clean energy that cuts emissions 40%. Supply chain software that saves billions. And you're 
+            stuck waiting for an employer to sponsor you? Matter of Dhanasar changed everything in 2016. You don't need employer 
+            sponsorship if your work serves the national interest. EB-2 NIW is the green card for entrepreneurs building companies 
+            that benefit America.
+          </p>
+
+          <div className="hero-stats">
+            <div className="stat">
+              <span className="stat-number" style={{ color: '#667eea' }}>150+</span>
+              <span className="stat-label">EB-2 NIW Cases Filed</span>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '2rem' }}>
-              <div>
-                <div style={{ fontSize: '3rem', fontWeight: 900, color: '#667eea', lineHeight: 1 }}>$699</div>
-                <div style={{ fontSize: '0.85rem', color: '#a0aec0', marginTop: '0.5rem' }}>Credited toward full petition</div>
+            <div className="stat">
+              <span className="stat-number" style={{ color: '#667eea' }}>Dhanasar</span>
+              <span className="stat-label">Framework Expertise</span>
+            </div>
+            <div className="stat">
+              <span className="stat-number" style={{ color: '#667eea' }}>No</span>
+              <span className="stat-label">Employer Sponsorship</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Dhanasar Framework Section */}
+      <section className="section">
+        <div className="section-container">
+          <div className="section-header">
+            <span className="section-tag" style={{ background: 'rgba(102, 126, 234, 0.1)', color: '#667eea' }}>
+              THE DHANASAR THREE-PRONG TEST
+            </span>
+            <h2 className="section-title">
+              Matter of Dhanasar (2016) Opened EB-2 NIW to Entrepreneurs.<br/>
+              Most Don't Know. We Do.
+            </h2>
+            <p className="section-description">
+              Before 2016, EB-2 NIW was reserved for academic researchers and people working in fields of "national interest" 
+              (usually healthcare or STEM education). Then Matter of Dhanasar established a new framework: if your proposed 
+              endeavor has substantial merit and national importance, you don't need a job offer. Entrepreneurs now qualify.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2.5rem', marginTop: '3rem' }}>
+            {/* Prong 1 */}
+            <div style={{ background: 'white', border: '3px solid #e2e8f0', borderRadius: '20px', padding: '3rem' }}>
+              <div style={{ display: 'inline-block', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', color: 'white', padding: '0.5rem 1rem', borderRadius: '50px', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '1px', marginBottom: '1.5rem' }}>
+                PRONG 1
               </div>
-              <Link to="/forms/eb2-niw-intake" style={{ display: 'inline-block', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', color: 'white', padding: '1rem 2.5rem', borderRadius: '8px', textDecoration: 'none', fontWeight: 700, fontSize: '1.1rem' }}>
-                <i className="fas fa-clipboard-check"></i> Start Assessment
+              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '2rem', fontWeight: 800, marginBottom: '1rem', color: '#1a1a2e' }}>
+                Substantial Merit & National Importance
+              </h3>
+              <p style={{ color: '#4a5568', lineHeight: 1.7, marginBottom: '1.5rem' }}>
+                Your proposed endeavor must have both substantial merit (it's technically sound, feasible, and important to your 
+                field) AND national importance (it benefits the United States in ways that extend beyond your local area or industry).
+              </p>
+              <div style={{ background: 'rgba(102, 126, 234, 0.08)', padding: '1.5rem', borderRadius: '12px', borderLeft: '4px solid #667eea' }}>
+                <p style={{ color: '#2d3748', lineHeight: 1.7, margin: 0 }}>
+                  <strong>Examples that qualify:</strong> AI research that improves medical diagnostics. Clean tech that reduces 
+                  carbon emissions. Software that strengthens U.S. supply chain resilience. Agricultural innovation that increases 
+                  food security. Your work doesn't need to change the world—just demonstrably benefit national interests.
+                </p>
+              </div>
+            </div>
+
+            {/* Prong 2 */}
+            <div style={{ background: 'white', border: '3px solid #e2e8f0', borderRadius: '20px', padding: '3rem' }}>
+              <div style={{ display: 'inline-block', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', color: 'white', padding: '0.5rem 1rem', borderRadius: '50px', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '1px', marginBottom: '1.5rem' }}>
+                PRONG 2
+              </div>
+              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '2rem', fontWeight: 800, marginBottom: '1rem', color: '#1a1a2e' }}>
+                Well Positioned to Advance It
+              </h3>
+              <p style={{ color: '#4a5568', lineHeight: 1.7, marginBottom: '1.5rem' }}>
+                You must be well positioned to advance the proposed endeavor. This means: relevant education, skills, track record, 
+                resources, plan of action, and progress to date. USCIS wants proof you can actually DO what you're proposing.
+              </p>
+              <div style={{ background: 'rgba(102, 126, 234, 0.08)', padding: '1.5rem', borderRadius: '12px', borderLeft: '4px solid #667eea' }}>
+                <p style={{ color: '#2d3748', lineHeight: 1.7, margin: 0 }}>
+                  <strong>What proves positioning:</strong> PhD in relevant field. Publications showing domain expertise. Funding 
+                  secured (grants, investment, revenue). Prototype or MVP demonstrating technical capability. Letters from industry 
+                  experts confirming your qualifications. Progress metrics (customers, users, partnerships).
+                </p>
+              </div>
+            </div>
+
+            {/* Prong 3 */}
+            <div style={{ background: 'white', border: '3px solid #e2e8f0', borderRadius: '20px', padding: '3rem' }}>
+              <div style={{ display: 'inline-block', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', color: 'white', padding: '0.5rem 1rem', borderRadius: '50px', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '1px', marginBottom: '1.5rem' }}>
+                PRONG 3
+              </div>
+              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '2rem', fontWeight: 800, marginBottom: '1rem', color: '#1a1a2e' }}>
+                Beneficial to Waive Job Offer
+              </h3>
+              <p style={{ color: '#4a5568', lineHeight: 1.7, marginBottom: '1.5rem' }}>
+                It would be beneficial to the United States to waive the job offer and labor certification requirements. Why? Because 
+                requiring you to get employer sponsorship would hinder your ability to pursue this nationally important work.
+              </p>
+              <div style={{ background: 'rgba(102, 126, 234, 0.08)', padding: '1.5rem', borderRadius: '12px', borderLeft: '4px solid #667eea' }}>
+                <p style={{ color: '#2d3748', lineHeight: 1.7, margin: 0 }}>
+                  <strong>Arguments that work:</strong> Your startup needs you as founder/CEO, not employee. Your research requires 
+                  independence from institutional constraints. Your work benefits the entire industry, not just one employer. Waiting 
+                  for PERM labor certification would delay nationally important innovation. This is the entrepreneur argument.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Who Qualifies Section */}
+      <section className="section" style={{ background: 'linear-gradient(180deg, #f7fafc 0%, #ffffff 100%)' }}>
+        <div className="section-container">
+          <div className="section-header">
+            <span className="section-tag" style={{ background: 'rgba(102, 126, 234, 0.1)', color: '#667eea' }}>
+              WHO QUALIFIES
+            </span>
+            <h2 className="section-title">
+              PhDs Working on Problems of National Importance.<br/>
+              Entrepreneurs Building Companies That Benefit the U.S.
+            </h2>
+            <p className="section-description">
+              EB-2 NIW requires an advanced degree (Master's or PhD) OR exceptional ability (bachelor's + 10 years experience). 
+              But the real qualifier is your WORK—what you're building, researching, or creating that serves U.S. national interests.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginTop: '3rem' }}>
+            <div style={{ background: 'white', border: '2px solid #e2e8f0', borderRadius: '16px', padding: '2rem' }}>
+              <h4 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1a1a2e', marginBottom: '1rem' }}>Tech Entrepreneurs</h4>
+              <p style={{ color: '#4a5568', lineHeight: 1.7 }}>
+                Founders of AI, biotech, clean energy, or infrastructure startups that solve national problems. If your company 
+                strengthens U.S. competitiveness, creates jobs, or advances critical technologies, you qualify.
+              </p>
+            </div>
+
+            <div style={{ background: 'white', border: '2px solid #e2e8f0', borderRadius: '16px', padding: '2rem' }}>
+              <h4 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1a1a2e', marginBottom: '1rem' }}>Academic Researchers</h4>
+              <p style={{ color: '#4a5568', lineHeight: 1.7 }}>
+                PhDs conducting research in STEM fields, healthcare, national security, or economic development. If your research 
+                has commercial applications or policy implications, NIW makes sense.
+              </p>
+            </div>
+
+            <div style={{ background: 'white', border: '2px solid #e2e8f0', borderRadius: '16px', padding: '2rem' }}>
+              <h4 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1a1a2e', marginBottom: '1rem' }}>Engineers in Critical Fields</h4>
+              <p style={{ color: '#4a5568', lineHeight: 1.7 }}>
+                Engineers working on infrastructure, renewable energy, semiconductor manufacturing, or supply chain resilience. 
+                If your engineering work addresses national priorities, NIW is viable.
+              </p>
+            </div>
+
+            <div style={{ background: 'white', border: '2px solid #e2e8f0', borderRadius: '16px', padding: '2rem' }}>
+              <h4 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1a1a2e', marginBottom: '1rem' }}>Healthcare Innovators</h4>
+              <p style={{ color: '#4a5568', lineHeight: 1.7 }}>
+                Physicians, medical researchers, biotech founders, or healthcare entrepreneurs whose work improves public health 
+                outcomes, reduces healthcare costs, or expands access to care.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Consultation Section */}
+      <section className="section" style={{ padding: '6rem 3rem' }}>
+        <div className="section-container">
+          <div style={{ background: 'white', border: '3px solid #667eea', borderRadius: '24px', padding: '4rem 3rem', boxShadow: '0 20px 60px rgba(102, 126, 234, 0.2)', maxWidth: '1100px', margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+              <div style={{ display: 'inline-block', background: 'rgba(102, 126, 234, 0.1)', padding: '0.75rem 2rem', borderRadius: '50px', marginBottom: '1.5rem' }}>
+                <span style={{ color: '#667eea', fontWeight: 800, fontSize: '0.9rem', letterSpacing: '1px' }}>⚡ $499 ASSESSMENT</span>
+              </div>
+              
+              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '2.75rem', fontWeight: 800, color: '#1a1a2e', lineHeight: 1.2, marginBottom: '1rem' }}>
+                Does Your Work Qualify Under Dhanasar?<br/>
+                <span style={{ color: '#667eea' }}>We'll Tell You in One Hour.</span>
+              </h2>
+              
+              <p style={{ fontSize: '1.25rem', color: '#4a5568', lineHeight: 1.7, maxWidth: '850px', margin: '0 auto' }}>
+                Most immigration attorneys don't understand the Dhanasar framework because they don't work with entrepreneurs. 
+                We do. We'll analyze your proposed endeavor, assess your positioning, and tell you if EB-2 NIW is realistic—
+                before you waste months on a case that doesn't qualify.
+              </p>
+            </div>
+
+            <div style={{ textAlign: 'center' }}>
+              <Link 
+                to="/forms/eb2-niw-intake"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.75rem',
+                  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                  color: 'white',
+                  padding: '1.25rem 2.5rem',
+                  borderRadius: '12px',
+                  textDecoration: 'none',
+                  fontWeight: 700,
+                  fontSize: '1.1rem'
+                }}
+              >
+                Schedule $499 NIW Assessment <i className="fas fa-arrow-right"></i>
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="service-section" style={{ background: 'linear-gradient(135deg, #1a1a2e 0%, #2d3748 100%)', padding: '5rem 3rem' }}>
-        <div className="service-section-container" style={{ textAlign: 'center' }}>
-          <h2 style={{ fontSize: '3rem', fontWeight: 800, color: 'white', marginBottom: '1.5rem' }}>Self-Petition Your Green Card</h2>
-          <p style={{ fontSize: '1.2rem', color: 'rgba(255, 255, 255, 0.9)', maxWidth: '800px', margin: '0 auto 3rem' }}>No employer. No labor certification. If your work benefits America, you can petition yourself.</p>
-          <Link to="/forms/eb2-niw-intake" style={{ display: 'inline-block', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', color: 'white', padding: '1rem 2.5rem', borderRadius: '8px', textDecoration: 'none', fontWeight: 700, fontSize: '1.1rem' }}>
-            <i className="fas fa-rocket"></i> Start EB-2 NIW Assessment
-          </Link>
+      {/* CTA Section */}
+      <section style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', padding: '5rem 3rem', textAlign: 'center', color: 'white' }}>
+        <div className="section-container">
+          <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '3rem', fontWeight: 800, marginBottom: '1.5rem' }}>
+            Your Startup Serves the National Interest
+          </h2>
+          <p style={{ fontSize: '1.2rem', marginBottom: '3rem', opacity: 0.95 }}>
+            Stop waiting for employer sponsorship. Get your green card through EB-2 NIW.
+          </p>
+          <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <Link
+              to="/forms/eb2-niw-intake"
+              style={{
+                padding: '1.25rem 2.5rem',
+                borderRadius: '12px',
+                textDecoration: 'none',
+                fontWeight: 700,
+                fontSize: '1.1rem',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.75rem',
+                background: 'white',
+                color: '#667eea'
+              }}
+            >
+              Start EB-2 NIW Intake <i className="fas fa-arrow-right"></i>
+            </Link>
+            <a
+              href="tel:+13137712283"
+              style={{
+                padding: '1.25rem 2.5rem',
+                borderRadius: '12px',
+                textDecoration: 'none',
+                fontWeight: 700,
+                fontSize: '1.1rem',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.75rem',
+                background: 'transparent',
+                border: '2px solid white',
+                color: 'white'
+              }}
+            >
+              <i className="fas fa-phone-alt"></i> +1 (313) 771-2283
+            </a>
+          </div>
         </div>
       </section>
 
@@ -118,5 +290,4 @@ export const EB2NIW: React.FC = () => {
     </>
   );
 };
-
 export default EB2NIW;
