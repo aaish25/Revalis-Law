@@ -4,8 +4,7 @@ import { useAuth } from '../../hooks/useAuth';
 import { MainLayout } from '../../components/Layout';
 import { 
   getAllUsers, 
-  getFormSubmissions, 
-  updateServicePrice,
+  getFormSubmissions,
   updateFormSubmissionStatus,
   supabase 
 } from '../../lib/supabase';
@@ -25,6 +24,7 @@ export function AdminDashboard() {
   // Edit modal state
   const [editingService, setEditingService] = useState<Service | null>(null);
   const [newPrice, setNewPrice] = useState('');
+  const [newCalendlyUrl, setNewCalendlyUrl] = useState('');
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
@@ -62,14 +62,26 @@ export function AdminDashboard() {
     
     setSaving(true);
     try {
-      await updateServicePrice(editingService.id, parseFloat(newPrice));
+      // Update both price and calendly_url
+      const { error } = await supabase
+        .from('services')
+        // @ts-expect-error - Supabase type inference issue
+        .update({ 
+          price: parseFloat(newPrice),
+          calendly_url: newCalendlyUrl || null
+        })
+        .eq('id', editingService.id);
+
+      if (error) throw error;
+
       setServices(services.map(s => 
-        s.id === editingService.id ? { ...s, price: parseFloat(newPrice) } : s
+        s.id === editingService.id ? { ...s, price: parseFloat(newPrice), calendly_url: newCalendlyUrl || null } : s
       ));
       setEditingService(null);
       setNewPrice('');
+      setNewCalendlyUrl('');
     } catch (error) {
-      console.error('Error updating price:', error);
+      console.error('Error updating service:', error);
     } finally {
       setSaving(false);
     }
@@ -293,6 +305,7 @@ export function AdminDashboard() {
                         if (consultationService) {
                           setEditingService(consultationService);
                           setNewPrice(consultationService.price?.toString() || '');
+                          setNewCalendlyUrl(consultationService.calendly_url || '');
                         }
                       }}
                     >
@@ -337,9 +350,10 @@ export function AdminDashboard() {
                             onClick={() => {
                               setEditingService(service);
                               setNewPrice(service.price?.toString() || '');
+                              setNewCalendlyUrl(service.calendly_url || '');
                             }}
                           >
-                            Edit Price
+                            Edit Details
                           </button>
                         </td>
                       </tr>
@@ -452,20 +466,44 @@ export function AdminDashboard() {
         {editingService && (
           <div className="modal-overlay" onClick={() => setEditingService(null)}>
             <div className="modal" onClick={(e) => e.stopPropagation()}>
-              <h3>Edit Service Price</h3>
+              <h3>Edit Service Details</h3>
               <p className="modal-service-name">{editingService.name}</p>
               
               <div className="modal-form">
-                <label htmlFor="price">New Price ($)</label>
+                <label htmlFor="price">Price ($)</label>
                 <input
                   id="price"
                   type="number"
                   value={newPrice}
                   onChange={(e) => setNewPrice(e.target.value)}
-                  placeholder="Enter new price"
+                  placeholder="Enter price"
                   min="0"
                   step="0.01"
                 />
+
+                <label htmlFor="calendly" style={{ marginTop: '1rem' }}>Calendly Scheduling URL (optional)</label>
+                <input
+                  id="calendly"
+                  type="url"
+                  value={newCalendlyUrl}
+                  onChange={(e) => setNewCalendlyUrl(e.target.value)}
+                  placeholder="https://calendly.com/your-username/event-type"
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem',
+                    border: '1px solid #ddd',
+                    borderRadius: '8px',
+                    fontSize: '1rem',
+                  }}
+                />
+                <p style={{
+                  fontSize: '0.85rem',
+                  color: '#666',
+                  marginTop: '0.5rem',
+                  marginBottom: 0,
+                }}>
+                  Users will see this Calendly link when booking consultations for this service
+                </p>
               </div>
               
               <div className="modal-actions">
@@ -480,7 +518,7 @@ export function AdminDashboard() {
                   onClick={handleUpdatePrice}
                   disabled={saving}
                 >
-                  {saving ? 'Saving...' : 'Save Price'}
+                  {saving ? 'Saving...' : 'Save Changes'}
                 </button>
               </div>
             </div>

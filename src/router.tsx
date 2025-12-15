@@ -35,6 +35,7 @@ const FundraisingIntake = React.lazy(() => import('./pages/Forms/FundraisingInta
 const Terms = React.lazy(() => import('./pages/Legal/Terms').then(m => ({ default: m.Terms })));
 const Privacy = React.lazy(() => import('./pages/Legal/Privacy').then(m => ({ default: m.Privacy })));
 const Disclaimers = React.lazy(() => import('./pages/Legal/Disclaimers').then(m => ({ default: m.Disclaimers })));
+const LegalInformation = React.lazy(() => import('./pages/Legal/LegalInformation').then(m => ({ default: m.LegalInformation })));
 
 // Auth pages
 const LoginPage = React.lazy(() => import('./pages/Auth/LoginPage').then(m => ({ default: m.LoginPage })));
@@ -247,6 +248,14 @@ export const AppRouter = () => {
         />
 
         {/* Legal Pages */}
+        <Route
+          path="/legal"
+          element={
+            <React.Suspense fallback={<PageLoader />}>
+              <LegalInformation />
+            </React.Suspense>
+          }
+        />
         <Route
           path="/legal/terms"
           element={

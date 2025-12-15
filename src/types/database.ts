@@ -54,6 +54,7 @@ export interface Database {
           price: number | null;
           price_type: 'fixed' | 'hourly' | 'custom' | 'starting_at';
           type: string | null; // 'consultation' or 'service'
+          calendly_url: string | null;
           features: Json;
           category: string | null;
           is_active: boolean;
@@ -70,6 +71,7 @@ export interface Database {
           price?: number | null;
           price_type?: 'fixed' | 'hourly' | 'custom' | 'starting_at';
           type?: string | null;
+          calendly_url?: string | null;
           features?: Json;
           category?: string | null;
           is_active?: boolean;
@@ -86,6 +88,7 @@ export interface Database {
           price?: number | null;
           price_type?: 'fixed' | 'hourly' | 'custom' | 'starting_at';
           type?: string | null;
+          calendly_url?: string | null;
           features?: Json;
           category?: string | null;
           is_active?: boolean;

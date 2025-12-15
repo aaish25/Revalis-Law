@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { MainLayout } from '../../components/Layout';
 import { getUserPurchases, supabase } from '../../lib/supabase';
+import { getServiceSlugFromFormType } from '../../utils/serviceMapping';
 import type { Purchase, FormSubmission, Service } from '../../types/database';
 import './dashboard.css';
 
@@ -15,25 +16,31 @@ export function UserDashboard() {
   const { user, profile } = useAuth();
   const [purchases, setPurchases] = useState<PurchaseWithRelations[]>([]);
   const [submissions, setSubmissions] = useState<FormSubmission[]>([]);
+  const [services, setServices] = useState<Service[]>([]);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState<'overview' | 'services' | 'submissions'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'services' | 'submissions' | 'scheduling'>('overview');
 
   useEffect(() => {
     const fetchData = async () => {
       if (!user) return;
       
       try {
-        const [purchasesData, submissionsData] = await Promise.all([
+        const [purchasesData, submissionsData, servicesData] = await Promise.all([
           getUserPurchases(user.id),
           supabase
             .from('form_submissions')
             .select('*')
             .eq('user_id', user.id)
-            .order('created_at', { ascending: false })
+            .order('created_at', { ascending: false }),
+          supabase
+            .from('services')
+            .select('*')
+            .eq('is_active', true)
         ]);
         
         setPurchases(purchasesData as PurchaseWithRelations[]);
         setSubmissions(submissionsData.data || []);
+        setServices(servicesData.data || []);
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
@@ -112,68 +119,18 @@ export function UserDashboard() {
           >
             Form Submissions
           </button>
+          <button 
+            className={`tab ${activeTab === 'scheduling' ? 'active' : ''}`}
+            onClick={() => setActiveTab('scheduling')}
+          >
+            Scheduling
+          </button>
         </div>
 
         {/* Content */}
         <div className="dashboard-content">
           {activeTab === 'overview' && (
             <div className="overview-grid">
-              {/* Calendly Booking Section */}
-              <div style={{
-                gridColumn: '1 / -1',
-                backgroundColor: 'white',
-                borderRadius: '12px',
-                padding: '2rem',
-                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
-                marginBottom: '2rem',
-              }}>
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '1rem',
-                  marginBottom: '1.5rem',
-                  paddingBottom: '1rem',
-                  borderBottom: '2px solid #f0f0f0',
-                }}>
-                  <div style={{
-                    fontSize: '2.5rem',
-                  }}>
-                    📅
-                  </div>
-                  <div>
-                    <h2 style={{
-                      margin: 0,
-                      fontSize: '1.5rem',
-                      fontWeight: '700',
-                      color: '#1a1a1a',
-                    }}>
-                      Schedule Your Consultation
-                    </h2>
-                    <p style={{
-                      margin: '0.25rem 0 0 0',
-                      color: '#666',
-                      fontSize: '0.95rem',
-                    }}>
-                      Book or reschedule your 60-minute legal consultation
-                    </p>
-                  </div>
-                </div>
-                
-                <div style={{
-                  borderRadius: '8px',
-                  overflow: 'hidden',
-                  border: '1px solid #e5e7eb',
-                }}>
-                  <iframe
-                    src={`https://calendly.com/aniketbamotra/legal?embed_domain=${window.location.hostname}&embed_type=Inline&hide_gdpr_banner=1&primary_color=0088cc${user?.email ? `&email=${encodeURIComponent(user.email)}` : ''}`}
-                    width="100%"
-                    height="700"
-                    frameBorder="0"
-                    title="Schedule Consultation"
-                  />
-                </div>
-              </div>
-
               {/* Stats Cards */}
               <div className="stat-card">
                 <div className="stat-icon services-icon">
@@ -304,6 +261,155 @@ export function UserDashboard() {
                   ))}
                 </div>
               )}
+            </div>
+          )}
+
+          {activeTab === 'scheduling' && (
+            <div className="scheduling-section">
+              <div style={{
+                backgroundColor: 'white',
+                borderRadius: '12px',
+                padding: '2rem',
+                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+              }}>
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '1rem',
+                  marginBottom: '1.5rem',
+                  paddingBottom: '1rem',
+                  borderBottom: '2px solid #f0f0f0',
+                }}>
+                  <div style={{ fontSize: '2.5rem' }}>📅</div>
+                  <div>
+                    <h2 style={{
+                      margin: 0,
+                      fontSize: '1.5rem',
+                      fontWeight: '700',
+                      color: '#1a1a1a',
+                    }}>
+                      Schedule Your Consultations
+                    </h2>
+                    <p style={{
+                      margin: '0.25rem 0 0 0',
+                      color: '#666',
+                      fontSize: '0.95rem',
+                    }}>
+                      Book consultations for your submitted forms
+                    </p>
+                  </div>
+                </div>
+
+                {submissions.length === 0 ? (
+                  <div className="empty-state" style={{ textAlign: 'center', padding: '3rem 1rem' }}>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style={{ width: '64px', height: '64px', margin: '0 auto 1rem', color: '#cbd5e1' }}>
+                      <path d="M12.75 12.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM7.5 15.75a.75.75 0 100-1.5.75.75 0 000 1.5zM8.25 17.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM9.75 15.75a.75.75 0 100-1.5.75.75 0 000 1.5zM10.5 17.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12 15.75a.75.75 0 100-1.5.75.75 0 000 1.5zM12.75 17.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM14.25 15.75a.75.75 0 100-1.5.75.75 0 000 1.5zM15 17.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM16.5 15.75a.75.75 0 100-1.5.75.75 0 000 1.5zM15 12.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM16.5 13.5a.75.75 0 100-1.5.75.75 0 000 1.5z" />
+                      <path fillRule="evenodd" d="M6.75 2.25A.75.75 0 017.5 3v1.5h9V3A.75.75 0 0118 3v1.5h.75a3 3 0 013 3v11.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V7.5a3 3 0 013-3H6V3a.75.75 0 01.75-.75zm13.5 9a1.5 1.5 0 00-1.5-1.5H5.25a1.5 1.5 0 00-1.5 1.5v7.5a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5v-7.5z" clipRule="evenodd" />
+                    </svg>
+                    <h3 style={{ color: '#64748b', fontSize: '1.25rem', marginBottom: '0.5rem' }}>No Forms Submitted Yet</h3>
+                    <p style={{ color: '#94a3b8', marginBottom: '1.5rem' }}>Submit an intake form to schedule a consultation with our team.</p>
+                    <Link to="/forms/qualification" className="cta-button">Start Intake Form</Link>
+                  </div>
+                ) : (
+                  <div style={{
+                    display: 'grid',
+                    gap: '1rem',
+                  }}>
+                    {submissions.map((submission) => {
+                      const serviceSlug = getServiceSlugFromFormType(submission.form_type);
+                      const service = services.find(s => s.slug === serviceSlug);
+                      const calendlyUrl = service?.calendly_url || 'https://calendly.com/aniketbamotra/legal';
+                      
+                      return (
+                        <div key={submission.id} style={{
+                          border: '1px solid #e5e7eb',
+                          borderRadius: '8px',
+                          padding: '1.5rem',
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                          backgroundColor: '#f9fafb',
+                          transition: 'all 0.2s ease',
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+                          e.currentTarget.style.borderColor = '#0088cc';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.boxShadow = 'none';
+                          e.currentTarget.style.borderColor = '#e5e7eb';
+                        }}
+                        >
+                          <div>
+                            <h3 style={{
+                              margin: '0 0 0.5rem 0',
+                              fontSize: '1.1rem',
+                              fontWeight: '600',
+                              color: '#1a1a1a',
+                            }}>
+                              {submission.form_type.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                            </h3>
+                            <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                              <p style={{
+                                margin: 0,
+                                color: '#666',
+                                fontSize: '0.9rem',
+                              }}>
+                                Submitted {formatDate(submission.created_at)}
+                              </p>
+                              {service && (
+                                <span style={{
+                                  backgroundColor: '#e0f2fe',
+                                  color: '#0369a1',
+                                  padding: '0.25rem 0.75rem',
+                                  borderRadius: '9999px',
+                                  fontSize: '0.85rem',
+                                  fontWeight: '500',
+                                }}>
+                                  {service.name}
+                                </span>
+                              )}
+                              <span className={getStatusBadge(submission.status)} style={{
+                                fontSize: '0.85rem',
+                              }}>
+                                {submission.status.replace('_', ' ')}
+                              </span>
+                            </div>
+                          </div>
+                          <a
+                            href={`${calendlyUrl}?embed_domain=${window.location.hostname}&hide_gdpr_banner=1&primary_color=0088cc${user?.email ? `&email=${encodeURIComponent(user.email)}` : ''}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{
+                              padding: '0.75rem 1.5rem',
+                              backgroundColor: '#0088cc',
+                              color: 'white',
+                              border: 'none',
+                              borderRadius: '8px',
+                              fontSize: '1rem',
+                              fontWeight: '600',
+                              textDecoration: 'none',
+                              whiteSpace: 'nowrap',
+                              cursor: 'pointer',
+                              transition: 'all 0.2s ease',
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.backgroundColor = '#006699';
+                              e.currentTarget.style.transform = 'translateY(-2px)';
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.backgroundColor = '#0088cc';
+                              e.currentTarget.style.transform = 'translateY(0)';
+                            }}
+                          >
+                            📅 Schedule Consultation
+                          </a>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
             </div>
           )}
         </div>
