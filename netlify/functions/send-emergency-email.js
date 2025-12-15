@@ -120,7 +120,7 @@ exports.handler = async (event) => {
     // Send priority alert to admin
     const adminEmailResponse = await resend.emails.send({
       from: 'Emergency Alerts <onboarding@resend.dev>',
-      to: 'aaishaeron@gmail.com',
+      to: 'aniketbamotra.11@gmail.com', // Change to actual admin email after domain verification
       subject: `🚨 PRIORITY: New Emergency Consultation - ${urgency} Urgency`,
       html: `
         <!DOCTYPE html>
