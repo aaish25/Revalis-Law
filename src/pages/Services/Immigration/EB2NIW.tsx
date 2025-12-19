@@ -2,10 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navigation } from '../../../components/Layout/Navigation';
 import { EnhancedFooter } from '../../../components/Layout';
+import { useSiteSettings } from '../../../contexts/SiteSettingsContext';
 import '../../../styles/service-page.css';
 import '../../../styles/home.css';
 
 export const EB2NIW: React.FC = () => {
+  const { settings } = useSiteSettings();
   return (
     <>
       <Navigation />
@@ -265,7 +267,7 @@ export const EB2NIW: React.FC = () => {
               Start EB-2 NIW Intake <i className="fas fa-arrow-right"></i>
             </Link>
             <a
-              href="tel:+13137712283"
+              href={`tel:${settings?.phone_primary || '+1-313-771-2283'}`}
               style={{
                 padding: '1.25rem 2.5rem',
                 borderRadius: '12px',
@@ -280,7 +282,7 @@ export const EB2NIW: React.FC = () => {
                 color: 'white'
               }}
             >
-              <i className="fas fa-phone-alt"></i> +1 (313) 771-2283
+              <i className="fas fa-phone-alt"></i> {settings?.phone_display || '+1 (313) 771-2283'}
             </a>
           </div>
         </div>

@@ -1,10 +1,12 @@
 import React from 'react';
+import { useSiteSettings } from '../../contexts/SiteSettingsContext';
 
 interface FooterProps {
   showLinks?: boolean;
 }
 
 export const Footer: React.FC<FooterProps> = ({ showLinks = true }) => {
+  const { settings } = useSiteSettings();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -80,10 +82,10 @@ export const Footer: React.FC<FooterProps> = ({ showLinks = true }) => {
               <h4 style={{ fontWeight: 600, color: 'white', marginBottom: '1rem' }}>Contact</h4>
               <ul style={{ listStyle: 'none', fontSize: '0.9rem' }}>
                 <li style={{ marginBottom: '0.5rem' }}>
-                  <a href="mailto:contact@rivalislaw.com">contact@rivalislaw.com</a>
+                  <a href={`mailto:${settings?.email_contact || 'contact@rivalislaw.com'}`}>{settings?.email_contact || 'contact@rivalislaw.com'}</a>
                 </li>
                 <li style={{ marginBottom: '0.5rem' }}>
-                  <a href="tel:+1-202-555-0199">(202) 555-0199</a>
+                  <a href={`tel:${settings?.phone_primary || '+1-313-771-2283'}`}>{settings?.phone_display || '+1 (313) 771-2283'}</a>
                 </li>
               </ul>
             </div>

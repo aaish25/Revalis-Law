@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { MainLayout } from '../../components';
+import { useSiteSettings } from '../../contexts/SiteSettingsContext';
 
 export const LegalInformation: React.FC = () => {
+  const { settings } = useSiteSettings();
   const [activeSection, setActiveSection] = useState('attorney-advertising');
 
   useEffect(() => {
@@ -388,7 +390,7 @@ export const LegalInformation: React.FC = () => {
                 Bar Admissions
               </h3>
               <p style={{ color: '#2d3748', lineHeight: 1.8, marginBottom: '1.25rem' }}>
-                Aaishwarya Aeron, the attorney operating Rivalis Law, is admitted to practice law in the following jurisdictions:
+                {settings?.attorney_name || 'Aaishwarya Aeron, Esq.'}, the attorney operating {settings?.firm_name || 'Rivalis Law'}, is admitted to practice law in the following jurisdictions:
               </p>
 
               <div style={{ background: '#f0e6d2', borderLeft: '4px solid #d4af37', padding: '1.5rem', borderRadius: '8px', margin: '2rem 0' }}>
@@ -411,7 +413,7 @@ export const LegalInformation: React.FC = () => {
                 Jurisdictional Limitations
               </h3>
               <p style={{ color: '#2d3748', lineHeight: 1.8, marginBottom: '1.25rem' }}>
-                An attorney's ability to practice law is generally limited to jurisdictions where the attorney is licensed. Attorney Aeron is authorized to practice law in New York and Michigan, including representing clients in state and federal courts where admitted.
+                An attorney's ability to practice law is generally limited to jurisdictions where the attorney is licensed. {settings?.attorney_name || 'Attorney Aeron'} is authorized to practice law in {settings?.bar_admission || 'New York and Michigan'}, including representing clients in state and federal courts where admitted.
               </p>
 
               <h4 style={{ fontSize: '1.15rem', fontWeight: 600, color: '#0f1419', marginTop: '1.5rem', marginBottom: '0.75rem' }}>
@@ -677,17 +679,17 @@ export const LegalInformation: React.FC = () => {
               </span>
 
               <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#1a1a2e', marginTop: '2rem', marginBottom: '1rem' }}>
-                Rivalis Law
+                {settings?.firm_name || 'Rivalis Law'}
               </h3>
               <p style={{ color: '#2d3748', lineHeight: 1.8, marginBottom: '1.25rem' }}>
-                <strong>Principal Attorney:</strong> Aaishwarya Aeron, Esq.
+                <strong>Principal Attorney:</strong> {settings?.attorney_name || 'Aaishwarya Aeron, Esq.'}
               </p>
 
               <h4 style={{ fontSize: '1.15rem', fontWeight: 600, color: '#0f1419', marginTop: '1.5rem', marginBottom: '0.75rem' }}>
                 Contact Methods
               </h4>
               <p style={{ color: '#2d3748', lineHeight: 1.8, marginBottom: '1.25rem' }}>
-                <strong>Email:</strong> contact@rivalislaw.com<br />
+                <strong>Email:</strong> {settings?.email_contact || 'contact@rivalislaw.com'}<br />
                 <strong>Website:</strong> <a href="https://www.rivalislaw.com" style={{ color: '#0088cc' }}>www.rivalislaw.com</a>
               </p>
 

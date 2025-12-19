@@ -1,0 +1,301 @@
+================================================================================
+RIVALIS LAW - PRODUCTION DEPLOYMENT REQUIREMENTS
+================================================================================
+
+This document lists all the accounts, API keys, and configuration details needed 
+to launch your website in production. Please follow the steps below to obtain 
+each required item.
+
+================================================================================
+1. SUPABASE (Database & Authentication)
+================================================================================
+
+What it does: Manages your user accounts, stores form submissions, and handles 
+all your website's data securely.
+
+Steps to get your keys:
+1. Go to https://supabase.com and sign in (or create a free account)
+2. Click "New Project" and create a project (choose a region close to your users)
+3. Wait for the project to finish setting up (takes 2-3 minutes)
+4. Once ready, go to Project Settings (gear icon on left sidebar)
+
+First, get your Project URL:
+5. Click on "Data API" in the settings menu
+
+□ Project URL
+  Example: https://yourproject.supabase.co
+  Found under: "Data API" section → "Project URL"
+  Copy the full URL shown
+
+Then, get your API keys:
+6. Go back to settings and click on "API Keys"
+7. At the top, click on the "Legacy anon, service_role API keys" tab
+
+□ Anon/Public Key
+  Example: eyJhbGc... (long string of characters)
+  Found under: "Legacy anon, service_role API keys" tab → Look for "anon public"
+  Click the eye icon to reveal, then copy button to copy
+
+□ Service Role Key (Keep this SECRET!)
+  Example: eyJhbGc... (different long string)
+  Found under: "Legacy anon, service_role API keys" tab → Look for "service_role"
+  Click the eye icon to reveal, then copy button to copy
+  ⚠️ IMPORTANT: Never share this publicly or commit to code
+
+Note: We'll handle the database setup and configuration for you.
+
+
+================================================================================
+2. STRIPE (Payment Processing)
+================================================================================
+
+What it does: Processes credit card payments for consultations and services 
+securely. Handles the $499 emergency consultation fee and other service payments.
+
+Steps to get your keys:
+1. Go to https://stripe.com and sign in to your account
+   (If you don't have one, create a business account at https://dashboard.stripe.com/register)
+2. Complete your business profile in Stripe (required to accept real payments)
+3. In the Stripe Dashboard, click "Developers" in the top menu
+4. Click "API keys" in the left sidebar
+
+You'll need to provide us with these 3 items:
+
+□ Publishable Key (Live Mode)
+  Example: pk_live_51SeD...
+  Found under: "Standard keys" → "Publishable key"
+  ⚠️ Make sure you're in "Live mode" (toggle at top right should say "Live")
+
+□ Secret Key (Live Mode - Keep this SECRET!)
+  Example: sk_live_51SeD...
+  Found under: "Standard keys" → "Secret key"
+  Click "Reveal live key token" to see it
+  ⚠️ IMPORTANT: Keep this completely private
+
+To get your Webhook Secret:
+1. In Stripe Dashboard, go to "Developers" → "Webhooks"
+2. Click "+ Add endpoint"
+3. For "Endpoint URL", enter: [WE'LL PROVIDE THIS AFTER DEPLOYMENT]
+4. Click "Select events" and choose these events:
+   - checkout.session.completed
+   - payment_intent.succeeded
+5. Click "Add endpoint"
+6. After creating, click on the webhook you just made
+7. Click "Reveal" next to "Signing secret"
+
+□ Webhook Secret
+  Example: whsec_...
+  Found after: Creating the webhook and revealing the signing secret
+  Note: We'll guide you through this step after initial deployment
+
+
+================================================================================
+3. RESEND (Email Service)
+================================================================================
+
+What it does: Sends emails to users and admins when forms are submitted, 
+emergency consultations are requested, etc.
+
+Steps to get your key:
+1. Go to https://resend.com and sign up for an account
+2. Verify your email address
+3. After logging in, go to "API Keys" in the left sidebar
+4. Click "Create API Key"
+5. Give it a name like "Rivalis Production"
+6. Select "Full access" permission
+7. Click "Add"
+8. Copy the key immediately (you won't be able to see it again!)
+
+□ Resend API Key
+  Example: re_...
+  Found under: API Keys section after creation
+
+To set up your domain for sending emails:
+1. In Resend, go to "Domains" in the left sidebar
+2. Click "Add Domain"
+3. Enter: rivalislaw.com
+4. Follow the DNS verification steps shown (we can help with this)
+5. Wait for verification (usually 15-30 minutes)
+
+□ Admin Email for Notifications
+  Your email for receiving emergency consultation alerts: _______________________
+  Example: admin@rivalislaw.com or your-email@yourdomain.com
+
+□ From Email for Sending
+  Email address to send notifications from: _______________________
+  Example: noreply@rivalislaw.com or notifications@rivalislaw.com
+  Note: Must be from your verified domain in Resend
+
+Note: Until domain is verified, we'll use Resend's test domain for testing.
+
+
+================================================================================
+4. NETLIFY (Website Hosting & Deployment)
+================================================================================
+
+What it does: Hosts your website and makes it accessible at rivalislaw.com
+
+Steps to set up:
+1. Go to https://netlify.com and sign up (free plan works to start)
+2. Connect your account (we can help with this step)
+3. Link your custom domain (rivalislaw.com)
+
+You'll need:
+
+□ Netlify Account Access
+  We'll need: Either admin access to your Netlify account OR we can set up 
+  the deployment for you and transfer ownership later.
+
+□ Domain Configuration
+  Your domain registrar details (where you bought rivalislaw.com)
+  We'll need to update DNS settings to point to Netlify
+
+
+================================================================================
+5. ADMIN EMAIL ADDRESS
+================================================================================
+
+What it does: Receives notifications for emergency consultations and form 
+submissions.
+
+□ Admin Email Address
+  Current temporary: aniketbamotra.11@gmail.com
+  Production email: _________________________________
+  (This will receive all emergency alerts and form submissions)
+
+□ Emergency Contact Phone (displayed on website)
+  Current: +1 (313) 771-2283
+  Production phone: _________________________________
+
+
+================================================================================
+6. CALENDLY (Meeting Scheduling)
+================================================================================
+
+What it does: Allows clients to book consultation meetings with you.
+
+□ Calendly Account
+  If you have Calendly: Your account email: _________________________________
+  If not: We can help you set one up (takes 5 minutes at calendly.com)
+
+You'll need to provide Calendly booking links for each service type.
+We'll help you configure these once your account is ready.
+
+
+================================================================================
+SECURITY REMINDERS
+================================================================================
+
+⚠️ NEVER share these in email, Slack, or any public channel:
+  - Supabase Service Role Key
+  - Stripe Secret Key
+  - Resend API Key
+
+✅ Safe ways to share:
+  - Password managers (1Password, LastPass)
+  - Secure file sharing (Dropbox with password protection)
+  - Encrypted messaging (Signal)
+  - Or share via phone call if urgent
+
+⚠️ These keys give full access to your systems. Treat them like passwords.
+
+
+================================================================================
+DEPLOYMENT CHECKLIST
+================================================================================
+
+Before launching, please confirm:
+
+□ All API keys collected and securely stored
+□ Stripe account fully activated (business details completed)
+□ Custom domain (rivalislaw.com) access confirmed
+□ Email domain verified in Resend
+□ Admin email address confirmed for notifications
+□ Calendly booking links ready
+□ Site Settings configured in Admin Dashboard (after deployment)
+□ Test payment completed successfully
+□ Emergency consultation flow tested end-to-end
+□ All forms tested and receiving submissions
+
+
+================================================================================
+POST-DEPLOYMENT: CONFIGURE SITE SETTINGS
+================================================================================
+
+After deploying the application, log in as admin and:
+
+1. Navigate to Dashboard → Site Settings tab
+2. Update the following information:
+   
+   Business Information:
+   - Firm Name
+   - Attorney Name
+   - Attorney Credentials
+   - Bar Admission
+   - Firm Tagline
+   
+   Contact Information:
+   - Primary Phone Number
+   - Display Phone Number
+   
+   Email Addresses (for each practice area):
+   - General Contact
+   - Employment Law
+   - IP Strategy
+   - Data Privacy
+   - AI Governance
+   - Entity Formation
+   - M&A / Deals
+   - Investigations
+   - Contracts
+   - Legal (General)
+   
+   Social Media:
+   - LinkedIn Profile URL
+
+3. Click "Edit Settings" → Make your changes → Click "Save Changes"
+
+These settings will automatically update throughout the website without 
+requiring code changes or redeployment.
+
+
+================================================================================
+ESTIMATED MONTHLY COSTS (Production)
+================================================================================
+
+Supabase Free Tier:
+  - Up to 500MB database
+  - 50,000 monthly active users
+  - 2GB file storage
+  Cost: $0/month (upgrade to $25/month if you exceed limits)
+
+Stripe:
+  - 2.9% + 30¢ per successful charge
+  - No monthly fees
+  Cost: Pay only when you receive payments
+
+Resend:
+  - 3,000 emails/month free
+  - $20/month for 50,000 emails after that
+  Cost: $0-20/month depending on volume
+
+Netlify Free Tier:
+  - 100GB bandwidth/month
+  - 300 build minutes/month
+  Cost: $0/month (upgrade to $19/month if needed)
+
+TOTAL ESTIMATED: $0-50/month depending on usage
+
+
+================================================================================
+QUESTIONS OR ISSUES?
+================================================================================
+
+If you have trouble obtaining any of these keys or need clarification on any 
+step, please reach out and we'll walk you through it.
+
+Once you have all items marked with □ checkboxes, send them to us securely 
+and we'll handle the deployment configuration.
+
+
+Last Updated: December 16, 2025

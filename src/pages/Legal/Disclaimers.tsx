@@ -1,7 +1,9 @@
 import React from 'react';
 import { MainLayout, Hero } from '../../components';
+import { useSiteSettings } from '../../contexts/SiteSettingsContext';
 
 export const Disclaimers: React.FC = () => {
+  const { settings } = useSiteSettings();
   return (
     <MainLayout>
       <Hero
@@ -99,8 +101,8 @@ export const Disclaimers: React.FC = () => {
               <h3 className="text-xl font-bold text-gray-900 mb-2">📞 Questions?</h3>
               <p className="text-gray-700">
                 If you have questions about these disclaimers or need legal assistance, please contact us 
-                directly at <a href="mailto:contact@rivalislaw.com" className="text-blue-600 hover:underline">contact@rivalislaw.com</a> or 
-                call <a href="tel:+1-202-555-0199" className="text-blue-600 hover:underline">(202) 555-0199</a>.
+                directly at <a href={`mailto:${settings?.email_contact || 'contact@rivalislaw.com'}`} className="text-blue-600 hover:underline">{settings?.email_contact || 'contact@rivalislaw.com'}</a> or 
+                call <a href={`tel:${settings?.phone_primary || '+1-313-771-2283'}`} className="text-blue-600 hover:underline">{settings?.phone_display || '+1 (313) 771-2283'}</a>.
               </p>
             </div>
           </div>

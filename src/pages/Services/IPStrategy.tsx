@@ -2,10 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navigation } from '../../components/Layout/Navigation';
 import { EnhancedFooter } from '../../components/Layout';
+import { useSiteSettings } from '../../contexts/SiteSettingsContext';
 import '../../styles/service-page.css';
 import '../../styles/home.css';
 
 export const IPStrategy: React.FC = () => {
+  const { settings } = useSiteSettings();
   return (
     <>
       {/* Navigation */}
@@ -32,7 +34,7 @@ export const IPStrategy: React.FC = () => {
               <i className="fas fa-copyright"></i>
               Get Started - IP Strategy Intake
             </Link>
-            <a href="mailto:ip@rivalislaw.com" className="service-btn service-btn-secondary">
+            <a href={`mailto:${settings?.email_ip || 'ip@rivalislaw.com'}`} className="service-btn service-btn-secondary">
               <i className="fas fa-envelope"></i>
               Email IP Team
             </a>
@@ -155,9 +157,9 @@ export const IPStrategy: React.FC = () => {
               <i className="fas fa-clipboard-list"></i>
               Start IP Strategy Intake
             </Link>
-            <a href="tel:+1-313-771-2283" className="service-btn service-btn-secondary">
+            <a href={`tel:${settings?.phone_primary || '+1-313-771-2283'}`} className="service-btn service-btn-secondary">
               <i className="fas fa-phone-alt"></i>
-              Call: +1 (313) 771-2283
+              Call: {settings?.phone_display || '+1 (313) 771-2283'}
             </a>
           </div>
         </div>

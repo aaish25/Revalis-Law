@@ -8,7 +8,7 @@ import {
   updateFormSubmissionStatus,
   supabase 
 } from '../../lib/supabase';
-import type { Service, Profile, FormSubmission } from '../../types/database';
+import type { Service, Profile, FormSubmission, SiteSettings } from '../../types/database';
 import {
   Dialog,
   DialogContent,
@@ -46,7 +46,7 @@ export function AdminDashboard() {
   const [submissions, setSubmissions] = useState<FormSubmission[]>([]);
   const [emergencyRequests, setEmergencyRequests] = useState<EmergencyRequest[]>([]);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState<'overview' | 'services' | 'users' | 'submissions' | 'emergency'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'services' | 'users' | 'submissions' | 'emergency' | 'settings'>('overview');
   
   // Edit modal state
   const [editingService, setEditingService] = useState<Service | null>(null);
@@ -61,6 +61,11 @@ export function AdminDashboard() {
   const [editingNotes, setEditingNotes] = useState<EmergencyRequest | null>(null);
   const [notesText, setNotesText] = useState('');
 
+  // Site Settings state
+  const [siteSettings, setSiteSettings] = useState<SiteSettings | null>(null);
+  const [editingSiteSettings, setEditingSiteSettings] = useState(false);
+  const [settingsForm, setSettingsForm] = useState<Partial<SiteSettings>>({});
+
   useEffect(() => {
     if (!authLoading && !isAdmin) {
       navigate('/dashboard');
@@ -72,14 +77,15 @@ export function AdminDashboard() {
       if (!isAdmin) return;
       
       try {
-        const [servicesData, usersData, submissionsData, emergencyData] = await Promise.all([
+        const [servicesData, usersData, submissionsData, emergencyData, settingsData] = await Promise.all([
           supabase.from('services').select('*').order('display_order'),
           getAllUsers(),
           getFormSubmissions(),
           supabase
             .from('emergency_requests')
             .select('*')
-            .order('created_at', { ascending: false })
+            .order('created_at', { ascending: false }),
+          supabase.from('site_settings').select('*').single()
         ]);
         
         // Fetch profiles for emergency requests
@@ -104,6 +110,10 @@ export function AdminDashboard() {
         setUsers(usersData);
         setSubmissions(submissionsData);
         setEmergencyRequests(emergencyWithProfiles);
+        setSiteSettings(settingsData.data);
+        if (settingsData.data) {
+          setSettingsForm(settingsData.data);
+        }
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
@@ -172,6 +182,34 @@ export function AdminDashboard() {
       setNotesText('');
     } catch (error) {
       console.error('Error saving notes:', error);
+    }
+  };
+
+  const handleSaveSiteSettings = async () => {
+    if (!siteSettings) return;
+    
+    try {
+      setSaving(true);
+      const { error } = await supabase
+        .from('site_settings')
+        .update({
+          ...settingsForm,
+          updated_at: new Date().toISOString(),
+          updated_by: (await supabase.auth.getUser()).data.user?.id
+        })
+        .eq('id', siteSettings.id);
+      
+      if (error) throw error;
+      
+      setSiteSettings({ ...siteSettings, ...settingsForm } as SiteSettings);
+      setEditingSiteSettings(false);
+      
+      alert('Site settings saved successfully!');
+    } catch (error) {
+      console.error('Error saving site settings:', error);
+      alert('Failed to save site settings. Please try again.');
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -267,6 +305,12 @@ export function AdminDashboard() {
             }}
           >
             🚨 Emergency ({emergencyRequests.filter(r => r.status === 'pending').length})
+          </button>
+          <button 
+            className={`tab ${activeTab === 'settings' ? 'active' : ''}`}
+            onClick={() => setActiveTab('settings')}
+          >
+            ⚙️ Site Settings
           </button>
         </div>
 
@@ -989,6 +1033,488 @@ export function AdminDashboard() {
                 </button>
               </div>
             </div>
+          </div>
+        )}
+
+        {/* Site Settings Tab */}
+        {activeTab === 'settings' && (
+          <div className="admin-section" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <div className="section-header" style={{ marginBottom: '2rem', width: '100%', maxWidth: '900px' }}>
+              <h2>Site Settings</h2>
+              <p style={{ color: '#94a3b8', marginTop: '0.5rem' }}>
+                Manage your firm information, contact details, and social media links
+              </p>
+            </div>
+
+            {siteSettings && (
+              <div style={{ maxWidth: '900px', width: '100%' }}>
+                {/* Business Information Section */}
+                <div style={{ background: '#1e293b', padding: '2rem', borderRadius: '12px', marginBottom: '1.5rem', boxShadow: '0 1px 3px rgba(0,0,0,0.3)' }}>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: '600', marginBottom: '1.5rem', color: '#f1f5f9' }}>Business Information</h3>
+                  
+                  <div style={{ display: 'grid', gap: '1.5rem' }}>
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '600', marginBottom: '0.5rem', color: '#cbd5e1' }}>
+                        Firm Name
+                      </label>
+                      <input
+                        type="text"
+                        value={editingSiteSettings ? settingsForm.firm_name || '' : siteSettings.firm_name}
+                        onChange={(e) => setSettingsForm({ ...settingsForm, firm_name: e.target.value })}
+                        disabled={!editingSiteSettings}
+                        style={{ 
+                          width: '100%', 
+                          padding: '0.75rem', 
+                          border: '1px solid #475569', 
+                          borderRadius: '8px',
+                          fontSize: '1rem',
+                          backgroundColor: editingSiteSettings ? '#334155' : '#0f172a', color: '#f1f5f9',
+                          color: '#f1f5f9'
+                        }}
+                      />
+                    </div>
+
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '600', marginBottom: '0.5rem', color: '#cbd5e1' }}>
+                        Attorney Name
+                      </label>
+                      <input
+                        type="text"
+                        value={editingSiteSettings ? settingsForm.attorney_name || '' : siteSettings.attorney_name}
+                        onChange={(e) => setSettingsForm({ ...settingsForm, attorney_name: e.target.value })}
+                        disabled={!editingSiteSettings}
+                        style={{ 
+                          width: '100%', 
+                          padding: '0.75rem', 
+                          border: '1px solid #475569', 
+                          borderRadius: '8px',
+                          fontSize: '1rem',
+                          backgroundColor: editingSiteSettings ? '#334155' : '#0f172a', color: '#f1f5f9',
+                          color: '#f1f5f9'
+                        }}
+                      />
+                    </div>
+
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '600', marginBottom: '0.5rem', color: '#cbd5e1' }}>
+                        Attorney Credentials
+                      </label>
+                      <input
+                        type="text"
+                        value={editingSiteSettings ? settingsForm.attorney_credentials || '' : siteSettings.attorney_credentials}
+                        onChange={(e) => setSettingsForm({ ...settingsForm, attorney_credentials: e.target.value })}
+                        disabled={!editingSiteSettings}
+                        placeholder="NY & MI Bar | Oxford AI Certified | Big 4 Trained"
+                        style={{ 
+                          width: '100%', 
+                          padding: '0.75rem', 
+                          border: '1px solid #475569', 
+                          borderRadius: '8px',
+                          fontSize: '1rem',
+                          backgroundColor: editingSiteSettings ? '#334155' : '#0f172a', color: '#f1f5f9',
+                          color: '#f1f5f9'
+                        }}
+                      />
+                    </div>
+
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '600', marginBottom: '0.5rem', color: '#cbd5e1' }}>
+                        Bar Admission
+                      </label>
+                      <input
+                        type="text"
+                        value={editingSiteSettings ? settingsForm.bar_admission || '' : siteSettings.bar_admission}
+                        onChange={(e) => setSettingsForm({ ...settingsForm, bar_admission: e.target.value })}
+                        disabled={!editingSiteSettings}
+                        placeholder="New York and Michigan"
+                        style={{ 
+                          width: '100%', 
+                          padding: '0.75rem', 
+                          border: '1px solid #475569', 
+                          borderRadius: '8px',
+                          fontSize: '1rem',
+                          backgroundColor: editingSiteSettings ? '#334155' : '#0f172a', color: '#f1f5f9',
+                          color: '#f1f5f9'
+                        }}
+                      />
+                    </div>
+
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '600', marginBottom: '0.5rem', color: '#cbd5e1' }}>
+                        Firm Tagline
+                      </label>
+                      <input
+                        type="text"
+                        value={editingSiteSettings ? settingsForm.firm_tagline || '' : siteSettings.firm_tagline || ''}
+                        onChange={(e) => setSettingsForm({ ...settingsForm, firm_tagline: e.target.value })}
+                        disabled={!editingSiteSettings}
+                        placeholder="Big 4 Trained Attorney | AI Governance | Global Immigration | M&A Transactions"
+                        style={{ 
+                          width: '100%', 
+                          padding: '0.75rem', 
+                          border: '1px solid #475569', 
+                          borderRadius: '8px',
+                          fontSize: '1rem',
+                          backgroundColor: editingSiteSettings ? '#334155' : '#0f172a', color: '#f1f5f9',
+                          color: '#f1f5f9'
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Contact Information Section */}
+                <div style={{ background: '#1e293b', padding: '2rem', borderRadius: '12px', marginBottom: '1.5rem', boxShadow: '0 1px 3px rgba(0,0,0,0.3)' }}>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: '600', marginBottom: '1.5rem', color: '#f1f5f9' }}>Contact Information</h3>
+                  
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem' }}>
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '600', marginBottom: '0.5rem', color: '#cbd5e1' }}>
+                        Primary Phone
+                      </label>
+                      <input
+                        type="text"
+                        value={editingSiteSettings ? settingsForm.phone_primary || '' : siteSettings.phone_primary}
+                        onChange={(e) => setSettingsForm({ ...settingsForm, phone_primary: e.target.value })}
+                        disabled={!editingSiteSettings}
+                        placeholder="+1 (313) 771-2283"
+                        style={{ 
+                          width: '100%', 
+                          padding: '0.75rem', 
+                          border: '1px solid #475569', 
+                          borderRadius: '8px',
+                          fontSize: '1rem',
+                          backgroundColor: editingSiteSettings ? '#334155' : '#0f172a', color: '#f1f5f9',
+                          color: '#f1f5f9'
+                        }}
+                      />
+                    </div>
+
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '600', marginBottom: '0.5rem', color: '#cbd5e1' }}>
+                        Display Phone
+                      </label>
+                      <input
+                        type="text"
+                        value={editingSiteSettings ? settingsForm.phone_display || '' : siteSettings.phone_display}
+                        onChange={(e) => setSettingsForm({ ...settingsForm, phone_display: e.target.value })}
+                        disabled={!editingSiteSettings}
+                        placeholder="+1 (313) 771-2283"
+                        style={{ 
+                          width: '100%', 
+                          padding: '0.75rem', 
+                          border: '1px solid #475569', 
+                          borderRadius: '8px',
+                          fontSize: '1rem',
+                          backgroundColor: editingSiteSettings ? '#334155' : '#0f172a', color: '#f1f5f9',
+                          color: '#f1f5f9'
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Email Addresses Section */}
+                <div style={{ background: '#1e293b', padding: '2rem', borderRadius: '12px', marginBottom: '1.5rem', boxShadow: '0 1px 3px rgba(0,0,0,0.3)' }}>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: '600', marginBottom: '1.5rem', color: '#f1f5f9' }}>Email Addresses</h3>
+                  
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem' }}>
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '600', marginBottom: '0.5rem', color: '#cbd5e1' }}>
+                        General Contact
+                      </label>
+                      <input
+                        type="email"
+                        value={editingSiteSettings ? settingsForm.email_contact || '' : siteSettings.email_contact}
+                        onChange={(e) => setSettingsForm({ ...settingsForm, email_contact: e.target.value })}
+                        disabled={!editingSiteSettings}
+                        placeholder="contact@rivalislaw.com"
+                        style={{ 
+                          width: '100%', 
+                          padding: '0.75rem', 
+                          border: '1px solid #475569', 
+                          borderRadius: '8px',
+                          fontSize: '1rem',
+                          backgroundColor: editingSiteSettings ? '#334155' : '#0f172a', color: '#f1f5f9'
+                        }}
+                      />
+                    </div>
+
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '600', marginBottom: '0.5rem', color: '#cbd5e1' }}>
+                        Employment Law
+                      </label>
+                      <input
+                        type="email"
+                        value={editingSiteSettings ? settingsForm.email_employment || '' : siteSettings.email_employment || ''}
+                        onChange={(e) => setSettingsForm({ ...settingsForm, email_employment: e.target.value })}
+                        disabled={!editingSiteSettings}
+                        placeholder="employment@rivalislaw.com"
+                        style={{ 
+                          width: '100%', 
+                          padding: '0.75rem', 
+                          border: '1px solid #475569', 
+                          borderRadius: '8px',
+                          fontSize: '1rem',
+                          backgroundColor: editingSiteSettings ? '#334155' : '#0f172a', color: '#f1f5f9'
+                        }}
+                      />
+                    </div>
+
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '600', marginBottom: '0.5rem', color: '#cbd5e1' }}>
+                        IP Strategy
+                      </label>
+                      <input
+                        type="email"
+                        value={editingSiteSettings ? settingsForm.email_ip || '' : siteSettings.email_ip || ''}
+                        onChange={(e) => setSettingsForm({ ...settingsForm, email_ip: e.target.value })}
+                        disabled={!editingSiteSettings}
+                        placeholder="ip@rivalislaw.com"
+                        style={{ 
+                          width: '100%', 
+                          padding: '0.75rem', 
+                          border: '1px solid #475569', 
+                          borderRadius: '8px',
+                          fontSize: '1rem',
+                          backgroundColor: editingSiteSettings ? '#334155' : '#0f172a', color: '#f1f5f9'
+                        }}
+                      />
+                    </div>
+
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '600', marginBottom: '0.5rem', color: '#cbd5e1' }}>
+                        Data Privacy
+                      </label>
+                      <input
+                        type="email"
+                        value={editingSiteSettings ? settingsForm.email_privacy || '' : siteSettings.email_privacy || ''}
+                        onChange={(e) => setSettingsForm({ ...settingsForm, email_privacy: e.target.value })}
+                        disabled={!editingSiteSettings}
+                        placeholder="privacy@rivalislaw.com"
+                        style={{ 
+                          width: '100%', 
+                          padding: '0.75rem', 
+                          border: '1px solid #475569', 
+                          borderRadius: '8px',
+                          fontSize: '1rem',
+                          backgroundColor: editingSiteSettings ? '#334155' : '#0f172a', color: '#f1f5f9'
+                        }}
+                      />
+                    </div>
+
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '600', marginBottom: '0.5rem', color: '#cbd5e1' }}>
+                        AI Governance
+                      </label>
+                      <input
+                        type="email"
+                        value={editingSiteSettings ? settingsForm.email_ai || '' : siteSettings.email_ai || ''}
+                        onChange={(e) => setSettingsForm({ ...settingsForm, email_ai: e.target.value })}
+                        disabled={!editingSiteSettings}
+                        placeholder="ai@rivalislaw.com"
+                        style={{ 
+                          width: '100%', 
+                          padding: '0.75rem', 
+                          border: '1px solid #475569', 
+                          borderRadius: '8px',
+                          fontSize: '1rem',
+                          backgroundColor: editingSiteSettings ? '#334155' : '#0f172a', color: '#f1f5f9'
+                        }}
+                      />
+                    </div>
+
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '600', marginBottom: '0.5rem', color: '#cbd5e1' }}>
+                        Entity Formation
+                      </label>
+                      <input
+                        type="email"
+                        value={editingSiteSettings ? settingsForm.email_formation || '' : siteSettings.email_formation || ''}
+                        onChange={(e) => setSettingsForm({ ...settingsForm, email_formation: e.target.value })}
+                        disabled={!editingSiteSettings}
+                        placeholder="formation@rivalislaw.com"
+                        style={{ 
+                          width: '100%', 
+                          padding: '0.75rem', 
+                          border: '1px solid #475569', 
+                          borderRadius: '8px',
+                          fontSize: '1rem',
+                          backgroundColor: editingSiteSettings ? '#334155' : '#0f172a', color: '#f1f5f9'
+                        }}
+                      />
+                    </div>
+
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '600', marginBottom: '0.5rem', color: '#cbd5e1' }}>
+                        M&A / Deals
+                      </label>
+                      <input
+                        type="email"
+                        value={editingSiteSettings ? settingsForm.email_deals || '' : siteSettings.email_deals || ''}
+                        onChange={(e) => setSettingsForm({ ...settingsForm, email_deals: e.target.value })}
+                        disabled={!editingSiteSettings}
+                        placeholder="deals@rivalislaw.com"
+                        style={{ 
+                          width: '100%', 
+                          padding: '0.75rem', 
+                          border: '1px solid #475569', 
+                          borderRadius: '8px',
+                          fontSize: '1rem',
+                          backgroundColor: editingSiteSettings ? '#334155' : '#0f172a', color: '#f1f5f9'
+                        }}
+                      />
+                    </div>
+
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '600', marginBottom: '0.5rem', color: '#cbd5e1' }}>
+                        Investigations
+                      </label>
+                      <input
+                        type="email"
+                        value={editingSiteSettings ? settingsForm.email_investigations || '' : siteSettings.email_investigations || ''}
+                        onChange={(e) => setSettingsForm({ ...settingsForm, email_investigations: e.target.value })}
+                        disabled={!editingSiteSettings}
+                        placeholder="investigations@rivalislaw.com"
+                        style={{ 
+                          width: '100%', 
+                          padding: '0.75rem', 
+                          border: '1px solid #475569', 
+                          borderRadius: '8px',
+                          fontSize: '1rem',
+                          backgroundColor: editingSiteSettings ? '#334155' : '#0f172a', color: '#f1f5f9'
+                        }}
+                      />
+                    </div>
+
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '600', marginBottom: '0.5rem', color: '#cbd5e1' }}>
+                        Contracts
+                      </label>
+                      <input
+                        type="email"
+                        value={editingSiteSettings ? settingsForm.email_contracts || '' : siteSettings.email_contracts || ''}
+                        onChange={(e) => setSettingsForm({ ...settingsForm, email_contracts: e.target.value })}
+                        disabled={!editingSiteSettings}
+                        placeholder="contracts@rivalislaw.com"
+                        style={{ 
+                          width: '100%', 
+                          padding: '0.75rem', 
+                          border: '1px solid #475569', 
+                          borderRadius: '8px',
+                          fontSize: '1rem',
+                          backgroundColor: editingSiteSettings ? '#334155' : '#0f172a', color: '#f1f5f9'
+                        }}
+                      />
+                    </div>
+
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '600', marginBottom: '0.5rem', color: '#cbd5e1' }}>
+                        Legal (General)
+                      </label>
+                      <input
+                        type="email"
+                        value={editingSiteSettings ? settingsForm.email_legal || '' : siteSettings.email_legal || ''}
+                        onChange={(e) => setSettingsForm({ ...settingsForm, email_legal: e.target.value })}
+                        disabled={!editingSiteSettings}
+                        placeholder="legal@rivalislaw.com"
+                        style={{ 
+                          width: '100%', 
+                          padding: '0.75rem', 
+                          border: '1px solid #475569', 
+                          borderRadius: '8px',
+                          fontSize: '1rem',
+                          backgroundColor: editingSiteSettings ? '#334155' : '#0f172a', color: '#f1f5f9'
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Social Media Section */}
+                <div style={{ background: '#1e293b', padding: '2rem', borderRadius: '12px', marginBottom: '1.5rem', boxShadow: '0 1px 3px rgba(0,0,0,0.3)' }}>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: '600', marginBottom: '1.5rem', color: '#f1f5f9' }}>Social Media</h3>
+                  
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '600', marginBottom: '0.5rem', color: '#cbd5e1' }}>
+                      LinkedIn Profile URL
+                    </label>
+                    <input
+                      type="text"
+                      value={editingSiteSettings ? settingsForm.linkedin_url || '' : siteSettings.linkedin_url || ''}
+                      onChange={(e) => setSettingsForm({ ...settingsForm, linkedin_url: e.target.value })}
+                      disabled={!editingSiteSettings}
+                      placeholder="https://linkedin.com/in/username"
+                      style={{ 
+                        width: '100%', 
+                        padding: '0.75rem', 
+                        border: '1px solid #475569', 
+                        borderRadius: '8px',
+                        fontSize: '1rem',
+                        backgroundColor: editingSiteSettings ? '#334155' : '#0f172a',
+                        color: '#f1f5f9'
+                      }}
+                    />
+                  </div>
+                </div>
+
+                {/* Action Buttons */}
+                <div style={{ display: 'flex', gap: '1rem', justifyContent: 'flex-end' }}>
+                  {editingSiteSettings ? (
+                    <>
+                      <button
+                        onClick={() => {
+                          setEditingSiteSettings(false);
+                          setSettingsForm(siteSettings);
+                        }}
+                        style={{
+                          padding: '0.75rem 1.5rem',
+                          border: '1px solid #475569',
+                          borderRadius: '8px',
+                          background: 'white',
+                          color: '#cbd5e1',
+                          fontWeight: '600',
+                          cursor: 'pointer'
+                        }}
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        onClick={handleSaveSiteSettings}
+                        disabled={saving}
+                        style={{
+                          padding: '0.75rem 1.5rem',
+                          border: 'none',
+                          borderRadius: '8px',
+                          background: 'linear-gradient(135deg, #d4af37 0%, #b8941f 100%)',
+                          color: 'white',
+                          fontWeight: '600',
+                          cursor: saving ? 'not-allowed' : 'pointer',
+                          opacity: saving ? 0.7 : 1
+                        }}
+                      >
+                        {saving ? 'Saving...' : 'Save Changes'}
+                      </button>
+                    </>
+                  ) : (
+                    <button
+                      onClick={() => setEditingSiteSettings(true)}
+                      style={{
+                        padding: '0.75rem 1.5rem',
+                        border: 'none',
+                        borderRadius: '8px',
+                        background: 'linear-gradient(135deg, #d4af37 0%, #b8941f 100%)',
+                        color: 'white',
+                        fontWeight: '600',
+                        cursor: 'pointer'
+                      }}
+                    >
+                      Edit Settings
+                    </button>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
         )}
 

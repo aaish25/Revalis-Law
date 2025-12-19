@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
 import { Navigation } from '../../../components/Layout/Navigation';
 import { EnhancedFooter } from '../../../components/Layout';
+import { useSiteSettings } from '../../../contexts/SiteSettingsContext';
 import '../../../styles/service-page.css';
 import '../../../styles/home.css';
 
 export default function EB1ExtraordinaryAbility() {
+  const { settings } = useSiteSettings();
   const combinedStyles = `
     .greencard-hero {
       background: linear-gradient(165deg, #1a1a2e 0%, #2d3748 100%);
@@ -643,7 +645,7 @@ export default function EB1ExtraordinaryAbility() {
 
           <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <a 
-              href="tel:+13137712283"
+              href={`tel:${settings?.phone_primary || '+1-313-771-2283'}`}
               style={{
                 padding: '1.25rem 2.5rem',
                 borderRadius: '12px',
@@ -658,7 +660,7 @@ export default function EB1ExtraordinaryAbility() {
               }}
             >
               <i className="fas fa-phone"></i>
-              Call: +1 (313) 771-2283
+              Call: {settings?.phone_display || '+1 (313) 771-2283'}
             </a>
             <Link
               to="/forms/eb1-intake"

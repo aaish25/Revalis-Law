@@ -5,11 +5,13 @@ import { FormAccessGuard } from '../../components/Common/FormAccessGuard';
 import { PaymentModal } from '../../components/Common/PaymentModal';
 import { AccountCreationNudge } from '../../components/Common/AccountCreationNudge';
 import { useFormSubmissionWithPayment } from '../../hooks/useFormSubmissionWithPayment';
+import { useSiteSettings } from '../../contexts/SiteSettingsContext';
 import { submitForm } from '../../lib/supabase';
 import '../../styles/form-page.css';
 import '../../styles/home.css';
 
 export const ImmigrationIntake: React.FC = () => {
+  const { settings } = useSiteSettings();
   const [formData, setFormData] = useState({
     // Client Information
     fullLegalName: '',
@@ -176,7 +178,7 @@ export const ImmigrationIntake: React.FC = () => {
       
     } catch (error) {
       console.error('Error submitting immigration intake:', error);
-      alert('There was an error submitting your form. Please try again or call +1 (313) 771-2283.');
+      alert(`There was an error submitting your form. Please try again or call ${settings?.phone_display || '+1 (313) 771-2283'}.`);
     } finally {
       setLoading(false);
     }
@@ -1416,13 +1418,13 @@ export const ImmigrationIntake: React.FC = () => {
               <div className="form-contact-box">
                 <h4>🚨 Need Immediate Assistance?</h4>
                 <p>For urgent immigration matters, RFE deadlines, or immediate consultation needs:</p>
-                <a href="tel:+1-313-771-2283" className="form-contact-item">
+                <a href={`tel:${settings?.phone_primary || '+1-313-771-2283'}`} className="form-contact-item">
                   <i className="fas fa-phone-volume"></i>
-                  <span>Emergency: +1 (313) 771-2283</span>
+                  <span>Emergency: {settings?.phone_display || '+1 (313) 771-2283'}</span>
                 </a>
-                <a href="mailto:immigration@rivalislaw.com" className="form-contact-item">
+                <a href={`mailto:${settings?.email_contact || 'immigration@rivalislaw.com'}`} className="form-contact-item">
                   <i className="fas fa-envelope"></i>
-                  <span>immigration@rivalislaw.com</span>
+                  <span>{settings?.email_contact || 'immigration@rivalislaw.com'}</span>
                 </a>
               </div>
             </div>
@@ -1439,9 +1441,9 @@ export const ImmigrationIntake: React.FC = () => {
             <i className="fas fa-passport"></i>
             Immigration Services
           </Link>
-          <a href="tel:+1-313-771-2283" className="form-cta-btn secondary">
+          <a href={`tel:${settings?.phone_primary || '+1-313-771-2283'}`} className="form-cta-btn secondary">
             <i className="fas fa-phone"></i>
-            Call: +1 (313) 771-2283
+            Call: {settings?.phone_display || '+1 (313) 771-2283'}
           </a>
         </div>
       </section>

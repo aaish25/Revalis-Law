@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 import { Navigation } from '../../components/Layout/Navigation';
 import { EnhancedFooter } from '../../components/Layout';
 import { useServices } from '../../contexts/ServicesContext';
+import { useSiteSettings } from '../../contexts/SiteSettingsContext';
 import '../../styles/service-page.css';
 import '../../styles/home.css';
 
 export const DataPrivacy: React.FC = () => {
   const { getServicePrice } = useServices();
+  const { settings } = useSiteSettings();
   
   return (
     <>
@@ -193,9 +195,9 @@ export const DataPrivacy: React.FC = () => {
               <i className="fas fa-clipboard-list"></i>
               Start Privacy Compliance Intake
             </Link>
-            <a href="tel:+1-313-771-2283" className="service-btn service-btn-secondary">
+            <a href={`tel:${settings?.phone_primary || '+1-313-771-2283'}`} className="service-btn service-btn-secondary">
               <i className="fas fa-phone-alt"></i>
-              Emergency: +1 (313) 771-2283
+              Emergency: {settings?.phone_display || '+1 (313) 771-2283'}
             </a>
           </div>
         </div>

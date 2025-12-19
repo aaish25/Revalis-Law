@@ -52,7 +52,7 @@ exports.handler = async (event) => {
 
     // Send confirmation email to user
     const userEmailResponse = await resend.emails.send({
-      from: 'Rivalis Law <onboarding@resend.dev>',
+      from: process.env.FROM_EMAIL || 'Rivalis Law <onboarding@resend.dev>',
       to: userEmail,
       subject: 'Emergency Consultation Request Received - Rivalis Law',
       html: `
@@ -119,8 +119,8 @@ exports.handler = async (event) => {
 
     // Send priority alert to admin
     const adminEmailResponse = await resend.emails.send({
-      from: 'Emergency Alerts <onboarding@resend.dev>',
-      to: 'aniketbamotra.11@gmail.com', // Change to actual admin email after domain verification
+      from: process.env.FROM_EMAIL || 'Emergency Alerts <onboarding@resend.dev>',
+      to: process.env.ADMIN_EMAIL || 'aniketbamotra.11@gmail.com',
       subject: `🚨 PRIORITY: New Emergency Consultation - ${urgency} Urgency`,
       html: `
         <!DOCTYPE html>

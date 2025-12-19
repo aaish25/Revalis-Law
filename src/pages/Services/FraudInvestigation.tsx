@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Navigation } from '../../components/Layout/Navigation';
 import { EnhancedFooter } from '../../components/Layout';
+import { useSiteSettings } from '../../contexts/SiteSettingsContext';
 import '../../styles/fraud-investigation.css';
 import '../../styles/home.css';
 
 export const FraudInvestigation: React.FC = () => {
+  const { settings } = useSiteSettings();
   const [formData, setFormData] = useState({
     name: '',
     title: '',
@@ -18,7 +20,7 @@ export const FraudInvestigation: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert('Thank you for your confidential inquiry. An attorney will contact you within 4 hours.\n\nFor immediate assistance, please call our emergency hotline: +1 (313) 771-2283');
+    alert(`Thank you for your confidential inquiry. An attorney will contact you within 4 hours.\n\nFor immediate assistance, please call our emergency hotline: ${settings?.phone_display || '+1 (313) 771-2283'}`);
     setFormData({ name: '', title: '', company: '', email: '', phone: '', urgency: '', situation: '' });
   };
 
@@ -36,9 +38,9 @@ export const FraudInvestigation: React.FC = () => {
             <span>CONFIDENTIAL INVESTIGATION HOTLINE - ATTORNEY-CLIENT PRIVILEGE PROTECTED</span>
           </div>
           <div className="fraud-emergency-actions">
-            <a href="tel:+1-313-771-2283" className="fraud-emergency-btn">
+            <a href={`tel:${settings?.phone_primary || '+1-313-771-2283'}`} className="fraud-emergency-btn">
               <i className="fas fa-phone-alt"></i>
-              Emergency: +1 (313) 771-2283
+              Emergency: {settings?.phone_display || '+1 (313) 771-2283'}
             </a>
           </div>
         </div>
@@ -89,7 +91,7 @@ export const FraudInvestigation: React.FC = () => {
           </div>
 
           <div className="fraud-cta-group">
-            <a href="tel:+1-313-771-2283" className="fraud-btn fraud-btn-primary">
+            <a href={`tel:${settings?.phone_primary || '+1-313-771-2283'}`} className="fraud-btn fraud-btn-primary">
               <i className="fas fa-phone"></i>
               Call Emergency Line Now
             </a>
@@ -403,7 +405,7 @@ export const FraudInvestigation: React.FC = () => {
                 <li>Internal investigations training</li>
                 <li>Financial controls expertise</li>
                 <li>Regulatory compliance background</li>
-                <li>NY & MI Bar Admitted</li>
+                <li>{settings?.bar_admission || 'NY & MI Bar Admitted'}</li>
                 <li>Oxford AI Governance certified</li>
               </ul>
             </div>
@@ -471,13 +473,13 @@ export const FraudInvestigation: React.FC = () => {
               </p>
 
               <div className="fraud-contact-methods">
-                <a href="tel:+1-313-771-2283" className="fraud-contact-method">
+                <a href={`tel:${settings?.phone_primary || '+1-313-771-2283'}`} className="fraud-contact-method">
                   <div className="fraud-method-icon">
                     <i className="fas fa-phone"></i>
                   </div>
                   <div className="fraud-method-text">
                     <h4>Emergency Investigation Hotline</h4>
-                    <p>+1 (313) 771-2283 | Available 24/7 for urgent matters</p>
+                    <p>{settings?.phone_display || '+1 (313) 771-2283'} | Available 24/7 for urgent matters</p>
                   </div>
                 </a>
 

@@ -217,6 +217,77 @@ export interface Database {
           created_at?: string;
         };
       };
+      site_settings: {
+        Row: {
+          id: string;
+          firm_name: string;
+          attorney_name: string;
+          attorney_credentials: string;
+          bar_admission: string;
+          firm_tagline: string | null;
+          phone_primary: string;
+          phone_display: string;
+          email_contact: string;
+          email_employment: string | null;
+          email_ip: string | null;
+          email_privacy: string | null;
+          email_ai: string | null;
+          email_formation: string | null;
+          email_deals: string | null;
+          email_investigations: string | null;
+          email_contracts: string | null;
+          email_legal: string | null;
+          linkedin_url: string | null;
+          updated_at: string;
+          updated_by: string | null;
+        };
+        Insert: {
+          id?: string;
+          firm_name?: string;
+          attorney_name?: string;
+          attorney_credentials?: string;
+          bar_admission?: string;
+          firm_tagline?: string | null;
+          phone_primary?: string;
+          phone_display?: string;
+          email_contact?: string;
+          email_employment?: string | null;
+          email_ip?: string | null;
+          email_privacy?: string | null;
+          email_ai?: string | null;
+          email_formation?: string | null;
+          email_deals?: string | null;
+          email_investigations?: string | null;
+          email_contracts?: string | null;
+          email_legal?: string | null;
+          linkedin_url?: string | null;
+          updated_at?: string;
+          updated_by?: string | null;
+        };
+        Update: {
+          id?: string;
+          firm_name?: string;
+          attorney_name?: string;
+          attorney_credentials?: string;
+          bar_admission?: string;
+          firm_tagline?: string | null;
+          phone_primary?: string;
+          phone_display?: string;
+          email_contact?: string;
+          email_employment?: string | null;
+          email_ip?: string | null;
+          email_privacy?: string | null;
+          email_ai?: string | null;
+          email_formation?: string | null;
+          email_deals?: string | null;
+          email_investigations?: string | null;
+          email_contracts?: string | null;
+          email_legal?: string | null;
+          linkedin_url?: string | null;
+          updated_at?: string;
+          updated_by?: string | null;
+        };
+      };
     };
     Views: {
       [_ in never]: never;
@@ -234,6 +305,7 @@ export interface Database {
 export type Profile = Database['public']['Tables']['profiles']['Row'];
 export type Service = Database['public']['Tables']['services']['Row'];
 export type FormSubmission = Database['public']['Tables']['form_submissions']['Row'];
+export type SiteSettings = Database['public']['Tables']['site_settings']['Row'];
 export type Purchase = Database['public']['Tables']['purchases']['Row'];
 export type Payment = Database['public']['Tables']['payments']['Row'];
 

@@ -2,10 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navigation } from '../../../components/Layout/Navigation';
 import { EnhancedFooter } from '../../../components/Layout';
+import { useSiteSettings } from '../../../contexts/SiteSettingsContext';
 import '../../../styles/service-page.css';
 import '../../../styles/home.css';
 
 export const WorkVisas: React.FC = () => {
+  const { settings } = useSiteSettings();
   const workVisaStyles = `
     .work-visa-hero {
       background: linear-gradient(165deg, #1a1a2e 0%, #2d3748 100%);
@@ -759,7 +761,7 @@ export const WorkVisas: React.FC = () => {
               Start Work Visa Intake <i className="fas fa-arrow-right"></i>
             </Link>
             <a
-              href="tel:+13137712283"
+              href={`tel:${settings?.phone_primary || '+1-313-771-2283'}`}
               style={{
                 padding: '1.25rem 2.5rem',
                 borderRadius: '12px',
@@ -783,7 +785,7 @@ export const WorkVisas: React.FC = () => {
                 e.currentTarget.style.color = 'white';
               }}
             >
-              <i className="fas fa-phone-alt"></i> +1 (313) 771-2283
+              <i className="fas fa-phone-alt"></i> {settings?.phone_display || '+1 (313) 771-2283'}
             </a>
           </div>
         </div>

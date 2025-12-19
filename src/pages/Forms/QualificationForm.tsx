@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Navigation } from '../../components/Layout/Navigation';
+import { useSiteSettings } from '../../contexts/SiteSettingsContext';
 import { submitForm } from '../../lib/supabase';
 import '../../styles/form-page.css';
 import '../../styles/home.css';
 
 export const QualificationForm: React.FC = () => {
+  const { settings } = useSiteSettings();
   const [formData, setFormData] = useState({
     companyName: '',
     contactName: '',
@@ -50,7 +52,7 @@ export const QualificationForm: React.FC = () => {
       });
     } catch (error) {
       console.error('Error submitting qualification form:', error);
-      alert('There was an error submitting your form. Please try again or call +1 (313) 771-2283.');
+      alert(`There was an error submitting your form. Please try again or call ${settings?.phone_display || '+1 (313) 771-2283'}.`);
     } finally {
       setLoading(false);
     }
@@ -382,9 +384,9 @@ export const QualificationForm: React.FC = () => {
                   <i className="fas fa-envelope"></i>
                   <span>intake@rivalislaw.com</span>
                 </a>
-                <a href="tel:+1-313-771-2283" className="form-contact-item">
+                <a href={`tel:${settings?.phone_primary || '+1-313-771-2283'}`} className="form-contact-item">
                   <i className="fas fa-phone"></i>
-                  <span>+1 (313) 771-2283</span>
+                  <span>{settings?.phone_display || '+1 (313) 771-2283'}</span>
                 </a>
               </div>
             </div>
@@ -401,9 +403,9 @@ export const QualificationForm: React.FC = () => {
             <i className="fas fa-briefcase"></i>
             View All Services
           </Link>
-          <a href="tel:+1-313-771-2283" className="form-cta-btn secondary">
+          <a href={`tel:${settings?.phone_primary || '+1-313-771-2283'}`} className="form-cta-btn secondary">
             <i className="fas fa-phone"></i>
-            Call: +1 (313) 771-2283
+            Call: {settings?.phone_display || '+1 (313) 771-2283'}
           </a>
         </div>
       </section>

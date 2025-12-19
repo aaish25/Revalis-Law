@@ -2,10 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navigation } from '../../components/Layout/Navigation';
 import { EnhancedFooter } from '../../components/Layout';
+import { useSiteSettings } from '../../contexts/SiteSettingsContext';
 import '../../styles/service-page.css';
 import '../../styles/home.css';
 
 export const EntityFormation: React.FC = () => {
+  const { settings } = useSiteSettings();
   return (
     <>
       {/* Navigation */}
@@ -138,9 +140,9 @@ export const EntityFormation: React.FC = () => {
               <i className="fas fa-clipboard-list"></i>
               Start Entity Formation Intake
             </Link>
-            <a href="tel:+1-313-771-2283" className="service-btn service-btn-secondary">
+            <a href={`tel:${settings?.phone_primary || '+1-313-771-2283'}`} className="service-btn service-btn-secondary">
               <i className="fas fa-phone-alt"></i>
-              Call: +1 (313) 771-2283
+              Call: {settings?.phone_display || '+1 (313) 771-2283'}
             </a>
           </div>
         </div>

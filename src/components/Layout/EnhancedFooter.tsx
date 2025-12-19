@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
+import { useSiteSettings } from '../../contexts/SiteSettingsContext';
 
 const EnhancedFooter: React.FC = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const navigate = useNavigate();
   const { user } = useAuth();
+  const { settings } = useSiteSettings();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,20 +47,20 @@ const EnhancedFooter: React.FC = () => {
       <footer className="footer">
         <div className="footer-container">
           <div>
-            <div className="footer-brand">Rivalis Law</div>
+            <div className="footer-brand">{settings?.firm_name || 'Rivalis Law'}</div>
             <p style={{marginTop: '0.75rem', fontSize: '0.95rem'}}>
-              Big 4 Trained Attorney | AI Governance | Global Immigration | M&A Transactions
+              {settings?.firm_tagline || 'Big 4 Trained Attorney | AI Governance | Global Immigration | M&A Transactions'}
             </p>
           </div>
           <div className="footer-links">
-            <a href="https://linkedin.com/in/aaishaeron" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href={settings?.linkedin_url || 'https://linkedin.com/in/aaishaeron'} target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <a href="/legal">Legal Information</a>
             <a href="#privacy" onClick={handleModalOpen}>Privacy & Terms</a>
           </div>
         </div>
         <div className="footer-bottom">
           <div className="footer-container" style={{textAlign: 'left', flexDirection: 'column', gap: '0.5rem', alignItems: 'flex-start'}}>
-            <p style={{opacity: 1, marginBottom: '1rem', textAlign: 'left'}}>© 2025 Rivalis Law | Aaishwarya Aeron, Esq. | NY & MI Bar | Oxford AI Certified | Big 4 Trained</p>
+            <p style={{opacity: 1, marginBottom: '1rem', textAlign: 'left'}}>© 2025 {settings?.firm_name || 'Rivalis Law'} | {settings?.attorney_name || 'Aaishwarya Aeron, Esq.'} | {settings?.attorney_credentials || 'NY & MI Bar | Oxford AI Certified | Big 4 Trained'}</p>
             <p style={{ opacity: 0.8, fontWeight: 600}}>Attorney Advertising</p>
             <p style={{marginBottom: '1.5rem', opacity: 0.7, maxWidth: '900px', lineHeight: 1.6}}>
               This website is for informational purposes only and does not constitute legal advice. Viewing or contacting us does not form an attorney-client relationship.
@@ -95,7 +97,7 @@ const EnhancedFooter: React.FC = () => {
                 <strong>No Guarantee of Results:</strong> Past results, client experiences, or descriptions of services do not guarantee or predict a similar outcome in any future matter. Every legal matter is unique and outcomes depend on specific facts and circumstances.
               </p>
               <p style={{marginBottom: '1rem'}}>
-                <strong>Jurisdictional Limitations:</strong> Aaishwarya Aeron is admitted to practice law in New York and Michigan. Rivalis Law accepts matters only in jurisdictions where we are admitted or otherwise permitted to practice law. We may associate with or engage local counsel as needed for matters outside our jurisdictions.
+                <strong>Jurisdictional Limitations:</strong> {settings?.attorney_name || 'Aaishwarya Aeron, Esq.'} is admitted to practice law in {settings?.bar_admission || 'New York and Michigan'}. {settings?.firm_name || 'Rivalis Law'} accepts matters only in jurisdictions where we are admitted or otherwise permitted to practice law. We may associate with or engage local counsel as needed for matters outside our jurisdictions.
               </p>
 
               <h3 style={{fontSize: '1.5rem', fontWeight: 700, margin: '2rem 0 1rem', color: 'var(--primary)'}}>Privacy Policy</h3>
@@ -122,7 +124,7 @@ const EnhancedFooter: React.FC = () => {
 
               <h3 style={{fontSize: '1.5rem', fontWeight: 700, margin: '2rem 0 1rem', color: 'var(--primary)'}}>Limitation of Liability</h3>
               <p style={{marginBottom: '1rem'}}>
-                Rivalis Law and Aaishwarya Aeron shall not be liable for any damages arising from use of this website or reliance on information contained herein.
+                {settings?.firm_name || 'Rivalis Law'} and {settings?.attorney_name || 'Aaishwarya Aeron, Esq.'} shall not be liable for any damages arising from use of this website or reliance on information contained herein.
               </p>
 
               <h3 style={{fontSize: '1.5rem', fontWeight: 700, margin: '2rem 0 1rem', color: 'var(--primary)'}}>External Links</h3>
@@ -139,7 +141,7 @@ const EnhancedFooter: React.FC = () => {
               <p style={{marginBottom: '1rem'}}>
                 For questions about these terms or our privacy practices, contact us at:<br />
                 <strong>Email:</strong> aaishaeron@gmail.com<br />
-                <strong>Phone:</strong> +1 (313) 771-2283
+                <strong>Phone:</strong> {settings?.phone_display || '+1 (313) 771-2283'}
               </p>
 
               <p style={{marginTop: '2rem', paddingTop: '2rem', borderTop: '1px solid var(--gray-200)', fontSize: '0.9rem', opacity: 0.7}}>

@@ -2,10 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navigation } from '../../components/Layout/Navigation';
 import { EnhancedFooter } from '../../components/Layout';
+import { useSiteSettings } from '../../contexts/SiteSettingsContext';
 import '../../styles/service-page.css';
 import '../../styles/home.css';
 
 export const Immigration: React.FC = () => {
+  const { settings } = useSiteSettings();
   
   return (
     <>
@@ -21,7 +23,7 @@ export const Immigration: React.FC = () => {
 
           <div className="service-hero-badge danger">
             <i className="fas fa-exclamation-triangle"></i>
-            RFE EMERGENCY HOTLINE: +1 (313) 771-2283
+            RFE EMERGENCY HOTLINE: {settings?.phone_display || '+1 (313) 771-2283'}
           </div>
 
           <h1>Your Key Engineer's Visa <span className="highlight">Expires in 30 Days</span>.<br />What's Your Plan?</h1>
@@ -46,9 +48,9 @@ export const Immigration: React.FC = () => {
           </div>
 
           <div className="service-cta-group">
-            <a href="tel:+1-313-771-2283" className="service-btn service-btn-primary danger">
+            <a href={`tel:${settings?.phone_primary || '+1-313-771-2283'}`} className="service-btn service-btn-primary danger">
               <i className="fas fa-phone-alt"></i>
-              RFE CRISIS: +1 (313) 771-2283
+              RFE CRISIS: {settings?.phone_display || '+1 (313) 771-2283'}
             </a>
             <a href="#get-started" className="service-btn service-btn-secondary">
               <i className="fas fa-calendar-check"></i>
@@ -215,9 +217,9 @@ export const Immigration: React.FC = () => {
           </div>
 
           <div className="service-cta-group" style={{ justifyContent: 'center' }}>
-            <a href="tel:+1-313-771-2283" className="service-btn service-btn-primary" style={{ background: 'white', color: 'var(--danger)' }}>
+            <a href={`tel:${settings?.phone_primary || '+1-313-771-2283'}`} className="service-btn service-btn-primary" style={{ background: 'white', color: 'var(--danger)' }}>
               <i className="fas fa-phone-volume"></i>
-              EMERGENCY: +1 (313) 771-2283
+              EMERGENCY: {settings?.phone_display || '+1 (313) 771-2283'}
             </a>
           </div>
         </div>
@@ -379,7 +381,7 @@ export const Immigration: React.FC = () => {
                 <i className="fas fa-chevron-down"></i>
               </div>
               <div className="service-faq-answer">
-                RFE or visa crisis? Call the emergency line +1 (313) 771-2283 and we start same day. Initial assessment within 24 hours. For standard petitions, initial consultation within 48 hours. No waiting weeks for an attorney to be "available."
+                RFE or visa crisis? Call the emergency line {settings?.phone_display || '+1 (313) 771-2283'} and we start same day. Initial assessment within 24 hours. For standard petitions, initial consultation within 48 hours. No waiting weeks for an attorney to be "available."
               </div>
             </div>
 
@@ -450,9 +452,9 @@ export const Immigration: React.FC = () => {
           </div>
 
           <div className="service-cta-group" style={{ justifyContent: 'center' }}>
-            <a href="tel:+1-313-771-2283" className="service-btn service-btn-primary" style={{ background: '#e74c3c', color: 'white' }}>
+            <a href={`tel:${settings?.phone_primary || '+1-313-771-2283'}`} className="service-btn service-btn-primary" style={{ background: '#e74c3c', color: 'white' }}>
               <i className="fas fa-phone-alt"></i>
-              EMERGENCY: +1 (313) 771-2283
+              EMERGENCY: {settings?.phone_display || '+1 (313) 771-2283'}
             </a>
             <Link to="/forms/immigration" className="service-btn service-btn-secondary">
               <i className="fas fa-clipboard-list"></i>

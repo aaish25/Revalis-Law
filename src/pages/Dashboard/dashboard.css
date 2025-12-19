@@ -326,17 +326,17 @@
 }
 
 /* Section Headers */
-.section-header {
+.dashboard .section-header {
   margin-bottom: 1.5rem;
 }
 
-.section-header h2 {
+.dashboard .section-header h2 {
   color: #fff;
   font-size: 1.5rem;
   margin-bottom: 0.25rem;
 }
 
-.section-header p {
+.dashboard .section-header p {
   color: rgba(255, 255, 255, 0.5);
 }
 

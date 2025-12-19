@@ -4,11 +4,13 @@ import { EnhancedFooter } from '../components/Layout';
 import { PaymentModal } from '../components/Common/PaymentModal';
 import { AccountCreationNudge } from '../components/Common/AccountCreationNudge';
 import { useFormSubmissionWithPayment } from '../hooks/useFormSubmissionWithPayment';
+import { useSiteSettings } from '../contexts/SiteSettingsContext';
 import { submitForm } from '../lib/supabase';
 import { useServices } from '../contexts/ServicesContext';
 import '../styles/home.css';
 
 export const Home: React.FC = () => {
+  const { settings } = useSiteSettings();
   const { getServicePrice } = useServices();
   const [timeWasted, setTimeWasted] = useState(30);
   const [finesRisk, setFinesRisk] = useState(250000);
@@ -71,7 +73,7 @@ export const Home: React.FC = () => {
       });
     } catch (error) {
       console.error('Error submitting form:', error);
-      alert('There was an error submitting your form. Please try again or call +1 (313) 771-2283.');
+      alert(`There was an error submitting your form. Please try again or call ${settings?.phone_display || '+1 (313) 771-2283'}.`);
     } finally {
       setLoading(false);
     }
@@ -127,9 +129,9 @@ export const Home: React.FC = () => {
             <span>Legal Emergency? Visa Crisis? Deal Closing Tomorrow?</span>
           </div>
           <div className="emergency-actions">
-            <a href="tel:+1-313-771-2283" className="emergency-btn">
+            <a href={`tel:${settings?.phone_primary || '+1-313-771-2283'}`} className="emergency-btn">
               <i className="fas fa-phone"></i>
-              +1 (313) 771-2283
+              {settings?.phone_display || '+1 (313) 771-2283'}
             </a>
             <a href="#qualify" className="emergency-btn">
               <i className="fas fa-calendar-alt"></i>
@@ -157,7 +159,7 @@ export const Home: React.FC = () => {
               </div>
               <div className="badge">
                 <i className="fas fa-gavel"></i>
-                NY & MI Bar
+                {settings?.bar_admission || 'NY & MI Bar'}
               </div>
               <div className="badge urgent">
                 <i className="fas fa-bolt"></i>
@@ -977,9 +979,9 @@ export const Home: React.FC = () => {
               <i className="fas fa-calendar-check"></i>
               Start Assessment
             </a>
-            <a href="tel:+1-313-771-2283" className="btn btn-secondary" style={{fontSize: '1.1rem', padding: '1.375rem 2.75rem', background: 'rgba(255,255,255,0.12)', borderColor: 'rgba(255,255,255,0.3)', color: 'white'}}>
+            <a href={`tel:${settings?.phone_primary || '+1-313-771-2283'}`} className="btn btn-secondary" style={{fontSize: '1.1rem', padding: '1.375rem 2.75rem', background: 'rgba(255,255,255,0.12)', borderColor: 'rgba(255,255,255,0.3)', color: 'white'}}>
               <i className="fas fa-phone"></i>
-              Call: +1 (313) 771-2283
+              Call: {settings?.phone_display || '+1 (313) 771-2283'}
             </a>
           </div>
 

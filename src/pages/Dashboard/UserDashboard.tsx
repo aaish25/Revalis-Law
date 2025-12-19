@@ -349,7 +349,7 @@ export function UserDashboard() {
                     {submissions.map((submission) => {
                       const serviceSlug = getServiceSlugFromFormType(submission.form_type);
                       const service = services.find(s => s.slug === serviceSlug);
-                      const calendlyUrl = service?.calendly_url || 'https://calendly.com/aniketbamotra/legal';
+                      const calendlyUrl = service?.calendly_url || import.meta.env.VITE_CALENDLY_URL || 'https://calendly.com/aniketbamotra/legal';
                       
                       return (
                         <div key={submission.id} style={{
